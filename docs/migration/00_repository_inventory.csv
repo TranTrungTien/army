@@ -1,0 +1,337 @@
+﻿side,path,package,classification,target,content_available,methods,fields,static_tokens,empty_blocks,swallowed_catches,packet,asset,risk,imports
+CLIENT,CSHARP_MIGRATION_PLAN.md,CSHARP_MIGRATION_PLAN.md,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,NO,0,0,0,0,0,NO,NO,LOW,
+CLIENT,GITHUB_PUSH.md,GITHUB_PUSH.md,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,README.md,README.md,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,NO,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/AndroidManifest.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,YES,MEDIUM,
+CLIENT,android/Info.plist.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/assets/res/agent.txt,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/assets/res/provider.txt,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/project.properties,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/res/values/color.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/res/values/strings.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/res/values/styles.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/res1/drawable-anydpi-v26/ic_launcher.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,YES,MEDIUM,
+CLIENT,android/res1/drawable-anydpi-v26/ic_launcher_foreground.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,YES,MEDIUM,
+CLIENT,android/res1/values-v21/styles.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/res1/values/color.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/res1/values/strings.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/res1/values/styles.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,android/robovm.xml,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,YES,MEDIUM,
+CLIENT,android/src/com/mygdx/game/AndroidLauncher.java,android,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,1,0,0,0,0,NO,NO,LOW,"android.os.Bundle, com.badlogic.gdx.backends.android.AndroidApplication, com.badlogic.gdx.backends.android.AndroidApplicationConfiguration, com.teamobi.mobiarmy2.MainGame"
+CLIENT,core/src/CLib/EasingEnum.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,32,32,0,0,NO,NO,HIGH,
+CLIENT,core/src/CLib/EasingFunction.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,89,1,65,0,0,NO,NO,HIGH,model.CRes
+CLIENT,core/src/CLib/Graphics.java,CLib,REPLACE_WITH_FLAME,lib/features/gameplay/game or lib/core/assets,YES,1,15,14,0,0,NO,NO,MEDIUM,com.badlogic.gdx.graphics.g2d.SpriteBatch
+CLIENT,core/src/CLib/Image.java,CLib,REPLACE_WITH_FLAME,lib/features/gameplay/game or lib/core/assets,YES,48,4,19,1,0,NO,YES,MEDIUM,"com.badlogic.gdx.Gdx, com.badlogic.gdx.assets.AssetManager, com.badlogic.gdx.files.FileHandle, com.badlogic.gdx.graphics.Color, com.badlogic.gdx.graphics.Pixmap, com.badlogic.gdx.graphics.Texture, com.badlogic.gdx.graphics.TextureData, com.badlogic.gdx.graphics.g2d.TextureRegion"
+CLIENT,core/src/CLib/LibSysTem.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,3,2,4,0,0,NO,NO,LOW,"com.badlogic.gdx.Gdx, java.io.InputStream"
+CLIENT,core/src/CLib/Library_Images.java,CLib,DEAD_OR_PLACEHOLDER,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/CLib/Main.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,1,2,3,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/CLib/ManagerTile.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,8,5,9,2,2,NO,YES,HIGH,com.badlogic.gdx.graphics.Pixmap
+CLIENT,core/src/CLib/MapKey.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,2,1,3,0,0,NO,NO,LOW,com.badlogic.gdx.Input
+CLIENT,core/src/CLib/RMS.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,22,1,10,2,2,NO,NO,HIGH,"com.badlogic.gdx.Files, com.badlogic.gdx.Gdx, com.badlogic.gdx.files.FileHandle, com.teamobi.mobiarmy2.GameMidlet, model.CRes"
+CLIENT,core/src/CLib/ScrollResult.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,3,0,0,0,NO,NO,LOW,
+CLIENT,core/src/CLib/SoundSystem.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,18,3,0,0,0,NO,YES,MEDIUM,"com.badlogic.gdx.Gdx, com.badlogic.gdx.audio.Music, com.badlogic.gdx.audio.Sound, com.badlogic.gdx.files.FileHandle, coreLG.CCanvas"
+CLIENT,core/src/CLib/Sound_Key.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,69,69,0,0,NO,NO,HIGH,
+CLIENT,core/src/CLib/Sprite.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,8,8,0,0,NO,NO,MEDIUM,
+CLIENT,core/src/CLib/SysTemFont.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,26,10,2,2,0,NO,NO,MEDIUM,"com.badlogic.gdx.Gdx, com.badlogic.gdx.graphics.Color, com.badlogic.gdx.graphics.g2d.BitmapFont, com.badlogic.gdx.graphics.g2d.GlyphLayout"
+CLIENT,core/src/CLib/TField.java,CLib,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,63,49,26,7,0,NO,NO,HIGH,"com.badlogic.gdx.Gdx, com.badlogic.gdx.Input, com.teamobi.mobiarmy2.TemCanvas, com.teamobi.mobiarmy2.TemMidlet"
+CLIENT,core/src/CLib/TemGraphics.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,1,0,0,0,NO,NO,LOW,com.badlogic.gdx.graphics.g2d.SpriteBatch
+CLIENT,core/src/CLib/mFont.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,19,47,43,3,0,NO,NO,HIGH,
+CLIENT,core/src/CLib/mGraphics.java,CLib,REPLACE_WITH_FLAME,lib/features/gameplay/game or lib/core/assets,YES,119,35,20,11,0,NO,YES,MEDIUM,"com.badlogic.gdx.graphics.Pixmap, com.badlogic.gdx.graphics.Texture, com.badlogic.gdx.graphics.g2d.BitmapFont, com.badlogic.gdx.graphics.g2d.SpriteBatch, com.badlogic.gdx.graphics.glutils.ShapeRenderer, com.badlogic.gdx.math.Rectangle, com.badlogic.gdx.math.Vector2, com.badlogic.gdx.scenes.scene2d.utils.ScissorStack"
+CLIENT,core/src/CLib/mHashtable.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,9,1,0,0,0,NO,NO,LOW,"java.util.Enumeration, java.util.Hashtable"
+CLIENT,core/src/CLib/mImage.java,CLib,REPLACE_WITH_FLAME,lib/features/gameplay/game or lib/core/assets,YES,22,2,19,2,1,YES,YES,HIGH,"java.io.DataInputStream, model.IAction2, network.Command"
+CLIENT,core/src/CLib/mSocket.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,10,0,0,0,0,NO,NO,LOW,"java.io.DataInputStream, java.io.DataOutputStream, java.io.IOException, java.net.ConnectException, java.net.Socket, model.CRes"
+CLIENT,core/src/CLib/mSound.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,24,12,27,8,0,NO,YES,HIGH,model.CRes
+CLIENT,core/src/CLib/mSystem.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,52,25,57,1,0,NO,YES,HIGH,"com.badlogic.gdx.Gdx, com.badlogic.gdx.Net, com.badlogic.gdx.graphics.Color, com.badlogic.gdx.graphics.Pixmap, com.teamobi.mobiarmy2.TemMidlet, coreLG.CCanvas, java.util.Calendar, java.util.Date"
+CLIENT,core/src/CLib/mVector.java,CLib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,18,2,0,0,0,NO,NO,LOW,java.util.Vector
+CLIENT,core/src/CLib/myEditText.java,CLib,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,1,1,1,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/Debug/Debug.java,Debug,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,14,9,15,8,0,NO,YES,MEDIUM,"CLib.mGraphics, CLib.mImage, com.badlogic.gdx.Gdx, com.badlogic.gdx.graphics.Pixmap, coreLG.CCanvas, model.Font"
+CLIENT,core/src/Equipment/Equip.java,Equipment,MUST_PORT_BEHAVIOR,"lib/features/{equipment,gameplay}",YES,52,39,0,1,0,NO,NO,MEDIUM,"CLib.mGraphics, CLib.mImage, coreLG.TerrainMidlet, java.util.Vector, model.Font, model.Language, model.PlayerInfo, screen.EquipScreen"
+CLIENT,core/src/Equipment/EquipGlass.java,Equipment,MUST_PORT_BEHAVIOR,"lib/features/{equipment,gameplay}",YES,4,3,0,0,0,NO,NO,LOW,java.util.Vector
+CLIENT,core/src/Equipment/PlayerEquip.java,Equipment,MUST_PORT_BEHAVIOR,"lib/features/{equipment,gameplay}",YES,25,10,10,1,0,NO,YES,MEDIUM,"CLib.mGraphics, CLib.mImage, java.util.Vector, player.CPlayer"
+CLIENT,core/src/Equipment/TypeEquip.java,Equipment,MUST_PORT_BEHAVIOR,"lib/features/{equipment,gameplay}",YES,4,7,5,0,0,NO,NO,LOW,java.util.Vector
+CLIENT,core/src/InApp/InAppPurchaseSystem.java,InApp,DEAD_OR_PLACEHOLDER,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/InApp/MainActivity.java,InApp,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,1,4,5,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/InApp/PurchaseView.java,InApp,DEAD_OR_PLACEHOLDER,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/InterfaceComponents/ChatTextField.java,InterfaceComponents,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,13,3,3,2,0,NO,NO,MEDIUM,"CLib.TField, CLib.mGraphics, coreLG.CCanvas"
+CLIENT,core/src/InterfaceComponents/GamePad.java,InterfaceComponents,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,4,13,2,3,0,NO,NO,MEDIUM,"CLib.mGraphics, CLib.mImage"
+CLIENT,core/src/com/teamobi/mobiarmy2/GameMidlet.java,com,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,40,46,60,6,2,YES,NO,HIGH,"CLib.RMS, CLib.mGraphics, CLib.mSystem, coreLG.CCanvas, coreLG.CONFIG, java.io.ByteArrayInputStream, java.io.ByteArrayOutputStream, java.io.DataInputStream"
+CLIENT,core/src/com/teamobi/mobiarmy2/IActionListener.java,com,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,core/src/com/teamobi/mobiarmy2/InAppPurchaseSystem.java,com,DEAD_OR_PLACEHOLDER,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/com/teamobi/mobiarmy2/IosVersion.java,com,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,2,0,0,NO,NO,LOW,
+CLIENT,core/src/com/teamobi/mobiarmy2/MainActivity.java,com,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,1,4,5,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/com/teamobi/mobiarmy2/MainClass.java,com,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,22,13,10,1,1,NO,YES,HIGH,"CLib.EasingFunction, CLib.Image, CLib.LibSysTem, CLib.mGraphics, CLib.mImage, com.badlogic.gdx.ApplicationAdapter, com.badlogic.gdx.Gdx, com.badlogic.gdx.InputMultiplexer"
+CLIENT,core/src/com/teamobi/mobiarmy2/MainGame.java,com,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,83,23,15,3,0,YES,NO,HIGH,"CLib.MapKey, CLib.mGraphics, CLib.mSystem, Debug.Debug, com.badlogic.gdx.ApplicationListener, com.badlogic.gdx.Gdx, com.badlogic.gdx.InputMultiplexer, com.badlogic.gdx.InputProcessor"
+CLIENT,core/src/com/teamobi/mobiarmy2/MotherCanvas.java,com,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,21,18,20,4,0,NO,NO,MEDIUM,"CLib.mGraphics, CLib.mSystem, coreLG.CCanvas, model.CRes"
+CLIENT,core/src/com/teamobi/mobiarmy2/MyGdxGame.java,com,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,7,6,2,3,0,NO,YES,MEDIUM,"com.badlogic.gdx.ApplicationListener, com.badlogic.gdx.InputMultiplexer, com.badlogic.gdx.graphics.Texture, com.badlogic.gdx.graphics.g2d.SpriteBatch, com.badlogic.gdx.utils.ScreenUtils, model.CRes"
+CLIENT,core/src/com/teamobi/mobiarmy2/NativeController.java,com,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,core/src/com/teamobi/mobiarmy2/TemCanvas.java,com,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,9,6,5,1,0,NO,NO,MEDIUM,"CLib.TemGraphics, CLib.mGraphics, CLib.mSystem, CLib.mVector, coreLG.CCanvas, model.CRes"
+CLIENT,core/src/com/teamobi/mobiarmy2/TemMidlet.java,com,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,16,13,22,9,0,YES,NO,HIGH,"CLib.RMS, CLib.mSystem, com.badlogic.gdx.Gdx, network.Message"
+CLIENT,core/src/coreLG/CCanvas.java,coreLG,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,150,94,133,8,1,YES,YES,HIGH,"CLib.Image, CLib.RMS, CLib.mGraphics, CLib.mImage, CLib.mSound, CLib.mSystem, Equipment.Equip, Equipment.EquipGlass"
+CLIENT,core/src/coreLG/CONFIG.java,coreLG,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,52,52,0,0,NO,NO,HIGH,
+CLIENT,core/src/coreLG/SynchronizedData.java,coreLG,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,2,2,0,0,0,NO,NO,LOW,model.IAction
+CLIENT,core/src/coreLG/TerrainMidlet.java,coreLG,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,16,13,19,4,1,YES,NO,HIGH,"CLib.RMS, CLib.mSystem, com.badlogic.gdx.Gdx, com.teamobi.mobiarmy2.TemCanvas, java.io.ByteArrayOutputStream, java.io.DataOutputStream, java.io.InputStream, model.CRes"
+CLIENT,core/src/effect/Camera.java,effect,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/effects,YES,49,15,24,0,0,NO,NO,HIGH,"CLib.mGraphics, com.badlogic.gdx.graphics.OrthographicCamera, com.badlogic.gdx.math.Matrix4, coreLG.CCanvas, item.BM, item.Bullet, map.MM, model.CRes"
+CLIENT,core/src/effect/Cloud.java,effect,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/effects,YES,13,7,13,0,0,NO,YES,MEDIUM,"CLib.mGraphics, CLib.mImage, coreLG.CCanvas, map.Background, screen.PrepareScr"
+CLIENT,core/src/effect/Effect.java,effect,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/effects,YES,19,2,16,0,0,NO,YES,MEDIUM,"CLib.mGraphics, CLib.mImage, screen.GameScr"
+CLIENT,core/src/effect/Explosion.java,effect,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/effects,YES,45,31,32,1,1,NO,YES,HIGH,"CLib.Image, CLib.mGraphics, CLib.mImage, coreLG.CCanvas, coreLG.CONFIG, item.Item, model.CRes, model.FilePack"
+CLIENT,core/src/effect/GiftEffect.java,effect,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/effects,YES,8,3,0,0,0,NO,NO,LOW,"CLib.mGraphics, Equipment.Equip, coreLG.CCanvas, model.Font"
+CLIENT,core/src/effect/Smoke.java,effect,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/effects,YES,87,55,51,1,0,NO,YES,HIGH,"CLib.Image, CLib.mGraphics, CLib.mImage, coreLG.CCanvas, coreLG.CONFIG, map.MM, model.CRes, model.FilePack"
+CLIENT,core/src/effect/SmokeManager.java,effect,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/effects,YES,17,2,0,1,0,NO,NO,MEDIUM,"CLib.mGraphics, java.util.Vector, model.CRes, screen.GameScr"
+CLIENT,core/src/effect/Snow.java,effect,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/effects,YES,33,7,1,0,0,NO,NO,LOW,"CLib.mGraphics, CLib.mImage, coreLG.CCanvas, map.Background, map.MM, screen.GameScr"
+CLIENT,core/src/effect/Tornado.java,effect,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/effects,YES,7,4,2,0,0,NO,YES,MEDIUM,"CLib.mGraphics, CLib.mImage, coreLG.CCanvas, item.BM, java.util.Random, model.FrameImage"
+CLIENT,core/src/item/BM.java,item,MUST_PORT_BEHAVIOR,"lib/features/gameplay/{domain,game/projectile}",YES,76,31,63,1,0,YES,YES,HIGH,"CLib.Image, CLib.mGraphics, CLib.mImage, Equipment.PlayerEquip, coreLG.CCanvas, effect.Explosion, effect.Tornado, java.util.Vector"
+CLIENT,core/src/item/Bullet.java,item,MUST_PORT_BEHAVIOR,"lib/features/gameplay/{domain,game/projectile}",YES,237,89,109,1,0,NO,YES,HIGH,"CLib.Image, CLib.mGraphics, CLib.mImage, CLib.mSound, CLib.mSystem, Equipment.PlayerEquip, coreLG.CCanvas, coreLG.CONFIG"
+CLIENT,core/src/item/Item.java,item,MUST_PORT_BEHAVIOR,"lib/features/gameplay/{domain,game/projectile}",YES,11,62,53,1,1,NO,NO,HIGH,"CLib.mGraphics, CLib.mImage, coreLG.CCanvas, model.Font, model.Language, screen.GameScr"
+CLIENT,core/src/item/MyItemIcon.java,item,MUST_PORT_BEHAVIOR,"lib/features/gameplay/{domain,game/projectile}",YES,50,11,8,3,0,NO,NO,MEDIUM,"CLib.mGraphics, coreLG.CCanvas, model.CRes, model.Font, model.IAction, screen.CScreen, screen.PrepareScr"
+CLIENT,core/src/item/RandomItem.java,item,MUST_PORT_BEHAVIOR,"lib/features/gameplay/{domain,game/projectile}",YES,11,0,1,0,0,NO,YES,MEDIUM,"CLib.mGraphics, CLib.mImage, model.CRes, screen.GameScr"
+CLIENT,core/src/javax/microedition/lcdui/Graphics.java,javax,REPLACE_WITH_FLAME,lib/features/gameplay/game or lib/core/assets,YES,1,15,14,0,0,NO,NO,MEDIUM,com.badlogic.gdx.graphics.g2d.SpriteBatch
+CLIENT,core/src/javax/microedition/lcdui/Image.java,javax,REPLACE_WITH_FLAME,lib/features/gameplay/game or lib/core/assets,YES,31,8,16,4,3,YES,YES,HIGH,"CLib.LibSysTem, CLib.mSystem, com.badlogic.gdx.Gdx, com.badlogic.gdx.graphics.Color, com.badlogic.gdx.graphics.Pixmap, com.badlogic.gdx.graphics.Texture, com.badlogic.gdx.graphics.TextureData, com.badlogic.gdx.graphics.g2d.Sprite"
+CLIENT,core/src/javax/microedition/midlet/MIDlet.java,javax,REPLACE_WITH_FLAME,lib/features/gameplay/game or lib/core/assets,YES,2,0,2,0,0,NO,NO,LOW,"CLib.mSystem, com.badlogic.gdx.Gdx"
+CLIENT,core/src/javax/microedition/midlet/MIDletStateChangeException.java,javax,REPLACE_WITH_FLAME,lib/features/gameplay/game or lib/core/assets,YES,0,0,0,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/lib/Context.java,lib,DEAD_OR_PLACEHOLDER,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/lib/MyStream.java,lib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,1,0,1,0,0,NO,NO,LOW,java.io.InputStream
+CLIENT,core/src/lib/TCanvas.java,lib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/lib/mGraphics.java,lib,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,38,11,16,5,0,NO,YES,MEDIUM,CLib.mImage
+CLIENT,core/src/lib/mSocket.java,lib,DEAD_OR_PLACEHOLDER,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/map/Background.java,map,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/map,YES,46,60,79,3,1,NO,YES,HIGH,"CLib.mGraphics, CLib.mImage, coreLG.CCanvas, coreLG.CONFIG, effect.Camera, effect.Snow, model.CRes, model.FilePack"
+CLIENT,core/src/map/CMap.java,map,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/map,YES,37,13,21,1,0,NO,YES,HIGH,"CLib.Image, CLib.mGraphics, CLib.mImage, coreLG.CCanvas, coreLG.CONFIG, model.CRes, model.FilePack, model.IAction2"
+CLIENT,core/src/map/HoleInfo.java,map,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/map,YES,0,4,0,0,0,NO,NO,LOW,
+CLIENT,core/src/map/MM.java,map,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/map,YES,76,20,24,0,0,YES,YES,HIGH,"CLib.Image, CLib.mGraphics, CLib.mImage, coreLG.CCanvas, effect.Explosion, java.util.Hashtable, java.util.Vector, model.CRes"
+CLIENT,core/src/map/MapFile.java,map,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/map,YES,3,9,0,0,0,NO,NO,LOW,
+CLIENT,core/src/map/MapImage.java,map,MUST_PORT_BEHAVIOR,lib/features/gameplay/game/map,YES,1,2,0,0,0,NO,YES,MEDIUM,CLib.mImage
+CLIENT,core/src/model/AvMain.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,79,130,165,24,1,NO,YES,HIGH,"CLib.mFont, CLib.mGraphics, CLib.mImage, coreLG.CCanvas"
+CLIENT,core/src/model/AvatarInfo.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,5,0,0,0,NO,YES,MEDIUM,CLib.Image
+CLIENT,core/src/model/BoardInfo.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,8,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/CRes.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,87,30,88,7,3,NO,YES,HIGH,"CLib.Image, CLib.LibSysTem, CLib.RMS, CLib.mImage, com.badlogic.gdx.Gdx, com.badlogic.gdx.graphics.Color, com.badlogic.gdx.graphics.Pixmap, com.badlogic.gdx.graphics.PixmapIO"
+CLIENT,core/src/model/CTime.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,17,1,1,0,0,YES,NO,HIGH,"CLib.mGraphics, coreLG.CCanvas, effect.Camera, network.GameService, network.Session_ME, player.PM, screen.CScreen, screen.GameScr"
+CLIENT,core/src/model/ChatPopup.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,11,8,2,0,0,NO,NO,LOW,"CLib.mGraphics, CLib.mImage, coreLG.CCanvas, effect.Camera, screen.GameScr"
+CLIENT,core/src/model/Clan.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,17,0,0,0,NO,NO,LOW,CLib.mImage
+CLIENT,core/src/model/ClanItem.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,6,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/Dialog.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,17,3,0,4,0,YES,NO,HIGH,"CLib.mGraphics, coreLG.CCanvas, network.Command, screen.CScreen"
+CLIENT,core/src/model/FilePack.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,27,10,0,1,1,YES,YES,HIGH,"CLib.mImage, com.badlogic.gdx.Gdx, coreLG.CCanvas, java.io.ByteArrayInputStream, java.io.DataInputStream, java.io.EOFException, java.io.IOException, java.io.InputStream"
+CLIENT,core/src/model/Fomula.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,7,14,0,2,0,NO,NO,MEDIUM,"CLib.mGraphics, CLib.mImage, Equipment.Equip, coreLG.CCanvas, coreLG.TerrainMidlet"
+CLIENT,core/src/model/Font.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,28,22,17,3,0,NO,YES,MEDIUM,"CLib.Image, CLib.mGraphics, CLib.mImage, java.util.Vector"
+CLIENT,core/src/model/FrameImage.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,17,8,0,0,0,NO,YES,MEDIUM,"CLib.Image, CLib.mGraphics, CLib.mImage, Debug.Debug, coreLG.CCanvas"
+CLIENT,core/src/model/GetString.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,1,2,2,0,0,NO,NO,LOW,java.io.InputStream
+CLIENT,core/src/model/Gift.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,6,0,0,0,NO,YES,MEDIUM,CLib.Image
+CLIENT,core/src/model/IAction.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/IAction2.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/IActionListener.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/IconManager.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,7,1,0,0,0,NO,YES,MEDIUM,"CLib.Image, java.util.Vector"
+CLIENT,core/src/model/ImageIcon.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,2,2,0,0,0,NO,NO,LOW,CLib.mImage
+CLIENT,core/src/model/InfoPopup.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,12,2,2,0,0,NO,NO,LOW,"CLib.mGraphics, coreLG.CCanvas, java.util.Vector"
+CLIENT,core/src/model/InputDlg.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,10,4,0,0,0,YES,NO,HIGH,"CLib.mGraphics, coreLG.CCanvas, network.Command, screen.CScreen"
+CLIENT,core/src/model/InviteInfo.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,3,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/KeyConstant.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,21,21,0,0,NO,NO,HIGH,
+CLIENT,core/src/model/Language.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,325,328,654,0,0,NO,YES,HIGH,
+CLIENT,core/src/model/LevelDetail.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,4,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/LuckyGift.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,11,12,0,0,0,NO,NO,LOW,"CLib.mGraphics, CLib.mImage, effect.Explosion, item.Item, player.Boss"
+CLIENT,core/src/model/MaterialIconMn.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,5,1,4,0,0,NO,NO,LOW,"CLib.mImage, java.util.Vector"
+CLIENT,core/src/model/Menu.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,45,15,7,1,0,YES,NO,HIGH,"CLib.mGraphics, coreLG.CCanvas, java.util.Vector, network.Command, screen.CScreen"
+CLIENT,core/src/model/Mission.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,8,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/MoneyInfo.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,5,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/MsgDlg.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,18,4,0,0,0,YES,NO,HIGH,"CLib.mGraphics, CLib.mSystem, coreLG.CCanvas, network.Command, screen.CScreen"
+CLIENT,core/src/model/MsgInfo.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,5,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/MsgPopup.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,7,2,1,0,0,NO,NO,LOW,"CLib.mGraphics, CLib.mImage, coreLG.CCanvas, screen.GameScr"
+CLIENT,core/src/model/PauseMenu.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,15,8,0,1,0,YES,NO,HIGH,"CLib.mGraphics, coreLG.CCanvas, java.util.Vector, network.Command, screen.CScreen"
+CLIENT,core/src/model/PlayerInfo.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,23,48,3,0,0,NO,NO,LOW,"CLib.mImage, Equipment.Equip, Equipment.PlayerEquip, java.util.Vector"
+CLIENT,core/src/model/Popup.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,11,0,0,6,0,NO,NO,MEDIUM,"CLib.mGraphics, coreLG.CCanvas"
+CLIENT,core/src/model/Position.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,3,6,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/RoomInfo.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,5,11,0,1,0,NO,NO,MEDIUM,
+CLIENT,core/src/model/SMS.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,2,0,0,0,NO,NO,LOW,
+CLIENT,core/src/model/TField.java,model,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,91,50,24,0,0,YES,NO,HIGH,"CLib.mGraphics, com.badlogic.gdx.Gdx, com.badlogic.gdx.Input, coreLG.CCanvas, network.Command, screen.CScreen"
+CLIENT,core/src/model/TimeBomb.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,9,6,0,0,0,NO,NO,LOW,"CLib.mGraphics, coreLG.CCanvas, effect.Camera, effect.Explosion, item.Bullet, screen.GameScr"
+CLIENT,core/src/model/UserData.java,model,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,0,5,0,0,0,NO,NO,LOW,
+CLIENT,core/src/network/Cmd_Client2Server.java,network,MUST_PORT_BEHAVIOR,lib/core/network,YES,0,67,67,0,0,NO,NO,HIGH,
+CLIENT,core/src/network/Cmd_Server2Client.java,network,MUST_PORT_BEHAVIOR,lib/core/network,YES,0,132,132,0,0,NO,NO,HIGH,
+CLIENT,core/src/network/Command.java,network,MUST_PORT_BEHAVIOR,lib/core/network,YES,2,2,0,1,0,YES,NO,HIGH,"CLib.Graphics, model.IAction"
+CLIENT,core/src/network/GameLogicHandler.java,network,MUST_PORT_BEHAVIOR,lib/core/network,YES,124,3,8,41,2,YES,YES,HIGH,"CLib.Image, CLib.RMS, CLib.mImage, CLib.mSound, CLib.mSystem, com.teamobi.mobiarmy2.GameMidlet, com.teamobi.mobiarmy2.MainGame, coreLG.CCanvas"
+CLIENT,core/src/network/GameService.java,network,MUST_PORT_BEHAVIOR,lib/core/network,YES,123,1,2,49,49,YES,YES,HIGH,"CLib.Image, CLib.mSystem, com.teamobi.mobiarmy2.GameMidlet, coreLG.CCanvas, item.Bullet, java.io.IOException, java.util.Vector, map.HoleInfo"
+CLIENT,core/src/network/IGameLogicHandler.java,network,MUST_PORT_BEHAVIOR,lib/core/network,YES,0,0,0,0,0,NO,YES,MEDIUM,"CLib.Image, java.util.Vector, model.AvatarInfo, model.MsgInfo, model.PlayerInfo, model.UserData"
+CLIENT,core/src/network/IMessageHandler.java,network,MUST_PORT_BEHAVIOR,lib/core/network,YES,0,0,0,0,0,YES,NO,HIGH,
+CLIENT,core/src/network/ISession.java,network,MUST_PORT_BEHAVIOR,lib/core/network,YES,0,0,0,0,0,YES,NO,HIGH,
+CLIENT,core/src/network/Message.java,network,MUST_PORT_BEHAVIOR,lib/core/network,YES,10,5,0,2,1,YES,NO,HIGH,"java.io.ByteArrayInputStream, java.io.ByteArrayOutputStream, java.io.DataInputStream, java.io.DataOutputStream, java.io.IOException"
+CLIENT,core/src/network/MessageHandler.java,network,MUST_PORT_BEHAVIOR,lib/core/network,YES,245,7,8,2,2,YES,YES,HIGH,"CLib.RMS, CLib.mImage, CLib.mSystem, Equipment.Equip, Equipment.PlayerEquip, InApp.MainActivity, com.teamobi.mobiarmy2.GameMidlet, coreLG.CCanvas"
+CLIENT,core/src/network/Session_ME.java,network,MUST_PORT_BEHAVIOR,lib/core/network,YES,71,30,11,2,0,YES,NO,HIGH,"CLib.mSocket, CLib.mSystem, CLib.mVector, coreLG.CCanvas, java.io.DataInputStream, java.io.DataOutputStream, java.io.EOFException, java.io.IOException"
+CLIENT,core/src/player/Boss.java,player,MUST_PORT_BEHAVIOR,"lib/features/gameplay/{domain,game/player}",YES,151,7,10,1,0,NO,YES,MEDIUM,"CLib.Image, CLib.mGraphics, CLib.mImage, Equipment.PlayerEquip, coreLG.CCanvas, effect.Camera, effect.Explosion, java.util.Random"
+CLIENT,core/src/player/CPlayer.java,player,MUST_PORT_BEHAVIOR,"lib/features/gameplay/{domain,game/player}",YES,361,180,112,5,1,YES,YES,HIGH,"CLib.mGraphics, CLib.mImage, CLib.mSound, Equipment.PlayerEquip, coreLG.CCanvas, effect.Camera, effect.Explosion, effect.Smoke"
+CLIENT,core/src/player/PM.java,player,MUST_PORT_BEHAVIOR,"lib/features/gameplay/{domain,game/player}",YES,76,13,20,2,0,YES,NO,HIGH,"CLib.mGraphics, coreLG.CCanvas, coreLG.TerrainMidlet, effect.Camera, item.BM, map.MM, model.CRes, model.PlayerInfo"
+CLIENT,core/src/screen/ArchivementScr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,5,9,0,0,0,YES,NO,HIGH,"CLib.mGraphics, CLib.mImage, coreLG.CCanvas, coreLG.TerrainMidlet, model.Font, model.IAction, model.Language, model.PlayerInfo"
+CLIENT,core/src/screen/BoardListScr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,37,12,22,2,0,YES,NO,HIGH,"CLib.mGraphics, CLib.mImage, coreLG.CCanvas, effect.Cloud, java.util.Vector, model.BoardInfo, model.Font, model.IAction"
+CLIENT,core/src/screen/CScreen.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,73,49,44,10,0,YES,YES,HIGH,"CLib.mGraphics, CLib.mImage, coreLG.CCanvas, map.Background, model.CRes, model.Font, model.IAction, network.Command"
+CLIENT,core/src/screen/ChangePlayerCSr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,42,17,14,1,0,YES,NO,HIGH,"CLib.mGraphics, CLib.mImage, Equipment.Equip, Equipment.PlayerEquip, coreLG.CCanvas, coreLG.TerrainMidlet, effect.Cloud, item.Bullet"
+CLIENT,core/src/screen/ClanScreen.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,73,17,4,1,0,YES,NO,HIGH,"CLib.mGraphics, coreLG.CCanvas, coreLG.TerrainMidlet, effect.Cloud, java.util.Vector, model.CRes, model.Clan, model.Font"
+CLIENT,core/src/screen/ConfigScr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,28,5,4,0,0,YES,YES,HIGH,"CLib.RMS, CLib.mGraphics, CLib.mImage, CLib.mSound, coreLG.CCanvas, effect.Cloud, map.CMap, model.CRes"
+CLIENT,core/src/screen/EquipScreen.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,153,19,9,2,2,YES,YES,HIGH,"CLib.Image, CLib.mGraphics, CLib.mImage, Equipment.Equip, Equipment.PlayerEquip, coreLG.CCanvas, coreLG.TerrainMidlet, java.util.Vector"
+CLIENT,core/src/screen/FomulaScreen.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,16,8,0,2,0,YES,NO,HIGH,"CLib.mGraphics, coreLG.CCanvas, java.util.Vector, model.Fomula, model.IAction, model.Language, network.Command, network.GameService"
+CLIENT,core/src/screen/GameScr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,281,124,114,4,2,YES,YES,HIGH,"CLib.Image, CLib.mGraphics, CLib.mImage, CLib.mSystem, Equipment.Equip, com.teamobi.mobiarmy2.GameMidlet, com.teamobi.mobiarmy2.MainGame, coreLG.CCanvas"
+CLIENT,core/src/screen/Inventory.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,107,4,5,1,0,YES,NO,HIGH,"CLib.mGraphics, Equipment.Equip, coreLG.CCanvas, coreLG.TerrainMidlet, java.util.Vector, model.CRes, model.Font, model.IAction"
+CLIENT,core/src/screen/LevelScreen.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,36,3,8,0,0,YES,NO,HIGH,"CLib.mGraphics, CLib.mImage, coreLG.CCanvas, coreLG.TerrainMidlet, model.CRes, model.Font, model.IAction, model.Language"
+CLIENT,core/src/screen/ListScr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,80,13,1,2,0,YES,YES,HIGH,"CLib.Image, CLib.mGraphics, CLib.mImage, com.teamobi.mobiarmy2.GameMidlet, coreLG.CCanvas, effect.Cloud, java.util.Vector, model.Font"
+CLIENT,core/src/screen/LoginScr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,157,40,19,0,0,YES,YES,HIGH,"CLib.RMS, CLib.mGraphics, CLib.mImage, CLib.mSound, CLib.mSystem, com.badlogic.gdx.Gdx, com.teamobi.mobiarmy2.GameMidlet, coreLG.CCanvas"
+CLIENT,core/src/screen/LuckyGame.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,93,4,6,0,0,YES,YES,HIGH,"CLib.Image, CLib.mGraphics, CLib.mImage, coreLG.CCanvas, coreLG.TerrainMidlet, item.Item, java.util.Vector, model.CRes"
+CLIENT,core/src/screen/LuckyGifrScreen.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,34,12,2,0,0,YES,YES,HIGH,"CLib.mGraphics, coreLG.CCanvas, coreLG.TerrainMidlet, effect.Explosion, java.util.Vector, model.CTime, model.Font, model.IAction"
+CLIENT,core/src/screen/MenuScr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,137,67,60,0,0,YES,NO,HIGH,"CLib.mGraphics, CLib.mSystem, Equipment.PlayerEquip, com.teamobi.mobiarmy2.GameMidlet, com.teamobi.mobiarmy2.MainGame, coreLG.CCanvas, coreLG.TerrainMidlet, effect.Camera"
+CLIENT,core/src/screen/MissionScreen.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,32,6,0,1,0,YES,NO,HIGH,"CLib.mGraphics, coreLG.CCanvas, effect.Cloud, java.util.Vector, model.Font, model.IAction, model.Language, model.Mission"
+CLIENT,core/src/screen/MoneyScr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,65,9,3,2,1,YES,NO,HIGH,"CLib.mGraphics, CLib.mImage, CLib.mSystem, coreLG.CCanvas, coreLG.TerrainMidlet, effect.Cloud, java.util.Vector, javax.microedition.midlet.MIDlet"
+CLIENT,core/src/screen/MoneyScrIOS.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,44,9,3,1,0,YES,NO,HIGH,"CLib.mGraphics, CLib.mImage, CLib.mSystem, InApp.MainActivity, coreLG.CCanvas, effect.Cloud, java.util.Vector, model.AvatarInfo"
+CLIENT,core/src/screen/MsgScreen.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,52,11,1,2,0,YES,YES,HIGH,"CLib.Image, CLib.mGraphics, coreLG.CCanvas, coreLG.TerrainMidlet, java.util.Vector, model.Font, model.IAction, model.Language"
+CLIENT,core/src/screen/PrepareScr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,220,46,38,4,2,YES,YES,HIGH,"CLib.mGraphics, CLib.mImage, Equipment.PlayerEquip, coreLG.CCanvas, coreLG.CONFIG, coreLG.TerrainMidlet, effect.Cloud, item.Bullet"
+CLIENT,core/src/screen/QuangCao.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,6,3,3,1,0,YES,NO,HIGH,"CLib.mGraphics, coreLG.CCanvas, model.Font, model.IAction, model.Language, network.Command"
+CLIENT,core/src/screen/RoomListScr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,36,12,25,3,1,YES,NO,HIGH,"CLib.mGraphics, CLib.mImage, com.teamobi.mobiarmy2.MainGame, coreLG.CCanvas, java.util.Vector, map.MM, model.Font, model.IAction"
+CLIENT,core/src/screen/RoomListScr2.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,59,17,14,0,0,YES,YES,HIGH,"CLib.mGraphics, CLib.mImage, CLib.mSystem, com.teamobi.mobiarmy2.MainGame, coreLG.CCanvas, effect.Cloud, java.util.Vector, model.CRes"
+CLIENT,core/src/screen/ServerListScreen.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,29,6,4,0,0,YES,NO,HIGH,"CLib.mGraphics, com.badlogic.gdx.Gdx, com.teamobi.mobiarmy2.GameMidlet, coreLG.CCanvas, model.CRes, model.Font, model.GetString, model.IAction"
+CLIENT,core/src/screen/SplashScr.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,10,0,0,0,0,NO,NO,LOW,"CLib.mGraphics, coreLG.CCanvas, map.Background"
+CLIENT,core/src/screen/TabScreen.java,screen,REPLACE_WITH_FLUTTER,lib/features/*/presentation or lib/shared/widgets,YES,10,11,0,0,0,NO,NO,LOW,"CLib.mGraphics, coreLG.CCanvas"
+CLIENT,core/src/shop/ShopBietDoi.java,shop,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,41,7,0,0,0,YES,NO,HIGH,"CLib.mGraphics, CLib.mSystem, coreLG.CCanvas, effect.Cloud, java.util.Vector, model.ClanItem, model.Font, model.IAction"
+CLIENT,core/src/shop/ShopEquipment.java,shop,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,75,26,3,0,0,YES,NO,HIGH,"CLib.mGraphics, Equipment.Equip, coreLG.CCanvas, coreLG.TerrainMidlet, java.util.Vector, model.CRes, model.Font, model.IAction"
+CLIENT,core/src/shop/ShopItem.java,shop,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,71,2,20,3,0,YES,NO,HIGH,"CLib.mGraphics, coreLG.CCanvas, coreLG.TerrainMidlet, item.Item, item.MyItemIcon, java.util.Vector, model.CRes, model.Font"
+CLIENT,core/src/shop/ShopLinhTinh.java,shop,UNRESOLVED,lib/core or explicit NOT_REQUIRED decision,YES,86,14,17,0,0,YES,YES,HIGH,"CLib.Image, CLib.mGraphics, CLib.mImage, Equipment.Equip, coreLG.CCanvas, coreLG.TerrainMidlet, java.util.Vector, model.CRes"
+CLIENT,desktop/assets/res/agent.txt,desktop,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,desktop/assets/res/provider.txt,desktop,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,desktop/run.bat,desktop,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,desktop/src/com/mygdx/game/DesktopLauncher.java,desktop,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,1,0,1,0,0,NO,YES,MEDIUM,"com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application, com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration, com.teamobi.mobiarmy2.MainGame"
+CLIENT,gradle.properties,gradle.properties,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,gradle/wrapper/gradle-wrapper.properties,gradle,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,gradlew.bat,gradlew.bat,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,ios/Info.plist.xml,ios,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,ios/data/Media.xcassets/AppIcon.appiconset/Contents.json,ios,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,ios/data/Media.xcassets/Contents.json,ios,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,ios/data/Media.xcassets/Logo.imageset/Contents.json,ios,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,ios/robovm.properties,ios,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,ios/robovm.xml,ios,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,YES,MEDIUM,
+CLIENT,ios/src/com/mygdx/game/IOSLauncher.java,ios,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,2,0,1,0,0,NO,NO,LOW,"com.teamobi.mobiarmy2.MainGame, org.robovm.apple.foundation.NSAutoreleasePool, org.robovm.apple.uikit.UIApplication, com.badlogic.gdx.backends.iosrobovm.IOSApplication, com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration"
+CLIENT,run.bat,run.bat,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/CLib/LibSysTem.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,2,1,4,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/CLib/MGraphics.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,15,12,7,1,0,NO,YES,MEDIUM,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/CLib/MImage.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,2,2,1,0,0,NO,YES,MEDIUM,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/CLib/MSystem.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,2,0,3,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/CLib/MapKey.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,1,0,2,1,0,NO,NO,MEDIUM,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/CLib/RMS.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,6,1,6,0,0,NO,NO,MEDIUM,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/CoreLG/CCanvas.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,25,17,26,3,0,YES,NO,HIGH,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/GameMidlet.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,7,25,19,1,0,YES,NO,HIGH,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Input/UnityInputRouter.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,15,1,4,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/MainGame.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,15,3,6,0,0,NO,NO,MEDIUM,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Model/CRes.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,19,3,21,0,0,NO,NO,HIGH,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Model/IAction.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/MotherCanvas.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,11,8,9,2,0,NO,NO,MEDIUM,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Network/BigEndianReader.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,7,1,0,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Network/BigEndianWriter.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,7,1,0,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Network/Command.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,1,2,0,0,0,YES,NO,HIGH,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Network/GameLogicHandler.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,2,1,2,1,0,NO,NO,MEDIUM,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Network/GameService.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,4,2,1,1,0,YES,NO,HIGH,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Network/IMessageHandler.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,YES,NO,HIGH,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Network/ISession.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,YES,NO,HIGH,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Network/Message.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,7,5,0,2,0,YES,NO,HIGH,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Network/MessageHandler.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,6,2,1,1,0,YES,NO,HIGH,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Network/SessionME.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,51,12,5,4,1,YES,NO,HIGH,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Screen/CScreen.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,6,6,4,3,0,YES,NO,HIGH,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Screen/ServerListScreen.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,1,3,3,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/Assets/Army2/Scripts/Screen/SplashScr.cs,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,5,3,0,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/Assets/StreamingAssets/res/agent.txt,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/Assets/StreamingAssets/res/provider.txt,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/PORT_STATUS.md,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,NO,0,0,0,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/Packages/manifest.json,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/ProjectSettings/ProjectVersion.txt,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+CLIENT,unity/army2-unity-client/README.md,unity,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+SERVER,README.md,README.md,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,NO,0,0,0,0,0,NO,NO,LOW,
+SERVER,army.sql,army.sql,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+SERVER,build.xml,build.xml,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+SERVER,lib/nblibraries.properties,lib,NOT_REQUIRED,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+SERVER,nbproject/build-impl.xml,nbproject,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,YES,MEDIUM,
+SERVER,nbproject/genfiles.properties,nbproject,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+SERVER,nbproject/private/private.properties,nbproject,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+SERVER,nbproject/private/private.xml,nbproject,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+SERVER,nbproject/project.properties,nbproject,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+SERVER,nbproject/project.xml,nbproject,PLATFORM_SPECIFIC,lib/core or explicit NOT_REQUIRED decision,YES,0,0,0,0,0,NO,NO,LOW,
+SERVER,src/mobiarmy/Cache.java,Cache.java,SERVER_REFERENCE,Reference only; no direct Dart port,YES,5,0,1,0,0,YES,NO,HIGH,"com.google.gson.Gson, java.io.ByteArrayInputStream, java.io.DataInputStream, java.util.ArrayList, java.util.HashMap, mobiarmy.server.DBManager, mobiarmy.server.GameData"
+SERVER,src/mobiarmy/MobiArmy.java,MobiArmy.java,SERVER_REFERENCE,Reference only; no direct Dart port,YES,5,6,1,0,0,NO,NO,LOW,"java.awt.event.ActionEvent, mobiarmy.server.Server"
+SERVER,src/mobiarmy/Test.java,Test.java,SERVER_REFERENCE,Reference only; no direct Dart port,YES,6,3,1,0,0,NO,YES,MEDIUM,"java.awt.image.BufferedImage, java.io.File, java.io.IOException, javax.imageio.ImageIO, mobiarmy.server.GameData"
+SERVER,src/mobiarmy/Util.java,Util.java,SERVER_REFERENCE,Reference only; no direct Dart port,YES,8,0,6,0,0,NO,NO,MEDIUM,java.util.concurrent.ThreadLocalRandom
+SERVER,src/mobiarmy/io/IMessageHandler.java,io,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,0,0,0,0,0,YES,NO,HIGH,
+SERVER,src/mobiarmy/io/Message.java,io,SERVER_REFERENCE,Reference only; no direct Dart port,YES,10,5,0,1,0,YES,NO,HIGH,"java.io.ByteArrayInputStream, java.io.ByteArrayOutputStream, java.io.DataInputStream, java.io.DataOutputStream"
+SERVER,src/mobiarmy/io/Write.java,io,SERVER_REFERENCE,Reference only; no direct Dart port,YES,4,2,0,0,0,NO,NO,LOW,"java.io.ByteArrayOutputStream, java.io.DataOutputStream"
+SERVER,src/mobiarmy/server/Bot.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,57,12,9,0,0,NO,NO,MEDIUM,"java.util.ArrayList, java.util.HashMap, mobiarmy.Util, mobiarmy.war.Boss.bullet.BulletTrajectory, mobiarmy.war.PathSimulator, mobiarmy.war.Player, mobiarmy.war.RoomInfo, mobiarmy.war.RoomWait"
+SERVER,src/mobiarmy/server/Caption.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,1,3,2,0,0,NO,NO,LOW,"java.sql.SQLException, java.util.ArrayList"
+SERVER,src/mobiarmy/server/Confirm.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,31,4,1,0,0,NO,NO,LOW,mobiarmy.Util
+SERVER,src/mobiarmy/server/ControlHandler.java,server,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,70,2,3,0,0,YES,NO,HIGH,"java.io.IOException, java.sql.SQLException, java.util.ArrayList, java.util.HashSet, mobiarmy.Util, mobiarmy.io.Message, mobiarmy.server.DBManager.DataRow, org.mindrot.jbcrypt.BCrypt"
+SERVER,src/mobiarmy/server/DBManager.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,28,1,1,0,0,NO,NO,LOW,"com.zaxxer.hikari.HikariConfig, com.zaxxer.hikari.HikariDataSource, java.sql.Connection, java.sql.PreparedStatement, java.sql.ResultSet, java.sql.ResultSetMetaData, java.sql.SQLException, java.sql.Statement"
+SERVER,src/mobiarmy/server/Equip.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,20,27,5,0,0,NO,NO,LOW,"com.google.gson.Gson, java.sql.SQLException, java.util.ArrayList, java.util.HashMap"
+SERVER,src/mobiarmy/server/Exp.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,8,3,5,0,0,NO,NO,LOW,"java.sql.SQLException, java.util.ArrayList"
+SERVER,src/mobiarmy/server/GameData.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,31,5,20,1,1,NO,YES,HIGH,"java.awt.image.BufferedImage, java.io.File, java.io.FileInputStream, java.io.IOException, java.io.ByteArrayOutputStream, java.util.HashMap, javax.imageio.ImageIO"
+SERVER,src/mobiarmy/server/Glass.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,22,19,2,0,0,NO,NO,LOW,"com.google.gson.Gson, java.sql.SQLException, java.util.ArrayList"
+SERVER,src/mobiarmy/server/Item.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,4,7,3,0,0,NO,NO,LOW,"java.sql.SQLException, java.util.ArrayList"
+SERVER,src/mobiarmy/server/LinhTinh.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,5,10,3,1,0,NO,NO,MEDIUM,"com.google.gson.Gson, java.sql.SQLException, java.util.ArrayList"
+SERVER,src/mobiarmy/server/Map.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,4,17,3,0,0,NO,NO,LOW,"com.google.gson.Gson, java.sql.SQLException, java.util.ArrayList"
+SERVER,src/mobiarmy/server/MapBoss.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,1,3,2,0,0,NO,NO,LOW,"java.sql.SQLException, java.util.ArrayList"
+SERVER,src/mobiarmy/server/MessageHandler.java,server,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,30,11,0,2,2,YES,NO,HIGH,"java.io.DataInputStream, java.io.DataOutputStream, java.io.IOException, java.util.ArrayList, java.util.List, java.util.concurrent.TimeUnit, mobiarmy.io.Message"
+SERVER,src/mobiarmy/server/Mission.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,5,12,3,0,0,NO,NO,LOW,"java.sql.SQLException, java.util.ArrayList"
+SERVER,src/mobiarmy/server/Pack.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,3,3,2,0,0,YES,NO,HIGH,"java.io.ByteArrayOutputStream, java.io.DataOutputStream, java.io.IOException, java.util.ArrayList"
+SERVER,src/mobiarmy/server/Select.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,16,5,1,0,0,NO,NO,LOW,java.util.ArrayList
+SERVER,src/mobiarmy/server/Server.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,23,8,6,2,2,YES,NO,HIGH,"java.io.IOException, java.net.ServerSocket, java.sql.SQLException, java.util.ArrayList, java.util.concurrent.TimeUnit, mobiarmy.io.Message, mobiarmy.war.MapData, mobiarmy.war.Player"
+SERVER,src/mobiarmy/server/ServerManager.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,NO,0,0,0,0,0,NO,NO,LOW,
+SERVER,src/mobiarmy/server/Session.java,server,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,12,9,0,1,1,YES,NO,HIGH,"java.io.IOException, java.net.Socket, java.util.concurrent.TimeUnit, mobiarmy.io.Message"
+SERVER,src/mobiarmy/server/SessionHandler.java,server,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,141,2,2,82,82,YES,YES,HIGH,"java.io.IOException, java.util.ArrayList, mobiarmy.Util, mobiarmy.io.Message, mobiarmy.io.Write"
+SERVER,src/mobiarmy/server/SessionManager.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,52,5,20,0,0,YES,NO,HIGH,"com.google.gson.Gson, java.sql.SQLException, java.util.ArrayList, java.util.HashMap"
+SERVER,src/mobiarmy/server/ShopEquipment.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,4,0,3,0,0,NO,NO,LOW,"com.google.gson.Gson, java.sql.SQLException, java.util.ArrayList"
+SERVER,src/mobiarmy/server/ShopLinhTinh.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,4,0,3,0,0,NO,NO,LOW,"java.sql.SQLException, java.util.ArrayList"
+SERVER,src/mobiarmy/server/Text.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,1,0,1,0,0,NO,NO,LOW,
+SERVER,src/mobiarmy/server/User.java,server,SERVER_REFERENCE,Reference only; no direct Dart port,YES,228,24,1,1,0,YES,NO,HIGH,"java.util.ArrayList, java.util.Collections, java.util.HashMap, mobiarmy.Util, mobiarmy.war.RoomInfo, mobiarmy.war.RoomWait"
+SERVER,src/mobiarmy/war/Boss/BigBoom.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,10,0,0,0,0,NO,NO,LOW,"mobiarmy.Util, mobiarmy.war.Boss.bullet.BulletTrajectory, mobiarmy.war.Player, mobiarmy.war.Room"
+SERVER,src/mobiarmy/war/Boss/Boss.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,12,3,0,1,0,YES,NO,HIGH,"java.util.ArrayList, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Boss/GiftBox.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,1,0,0,0,0,NO,NO,LOW,
+SERVER,src/mobiarmy/war/Boss/GiftBox2.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,1,0,0,0,0,NO,NO,LOW,
+SERVER,src/mobiarmy/war/Boss/Robot.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,8,0,0,0,0,NO,NO,LOW,"mobiarmy.Util, mobiarmy.server.GameData, mobiarmy.war.Boss.bullet.BulletTrajectory, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Boss/RobotSpider.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,9,0,0,1,0,NO,NO,MEDIUM,"java.util.ArrayList, mobiarmy.Util, mobiarmy.war.Boss.bullet.BulletTrajectory, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Boss/SmallBoom.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,7,0,0,0,0,NO,NO,LOW,mobiarmy.war.Player
+SERVER,src/mobiarmy/war/Boss/Trex.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,9,0,0,0,0,NO,NO,LOW,"mobiarmy.Util, mobiarmy.war.Boss.bullet.BulletTrajectory, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Boss/Ufo.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,14,1,0,0,0,NO,NO,LOW,"mobiarmy.Util, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Boss/bullet/AddBoomBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ApacheBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,6,2,0,0,0,NO,NO,LOW,"mobiarmy.server.GameData, mobiarmy.war.Gun"
+SERVER,src/mobiarmy/war/Boss/bullet/BicycleBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,6,0,0,0,0,NO,NO,LOW,"mobiarmy.war.Gun, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Boss/bullet/BigBoomBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,6,0,0,0,0,NO,NO,LOW,"mobiarmy.war.Gun, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Boss/bullet/BigLaserBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,2,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/BigRocketBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,5,1,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/BomBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,4,2,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/Bullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,27,36,0,0,0,NO,NO,LOW,"java.util.ArrayList, mobiarmy.server.GameData, mobiarmy.war.Gun, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Boss/bullet/BulletTrajectory.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,12,17,0,0,0,NO,NO,LOW,"java.util.ArrayList, mobiarmy.war.Gun, mobiarmy.war.MapData, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Boss/bullet/ChickyBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/FlyPortBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemB52Bullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemBlindBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,2,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemBomBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemEarthHole2Bullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,6,1,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemEarthHoleBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,5,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemFreezeBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,2,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemLandBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,2,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemLaserBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemMeteorBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemMouseBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,11,1,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemNoCollisionMap.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,7,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemPoisonBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,2,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemRainBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,5,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemRocketBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemSilkBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemSilkBullet2.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemSuicideBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemTeleportBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemTeleportBullet2.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/ItemTimeBombBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,"mobiarmy.war.Gun, mobiarmy.war.TimeBomb"
+SERVER,src/mobiarmy/war/Boss/bullet/ItemTornadoBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,0,0,0,0,NO,NO,LOW,"mobiarmy.war.Gun, mobiarmy.war.Tornado"
+SERVER,src/mobiarmy/war/Boss/bullet/ItemUfo.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,16,1,0,0,0,NO,NO,LOW,"mobiarmy.war.Boss.Boss, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Boss/bullet/ItemUfoBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,2,2,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/MirrorBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,9,0,0,0,0,NO,YES,MEDIUM,"java.awt.Color, java.awt.Graphics, java.awt.image.BufferedImage, java.io.File, java.io.IOException, javax.imageio.ImageIO, mobiarmy.server.GameData, mobiarmy.war.Gun"
+SERVER,src/mobiarmy/war/Boss/bullet/RocketExpBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,5,2,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/SmallBoomBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,6,0,0,0,0,NO,NO,LOW,"mobiarmy.war.Gun, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Boss/bullet/TarzanBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,5,2,0,0,0,NO,NO,LOW,mobiarmy.war.Gun
+SERVER,src/mobiarmy/war/Boss/bullet/UfoLaserBullet.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,11,0,0,0,0,NO,NO,LOW,"mobiarmy.war.Gun, mobiarmy.war.Player"
+SERVER,src/mobiarmy/war/Gun.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,6,19,0,0,0,NO,NO,LOW,"java.util.ArrayList, java.util.HashSet, mobiarmy.server.GameData"
+SERVER,src/mobiarmy/war/MapData.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,258,41,2,2,1,NO,YES,HIGH,"java.awt.image.BufferedImage, java.io.File, java.io.IOException, java.util.ArrayList, java.util.Arrays, javax.imageio.ImageIO, mobiarmy.Util, mobiarmy.server.GameData"
+SERVER,src/mobiarmy/war/PathSimulator.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,9,5,0,0,0,NO,NO,LOW,java.util.ArrayList
+SERVER,src/mobiarmy/war/Player.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,96,57,0,2,0,NO,NO,MEDIUM,"java.util.ArrayList, mobiarmy.Util, mobiarmy.server.User, mobiarmy.war.Boss.bullet.Bullet, mobiarmy.war.Boss.bullet.BulletTrajectory"
+SERVER,src/mobiarmy/war/Poison.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,1,2,0,0,0,NO,NO,LOW,
+SERVER,src/mobiarmy/war/Room.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,2,9,6,0,0,NO,NO,MEDIUM,"java.sql.SQLException, java.util.ArrayList, mobiarmy.server.DBManager, mobiarmy.server.Server"
+SERVER,src/mobiarmy/war/RoomInfo.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,17,16,8,0,0,NO,NO,MEDIUM,"com.google.gson.Gson, java.sql.SQLException, java.util.ArrayList, mobiarmy.server.DBManager, mobiarmy.server.Server"
+SERVER,src/mobiarmy/war/RoomWait.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,122,21,1,0,0,NO,NO,LOW,"java.io.IOException, java.util.ArrayList, mobiarmy.Util, mobiarmy.server.Bot, mobiarmy.server.Map, mobiarmy.server.SessionManager, mobiarmy.server.User"
+SERVER,src/mobiarmy/war/TimeBomb.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,4,8,0,0,0,NO,NO,LOW,
+SERVER,src/mobiarmy/war/Tornado.java,war,SERVER_AUTHORITATIVE,Reference only; no direct Dart port,YES,3,7,0,0,0,NO,NO,LOW,
