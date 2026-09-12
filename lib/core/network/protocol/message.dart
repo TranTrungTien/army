@@ -31,7 +31,7 @@ class Message {
   }
 
   Uint8List getData() {
-    if (_data != null) return _data!;
+    if (_data != null) return _data;
     return _writer.toBytes();
   }
 

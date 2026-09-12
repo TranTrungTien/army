@@ -1,14 +1,15 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
+
 import 'package:logging/logging.dart';
 
 import '../codec/byte_reader.dart';
 import '../codec/byte_writer.dart';
 import '../command/commands.dart';
+import '../dispatcher/message_dispatcher.dart';
 import '../protocol/message.dart';
 import '../security/xor_codec.dart';
-import '../dispatcher/message_dispatcher.dart';
 import 'session_state_listener.dart';
 
 class TcpSession {

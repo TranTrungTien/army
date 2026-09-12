@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flame/components.dart';
-import 'package:flame/sprite.dart';
 import 'package:mobiarmy_flutter/core/assets/asset_manifest.dart';
 
 class SpriteAtlasRepository {

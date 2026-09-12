@@ -12,17 +12,20 @@ class LegacyMapParser {
     required List<int> environmentValues,
     List<SpawnPoint> spawnPoints = const [],
   }) {
-    if (environmentValues.length < 5)
+    if (environmentValues.length < 5) {
       throw const MapFormatException('Map environment requires 5 values');
-    if (data.length < 5)
+    }
+    if (data.length < 5) {
       throw const MapFormatException('Map payload too short');
+    }
     final reader = _Reader(data);
     final width = reader.u16();
     final height = reader.u16();
     final count = reader.u8();
     final requiredLength = 5 + count * 5;
-    if (data.length < requiredLength)
+    if (data.length < requiredLength) {
       throw MapFormatException('Truncated brick list', data, data.length);
+    }
     final bricks = <MapBrickDefinition>[];
     for (var i = 0; i < count; i++) {
       final tileId = reader.u8();
@@ -37,12 +40,13 @@ class LegacyMapParser {
         ),
       );
     }
-    if (reader.offset != data.length)
+    if (reader.offset != data.length) {
       throw MapFormatException(
         'Unexpected trailing map bytes',
         data,
         reader.offset,
       );
+    }
     return GameMapDefinition(
       id: mapId,
       width: width,

@@ -1,4 +1,3 @@
-import 'package:mobiarmy_flutter/core/legacy_math/fixed_point.dart';
 import 'projectile_trajectory.dart';
 
 class BulletSimulator {

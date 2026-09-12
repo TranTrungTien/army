@@ -60,27 +60,27 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
         path: AppRoute.bootstrap.path,
-        builder: (_, __) => const BootstrapScreen(),
+        builder: (_, _) => const BootstrapScreen(),
       ),
       GoRoute(
         path: AppRoute.serverSelection.path,
-        builder: (_, __) => const ServerSelectionScreen(),
+        builder: (_, _) => const ServerSelectionScreen(),
       ),
       GoRoute(
         path: AppRoute.login.path,
-        builder: (_, __) => const LoginScreen(),
+        builder: (_, _) => const LoginScreen(),
       ),
       GoRoute(
         path: AppRoute.lobby.path,
-        builder: (_, __) => const PlaceholderScreen(title: 'Lobby (Phase 14)'),
+        builder: (_, _) => const PlaceholderScreen(title: 'Lobby (Phase 14)'),
       ),
       GoRoute(
         path: AppRoute.room.path,
-        builder: (_, __) => const PlaceholderScreen(title: 'Room (Phase 15)'),
+        builder: (_, _) => const PlaceholderScreen(title: 'Room (Phase 15)'),
       ),
       GoRoute(
         path: AppRoute.gameplaySandbox.path,
-        builder: (_, __) => const GameplaySandboxScreen(),
+        builder: (_, _) => const GameplaySandboxScreen(),
       ),
     ],
   );
@@ -90,8 +90,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 
 class _RouterRefresh extends ChangeNotifier {
   _RouterRefresh(this.ref) {
-    ref.listen(navigationControllerProvider, (_, __) => notifyListeners());
-    ref.listen(authControllerProvider, (_, __) => notifyListeners());
+    ref.listen(navigationControllerProvider, (_, _) => notifyListeners());
+    ref.listen(authControllerProvider, (_, _) => notifyListeners());
   }
   final Ref ref;
 }

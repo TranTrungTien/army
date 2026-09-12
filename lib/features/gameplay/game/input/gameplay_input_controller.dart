@@ -1,5 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flame/components.dart';
+import 'package:flutter/foundation.dart';
+
 import 'gameplay_input_state.dart';
 
 class GameplayInputController extends Component with ChangeNotifier {

@@ -5,8 +5,9 @@ class MapAssetRepository {
   final GameAssetManifest manifest;
   GameAssetEntry definition(String id) {
     final entry = manifest.assets[id];
-    if (entry == null || entry.kind != GameAssetKind.map)
+    if (entry == null || entry.kind != GameAssetKind.map) {
       throw StateError('Unknown map asset: $id');
+    }
     return entry;
   }
 }

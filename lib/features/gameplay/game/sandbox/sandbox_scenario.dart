@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:flame/components.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/destructible_terrain.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/map_json_loader.dart';

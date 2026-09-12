@@ -21,8 +21,9 @@ class EquipmentDefinition {
     required List<EquipmentFrameGeometry> frames,
     this.bulletId = -1,
   }) : frames = List.unmodifiable(frames) {
-    if (frames.isEmpty)
+    if (frames.isEmpty) {
       throw ArgumentError.value(frames, 'frames', 'must not be empty');
+    }
   }
   final int id;
   final EquipmentSlot slot;

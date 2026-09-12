@@ -15,8 +15,9 @@ class AuthStateMachine {
   AuthenticationState get state => _state;
 
   AuthenticationState connectTo(GameServer server) {
-    if (!_isAny(const {AuthStatus.disconnected, AuthStatus.failed}))
+    if (!_isAny(const {AuthStatus.disconnected, AuthStatus.failed})) {
       return _state;
+    }
     return _set(AuthenticationState.connecting(server));
   }
 
@@ -28,8 +29,9 @@ class AuthStateMachine {
   }
 
   AuthenticationState handshakeComplete() {
-    if (!_isAny(const {AuthStatus.connecting, AuthStatus.handshaking}))
+    if (!_isAny(const {AuthStatus.connecting, AuthStatus.handshaking})) {
       return _state;
+    }
     final server = _state.server;
     if (server == null) return _state;
     return _set(AuthenticationState.connected(server));

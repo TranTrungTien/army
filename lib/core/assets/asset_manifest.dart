@@ -57,16 +57,18 @@ class GameAssetManifest {
 
   factory GameAssetManifest.fromJsonString(String source) {
     final value = jsonDecode(source);
-    if (value is! Map<String, dynamic> || value['schemaVersion'] != 1)
+    if (value is! Map<String, dynamic> || value['schemaVersion'] != 1) {
       throw const AssetManifestFormatException(
         'Unsupported asset manifest schema',
       );
+    }
     final assets = <String, GameAssetEntry>{};
     for (final raw in (value['assets'] as List<dynamic>? ?? const [])) {
       final m = raw as Map<String, dynamic>;
       final id = m['id'] as String;
-      if (assets.containsKey(id))
+      if (assets.containsKey(id)) {
         throw AssetManifestFormatException('Duplicate asset id: $id');
+      }
       assets[id] = GameAssetEntry(
         id: id,
         kind: GameAssetKind.values.byName(m['kind'] as String),
@@ -78,16 +80,18 @@ class GameAssetManifest {
     for (final raw in (value['atlases'] as List<dynamic>? ?? const [])) {
       final m = raw as Map<String, dynamic>;
       final id = m['id'] as String;
-      if (atlases.containsKey(id))
+      if (atlases.containsKey(id)) {
         throw AssetManifestFormatException('Duplicate atlas id: $id');
+      }
       final width = m['width'] as int, height = m['height'] as int;
       final names = <String>{};
       final frames = <AtlasFrame>[];
       for (final frameRaw in m['frames'] as List<dynamic>) {
         final f = frameRaw as Map<String, dynamic>;
         final name = f['name'] as String;
-        if (!names.add(name))
+        if (!names.add(name)) {
           throw AssetManifestFormatException('Duplicate frame: $id/$name');
+        }
         final frame = AtlasFrame(
           name: name,
           x: f['x'] as int,
@@ -100,10 +104,11 @@ class GameAssetManifest {
             frame.width <= 0 ||
             frame.height <= 0 ||
             frame.x + frame.width > width ||
-            frame.y + frame.height > height)
+            frame.y + frame.height > height) {
           throw AssetManifestFormatException(
             'Atlas frame out of bounds: $id/$name',
           );
+        }
         frames.add(frame);
       }
       atlases[id] = AtlasDefinition(

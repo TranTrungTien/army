@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
 import '../army_game.dart';
 
 class ScreenShakeEffect extends Component with HasGameReference<ArmyGame> {

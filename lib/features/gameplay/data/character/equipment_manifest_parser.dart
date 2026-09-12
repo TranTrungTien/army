@@ -5,8 +5,9 @@ class EquipmentManifestParser {
   const EquipmentManifestParser();
   List<EquipmentDefinition> parse(String source) {
     final value = jsonDecode(source);
-    if (value is! Map<String, dynamic> || value['schemaVersion'] != 1)
+    if (value is! Map<String, dynamic> || value['schemaVersion'] != 1) {
       throw const FormatException('Unsupported equipment manifest schema');
+    }
     final ids = <String>{};
     return (value['equipment'] as List<dynamic>)
         .map((raw) {
@@ -26,8 +27,9 @@ class EquipmentManifestParser {
                   offsetX: frame['dx'] as int,
                   offsetY: frame['dy'] as int,
                 );
-                if (geometry.width <= 0 || geometry.height <= 0)
+                if (geometry.width <= 0 || geometry.height <= 0) {
                   throw FormatException('Invalid frame size: $key');
+                }
                 return geometry;
               })
               .toList(growable: false);

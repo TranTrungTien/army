@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 class TrajectoryFrame {
   const TrajectoryFrame({required this.x, required this.y});
 

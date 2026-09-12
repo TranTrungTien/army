@@ -2,8 +2,9 @@ import 'package:logging/logging.dart';
 import 'package:mobiarmy_flutter/core/network/command/commands.dart';
 import 'package:mobiarmy_flutter/core/network/dispatcher/message_dispatcher.dart';
 import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
-import '../game/projectile/projectile_trajectory.dart';
+
 import '../game/army_game.dart';
+import '../game/projectile/projectile_trajectory.dart';
 
 class GameplayHandler {
   GameplayHandler(this._dispatcher);
