@@ -1,6 +1,1 @@
-enum CameraMode {
-  playerFollow,
-  bulletFollow,
-  freePan,
-  focusTarget,
-}
+enum CameraMode { playerFollow, bulletFollow, freePan, focusTarget }

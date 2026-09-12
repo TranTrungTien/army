@@ -26,11 +26,7 @@ class _GameplayPageState extends ConsumerState<GameplayPage> {
         children: [
           GameWidget(game: _game),
           // HUD Overlay
-          Positioned(
-            bottom: 20,
-            left: 20,
-            child: _buildControls(),
-          ),
+          Positioned(bottom: 20, left: 20, child: _buildControls()),
         ],
       ),
     );

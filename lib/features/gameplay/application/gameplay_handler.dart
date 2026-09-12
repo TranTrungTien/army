@@ -9,7 +9,7 @@ class GameplayHandler {
   GameplayHandler(this._dispatcher);
   final MessageDispatcher _dispatcher;
   final _logger = Logger('GameplayHandler');
-  
+
   ArmyGame? _game;
 
   void attachGame(ArmyGame game) {
@@ -53,7 +53,7 @@ class GameplayHandler {
     for (int i = 0; i < numBullets; i++) {
       final numFrames = reader.readShort();
       final frames = <TrajectoryFrame>[];
-      
+
       int lastX = 0;
       int lastY = 0;
 
@@ -67,11 +67,15 @@ class GameplayHandler {
         }
         frames.add(TrajectoryFrame(x: lastX, y: lastY));
       }
-      allTrajectories.add(ProjectileTrajectory(bulletId: bulletId, frames: frames));
+      allTrajectories.add(
+        ProjectileTrajectory(bulletId: bulletId, frames: frames),
+      );
     }
 
-    _logger.info('Received shoot message for player $playerIndex, $numBullets bullets');
-    
+    _logger.info(
+      'Received shoot message for player $playerIndex, $numBullets bullets',
+    );
+
     for (final trajectory in allTrajectories) {
       _game?.spawnProjectile(trajectory);
     }
@@ -83,7 +87,7 @@ class GameplayHandler {
     final x = reader.readShort();
     final y = reader.readShort();
     _logger.info('Player $whoMove moved to ($x, $y)');
-    
+
     _game?.players[whoMove]?.moveTo(x.toDouble(), y.toDouble());
   }
 }

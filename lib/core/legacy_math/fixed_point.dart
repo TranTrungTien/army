@@ -17,13 +17,19 @@ abstract final class JavaInt32 {
     if (dividend == minValue && divisor == -1) return minValue;
     return dividend ~/ divisor;
   }
-  static int remainder(int dividend, int divisor) => dividend - divide(dividend, divisor) * divisor;
+
+  static int remainder(int dividend, int divisor) =>
+      dividend - divide(dividend, divisor) * divisor;
 }
 
 class LegacyFixedPoint {
   const LegacyFixedPoint._();
   static const int trigonometryShift = 10;
   static const int one = 1 << trigonometryShift;
-  static int multiplyQ10(int a, int b) => JavaInt32.wrap(JavaInt32.multiply(a, b) >> trigonometryShift);
-  static int divideQ10(int numerator, int denominator) => JavaInt32.divide(JavaInt32.shiftLeft(numerator, trigonometryShift), denominator);
+  static int multiplyQ10(int a, int b) =>
+      JavaInt32.wrap(JavaInt32.multiply(a, b) >> trigonometryShift);
+  static int divideQ10(int numerator, int denominator) => JavaInt32.divide(
+    JavaInt32.shiftLeft(numerator, trigonometryShift),
+    denominator,
+  );
 }

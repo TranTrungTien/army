@@ -11,12 +11,12 @@ class BulletSimulator {
     required this.ax100,
     required this.ay100,
     required this.g100,
-  })  : bX = x,
-        bY = y,
-        xOld = x,
-        yOld = y,
-        lastX = x,
-        lastY = y;
+  }) : bX = x,
+       bY = y,
+       xOld = x,
+       yOld = y,
+       lastX = x,
+       lastY = y;
 
   final int bulletId;
   int x, y;
@@ -34,11 +34,18 @@ class BulletSimulator {
 
   final List<TrajectoryFrame> frames = [];
 
-  void nextXY(int mapWidth, int mapHeight, bool Function(int x, int y) isCollision) {
+  void nextXY(
+    int mapWidth,
+    int mapHeight,
+    bool Function(int x, int y) isCollision,
+  ) {
     frame++;
     frames.add(TrajectoryFrame(x: bX, y: bY));
 
-    if (bX < -100 || bX > mapWidth + 100 || bY > mapHeight + 100 || bY < -999999) {
+    if (bX < -100 ||
+        bX > mapWidth + 100 ||
+        bY > mapHeight + 100 ||
+        bY < -999999) {
       collect = true;
       return;
     }
@@ -84,7 +91,13 @@ class BulletSimulator {
     }
   }
 
-  List<int>? _getCollision(int x1, int y1, int x2, int y2, bool Function(int x, int y) isCollision) {
+  List<int>? _getCollision(
+    int x1,
+    int y1,
+    int x2,
+    int y2,
+    bool Function(int x, int y) isCollision,
+  ) {
     int dx = x2 - x1;
     int dy = y2 - y1;
     int xUnit = dx < 0 ? -1 : (dx > 0 ? 1 : 0);

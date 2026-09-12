@@ -25,6 +25,8 @@ abstract final class Commands {
   static const int userInfo = 34;
   static const int findUser = 36;
   static const int ping = 42;
+  static const int log =
+      45; // SessionHandler.log — server notice / auth failure
   static const int skipTurn = 49;
   static const int setXy = 53;
   static const int dynamicSync = 90;

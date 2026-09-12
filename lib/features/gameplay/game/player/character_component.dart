@@ -13,15 +13,16 @@ class CharacterComponent extends PositionComponent {
     required this.glassId,
     required this.resolver,
     CharacterAnimationState animation = const CharacterAnimationState(),
-    PlayerMovementState movement = const PlayerMovementState(),
-  })  : _animation = animation,
-        _movement = movement;
+    PlayerMovementState? movement,
+  }) : _animation = animation,
+       _movement = movement ?? PlayerMovementState();
 
   CharacterAppearance appearance;
   final int glassId;
   final CharacterSpriteResolver resolver;
   CharacterAnimationState _animation;
   PlayerMovementState _movement;
+  final Map<EquipmentSlot, EquipmentLayerComponent> _layers = {};
 
   PlayerMovementState get movement => _movement;
   set movement(PlayerMovementState value) {
@@ -33,10 +34,11 @@ class CharacterComponent extends PositionComponent {
     EquipmentSlot.gun: 20,
     EquipmentSlot.hat: 30,
     EquipmentSlot.armor: 40,
-    EquipmentSlot.glasses: 50
+    EquipmentSlot.glasses: 50,
   };
 
-  @override Future<void> onLoad() async {
+  @override
+  Future<void> onLoad() async {
     await super.onLoad();
     for (final slot in EquipmentSlot.values) {
       final layer = EquipmentLayerComponent(priority: layerPriority[slot]!);
@@ -46,8 +48,15 @@ class CharacterComponent extends PositionComponent {
     _synchronizeLayers();
   }
 
-  void setAnimation(CharacterAnimationState value) { _animation = value; _synchronizeLayers(); }
-  void setAppearance(CharacterAppearance value) { appearance = value; _synchronizeLayers(); }
+  void setAnimation(CharacterAnimationState value) {
+    _animation = value;
+    _synchronizeLayers();
+  }
+
+  void setAppearance(CharacterAppearance value) {
+    appearance = value;
+    _synchronizeLayers();
+  }
 
   void moveTo(double x, double y) {
     // Simple teleport for now, can add lerp later
@@ -58,8 +67,20 @@ class CharacterComponent extends PositionComponent {
     final left = _animation.facing == CharacterFacing.left;
     for (final slot in EquipmentSlot.values) {
       final id = appearance[slot];
-      final resolved = id == null ? null : resolver.resolveEquipment(glassId: glassId, slot: slot, equipmentId: id, frame: _animation.frame);
-      _layers[slot]?.applyFrame(nextSprite: resolved?.sprite, offsetX: resolved?.offsetX ?? 0, offsetY: resolved?.offsetY ?? 0, facingLeft: left);
+      final resolved = id == null
+          ? null
+          : resolver.resolveEquipment(
+              glassId: glassId,
+              slot: slot,
+              equipmentId: id,
+              frame: _animation.frame,
+            );
+      _layers[slot]?.applyFrame(
+        nextSprite: resolved?.sprite,
+        offsetX: resolved?.offsetX ?? 0,
+        offsetY: resolved?.offsetY ?? 0,
+        facingLeft: left,
+      );
     }
   }
 }

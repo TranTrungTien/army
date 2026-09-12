@@ -19,10 +19,13 @@ class TrajectorySimulator {
     bool isPow = false,
   }) {
     final trajectories = <ProjectileTrajectory>[];
-    
+
     // Initial position and velocity
     int bx = gunX + ((width - 4) * LegacyTrigonometry.cos(ang) >> 10);
-    int by = gunY - (height ~/ 2) - ((height - 4) * LegacyTrigonometry.sin(ang) >> 10);
+    int by =
+        gunY -
+        (height ~/ 2) -
+        ((height - 4) * LegacyTrigonometry.sin(ang) >> 10);
     int vx = force * LegacyTrigonometry.cos(ang) >> 10;
     int vy = -(force * LegacyTrigonometry.sin(ang) >> 10);
 
@@ -47,10 +50,9 @@ class TrajectorySimulator {
       bullet.nextXY(mapWidth, mapHeight, isCollision);
     }
 
-    trajectories.add(ProjectileTrajectory(
-      bulletId: bulletId,
-      frames: bullet.frames,
-    ));
+    trajectories.add(
+      ProjectileTrajectory(bulletId: bulletId, frames: bullet.frames),
+    );
 
     return trajectories;
   }

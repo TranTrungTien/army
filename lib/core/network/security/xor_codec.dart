@@ -1,7 +1,10 @@
 import 'dart:typed_data';
 
 class XorCodec {
-  XorCodec(List<int> rawKey) : _key = Uint8List.fromList(rawKey), _readPos = 0, _writePos = 0;
+  XorCodec(List<int> rawKey)
+    : _key = Uint8List.fromList(rawKey),
+      _readPos = 0,
+      _writePos = 0;
 
   static XorCodec fromSessionMessage(List<int> messageData) {
     final key = Uint8List.fromList(messageData.sublist(1));

@@ -10,12 +10,12 @@ class GameplayInputController extends Component with ChangeNotifier {
   static const double chargeSpeed = 50.0;
 
   void updateAngle(int delta) {
-    // Legacy MobiArmy2 angle often cycles or clamps. 
+    // Legacy MobiArmy2 angle often cycles or clamps.
     // Let's cycle it for a better feel.
     var newAngle = _state.angle + delta;
     if (newAngle < 0) newAngle += 360;
     if (newAngle >= 360) newAngle -= 360;
-    
+
     _state = _state.copyWith(angle: newAngle);
     notifyListeners();
   }

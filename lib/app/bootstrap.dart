@@ -20,15 +20,21 @@ Future<void> bootstrap({bool debug = false}) async {
 
   FlutterError.onError = (details) {
     FlutterError.presentError(details);
-    Logger('FlutterError').severe(details.exceptionAsString(), details.exception, details.stack);
+    Logger(
+      'FlutterError',
+    ).severe(details.exceptionAsString(), details.exception, details.stack);
   };
   PlatformDispatcher.instance.onError = (error, stack) {
-    Logger('PlatformDispatcher').severe('Uncaught platform error', error, stack);
+    Logger(
+      'PlatformDispatcher',
+    ).severe('Uncaught platform error', error, stack);
     return true;
   };
 
   runZonedGuarded(
-    () => runApp(const ProviderScope(child: AppErrorBoundary(child: ArmyApp()))),
-    (error, stack) => Logger('Zone').severe('Uncaught zone error', error, stack),
+    () =>
+        runApp(const ProviderScope(child: AppErrorBoundary(child: ArmyApp()))),
+    (error, stack) =>
+        Logger('Zone').severe('Uncaught zone error', error, stack),
   );
 }

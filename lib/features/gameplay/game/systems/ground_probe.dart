@@ -28,7 +28,9 @@ class GroundProbe {
     final left = x - width / 2;
     final right = x + width / 2;
     final bottom = y;
-    
-    return isSolid(left, bottom) || isSolid(right, bottom) || isSolid(x, bottom);
+
+    return isSolid(left, bottom) ||
+        isSolid(right, bottom) ||
+        isSolid(x, bottom);
   }
 }

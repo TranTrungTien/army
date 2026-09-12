@@ -5,7 +5,8 @@ class LegacyRandom {
   LegacyRandom([Random? random]) : _random = random ?? Random();
   final Random _random;
 
-  int between(int minInclusive, int maxExclusive) => minInclusive + _random.nextInt(maxExclusive - minInclusive);
+  int between(int minInclusive, int maxExclusive) =>
+      minInclusive + _random.nextInt(maxExclusive - minInclusive);
 
   /// Mirrors Java `nextInt() % bound`, including negative results.
   int signedRemainder(int bound) {

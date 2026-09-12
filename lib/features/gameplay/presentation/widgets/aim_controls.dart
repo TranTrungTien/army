@@ -25,10 +25,7 @@ class AimControls extends StatelessWidget {
 }
 
 class _AimButton extends StatelessWidget {
-  const _AimButton({
-    required this.icon,
-    required this.onPressed,
-  });
+  const _AimButton({required this.icon, required this.onPressed});
 
   final IconData icon;
   final VoidCallback onPressed;
@@ -37,7 +34,7 @@ class _AimButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
-      // For continuous update, we might want GestureDetector longPress or a custom timer, 
+      // For continuous update, we might want GestureDetector longPress or a custom timer,
       // but let's keep it simple for skeleton.
       child: Container(
         padding: const EdgeInsets.all(8),

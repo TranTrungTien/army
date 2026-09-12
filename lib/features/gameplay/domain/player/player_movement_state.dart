@@ -1,19 +1,14 @@
 import 'package:flame/extensions.dart';
 
-enum PlayerMovementKind {
-  idle,
-  walking,
-  falling,
-  dead,
-}
+enum PlayerMovementKind { idle, walking, falling, dead }
 
 class PlayerMovementState {
-  const PlayerMovementState({
+  PlayerMovementState({
     this.kind = PlayerMovementKind.idle,
-    this.velocity = Vector2.zero,
+    Vector2? velocity,
     this.isOnGround = false,
     this.stamina = 100.0,
-  });
+  }) : velocity = velocity ?? Vector2.zero();
 
   final PlayerMovementKind kind;
   final Vector2 velocity;

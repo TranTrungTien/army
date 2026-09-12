@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
-import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/power_bar.dart';
-import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/movement_controls.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/aim_controls.dart';
+import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/movement_controls.dart';
+import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/power_bar.dart';
 
 class GameplayHud extends StatelessWidget {
   const GameplayHud({super.key, required this.game});
@@ -16,14 +16,11 @@ class GameplayHud extends StatelessWidget {
       builder: (context, _) {
         return Stack(
           children: [
-            // Left bottom: Movement
             Positioned(
               left: 20,
               bottom: 20,
               child: MovementControls(game: game),
             ),
-
-            // Right bottom: Fire and Aim
             Positioned(
               right: 20,
               bottom: 20,
@@ -36,8 +33,6 @@ class GameplayHud extends StatelessWidget {
                 ],
               ),
             ),
-
-            // Center bottom: Power bar and Angle
             Positioned(
               left: 0,
               right: 0,
@@ -49,7 +44,10 @@ class GameplayHud extends StatelessWidget {
                   const SizedBox(height: 8),
                   SizedBox(
                     width: 300,
-                    child: PowerBar(power: game.inputController.state.force),
+                    // Legacy force range is 1..30; PowerBar expects 0..100.
+                    child: PowerBar(
+                      power: game.inputController.state.force * (100 / 30),
+                    ),
                   ),
                 ],
               ),
@@ -71,7 +69,7 @@ class _FireButton extends StatelessWidget {
       onTapDown: (_) => game.inputController.startCharging(),
       onTapUp: (_) {
         final force = game.inputController.stopCharging();
-        // game.fire(force);
+        game.fire(force);
       },
       onTapCancel: () => game.inputController.stopCharging(),
       child: Container(
@@ -81,8 +79,8 @@ class _FireButton extends StatelessWidget {
           color: Colors.red.withOpacity(0.7),
           shape: BoxShape.circle,
           border: Border.all(color: Colors.white, width: 3),
-          boxShadow: [
-            const BoxShadow(color: Colors.black26, blurRadius: 10, spreadRadius: 2),
+          boxShadow: const [
+            BoxShadow(color: Colors.black26, blurRadius: 10, spreadRadius: 2),
           ],
         ),
         child: const Center(
