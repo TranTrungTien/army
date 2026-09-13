@@ -1,6 +1,9 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobiarmy_flutter/core/audio/audio_provider.dart';
+import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_provider.dart';
+import 'package:mobiarmy_flutter/shared/overlays/gameplay_hud.dart';
 import '../game/army_game.dart';
 
 class GameplayPage extends ConsumerStatefulWidget {
@@ -16,7 +19,18 @@ class _GameplayPageState extends ConsumerState<GameplayPage> {
   @override
   void initState() {
     super.initState();
-    _game = ArmyGame();
+    final audio = ref.read(audioServiceProvider);
+    _game = ArmyGame(audio: audio);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(gameplayHandlerProvider).attachGame(_game);
+    });
+  }
+
+  @override
+  void dispose() {
+    ref.read(gameplayHandlerProvider).detachGame();
+    super.dispose();
   }
 
   @override
@@ -24,33 +38,15 @@ class _GameplayPageState extends ConsumerState<GameplayPage> {
     return Scaffold(
       body: Stack(
         children: [
-          GameWidget(game: _game),
-          // HUD Overlay
-          Positioned(bottom: 20, left: 20, child: _buildControls()),
+          GameWidget<ArmyGame>(
+            game: _game,
+            overlayBuilderMap: {
+              'HUD': (context, game) => GameplayHud(game: game),
+            },
+            initialActiveOverlays: const ['HUD'],
+          ),
         ],
       ),
-    );
-  }
-
-  Widget _buildControls() {
-    return Row(
-      children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: const Icon(Icons.arrow_forward, color: Colors.white),
-          onPressed: () {},
-        ),
-        const SizedBox(width: 20),
-        ElevatedButton(
-          onPressed: () {
-            // Test shooting
-          },
-          child: const Text('SHOOT'),
-        ),
-      ],
     );
   }
 }

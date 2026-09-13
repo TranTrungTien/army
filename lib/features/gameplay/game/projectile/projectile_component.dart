@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flame/components.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/effects/smoke_particle.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/projectile/projectile_trajectory.dart';
 
 /// Plays back a server-computed (or offline-simulated) trajectory frame list.
@@ -12,7 +13,7 @@ class ProjectileComponent extends PositionComponent {
   }) : super(anchor: Anchor.center, priority: 20);
 
   final ProjectileTrajectory trajectory;
-  final void Function(int x, int y)? onImpact;
+  final void Function(int x, int y, int radius)? onImpact;
   final double stepsPerSecond;
 
   int _frame = 0;
@@ -37,13 +38,20 @@ class ProjectileComponent extends PositionComponent {
       if (_frame >= trajectory.frames.length) {
         final frames = trajectory.frames;
         if (frames.isNotEmpty) {
-          onImpact?.call(frames.last.x, frames.last.y);
+          onImpact?.call(
+            frames.last.x,
+            frames.last.y,
+            trajectory.explosionRadius,
+          );
         }
         removeFromParent();
         return;
       }
       final frame = trajectory.frames[_frame];
       position.setValues(frame.x.toDouble(), frame.y.toDouble());
+
+      // Spawn smoke trail
+      parent?.add(SmokeParticle(position: position.clone()));
     }
   }
 

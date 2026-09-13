@@ -1,6 +1,14 @@
 import 'package:flame/extensions.dart';
 
-enum PlayerMovementKind { idle, walking, falling, dead }
+enum PlayerMovementKind {
+  idle,
+  walking,
+  falling,
+  hurt,
+  dead,
+  frozen,
+  teleport,
+}
 
 class PlayerMovementState {
   PlayerMovementState({

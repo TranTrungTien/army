@@ -7,14 +7,31 @@ import 'package:mobiarmy_flutter/features/gameplay/game/systems/screen_shake_eff
 class CameraSystem extends Component with HasGameReference<ArmyGame> {
   CameraMode mode = CameraMode.playerFollow;
   Component? _followApplied;
+  double _freePanTimeout = 0;
 
   void shake({double intensity = 5.0, double duration = 0.5}) {
     add(ScreenShakeEffect(intensity: intensity, duration: duration));
   }
 
+  void pan(Vector2 delta) {
+    mode = CameraMode.freePan;
+    _freePanTimeout = 3.0; // Return to player after 3s of inactivity
+    game.camera.viewfinder.position -= delta;
+    _followApplied = null;
+    game.camera.stop();
+  }
+
   @override
   void update(double dt) {
     super.update(dt);
+
+    if (mode == CameraMode.freePan) {
+      _freePanTimeout -= dt;
+      if (_freePanTimeout <= 0) {
+        mode = CameraMode.playerFollow;
+      }
+    }
+
     _updateTarget();
     _applyClamping();
   }
@@ -26,6 +43,8 @@ class CameraSystem extends Component with HasGameReference<ArmyGame> {
   }
 
   void _updateTarget() {
+    if (mode == CameraMode.freePan) return;
+
     final projectiles = game.gameWorld.children.query<ProjectileComponent>();
     final PositionComponent? target;
     final double maxSpeed;
@@ -35,7 +54,7 @@ class CameraSystem extends Component with HasGameReference<ArmyGame> {
       maxSpeed = 1000;
     } else {
       mode = CameraMode.playerFollow;
-      target = game.players[0];
+      target = game.players[game.activePlayerId ?? 0];
       maxSpeed = 400;
     }
     if (target != null) _applyFollow(target, maxSpeed);

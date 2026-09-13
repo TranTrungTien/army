@@ -24,6 +24,15 @@ final class SandboxCharacterComponent extends GamePlayer {
   PlayerMovementState _movement = PlayerMovementState(isOnGround: true);
 
   @override
+  int hp = 1000;
+
+  @override
+  int maxHp = 1000;
+
+  @override
+  MovementIntent intent = MovementIntent.none;
+
+  @override
   PlayerMovementState get movement => _movement;
 
   @override

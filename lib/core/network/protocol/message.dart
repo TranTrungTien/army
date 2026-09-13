@@ -4,7 +4,6 @@ import '../codec/byte_writer.dart';
 
 class Message {
   final int command;
-  late final ByteReader _reader;
   late final ByteWriter _writer;
   final Uint8List? _data;
 
@@ -12,15 +11,13 @@ class Message {
     _writer = ByteWriter();
   }
 
-  Message.fromBytes(this.command, Uint8List data) : _data = data {
-    _reader = ByteReader(data);
-  }
+  Message.fromBytes(this.command, Uint8List data) : _data = data;
 
   ByteReader reader() {
     if (_data == null) {
       throw StateError('Message was created for writing');
     }
-    return _reader;
+    return ByteReader(_data);
   }
 
   ByteWriter writer() {

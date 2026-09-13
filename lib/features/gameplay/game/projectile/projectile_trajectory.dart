@@ -6,8 +6,13 @@ class TrajectoryFrame {
 }
 
 class ProjectileTrajectory {
-  const ProjectileTrajectory({required this.bulletId, required this.frames});
+  const ProjectileTrajectory({
+    required this.bulletId,
+    required this.frames,
+    this.explosionRadius = 18,
+  });
 
   final int bulletId;
   final List<TrajectoryFrame> frames;
+  final int explosionRadius;
 }

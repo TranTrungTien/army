@@ -4,6 +4,7 @@ enum AppRoute {
   login('/login'),
   lobby('/lobby'),
   room('/room'),
+  inventory('/inventory'),
   gameplaySandbox('/gameplay-sandbox');
 
   const AppRoute(this.path);

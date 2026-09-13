@@ -12,12 +12,14 @@ class AimControls extends StatelessWidget {
       children: [
         _AimButton(
           icon: Icons.keyboard_arrow_up,
-          onPressed: () => game.inputController.updateAngle(1),
+          onPressedStart: () => game.inputController.setAngleDelta(1),
+          onPressedEnd: () => game.inputController.setAngleDelta(0),
         ),
         const SizedBox(height: 8),
         _AimButton(
           icon: Icons.keyboard_arrow_down,
-          onPressed: () => game.inputController.updateAngle(-1),
+          onPressedStart: () => game.inputController.setAngleDelta(-1),
+          onPressedEnd: () => game.inputController.setAngleDelta(0),
         ),
       ],
     );
@@ -25,17 +27,22 @@ class AimControls extends StatelessWidget {
 }
 
 class _AimButton extends StatelessWidget {
-  const _AimButton({required this.icon, required this.onPressed});
+  const _AimButton({
+    required this.icon,
+    required this.onPressedStart,
+    required this.onPressedEnd,
+  });
 
   final IconData icon;
-  final VoidCallback onPressed;
+  final VoidCallback onPressedStart;
+  final VoidCallback onPressedEnd;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed,
-      // For continuous update, we might want GestureDetector longPress or a custom timer,
-      // but let's keep it simple for skeleton.
+      onTapDown: (_) => onPressedStart(),
+      onTapUp: (_) => onPressedEnd(),
+      onTapCancel: () => onPressedEnd(),
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
