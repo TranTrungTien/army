@@ -1,174 +1,189 @@
-This document contains the complete source code of the repository consolidated into a single file for streamlined AI analysis.
-The repository contents have been processed and combined with security validation bypassed.
+# vantu03 - MobiArmy2-Server
 
-# Repository Overview
+## Structure
 
-## About This Document
-This consolidated file represents the complete codebase from the repository, 
-merged into a unified document optimized for AI consumption and automated 
-analysis workflows.
-
-## Repository Information
-- **Repository:** vantu03/MobiArmy2-Server
-- **Branch:** main
-- **Total Files:** 777
-- **Generated:** 2026-09-12T10:22:13.581Z
-
-## Document Structure
-The content is organized in the following sequence:
-1. This overview section
-2. Repository metadata and information  
-3. File system hierarchy
-4. Repository files (when included)
-5. Individual source files, each containing:
-   a. File path header (## File: path/to/file)
-   b. Complete file contents within code blocks
-
-## Best Practices
-- Treat this document as read-only - make changes in the original repository
-- Use file path headers to navigate between different source files
-- Handle with appropriate security measures as this may contain sensitive data
-- This consolidated view is generated from the live repository state
-
-## Important Notes
-- Files excluded by .gitignore and configuration rules are omitted
-- Binary assets are not included - refer to the file structure for complete file listings
-- Default ignore patterns have been applied to filter content
-- Security validation is disabled - review content for sensitive information carefully
-
-# Repository Structure
-
-```
-vantu03/MobiArmy2-Server/
-├── cache
-│   ├── msg
-│   │   ├── 101
-│   │   ├── 3
-│   │   ├── 64
-│   │   ├── 88
-│   │   ├── 92
-│   │   └── 99
-│   ├── equipdata2
-│   ├── icondata2
-│   ├── levelCData2
-│   ├── playerdata2
-│   └── valuesdata2
-├── lib
-│   └── nblibraries.properties
-├── nbproject
-│   ├── private
-│   │   ├── private.properties
-│   │   └── private.xml
-│   ├── build-impl.xml
-│   ├── genfiles.properties
-│   ├── project.properties
-│   └── project.xml
-├── src
-│   └── mobiarmy
-│       ├── io
-│       │   ├── IMessageHandler.java
-│       │   ├── Message.java
-│       │   └── Write.java
-│       ├── server
-│       │   ├── Bot.java
-│       │   ├── Caption.java
-│       │   ├── Confirm.java
-│       │   ├── ControlHandler.java
-│       │   ├── DBManager.java
-│       │   ├── Equip.java
-│       │   ├── Exp.java
-│       │   ├── GameData.java
-│       │   ├── Glass.java
-│       │   ├── Item.java
-│       │   ├── LinhTinh.java
-│       │   ├── Map.java
-│       │   ├── MapBoss.java
-│       │   ├── MessageHandler.java
-│       │   ├── Mission.java
-│       │   ├── Pack.java
-│       │   ├── Select.java
-│       │   ├── Server.java
-│       │   ├── ServerManager.java
-│       │   ├── Session.java
-│       │   ├── SessionHandler.java
-│       │   ├── SessionManager.java
-│       │   ├── ShopEquipment.java
-│       │   ├── ShopLinhTinh.java
-│       │   ├── Text.java
-│       │   └── User.java
-│       ├── war
-│       │   ├── Boss
-│       │   │   ├── bullet
-│       │   │   │   ├── AddBoomBullet.java
-│       │   │   │   ├── ApacheBullet.java
-│       │   │   │   ├── BicycleBullet.java
-│       │   │   │   ├── BigBoomBullet.java
-│       │   │   │   ├── BigLaserBullet.java
-│       │   │   │   ├── BigRocketBullet.java
-│       │   │   │   ├── BomBullet.java
-│       │   │   │   ├── Bullet.java
-│       │   │   │   ├── BulletTrajectory.java
-│       │   │   │   ├── ChickyBullet.java
-│       │   │   │   ├── FlyPortBullet.java
-│       │   │   │   ├── ItemB52Bullet.java
-│       │   │   │   ├── ItemBlindBullet.java
-│       │   │   │   ├── ItemBomBullet.java
-│       │   │   │   ├── ItemEarthHole2Bullet.java
-│       │   │   │   ├── ItemEarthHoleBullet.java
-│       │   │   │   ├── ItemFreezeBullet.java
-│       │   │   │   ├── ItemLandBullet.java
-│       │   │   │   ├── ItemLaserBullet.java
-│       │   │   │   ├── ItemMeteorBullet.java
-│       │   │   │   ├── ItemMouseBullet.java
-│       │   │   │   ├── ItemNoCollisionMap.java
-│       │   │   │   ├── ItemPoisonBullet.java
-│       │   │   │   ├── ItemRainBullet.java
-│       │   │   │   ├── ItemRocketBullet.java
-│       │   │   │   ├── ItemSilkBullet.java
-│       │   │   │   ├── ItemSilkBullet2.java
-│       │   │   │   ├── ItemSuicideBullet.java
-│       │   │   │   ├── ItemTeleportBullet.java
-│       │   │   │   ├── ItemTeleportBullet2.java
-│       │   │   │   ├── ItemTimeBombBullet.java
-│       │   │   │   ├── ItemTornadoBullet.java
-│       │   │   │   ├── ItemUfo.java
-│       │   │   │   ├── ItemUfoBullet.java
-│       │   │   │   ├── MirrorBullet.java
-│       │   │   │   ├── RocketExpBullet.java
-│       │   │   │   ├── SmallBoomBullet.java
-│       │   │   │   ├── TarzanBullet.java
-│       │   │   │   └── UfoLaserBullet.java
-│       │   │   ├── BigBoom.java
-│       │   │   ├── Boss.java
-│       │   │   ├── GiftBox.java
-│       │   │   ├── GiftBox2.java
-│       │   │   ├── Robot.java
-│       │   │   ├── RobotSpider.java
-│       │   │   ├── SmallBoom.java
-│       │   │   ├── Trex.java
-│       │   │   └── Ufo.java
-│       │   ├── Gun.java
-│       │   ├── MapData.java
-│       │   ├── PathSimulator.java
-│       │   ├── Player.java
-│       │   ├── Poison.java
-│       │   ├── Room.java
-│       │   ├── RoomInfo.java
-│       │   ├── RoomWait.java
-│       │   ├── TimeBomb.java
-│       │   └── Tornado.java
-│       ├── Cache.java
-│       ├── MobiArmy.java
-│       ├── Test.java
-│       └── Util.java
+```text
+MobiArmy2-Server/
+├── lib/
+|   └── nblibraries.properties
+├── nbproject/
+|   ├── private/
+|   |   ├── private.properties
+|   |   └── private.xml
+|   ├── build-impl.xml
+|   ├── genfiles.properties
+|   ├── project.properties
+|   └── project.xml
+├── src/
+|   └── mobiarmy/
+|       ├── io/
+|       |   ├── IMessageHandler.java
+|       |   ├── Message.java
+|       |   └── Write.java
+|       ├── server/
+|       |   ├── Bot.java
+|       |   ├── Caption.java
+|       |   ├── Confirm.java
+|       |   ├── ControlHandler.java
+|       |   ├── DBManager.java
+|       |   ├── Equip.java
+|       |   ├── Exp.java
+|       |   ├── GameData.java
+|       |   ├── Glass.java
+|       |   ├── Item.java
+|       |   ├── LinhTinh.java
+|       |   ├── Map.java
+|       |   ├── MapBoss.java
+|       |   ├── MessageHandler.java
+|       |   ├── Mission.java
+|       |   ├── Pack.java
+|       |   ├── Select.java
+|       |   ├── Server.java
+|       |   ├── ServerManager.java
+|       |   ├── Session.java
+|       |   ├── SessionHandler.java
+|       |   ├── SessionManager.java
+|       |   ├── ShopEquipment.java
+|       |   ├── ShopLinhTinh.java
+|       |   ├── Text.java
+|       |   └── User.java
+|       ├── war/
+|       |   ├── Boss/
+|       |   |   ├── bullet/
+|       |   |   |   ├── AddBoomBullet.java
+|       |   |   |   ├── ApacheBullet.java
+|       |   |   |   ├── BicycleBullet.java
+|       |   |   |   ├── BigBoomBullet.java
+|       |   |   |   ├── BigLaserBullet.java
+|       |   |   |   ├── BigRocketBullet.java
+|       |   |   |   ├── BomBullet.java
+|       |   |   |   ├── Bullet.java
+|       |   |   |   ├── BulletTrajectory.java
+|       |   |   |   ├── ChickyBullet.java
+|       |   |   |   ├── FlyPortBullet.java
+|       |   |   |   ├── ItemB52Bullet.java
+|       |   |   |   ├── ItemBlindBullet.java
+|       |   |   |   ├── ItemBomBullet.java
+|       |   |   |   ├── ItemEarthHole2Bullet.java
+|       |   |   |   ├── ItemEarthHoleBullet.java
+|       |   |   |   ├── ItemFreezeBullet.java
+|       |   |   |   ├── ItemLandBullet.java
+|       |   |   |   ├── ItemLaserBullet.java
+|       |   |   |   ├── ItemMeteorBullet.java
+|       |   |   |   ├── ItemMouseBullet.java
+|       |   |   |   ├── ItemNoCollisionMap.java
+|       |   |   |   ├── ItemPoisonBullet.java
+|       |   |   |   ├── ItemRainBullet.java
+|       |   |   |   ├── ItemRocketBullet.java
+|       |   |   |   ├── ItemSilkBullet.java
+|       |   |   |   ├── ItemSilkBullet2.java
+|       |   |   |   ├── ItemSuicideBullet.java
+|       |   |   |   ├── ItemTeleportBullet.java
+|       |   |   |   ├── ItemTeleportBullet2.java
+|       |   |   |   ├── ItemTimeBombBullet.java
+|       |   |   |   ├── ItemTornadoBullet.java
+|       |   |   |   ├── ItemUfo.java
+|       |   |   |   ├── ItemUfoBullet.java
+|       |   |   |   ├── MirrorBullet.java
+|       |   |   |   ├── RocketExpBullet.java
+|       |   |   |   ├── SmallBoomBullet.java
+|       |   |   |   ├── TarzanBullet.java
+|       |   |   |   └── UfoLaserBullet.java
+|       |   |   ├── BigBoom.java
+|       |   |   ├── Boss.java
+|       |   |   ├── GiftBox.java
+|       |   |   ├── GiftBox2.java
+|       |   |   ├── Robot.java
+|       |   |   ├── RobotSpider.java
+|       |   |   ├── SmallBoom.java
+|       |   |   ├── Trex.java
+|       |   |   └── Ufo.java
+|       |   ├── Gun.java
+|       |   ├── MapData.java
+|       |   ├── PathSimulator.java
+|       |   ├── Player.java
+|       |   ├── Poison.java
+|       |   ├── Room.java
+|       |   ├── RoomInfo.java
+|       |   ├── RoomWait.java
+|       |   ├── TimeBomb.java
+|       |   └── Tornado.java
+|       ├── Cache.java
+|       ├── MobiArmy.java
+|       ├── Test.java
+|       └── Util.java
 ├── army.sql
 ├── build.xml
-└── manifest.mf
+└── README.md
 ```
 
-================================================================================
-// File: army.sql
-================================================================================
+
+## README.md
+```markdown:README.md
+# 📌 MobiArmy Server - Java + MySQL
+
+👉 Đây là server **MobiArmy** được viết bằng **Java** và sử dụng **MySQL** để quản lý dữ liệu. Server hỗ trợ đầy đủ các tính năng kết nối, quản lý người chơi, và xử lý dữ liệu trong game.
+
+## 🔹 Giới thiệu
+- **MobiArmy Server** được xây dựng nhằm tái tạo lại hệ thống server của game MobiArmy 2.
+- Hỗ trợ đầy đủ các chức năng của game như xử lý kết nối, quản lý nhân vật, phòng đấu, vũ khí, và cơ chế chiến đấu.
+- Server được viết bằng **Java 8+** và sử dụng **MySQL** để lưu trữ dữ liệu.
+
+### 🛠 Công nghệ sử dụng
+- **Java 8+**
+- **MySQL** (Cơ sở dữ liệu lưu trữ thông tin nhân vật, trận đấu,...)
+- **NetBeans/IntelliJ IDEA** (Môi trường phát triển khuyến nghị)
+
+## 📸 Hình ảnh minh họa
+Dưới đây là một số hình ảnh về hệ thống server đang hoạt động:
+
+### 🔹 Giao diện quản lý server
+![Giao diện quản lý server](src/anh1.png)
+
+### 🔹 Cấu hình kết nối MySQL
+![Cấu hình MySQL](src/anh2.png)
+
+### 🔹 Xử lý bot trong game
+![Xử lý bot](src/anh3.png)
+
+### 🔹 Server đang hoạt động
+![Server đang hoạt động](src/anh4.png)
+
+## 💡 Hướng dẫn cài đặt & chạy server
+
+1️⃣ **Clone repository:**
+```sh
+git clone https://github.com/vantu03/MobiArmy2-Server.git
+```
+
+2️⃣ **Cấu hình MySQL:**
+- Tạo database với tên `army`
+- Cập nhật thông tin kết nối trong tệp `DBManager.java`
+```java
+DBManager dbManager = new DBManager("jdbc:mysql://localhost:3306/army", "root", "");
+```
+
+3️⃣ **Chạy server:**
+- Mở dự án bằng **NetBeans** hoặc **IntelliJ IDEA**
+- Chạy file `MobiArmy.java` để khởi động server
+
+4️⃣ **Kết nối client:**
+- Sau khi server chạy, client có thể kết nối bằng cách nhập địa chỉ server và port
+- Mặc định server chạy trên **port 8122**
+
+🔗 **Tải Client tại đây:** [MobiArmy2 Client](https://github.com/vantu03/MobiArmy2-Client)
+
+---
+
+💚 Nếu bạn có bất kỳ góp ý nào, hãy mở **Issues** hoặc tạo **Pull Request** để cải thiện dự án! 🚀
+
+---
+
+
+```
+
+## army.sql
+```sql:army.sql
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
@@ -1627,884 +1642,13 @@ INSERT INTO `shop_equipment` (`id`, `glassID`, `equipId`, `name`, `xu`, `luong`,
 (276, 5, 44, 'kính vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
 (277, 6, 45, 'giày vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
 (278, 7, 46, 'kính vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(279, 8, 45, 'dao vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(280, 9, 45, 'kính vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(281, 0, 6, 'balo cannon 1', 500, -1, '[0, 0, 0, 0, 6]', '[0, 0, 0, 0, 0]'),
-(282, 1, 23, 'balo ak 1', 500, -1, '[0, 0, 0, 0, 6]', '[0, 0, 0, 0, 0]'),
-(283, 2, 6, 'balo proton 1', 500, -1, '[0, 0, 0, 0, 6]', '[0, 0, 0, 0, 0]'),
-(284, 3, 6, 'balo khỉ 1', 500, -1, '[0, 0, 0, 0, 6]', '[0, 0, 0, 0, 0]'),
-(285, 4, 29, 'balo rocket 1', 500, -1, '[0, 0, 0, 0, 6]', '[0, 0, 0, 0, 0]'),
-(286, 5, 24, 'cánh granos 1', 500, -1, '[0, 0, 0, 0, 6]', '[0, 0, 0, 0, 0]'),
-(287, 6, 24, 'cánh gà 1', 500, -1, '[0, 0, 0, 0, 6]', '[0, 0, 0, 0, 0]'),
-(288, 7, 25, 'lá tarzan 1', 500, -1, '[0, 0, 0, 6, 0]', '[0, 0, 0, 0, 0]'),
-(289, 8, 25, 'r_ apache 1', 500, -1, '[0, 0, 0, 0, 6]', '[0, 0, 0, 0, 0]'),
-(290, 9, 23, 'balo laser 1', 500, -1, '[0, 0, 0, 0, 6]', '[0, 0, 0, 0, 0]'),
-(291, 0, 10, 'balo cannon 2', 5000, -1, '[0, 0, 0, 0, 8]', '[0, 0, 0, 0, 0]'),
-(292, 1, 25, 'balo ak 2', 5000, -1, '[0, 0, 0, 0, 8]', '[0, 0, 0, 0, 0]'),
-(293, 2, 10, 'balo proton 2', 5000, -1, '[0, 0, 0, 0, 8]', '[0, 0, 0, 0, 0]'),
-(294, 3, 10, 'balo khỉ 2', 5000, -1, '[0, 0, 0, 0, 8]', '[0, 0, 0, 0, 0]'),
-(295, 4, 9, 'balo rocket 2', 5000, -1, '[0, 0, 0, 0, 8]', '[0, 0, 0, 0, 0]'),
-(296, 5, 26, 'cánh granos 2', 5000, -1, '[0, 0, 0, 0, 8]', '[0, 0, 0, 0, 0]'),
-(297, 6, 26, 'cánh gà 2', 5000, -1, '[0, 0, 0, 0, 8]', '[0, 0, 0, 0, 0]'),
-(298, 7, 27, 'lá tarzan 2', 5000, -1, '[0, 0, 0, 8, 0]', '[0, 0, 0, 0, 0]'),
-(299, 8, 9, 'kh_n apache 2', 5000, -1, '[0, 0, 0, 0, 8]', '[0, 0, 0, 0, 0]'),
-(300, 9, 25, 'balo laser 2', 5000, -1, '[0, 0, 0, 0, 8]', '[0, 0, 0, 0, 0]'),
-(301, 0, 15, 'balo cannon 3', 10000, -1, '[0, 0, 0, 0, 11]', '[0, 0, 0, 0, 1]'),
-(302, 1, 27, 'balo ak 3', 10000, -1, '[0, 0, 0, 0, 11]', '[0, 0, 0, 0, 1]'),
-(303, 2, 14, 'balo proton 3', 10000, -1, '[0, 0, 0, 0, 11]', '[0, 0, 0, 0, 1]'),
-(304, 3, 15, 'balo khỉ 3', 10000, -1, '[0, 0, 0, 0, 11]', '[0, 0, 0, 0, 1]'),
-(305, 4, 13, 'balo rocket 3', 10000, -1, '[0, 0, 0, 0, 11]', '[0, 0, 0, 0, 1]'),
-(306, 5, 27, 'cánh granos 3', 10000, -1, '[0, 0, 0, 0, 11]', '[0, 0, 0, 0, 1]'),
-(307, 6, 12, 'cánh gà 3', 10000, -1, '[0, 0, 0, 0, 11]', '[0, 0, 0, 0, 1]'),
-(308, 7, 29, 'dao tarzan 3', 10000, -1, '[0, 0, 0, 0, 11]', '[0, 0, 0, 0, 1]'),
-(309, 8, 13, 'tóc apache 3', 10000, -1, '[0, 0, 0, 0, 11]', '[0, 0, 0, 0, 1]'),
-(310, 9, 27, 'balo laser 3', 10000, -1, '[0, 0, 0, 0, 11]', '[0, 0, 0, 0, 1]'),
-(311, 0, 20, 'balo cannon 4', 10000, 7, '[0, 0, 0, 0, 14]', '[0, 0, 0, 0, 2]'),
-(312, 1, 29, 'balo ak 4', 15000, 12, '[0, 0, 0, 0, 14]', '[0, 0, 0, 0, 2]'),
-(313, 2, 18, 'balo proton 4', 15000, 12, '[0, 0, 0, 0, 14]', '[0, 0, 0, 0, 2]'),
-(314, 3, 18, 'balo khỉ 4', 15000, 12, '[0, 0, 0, 0, 14]', '[0, 0, 0, 0, 2]'),
-(315, 4, 19, 'balo rocket 4', 15000, 12, '[0, 0, 0, 0, 14]', '[0, 0, 0, 0, 2]'),
-(316, 5, 28, 'cánh granos 4', 15000, 12, '[0, 0, 0, 0, 14]', '[0, 0, 0, 0, 2]'),
-(317, 6, 16, 'cánh gà 4', 15000, 12, '[0, 0, 0, 0, 14]', '[0, 0, 0, 0, 2]'),
-(318, 7, 15, 'nón tarzan 4', 15000, 12, '[14, 0, 0, 0, 0]', '[0, 0, 3, 0, 0]'),
-(319, 8, 17, 'tóc apache 4', 15000, 12, '[0, 0, 0, 0, 14]', '[0, 0, 0, 0, 2]'),
-(320, 9, 29, 'balo laser 4', 15000, 12, '[0, 0, 0, 0, 14]', '[0, 0, 0, 0, 2]'),
-(321, 0, 46, 'balo bạc', 200000, 160, '[5, 5, 5, 5, 15]', '[0, 0, 4, 4, 0]'),
-(322, 1, 40, 'balo bạc', 200000, 160, '[5, 5, 5, 5, 15]', '[0, 0, 4, 4, 0]'),
-(323, 2, 40, 'balo bạc', 200000, 160, '[5, 5, 5, 5, 15]', '[0, 0, 4, 4, 0]'),
-(324, 3, 40, 'balo bạc', 200000, 160, '[5, 5, 5, 5, 15]', '[0, 0, 4, 4, 0]'),
-(325, 4, 40, 'balo bạc', 200000, 160, '[5, 5, 5, 5, 15]', '[0, 0, 4, 4, 0]'),
-(326, 5, 39, 'cánh bạc', 200000, 160, '[5, 5, 5, 5, 15]', '[0, 0, 4, 4, 0]'),
-(327, 6, 39, 'cánh bạc', 200000, 160, '[5, 5, 5, 5, 15]', '[0, 0, 4, 4, 0]'),
-(328, 7, 41, 'dao bạc', 200000, 160, '[5, 5, 5, 5, 15]', '[0, 0, 4, 4, 0]'),
-(329, 8, 40, 'dao bạc', 200000, 160, '[5, 5, 5, 15, 5]', '[4, 4, 0, 0, 0]'),
-(330, 9, 40, 'balo bạc', 200000, 160, '[5, 5, 5, 5, 15]', '[0, 0, 4, 4, 0]'),
-(331, 0, 51, 'balo vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(332, 1, 44, 'balo vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(333, 2, 44, 'balo vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(334, 3, 44, 'balo vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(335, 4, 44, 'balo vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(336, 5, 43, 'balo vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(337, 6, 44, 'cánh vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(338, 7, 45, 'dao vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(339, 8, 44, 'cánh vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]'),
-(340, 9, 44, 'balo vàng', -1, 400, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]');
+(279, 8, 45, 'dao vàng', -1
+```
 
--- --------------------------------------------------------
+_[truncated: showing first 262,144 of 287,284 bytes]_
 
---
--- Table structure for table `shop_linhtinh`
---
-
-CREATE TABLE `shop_linhtinh` (
-  `id` tinyint(4) NOT NULL,
-  `isSelectNum` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Do Dac Biet';
-
---
--- Dumping data for table `shop_linhtinh`
---
-
-INSERT INTO `shop_linhtinh` (`id`, `isSelectNum`) VALUES
-(0, 1),
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 1),
-(6, 1),
-(10, 1),
-(11, 1),
-(12, 1),
-(13, 1),
-(14, 1),
-(15, 1),
-(16, 1),
-(20, 1),
-(21, 1),
-(22, 1),
-(23, 1),
-(24, 1),
-(25, 1),
-(26, 1),
-(30, 1),
-(31, 1),
-(32, 1),
-(33, 1),
-(34, 1),
-(35, 1),
-(36, 1),
-(40, 1),
-(41, 1),
-(42, 1),
-(43, 1),
-(44, 1),
-(45, 1),
-(46, 1),
-(50, 0),
-(54, 0),
-(57, 0),
-(58, 0),
-(59, 0),
-(60, 0),
-(61, 0),
-(62, 1),
-(63, 1),
-(64, 1),
-(65, 1),
-(66, 1),
-(67, 1),
-(68, 1),
-(69, 1),
-(70, 1),
-(71, 1),
-(72, 1),
-(73, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, 'admin', '$2y$10$33D9GKOakCeKqWmjo4xCje5r8U7vKUAPEAEVY68IHNwp/pytbGn0C'),
-(2, 'nguoiduatin', '$2y$10$7rdCaXBGThMzOaeeXngqAO2EHFyiXnalyt61XwR.9nA8aaej4RBsy'),
-(3, 'aisothivee', '$2y$10$7Sa5HglQk12fwmHE7YCux.CETwxEIy5wN833kY8WLxUXR3YWJknau'),
-(4, 'mayxucsb', '$2y$10$7Sa5HglQk12fwmHE7YCux.CETwxEIy5wN833kY8WLxUXR3YWJknau'),
-(5, 'gdvgamearmy1', '$2y$10$7Sa5HglQk12fwmHE7YCux.CETwxEIy5wN833kY8WLxUXR3YWJknau');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_`
---
-
-CREATE TABLE `user_` (
-  `user_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `xu` int(11) NOT NULL,
-  `luong` int(11) NOT NULL,
-  `cup` int(11) NOT NULL,
-  `glass` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `user_`
---
-
-INSERT INTO `user_` (`user_id`, `name`, `xu`, `luong`, `cup`, `glass`) VALUES
-(1, 'admin', 994018956, 999997950, 0, 9),
-(2, 'nguoiduatin', 1000, 1000, 0, 0),
-(3, '12345', 999990000, 1000000000, 0, 0),
-(4, '00000', 1000, 1000, 0, 0),
-(5, 'gdvgamearmy1', 211784, 99948318, 1167100, 9);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_equip`
---
-
-CREATE TABLE `user_equip` (
-  `user_id` int(11) NOT NULL,
-  `glassID` tinyint(4) NOT NULL,
-  `equipID` smallint(6) NOT NULL,
-  `level2` tinyint(4) NOT NULL,
-  `inv_ability` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`inv_ability`)),
-  `inv_percen` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`inv_percen`)),
-  `slot` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`slot`)),
-  `dbKey` int(11) NOT NULL,
-  `isUse` tinyint(1) NOT NULL,
-  `renewalDate` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `user_equip`
---
-
-INSERT INTO `user_equip` (`user_id`, `glassID`, `equipID`, `level2`, `inv_ability`, `inv_percen`, `slot`, `dbKey`, `isUse`, `renewalDate`) VALUES
-(1, 9, 15, 0, '[0, 0, 0, 57, 0]', '[5, 5, 5, 5, 5]', '[39, 39, 39]', 6, 1, 1737444114977),
-(1, 9, 41, 0, '[15, 15, 15, 72, 15]', '[8, 8, 8, 8, 8]', '[39, 39, 39]', 2, 1, 1737444095234),
-(1, 9, 42, 0, '[15, 72, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[49, 49, 49]', 3, 1, 1737444074489),
-(1, 9, 43, 0, '[15, 72, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[49, 49, 49]', 1, 1, 1737444102263),
-(1, 9, 44, 0, '[15, 72, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[49, 49, 49]', 5, 1, 1737444122775),
-(1, 9, 45, 0, '[15, 72, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[49, 49, 49]', 4, 1, 1737444127715),
-(5, 0, 22, 0, '[0, 0, 0, 0, 0]', '[5, 5, 5, 5, 5]', '[-1, -1, -1]', 9, 0, 1727395624130),
-(5, 0, 47, 0, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[-1, -1, -1]', 10, 0, 1727395626635),
-(5, 0, 48, 0, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[-1, -1, -1]', 11, 0, 1727395629689),
-(5, 0, 49, 0, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[-1, -1, -1]', 8, 0, 1727395618776),
-(5, 0, 50, 0, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[-1, -1, -1]', 12, 0, 1727395631755),
-(5, 0, 51, 0, '[15, 15, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[-1, -1, -1]', 13, 0, 1727395634372),
-(5, 6, 17, 0, '[0, 57, 0, 0, 0]', '[5, 5, 5, 5, 5]', '[-1, 49, 49]', 1, 0, 1727391686399),
-(5, 6, 33, 0, '[0, 0, 0, 0, 0]', '[5, 5, 5, 5, 5]', '[-1, -1, -1]', 7, 0, 1727395602979),
-(5, 6, 41, 0, '[15, 72, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[49, 49, 49]', 3, 1, 1727394528603),
-(5, 6, 42, 0, '[15, 72, 15, 15, 15]', '[8, 8, 8, 8, 0]', '[49, 49, 49]', 4, 1, 1727394533619),
-(5, 6, 43, 0, '[15, 72, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[49, 49, 49]', 2, 1, 1727394523371),
-(5, 6, 44, 0, '[15, 72, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[49, 49, 49]', 5, 1, 1727394538966),
-(5, 6, 45, 0, '[15, 72, 15, 15, 15]', '[8, 8, 8, 8, 8]', '[49, 49, 49]', 6, 1, 1727394712034),
-(5, 9, 41, 0, '[15, 15, 15, 72, 15]', '[8, 8, 8, 8, 8]', '[39, 39, 39]', 15, 1, 1737624821493),
-(5, 9, 42, 0, '[15, 15, 15, 72, 15]', '[8, 8, 8, 8, 8]', '[39, 39, 39]', 16, 1, 1737624823664),
-(5, 9, 43, 0, '[15, 15, 15, 72, 15]', '[8, 8, 8, 8, 8]', '[39, 39, 39]', 14, 1, 1737624827396),
-(5, 9, 44, 0, '[15, 15, 15, 72, 15]', '[8, 8, 8, 8, 8]', '[39, 39, 39]', 18, 1, 1737624825543),
-(5, 9, 45, 0, '[15, 15, 15, 72, 15]', '[8, 8, 8, 8, 8]', '[39, 39, 39]', 17, 1, 1737624829475);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_friend`
---
-
-CREATE TABLE `user_friend` (
-  `user_id` int(11) NOT NULL,
-  `friend_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_glass`
---
-
-CREATE TABLE `user_glass` (
-  `user_id` int(11) NOT NULL,
-  `glassID` tinyint(4) NOT NULL,
-  `ability` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`ability`)),
-  `equipID` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`equipID`)),
-  `data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`data`)),
-  `point` smallint(6) NOT NULL,
-  `level` tinyint(3) UNSIGNED NOT NULL,
-  `exp` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `user_glass`
---
-
-INSERT INTO `user_glass` (`user_id`, `glassID`, `ability`, `equipID`, `data`, `point`, `level`, `exp`) VALUES
-(1, 0, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 135, 45, 1000000),
-(1, 1, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 135, 45, 1000000),
-(1, 2, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 135, 45, 1000000),
-(1, 6, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 0, 1, 0),
-(1, 9, '[81, 100, 10, 210, 10]', '[43, 41, 42, 45, 44]', '[17, 15, 16, -1, 18]', 0, 127, 8127995),
-(2, 0, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 0, 1, 0),
-(2, 1, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 0, 1, 0),
-(2, 2, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 0, 1, 0),
-(3, 0, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 135, 45, 1000000),
-(3, 1, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 135, 45, 1000000),
-(3, 2, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 135, 45, 1000000),
-(4, 0, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 0, 1, 108),
-(4, 1, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 0, 1, 0),
-(4, 2, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 0, 1, 0),
-(5, 0, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 0, 1, 0),
-(5, 1, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 0, 1, 0),
-(5, 2, '[0, 0, 10, 10, 10]', '[2, 0, 1, -1, -1]', 'null', 0, 1, 0),
-(5, 3, '[0, 0, 10, 10, 10]', '[0, -1, -1, -1, 1]', 'null', 327, 110, 6005001),
-(5, 6, '[0, 333, 10, 10, 10]', '[43, 41, 42, 45, 44]', 'null', 0, 112, 6216000),
-(5, 9, '[0, 200, 10, 122, 10]', '[43, 41, 42, 45, 44]', 'null', 0, 105, 5550455);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_item`
---
-
-CREATE TABLE `user_item` (
-  `user_id` int(11) NOT NULL,
-  `item_id` tinyint(4) NOT NULL,
-  `num` tinyint(3) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `user_item`
---
-
-INSERT INTO `user_item` (`user_id`, `item_id`, `num`) VALUES
-(1, 0, 99),
-(1, 1, 99),
-(1, 2, 99),
-(1, 3, 99),
-(1, 4, 99),
-(1, 5, 99),
-(1, 6, 99),
-(1, 7, 99),
-(1, 8, 99),
-(1, 9, 99),
-(1, 10, 99),
-(1, 11, 99),
-(1, 12, 99),
-(1, 13, 99),
-(1, 14, 99),
-(1, 15, 99),
-(1, 16, 99),
-(1, 17, 99),
-(1, 18, 99),
-(1, 19, 99),
-(1, 20, 99),
-(1, 21, 99),
-(1, 22, 99),
-(1, 23, 99),
-(1, 24, 99),
-(1, 25, 99),
-(1, 26, 99),
-(1, 27, 99),
-(1, 28, 99),
-(1, 29, 99),
-(1, 30, 99),
-(1, 31, 99),
-(1, 32, 99),
-(1, 33, 99),
-(1, 34, 99),
-(1, 35, 99),
-(2, 0, 99),
-(2, 1, 99),
-(2, 2, 99),
-(2, 3, 99),
-(2, 4, 99),
-(2, 5, 99),
-(2, 6, 99),
-(2, 7, 99),
-(2, 8, 99),
-(2, 9, 99),
-(2, 10, 99),
-(2, 11, 99),
-(2, 12, 99),
-(2, 13, 99),
-(2, 14, 99),
-(2, 15, 99),
-(2, 16, 99),
-(2, 17, 99),
-(2, 18, 99),
-(2, 19, 99),
-(2, 20, 99),
-(2, 21, 99),
-(2, 22, 99),
-(2, 23, 99),
-(2, 24, 99),
-(2, 25, 99),
-(2, 26, 99),
-(2, 27, 99),
-(2, 28, 99),
-(2, 29, 99),
-(2, 30, 99),
-(2, 31, 99),
-(2, 32, 99),
-(2, 33, 99),
-(2, 34, 99),
-(2, 35, 99),
-(3, 0, 99),
-(3, 1, 99),
-(3, 2, 98),
-(3, 3, 98),
-(3, 4, 98),
-(3, 5, 98),
-(3, 6, 98),
-(3, 7, 99),
-(3, 8, 98),
-(3, 9, 99),
-(3, 10, 99),
-(3, 11, 99),
-(3, 12, 98),
-(3, 13, 98),
-(3, 14, 98),
-(3, 15, 98),
-(3, 16, 99),
-(3, 17, 99),
-(3, 18, 99),
-(3, 19, 99),
-(3, 20, 99),
-(3, 21, 99),
-(3, 22, 99),
-(3, 23, 99),
-(3, 24, 99),
-(3, 25, 99),
-(3, 26, 99),
-(3, 27, 99),
-(3, 28, 99),
-(3, 29, 99),
-(3, 30, 99),
-(3, 31, 99),
-(3, 32, 99),
-(3, 33, 99),
-(3, 34, 99),
-(3, 35, 99),
-(4, 0, 99),
-(4, 1, 99),
-(4, 2, 99),
-(4, 3, 99),
-(4, 4, 99),
-(4, 5, 99),
-(4, 6, 99),
-(4, 7, 99),
-(4, 8, 99),
-(4, 9, 99),
-(4, 10, 99),
-(4, 11, 99),
-(4, 12, 99),
-(4, 13, 99),
-(4, 14, 99),
-(4, 15, 99),
-(4, 16, 99),
-(4, 17, 99),
-(4, 18, 99),
-(4, 19, 99),
-(4, 20, 99),
-(4, 21, 99),
-(4, 22, 99),
-(4, 23, 99),
-(4, 24, 99),
-(4, 25, 99),
-(4, 26, 99),
-(4, 27, 99),
-(4, 28, 99),
-(4, 29, 99),
-(4, 30, 99),
-(4, 31, 99),
-(4, 32, 99),
-(4, 33, 99),
-(4, 34, 99),
-(4, 35, 99),
-(5, 0, 99),
-(5, 1, 99),
-(5, 2, 99),
-(5, 3, 99),
-(5, 4, 99),
-(5, 5, 99),
-(5, 6, 99),
-(5, 7, 99),
-(5, 8, 99),
-(5, 9, 99),
-(5, 10, 98),
-(5, 11, 98),
-(5, 12, 98),
-(5, 13, 98),
-(5, 14, 98),
-(5, 15, 98),
-(5, 16, 98),
-(5, 17, 98),
-(5, 18, 98),
-(5, 19, 98),
-(5, 20, 98),
-(5, 21, 98),
-(5, 22, 99),
-(5, 23, 99),
-(5, 24, 99),
-(5, 25, 99),
-(5, 26, 99),
-(5, 27, 99),
-(5, 28, 99),
-(5, 29, 99),
-(5, 30, 99),
-(5, 31, 99),
-(5, 32, 99),
-(5, 33, 99),
-(5, 34, 99),
-(5, 35, 99);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_linhtinh`
---
-
-CREATE TABLE `user_linhtinh` (
-  `user_id` int(11) NOT NULL,
-  `linhtinh_id` tinyint(4) NOT NULL,
-  `num` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `user_linhtinh`
---
-
-INSERT INTO `user_linhtinh` (`user_id`, `linhtinh_id`, `num`) VALUES
-(1, 0, 10),
-(1, 1, 50),
-(1, 39, 978),
-(1, 49, 988),
-(5, 39, 984),
-(5, 46, 2350),
-(5, 47, 25),
-(5, 48, 9719),
-(5, 49, 1000);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_mission`
---
-
-CREATE TABLE `user_mission` (
-  `user_id` int(11) NOT NULL,
-  `mission_id` tinyint(4) NOT NULL,
-  `level` tinyint(4) NOT NULL,
-  `have` int(11) NOT NULL,
-  `isComplete` tinyint(1) NOT NULL,
-  `isGetReward` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `user_mission`
---
-
-INSERT INTO `user_mission` (`user_id`, `mission_id`, `level`, `have`, `isComplete`, `isGetReward`) VALUES
-(1, 0, 1, 0, 0, 0),
-(1, 1, 1, 0, 0, 0),
-(1, 2, 1, 0, 0, 0),
-(1, 3, 1, 0, 0, 0),
-(1, 4, 1, 0, 0, 0),
-(1, 5, 1, 0, 0, 0),
-(1, 6, 1, 0, 0, 0),
-(1, 7, 1, 0, 0, 0),
-(1, 8, 1, 0, 0, 0),
-(1, 9, 1, 118, 1, 0),
-(1, 10, 1, 14, 1, 0),
-(1, 11, 1, 20, 1, 1),
-(1, 12, 1, 0, 0, 0),
-(1, 13, 1, 0, 0, 0),
-(1, 14, 1, 0, 0, 0),
-(1, 15, 1, 0, 0, 0),
-(1, 16, 1, 0, 0, 0),
-(1, 17, 1, 0, 0, 0),
-(2, 0, 1, 0, 0, 0),
-(2, 1, 1, 0, 0, 0),
-(2, 2, 1, 0, 0, 0),
-(2, 3, 1, 0, 0, 0),
-(2, 4, 1, 0, 0, 0),
-(2, 5, 1, 0, 0, 0),
-(2, 6, 1, 0, 0, 0),
-(2, 7, 1, 0, 0, 0),
-(2, 8, 1, 0, 0, 0),
-(2, 9, 1, 118, 1, 0),
-(2, 10, 1, 14, 1, 0),
-(2, 11, 1, 20, 1, 1),
-(2, 12, 1, 0, 0, 0),
-(2, 13, 1, 0, 0, 0),
-(2, 14, 1, 0, 0, 0),
-(2, 15, 1, 0, 0, 0),
-(2, 16, 1, 0, 0, 0),
-(2, 17, 1, 0, 0, 0),
-(3, 7, 1, 0, 0, 0),
-(3, 8, 1, 0, 0, 0),
-(3, 9, 1, 118, 1, 0),
-(3, 10, 1, 14, 1, 0),
-(3, 11, 1, 20, 1, 1),
-(3, 12, 1, 0, 0, 0),
-(3, 13, 1, 0, 0, 0),
-(3, 14, 1, 0, 0, 0),
-(3, 15, 1, 0, 0, 0),
-(3, 16, 1, 0, 0, 0),
-(3, 17, 1, 0, 0, 0),
-(4, 0, 1, 0, 0, 0),
-(4, 1, 1, 0, 0, 0),
-(4, 2, 1, 0, 0, 0),
-(4, 3, 1, 0, 0, 0),
-(4, 4, 1, 0, 0, 0),
-(4, 5, 1, 0, 0, 0),
-(4, 6, 1, 0, 0, 0),
-(4, 7, 1, 0, 0, 0),
-(4, 8, 1, 0, 0, 0),
-(4, 9, 1, 118, 1, 0),
-(4, 10, 1, 14, 1, 0),
-(4, 11, 1, 20, 1, 1),
-(4, 12, 1, 0, 0, 0),
-(4, 13, 1, 0, 0, 0),
-(4, 14, 1, 0, 0, 0),
-(4, 15, 1, 0, 0, 0),
-(4, 16, 1, 0, 0, 0),
-(4, 17, 1, 0, 0, 0),
-(5, 0, 1, 0, 0, 0),
-(5, 1, 1, 0, 0, 0),
-(5, 2, 1, 0, 0, 0),
-(5, 3, 1, 0, 0, 0),
-(5, 4, 1, 0, 0, 0),
-(5, 5, 1, 0, 0, 0),
-(5, 6, 1, 0, 0, 0),
-(5, 7, 1, 0, 0, 0),
-(5, 8, 1, 0, 0, 0),
-(5, 9, 1, 118, 1, 0),
-(5, 10, 1, 14, 1, 0),
-(5, 11, 3, 20, 1, 1),
-(5, 12, 1, 0, 0, 0),
-(5, 13, 1, 0, 0, 0),
-(5, 14, 1, 0, 0, 0),
-(5, 15, 1, 0, 0, 0),
-(5, 16, 1, 0, 0, 0),
-(5, 17, 1, 0, 0, 0);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `caption`
---
-ALTER TABLE `caption`
-  ADD PRIMARY KEY (`level`);
-
---
--- Indexes for table `equip`
---
-ALTER TABLE `equip`
-  ADD PRIMARY KEY (`id`,`glassID`) USING BTREE,
-  ADD KEY `glass_id` (`glassID`);
-
---
--- Indexes for table `exp`
---
-ALTER TABLE `exp`
-  ADD PRIMARY KEY (`level`);
-
---
--- Indexes for table `glass`
---
-ALTER TABLE `glass`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `linhtinh`
---
-ALTER TABLE `linhtinh`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `map`
---
-ALTER TABLE `map`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `map_boss`
---
-ALTER TABLE `map_boss`
-  ADD PRIMARY KEY (`mapID`,`glassID`);
-
---
--- Indexes for table `mission`
---
-ALTER TABLE `mission`
-  ADD PRIMARY KEY (`id`,`level`);
-
---
--- Indexes for table `room`
---
-ALTER TABLE `room`
-  ADD PRIMARY KEY (`type`);
-
---
--- Indexes for table `room_info`
---
-ALTER TABLE `room_info`
-  ADD PRIMARY KEY (`id`,`type`) USING BTREE,
-  ADD KEY `roomId` (`type`);
-
---
--- Indexes for table `shop_equipment`
---
-ALTER TABLE `shop_equipment`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `glassID` (`glassID`),
-  ADD KEY `equipId` (`equipId`);
-
---
--- Indexes for table `shop_linhtinh`
---
-ALTER TABLE `shop_linhtinh`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_`
---
-ALTER TABLE `user_`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `glass` (`glass`);
-
---
--- Indexes for table `user_equip`
---
-ALTER TABLE `user_equip`
-  ADD PRIMARY KEY (`user_id`,`glassID`,`equipID`,`dbKey`),
-  ADD KEY `glassID` (`glassID`),
-  ADD KEY `equipID` (`equipID`);
-
---
--- Indexes for table `user_friend`
---
-ALTER TABLE `user_friend`
-  ADD PRIMARY KEY (`user_id`,`friend_id`),
-  ADD KEY `user_friend_id` (`friend_id`);
-
---
--- Indexes for table `user_glass`
---
-ALTER TABLE `user_glass`
-  ADD PRIMARY KEY (`user_id`,`glassID`),
-  ADD KEY `chars_ibfk_3` (`glassID`);
-
---
--- Indexes for table `user_item`
---
-ALTER TABLE `user_item`
-  ADD PRIMARY KEY (`user_id`,`item_id`),
-  ADD KEY `item_id` (`item_id`);
-
---
--- Indexes for table `user_linhtinh`
---
-ALTER TABLE `user_linhtinh`
-  ADD PRIMARY KEY (`user_id`,`linhtinh_id`),
-  ADD KEY `id` (`linhtinh_id`);
-
---
--- Indexes for table `user_mission`
---
-ALTER TABLE `user_mission`
-  ADD PRIMARY KEY (`user_id`,`mission_id`,`level`),
-  ADD KEY `mission_id` (`mission_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `map`
---
-ALTER TABLE `map`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
---
--- AUTO_INCREMENT for table `room_info`
---
-ALTER TABLE `room_info`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `shop_equipment`
---
-ALTER TABLE `shop_equipment`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=341;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `equip`
---
-ALTER TABLE `equip`
-  ADD CONSTRAINT `equip_ibfk_1` FOREIGN KEY (`glassID`) REFERENCES `glass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `map_boss`
---
-ALTER TABLE `map_boss`
-  ADD CONSTRAINT `map_boss_ibfk_1` FOREIGN KEY (`mapID`) REFERENCES `map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `room_info`
---
-ALTER TABLE `room_info`
-  ADD CONSTRAINT `room_info_ibfk_1` FOREIGN KEY (`type`) REFERENCES `room` (`type`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `shop_equipment`
---
-ALTER TABLE `shop_equipment`
-  ADD CONSTRAINT `shop_equipment_ibfk_3` FOREIGN KEY (`glassID`) REFERENCES `glass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `shop_equipment_ibfk_4` FOREIGN KEY (`equipId`) REFERENCES `equip` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `shop_linhtinh`
---
-ALTER TABLE `shop_linhtinh`
-  ADD CONSTRAINT `shop_linhtinh_ibfk_1` FOREIGN KEY (`id`) REFERENCES `linhtinh` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_`
---
-ALTER TABLE `user_`
-  ADD CONSTRAINT `user__ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user__ibfk_2` FOREIGN KEY (`glass`) REFERENCES `glass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_equip`
---
-ALTER TABLE `user_equip`
-  ADD CONSTRAINT `user_equip_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_equip_ibfk_2` FOREIGN KEY (`glassID`) REFERENCES `glass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_equip_ibfk_3` FOREIGN KEY (`equipID`) REFERENCES `equip` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_friend`
---
-ALTER TABLE `user_friend`
-  ADD CONSTRAINT `user_friend_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_friend_ibfk_2` FOREIGN KEY (`friend_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_glass`
---
-ALTER TABLE `user_glass`
-  ADD CONSTRAINT `user_glass_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_glass_ibfk_3` FOREIGN KEY (`glassID`) REFERENCES `glass` (`id`);
-
---
--- Constraints for table `user_item`
---
-ALTER TABLE `user_item`
-  ADD CONSTRAINT `user_item_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_item_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_linhtinh`
---
-ALTER TABLE `user_linhtinh`
-  ADD CONSTRAINT `user_linhtinh_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_linhtinh_ibfk_2` FOREIGN KEY (`linhtinh_id`) REFERENCES `linhtinh` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_mission`
---
-ALTER TABLE `user_mission`
-  ADD CONSTRAINT `user_mission_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_mission_ibfk_2` FOREIGN KEY (`mission_id`) REFERENCES `mission` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-================================================================================
-// File: build.xml
-================================================================================
+## build.xml
+```xml:build.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- You may freely edit this file. See commented blocks below for -->
 <!-- some examples of how to customize the build. -->
@@ -2579,1157 +1723,19 @@ COMMIT;
     -->
 </project>
 
-================================================================================
-// File: cache/equipdata2
-================================================================================
-        *��  L��   ��   ��   *��   *��              ��  ?��   =�� ( ��  ��  ��          	 S
-    �� + ?��  *�� 5 ��    ��    ��           � p ?�� p 4�� q !�� ~ 	�� p ?�� p ?��          � � .�� � �� �  �� �  �� � .�� � .��             � �� � <�� �  �� �  �� � �� � ��               p Y�� - U�� � Z�� � 8�� p Y�� p Y��           #    � T�� K e��   f�� � P�� � T�� � T��           &    P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��           )      {�� ( �
-��  |�� � q
-��   {��   {��           , �
- ; ��� � �
-�� ( ��� � }
-�� ; ��� ; ���    12 s ��� � �
-��   ��� � �
-�� s ��� s ���     5 3�� 5 3�� D ��   �� 5 3�� 5 3��             5 (�� 5 (�� D  �� 7  �� 5 (�� 5 (��           P
- Q  �� Q  �� V =�� *  �� Q  �� Q  ��          � n  �� n  �� `  �� p �� n  �� n  ��          � � !�� � !�� � E�� � E�� � !�� � !��         * �
- x ��� x ���  ���  ��� x ��� x ���    /2 � ��� � ��� � ��� � ��� � ��� � ���  �  b M�� b M�� � .�� � .�� b M�� b M��       �   W��  W��  U��   W��  W��  W��      ! �  " c�� " c��  e��  e�� " c�� " c��      $ �  � h�� I p�� { l�� { l�� � h�� � h��        P 0
-	�� P &
-�� W J�� C �� E A�� [ 
+```
 
-��             K 9�� P 
-�� * '�� Q �� [ )
-��  	��           T
- 5 M�� F L
-�� * 3�� C )�� Z 3
-�� * M��          � e �� f *
-�� e �� c >�� e 4
-�� e ��          � � '�� � /
-�� � !�� � �� � E
-�� � 9��             � H
-	�� � O
-�� � H�� � A�� � P
-
-�� � #
-	��               � T
-	�� E V
-�� c ]�� P V�� � Y
-
-�� � ]
-	��           "    c u
-	�� p l
-�� c i�� 3 `�� � g
-
-�� A `
-	��           %    c ~
-�� c ~
-�� c ~
-�� c ~
-�� A i
-�� c ~
-��           (    c �
-	�� " r
-�� m v�� - r�� ? 
-
-�� m �
-	��           + �
- h ��� � �
-�� ] ��� P ��� � �
-�� � ���    0$2 � ��� h �
-�� P ��� [ ��� h �
-�� E ���    � c�� � c�� � f�� � f�� � c�� � c��           Q
-   Q��   Q��  Q��  Q��   Q��   Q��           � ^ �� ^ �� p �� p �� ^ �� ^ ��          � � -�� � -�� � 8�� � 8�� � -�� � -��         - �
- h ��� h ��� � ��� � ��� h ��� h ���    2 l2 � }�� � }�� P ��� P ��� � }�� � }��   E 8	�� E 8	�� @ M�� @ M�� E 8	�� E 8	��          
- R
- P A	�� P A	�� Q J�� Q J�� P A	�� P A	��           � |  	�� |  	�� ^ �� ^ �� |  	�� |  	��          � �  	�� �  	�� � 1�� � 1�� �  	�� �  	��         .
- � �	�� � �	�� � ��� � ��� � �	�� � �	��    32 � �	�� � �	�� � ��� � ��� � �	�� � �	��"     s �� F 
-�� 4  �� F  
-�� s �� s ��               >�� \ �� r  �� e  ��   >��   >��           [
-   )�� m (�� P  �� 6 %��   )��   )��           � �  �� m B�� �  �� � ,�� �  �� �  ��          �   P�� � �� �  ��  L��   P��   P��             � T�� � Q�� � T�� p S�� � T�� � T��               & p��   m�� : o�� � b�� & p�� & p��                 ��� S ~��   |�� � b��  ���  ���           #    P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��           & �
- � ��� 4 ��� g ��� W ��� � ��� � ���    +2 � ��� � ��� � ��� � ��� � ��� � ���    [ $�� [ $�� 6 ��   �� [ $�� [ $��              ��  �� " +�� " +��  ��  ��           Z
- ! �� ! �� !  ��   �� ! �� ! ��         	 � � ,�� � ,�� � �� � �� � ,�� � ,��          � � <�� � <�� � &�� � &�� � <�� � <��         $ �
-   ���   ���  ���  ���   ���   ���    )2 � ��� � ��� � ��� � ��� � ��� � ���  �  O ]�� O ]�� = \�� _ S�� O ]�� O ]��       �  [ o�� [ o�� � j�� M o�� [ o�� [ o��       �  B ��� B ��� 3 ��� 3 ��� B ��� B ���      ! �  � |�� � |�� y y�� y y�� � |�� � |��         6	�� G  
-	�� G ;��  ?�� S =
-�� G 2
-	��             x 9	�� Q )
-
-�� Q )
-
-��  +�� Q  
-	�� m 9	��           ^
- ^ =	�� G )
-	�� : ?�� . ?�� W 4	�� b 4	��         
- � � @	�� X G
-	�� a F�� G F�� < J	�� � @	��          � � I	�� 2 L
-	�� & Y�� & L�� 2 U	�� = S	��             _ c	��  d
-	�� � I�� S P��   d	�� H S	��               u m	�� + g
-	�� � i��  m��   d	�� j l	��               � 		�� � 
-	�� � ��  |�� �  	��  �	��           "    m ~
-�� m ~
-�� m ~
-�� m ~
-�� m �
-�� m ~
-��           % �
- L �	�� � �		�� � ��� � ��� � �	�� L �	��    *2 � �	�� � �		�� � <�� � /�� � &	�� � G	��   � O�� � O�� � p�� � p�� � O�� � O��           ]
- � u�� � u�� r v�� r v�� � u�� � u��           � � u�� � u�� 5 g�� 5 g�� � u�� � u��          ] j u�� j u�� j y�� j y�� j u�� j u��         ' L
- � ��� � ��� � ��� � ��� � ��� � ���    - l2 � ��� � ��� � ��� � ��� � ��� � ���   k c�� k c�� � @�� � @�� k c�� � @��           \
- � i�� � i�� � i�� � i�� � i�� � i��           � � t�� � t�� � o�� � o�� � t�� � t��          � � j�� � j�� Q 3�� Q 3�� � j�� � j��         (
- { �
-�� { �
-�� { ��� { ��� { �
-�� { �
-��    ,+2 � P
-�� � P
-�� � Z�� � Z�� � P
-�� � P
-��,     (  ��   �� <  �� V  �� (  �� (  ��               ��  ��    �� N  ��   ��   ��          	 j
-   )��   =
-�� & +�� : +
-��   )��   )��           � s  �� Y  �� �  �� ~ �� s  �� s  ��          � � �� � )�� �  �� � )�� � �� � ��             D C��  G�� � &�� �  �� D C�� D C��               Z P�� � P
-�� z K�� ' S
-�� Z P�� Z P��                C g�� d p
-�� � F�� � D
-�� C g�� C g��           #    P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��           & �
- � v��  ��� � v�� � v�� � v�� � v��    + 2 � ��� _ ��� � ��� � ��� � ��� � ���    < �� < ��  ��  �� < �� < ��             A �� A ��  ��  �� A �� A ��           i
-  )��  )��  7��  7��  )��  )��          � r 4�� r 4�� d ,�� d ,�� r 4�� r 4��          � � �� � �� �  �� �  �� � �� � ��         $ �
- N ��� N ��� � ��� � ��� N ��� N ���    )2 N ��� N ��� & ��� & ��� N ��� N ���  �  � �� � �� 1 B�� 1 B�� � �� � ��       �  1 P�� 1 P�� J T�� l R�� 1 P�� 1 P��       �   h��  h�� U b�� U b��  h��  h��      ! �  � ]�� � [�� � [�� � [�� � ]�� � ]��        O "
-	�� ] 
-�� h  �� 4 �� ]  �� O "
-	��            m d �� Y �� h �� ' �� � 
-�� 0 ��           m
- O ;�� t 
-�� e :�� W ,�� � )
-�� D 9��          �  �� � 
-�� � 4�� � 3�� Z :
-��  ��          � � 6�� p ?
-�� � �� � 6�� { @
-�� � 6��          �  � ;
-	�� Y D
-�� � D��   G�� d F
-
-�� n I
-	��               & J
-	��  T
-��   V��  T�� @ T
-
-�� � F
-	��               0 j
-	��  ^
-��   b�� d a�� : g
-
-�� � T
-	��           "    r a
-�� r a
-�� r a
-�� r a
-�� r f
-�� r a
-��           % �
-  ��� . �
-�� � ��� � ��� _ �
-�� � ���    *$2 v ���  �
-�� x ��� A ��� � �
-�� v ���  
- 9 ^�� 9 ^�� N b�� N b�� 9 ^�� 9 ^��           l
- 1 ^�� 1 ^�� 1 b�� 1 b�� 1 ^�� 1 ^��           � A ^�� A ^�� 8 b�� 8 b�� A ^�� A ^��          ] F b�� F b�� ? b�� ? b�� F b�� F b��         ' �
- � ��� � ��� � ��� � ��� � ��� � ���    - ]2  ���  ��� ; ��� ; ���  ���  ���  	 � #	�� � #	�� � ,�� n �� � #	�� � #	��          
- k
- Q +�� Q +�� � �� � �� Q +�� Q +��           � Q 3�� Q 3�� � �� � �� Q 3�� Q 3��          � � A
-�� � A
-�� � A�� � A�� � A
-�� � A
-��         (
- � O
-�� � O
-�� � ��� � ��� � O
-�� � O
-��    ,+2  �
-��  �
-��  ���  ���  �
-��  �
-���      ( �� ( �� # 	�� ( 	�� ( �� ( ��              / �� / �� , 	�� 1 	�� / �� / ��          	 W
- K �� K �� F 	�� H ,	�� K �� K ��           �  +��  +��  3��  3��  +��  +��          � X :�� X :�� X :�� 3 5�� P 0
-	   P 0
-	               � �� � �� � �� � �� P 0
-	   P 0
-	                 �  �� �  �� �  �� � �� P 0
-	   P 0
-	             !    � N�� � �� � N�� � �� P 0
-	�� P 0
-	��           #    P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��           & �
- a \��  k��  k��  k�� P 0
-	�� P 0
-	��    +2 % ��� - ��� - ��� - ��� P 0
-	�� P 0
-	��                                                                   ��   ��    �� 9 ��   ��   ��           U
- ! -�� ! -��   ,�� H �� ! -�� ! -��          � Y  �� Y  �� W �� W +�� Y  �� Y  ��          � � �� � �� � "�� � 1�� � �� � ��         $ �
- � k�� � k��   v��  k�� � k�� � k��    )2 � ��� � ��� ! |�� O w�� � ��� � ���  �  �  �� �  �� �  �� � �� �  �� �  ��       �  � �� � �� � *�� � )�� � �� � ��       �  � C�� � C�� � H�� � :�� � C�� � C��      " �   M�� G N�� ) N��  M��  M��  M��     
-                                                                   ��   ��  ��  ��   ��   ��           X
- K �� K �� R �� R �� K �� K ��          � 2 '�� 2 '�� ` �� Y �� 2 '�� 2 '��          � ` :
-�� ` :
-�� ` :
-�� ` :
-�� ` :
-�� ` :
-��             � �� � �� � �� � �� � �� � ��               � 5��   >�� $ =�� �  �� 6 @��  >��                ~ B�� j B�� � =��   M�� � /�� � N��           % �
- � u�� V i�� � |�� I i�� ) i�� 9 i��    *$2 = v�� p z�� � ���  ���  |�� ` {��   F A
-�� F A
-�� F A
-�� F A
-�� F A
-�� F A
-��           Y
- j 6
-�� j 6
-�� j 6
-�� j 6
-�� j 6
-�� j 6
-��           � ^ B�� ^ B�� ^ B�� ^ B�� ^ B�� ^ B��          � R B�� R B�� R B�� R B�� R B�� R B��         ' �
- � r�� � r�� � r�� � r�� � r�� � r��    -2  ���  ���  ���  ���  ���  ���  !  	�  �    � A  � 8  	 �   �          
- V
- Q  � ; 5� A )� : )� H  	� Q  �           � i � h  �  ,	� C 5	� j $ � L ,�          � �  � u  � t  	� x 6	� }   � v $�         ( �
- � |� � h � | m	� | m	�   d� � | �    ,2 � ��   �� � ~� 5 �	� � � � � � �A    $  �� 0 2��   ��  !��  ��  ��            ) 2 �� / $��   !�� G �� 2 �� 2 ��           O
- n �� G 6�� m  �� _ -�� n �� n ��           � �  �� p ?�� � �� � .�� �  �� �  ��          � �  �� � 8
-�� � �� �  
-�� �  �� �  ��             �  �� � .�� � �� � =�� �  �� �  ��                X�� � [�� � Z�� > V��  X��  X��                  n�� $ q�� = n��  n��   n��   n��           #    P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��           & �
- � ��� � �
-�� � ��� � �
-�� � ��� � ���    + 2   ��� Y �
-��   ��� ? �
-��   ���   ���   "   ��   �� E  �� ,  ��   ��   ��            %    ��    ��   �� 9  ��    ��    ��           K
-   6��   6�� 7 9�� ` ��   6��   6��          � � F�� � F�� F I�� b E�� � F�� � F��          � � (�� � (��   D��   D�� � (�� � (��         $ �
-  ���  ��� p ��� p ���  ���  ���    )"2 F ��� F ��� 4 ��� 4 ��� F ��� F ���  �  � K�� � K�� � =�� � =�� � K�� � K��       �  � [�� � [�� - c�� � [�� � [�� � [��       �  l {�� l {�� S i�� S i�� l {�� l {��      ! �  } v�� � p�� � j�� � j�� } v�� } v��       #  !
-	�� U #
-�� U �� $ �� U ��  !
-	��            &  *
-�� % 1	�� S  �� G '�� p +
-
-��  *
-��           M
- U -
-	��  ;
-�� ^  �� ` �� p 5
-
-��  2
-	��          � * G
-	��  E
-��  <�� T G�� z 5
-
-�� * G
-	��          � v O
-	�� � .
-�� � B��  H�� � B
-
-��  O
-	��             4 R
-	�� � Q
-�� � N�� � L�� � Q
-
-�� l T
-	��               v X
-	�� M V
-�� X V��  \�� ) Y
-
-�� N `
-	��               v a
-	�� k b
-�� � j�� b l�� b b
-
-�� � i
-	��           "    w p
-�� w p
-�� w p
-�� w p
-�� w j
-�� w p
-��           % �
- � ��� d �
-�� � ��� � ��� � �
-�� � ���    *$2 I ��� 4 �
-�� I ���  ���   �
-��  ���  ] e ]�� e ]�� n ]�� n ]�� e ]�� e ]��          
- L
-  8��  8�� 1 9�� 1 9��  8��  8��           ] z 2�� z 2�� > I�� > I�� z 2�� z 2��          � > N�� > N�� p O�� p O�� > N�� > N��         ' �
- � r�� � r�� v u�� v u�� � r�� � r��    - ]2 6 [�� 6 [�� \ ��� \ ��� 6 [�� 6 [��  ' e T�� e T�� X b�� X b�� e T�� e T��          	 N
- 1 >	�� 1 >	�� + A�� + A�� 1 >	�� 1 >	��           � z +�� z +�� � .�� � .�� z +�� z +��          � � !�� � !�� � 
-�� � 
-�� � !�� � !��         ( �
- � ��� � ��� c {
-�� c {
-�� � ��� � ���    ,!2  ���  ���  �
-��  �
-��  ���  ���6    ,  <�� I ;�� = .��   .��  <��  <��            1 o 7�� 0 ?�� h �� g .�� o 7�� o 7��           �
- V .�� t /��  .��  .�� V .�� V .��           � � ,��  H�� � 8�� � .�� � ,�� � ,��          � � I��   P�� 0 G�� < H�� � I�� � I��             � O�� � X	�� ! W�� � I	�� � O�� � O��                g�� � [	�� � V��   X	��  g��  g��                u�� � y	�� � r�� � a	��  u��  u��           "    P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��           %
- ? ��� d ��� Q ��� � ��� ? ��� ? ���    *'2 n ��� � ��� � ���  ��� n ��� n ���   * #  �� #  �� W �� I .�� #  �� #  ��            -   ��   ��   �� ~ ��   ��   ��           d
-  .��  .��  ��  ��  .��  .��         
- � � �� � �� � �� � .�� � �� � ��          � g C�� g C�� � >�� �  �� g C�� g C��         #
- - ��� - ��� ] ��� ] ��� - ��� - ���    (&2 L ��� L ��� � ��� � ��� L ��� L ���  �  . X�� . X�� < Z��  W�� . X�� . X��       �  � U�� � U�� d f�� � c�� � U�� � U��       �   u��  u�� � d�� � d��  u��  u��        �    ��� � ���  ���  ���   ���   ���       + }  �� G �� 6 �� W  �� u �� 0 .��            . H  ��   �� m �� 5  �� j  �� H  ��           g
- &  �� C �� 2 ��   ��    �� S ��          � �  �� � �� � ��   @�� �  �� � 8��          � X C�� H C�� � /�� � �� �  �� � G��             � O�� � X	�� ! W�� � I	�� � O�� � O��                g�� � [	�� � V��   X	��  g��  g��                u�� � y	�� � r�� � a	��  u��  u��           "    P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��           $
- � ��� � ��� � ��� � ��� n ��� � ���    )(2 . ��� ^ ��� ; ���  ��� � ��� � ���  / I R	�� I R	�� y P�� D R�� I R	�� I R	��          	 e
-  =	��  =	�� [ :�� o .��  =	��  =	��           �  C	��  C	�� � @�� � ;	��  C	��  C	��          � y G	�� y G	��  P��  L	�� y G	�� y G	��         & �
- � �	�� � �	�� � �	�� � �	�� � �	�� � �	��    , �2  �	��  �	�� � �	�� � �	��  �	��  �	��  0 { k�� { k�� { k� { k � { k�� { k��           h
- � k�� � k�� � k � � k � � k�� � k��           � � k�� � k�� � k� � k� � k�� � k��          � t k�� t k�� t k � t k� t k�� t k��         '
- � ��� � ��� � � � � �� � ��� � ���    +)2 & ��� & ��� & �� & �� & ��� & ����    D r  �� 8 	��   �� �  	�� r  �� r  ��            I ,  ��   	��    �� �  	�� ,  �� ,  ��           a
- D  ��  
-�� \  �� �  
-�� D  �� D  ��           � F 9�� x 5��   ;�� ' 8�� F 9�� F 9��          � � �� � .�� �  �� �  �� � �� � ��             � ��  P�� �  �� � .�� � �� � ��               H ^��   c��  c�� 5 ^�� H ^�� H ^��                � O�� � O�� � b�� � c�� � O�� � O��           #    P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��           & �
- � ��� b ��� 8 ��� � ��� � ��� � ���    +2 i ��� � ��� � ���  ��� i ��� i ���   B o �� o ��   !��   !�� o �� o ��            E  "��  "��  "�� D ��  "��  "��           _
- ^ '�� ^ '�� _ �� _ �� ^ '�� ^ '��         	 �  4��  4�� � 3�� � 3��  4��  4��          � � <�� � <�� � <�� � <�� � <�� � <��         $ �
- M ��� M ��� � ��� � ��� M ��� M ���    )2  ���  ��� � ��� � ���  ���  ���  �  E O�� E O��   T��   T�� E O�� E O��       �  ` i�� ` i�� � X�� o ]�� ` i�� ` i��       �    v��   v�� � c�� � c��   v��   v��      ! �  l x�� R {�� � z�� � z�� l x�� l x��       C Q 0	��   1	�� � '�� � &�� T $
-�� � 
-	��            F ~ "	�� , "
-�� T �� � �� � +
-�� : )
-	��           `
- x ,	�� 8 
-�� , ,�� ~ �� m (
-�� F 0	��         
- � j A	�� j 7
-�� _ 7�� 7 2�� 7 =
-�� _ C	��          � � 2	�� � E
-�� � B�� � �� u E
-�� � E	��             u O
-	�� j J
-�� S O�� 7 N�� ` L
-
-�� � O
-	��                F
-	�� H r
-�� ` ]�� } a�� S r
-
-�� } X
-	��               � v
-	�� , }
-��  {��  v�� � p
-
-�� � z
-	��           "    7 �
-�� 7 �
-�� 7 �
-�� 7 �
-�� 7 }
-�� 7 �
-��           % �
- o ��� - �
-�� � ���  ��� � �
-�� � ���    *2 ^ ���  �
-�� % ���   ��� - �
-�� ? ���   H � N   � N   � N   � N   � N   � N             c
- � N   � N   � N   � N   � N   � N             � � N   � N   � N   � N   � N   � N            � � N   � N   � N   � N   � N   � N           (
- P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��    -12 P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��  G o l� o l� v p� v p � o l� o l�           b
- � p
- � � p
-� � f
- � � f
-�� � p
-� � p
-�           �  4	 �  4	�  F	 �  F	��  4	 �  4	 �          � � %� � %� 7 G� 7 G� � %� � %�         ' �
- � � � � �� � ��� � ��� � � � � � �    ,2 � �� � �� o �� o � � � �� � ��T    9 2 1�� | ,�� � ��   -�� 2 1�� 2 1��            6 u �� � +
-��   �� b 
-�� u �� u ��          	 v
- @ �� z  �� P �� b �� @ �� @ ��           �   5��  8��  ;�� n =��   5��   5��          � � 6�� � 4�� � 7�� � *�� � 6�� � 6��             k K�� � G
-�� ] K�� � G
-�� k K�� k K��                 U�� U ]
-�� _ Z�� m [
-��   U��   U��           !    � b�� � ]
-�� � c��   e
-�� � b�� � b��           $    P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��           ' 
- � ~�� � ~�� � ��� � ��� � ~�� � ~��    ,#2 : ��� � ��� o ��� L ��� : ��� : ���   7    ��    �� #  �� G  ��    ��    ��            2 4  �� 4  ��  �� j  �� 4  �� 4  ��           s
- W  �� W  ��   ��   �� W  �� W  ��          � � �� � �� �  �� � +�� � �� � ��          � � �� � �� �  �� � #�� � �� � ��         % �
- � {�� � {�� � ��� � ��� � {�� � {��    *"2  ���  ��� # ��� # ���  ���  ���  �  = C�� = C�� K F�� K F�� = C�� = C��       �  F ]�� F ]��  U�� 8 [�� F ]�� F ]��       �   e��  e��   c��   c��  e��  e��      " �  N l�� i n�� 0 k�� 0 k�� N l�� N l��       8 W !	��  .
-�� ! !�� �  �� L 4	�� z "
-
-��            4 W *	�� � 
-�� = #�� K #�� W 3	�� n )
-
-��           w
- K =	�� n 3
-�� / !�� b )�� ' 1	��  1
-
-��          � V =	�� - =
-�� = 3�� b :�� � <	�� � ?
-
-��          � � ?	��  K
-��   E�� � %��  K	�� - G
-
-��             = R	�� � I
-�� � I�� z J�� H S	�� S S
-
-��               2 Q	��  [
-�� | [�� � Y�� - [	�� ( Q
-
-��                q e	��  v
-�� � ^��   v�� � j	��   o
-
-��           #    � k
-�� � k
-�� � k
-�� � k
-�� & |
-�� � k
-��           & �
- g �
-	��  y
-	�� [ ��� O ��� q �	�� � �
-
-��    +$2 � �
-	�� � �
-	�� c ��� � ��� � �	�� � �
-
-��  5 � ^   � N   � N   � N   � N   � N             u
- � ^   � N   � N   � N   � N   � N            
- �    ��    �� ! �� 2 ��    ��    ��          � � ^   � N   � N   � N   � N   � N           ( ~
- � ��� � ��� 2 d�� 2 d�� � ��� � ���    . l2 [ ��� [ ��� v ��� v ��� [ ��� [ ���  3 � V
-� � V
-� � S
-� � S
- � � V
-� � V
-�           t
- � Q� � Q� � R
-
-� � R
-
-� � Q� � Q�           � � ^   � N   � N   � N   � N   � N            � � �� � �� �  �� �  �� � �� � ��         )
- P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��    -%2 P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	���    A > �� M ��  ��  �� > �� > ��            >  #
-�� 4 
-�� R  	�� R 
-�� 4 
-�� 4 
-��           p
- I 1�� = 5�� = 5�� [ '�� = 5�� = 5��            � { �� { "�� { "�� { .�� { "�� { "��          � ( <
-
-�� � #	�� � /
-
-�� � .	�� � /
-
-�� � /
-
-��             � 9�� � 7�� � 7�� � :�� � 9�� � 9��               m G�� � C�� � C��  J�� m G�� m G��                � O�� A T�� A T�� � G�� P 0
-	�� P 0
-	��           #    P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��           &2
- � u
-
-�� � u	�� � m
-
-�� � w	�� P 0
-	�� P 0
-	��    +22 @ �
-
-�� [ �	�� } �
-
-�� M �	�� P 0
-	�� P 0
-	��  ? (  �� (  ��   ��   �� (  �� (  ��            :    ��    �� D  �� 6  ��    ��    ��           n
-   *��   *��  *�� ( (��   *��   *��         
- � g �� g �� y  �� d 	�� g �� g ��          � �  �� �  �� � �� �  �� �  �� �  ��         $	
- � f�� � f�� " i�� 6 n�� � f�� � f��    )-2  ���  ���   z�� ) ���  ���  ���  �  � (�� � (�� � �� �  �� � (�� � (��       �  B F�� B F�� ' F�� Q H�� B F�� B F��       �  � G�� � G�� � G�� � G�� � G�� � G��      ! �  M Y�� v Z�� � Z�� � Z�� M Y�� M Y��        @ * 
-	�� 6 	��  �� * ��   
-�� F 	��            <  !
-	�� A 	��   ��  ��  
-�� L 	��           o
- Z 
-	�� Y 		�� U 3�� = '�� I '
-�� T $	��          � f  
-	�� [  	�� ` 4�� k 4�� [ 
-�� p  	��          � 2 <
-	�� I =	�� � �� � �� � %
-�� � 5	��          �  	 A
-	�� T ?	�� w ;�� � 9�� � >
-�� _ @	��                A
-	��   L	�� 7 E�� _ K��  J
-�� f B	��               � (
-	�� � 1	�� k R�� � M�� � :
-�� � D	��           "    � Z
-�� � Z
-�� � Z
-�� � Z
-�� � T
-�� � Z
-��           %
-
- � u
-	�� k n	��  j��  l�� M w
-�� ` w	��    *$2 � �
-	�� u w	�� � ��� i w�� � �	�� � 
-��  = � ^   � N   � N   � N   � N   � N             q
- � ^ � N � N � N � N � N           r T 	�� T 	�� S 	�� S 	�� T 	�� S 	��          r T 	�� T 	�� S 	�� P 0
-	   T 	�� T 	��         '
- � 	�� � 	�� X w	�� X w	�� X w	�� X w	��    -/2 P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��  ; 	 U�� 	 U��  T��  T��  T��  T��          	 r
- T 	�� T 	�� S 	�� T 	�� T 	�� T 	��           � � #	�� � #	�� � ,	�� � �� � #	�� � #	��          � � 0	�� � 0	�� � /	�� � /	�� � 0	�� � 0	��         (
- P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��    ,02  v	��  v	�� u �	�� u �	��  v	��  v	��	�    z 5 .��   8	�� E .�� R +	�� 5 .�� 5 .��            | % +�� # :
-��   (�� # D
-�� % +�� % +��           �
- [ �� n 	�� K �� �  	�� [ �� [ ��           � ? >�� o B�� � )�� � *�� ? >�� ? >��           �  A��  I��   A�� Y B��  A��  A��             � F�� � H�� - Q�� � /�� � F�� � F��               � V�� Y _��  b�� � T�� � V�� � V��                \ k�� H k��   �� ( i�� \ k�� \ k��           #     P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	�� P 0
-	��           & 
- 0 ��� � ��� � ��� � �� 0 ��� 0 ���    +,2  ��� m ��� ` ��� � ���  ���  ���   x n e��   �� % �� �  ��   ��   ��            {   �� 5  �� J  �� $  ��   ��   ��           �
-  �� 5 �� n  �� ]  ��  ��  ��         	 � �  �� � �� �  �� � �� �  �� �  ��          � �  �� �  �� � /�� � �� �  �� �  ��         $
-   ���   ���  ���  ���   ���   ���    )*2 0 ��� 0 ��� G ��� G ��� 0 ��� 0 ���  �  o N�� o N��  O��  O�� o N�� o N��       �  = ]�� = ]�� � h�� � E�� = ]�� = ]��       �  � f�� � f��   l��   l�� � f�� � f��      ! �   t�� � v�� > v�� > v��  t��  t��       y } ,
-�� � !
-	�� � *�� s 5�� n "	�� } ,
-��            y  5
-	�� � 
-	�� � 5�� [ +�� [ 8
-��  5
-	��           �
- s ,
-	�� � 
-	�� � �� g +�� y "
-�� s ,
-	��         
- � O >
-	�� � @
-	�� � :�� � 9�� e B
-��  >
-	��          � O G
-	�� e L
-	��  .�� - D�� D K
-��  7
-	��             O P
-	�� Y V
-	��   V��  U��   V
-�� c V
-	��               O b
-	�� O Y
-	�� � V�� � V��   a
-��   `
-	��               3 h
-	�� > k
-	��  r��  e�� � h
-��  i
-	��           "     x
-��  x
-��  x
-��  x
-��  r
-��  x
-��           %)
- � t
-�� 0 �
-�� Q ��� s ��� � �	�� � t
-��    *$2 � �
-�� & �
-�� � ��� � ��� m �	�� x �
-��  ~ � o�� � o�� � h�� � h�� � o�� � o��           �
- � k�� � k�� � m�� � m�� � k�� � k��           � � c�� � c�� � c�� � c�� � c�� � c��          L � g�� � g�� � c�� � c�� � g�� � g��         ' �
- � b�� � b�� � o�� � o�� � b�� � b��    - l2  ���  ���  ���  ���  ���  ���  � > K � > K � = S�� = S�� > K � > K �           �
- 9 D�� 9 D � 9 D�� 9 D�� 9 D�� 9 D��           �  e��  e �  e��  e��  e��  e��          �  9 �  9�  9��  9��  9��  9 �         (
- � h�� � h� � h�� � h�� � h�� � h��    ,+2  � �  ��  ���  ���  � �  � �U0�PNG
-
-   IHDR     0   y��6   tEXtSoftware Adobe ImageReadyq�e<  �PLTE[]\f���Q���ZU|||��'/80���74	���z{5TP�		ihi�]͹,	�J�C>���m��OX������I�y��%III�՘��<�����# ���=�O������vuv��)�H$%$��������I��xm��V�L��YHL)/d RRR��f�?Og\R0������5"tW5�i�������M�繸� �����CQsOc�s' X���E+e 8�  Yf��V���$#�$��:} U<@<~�Xb)�IKWQ��ۊ������R��N&γH�[�� m�gu�~ ~�����)��������������3�^��}���L ��PPo�x�I-~B�.K���x9333�r�MN���$$��������ù���� ����L9;����S�) ���kp��r���(>d�� E��k$ n35�~E�*x�� ۶  ���=�  ֵt��'����nBP��͌c ll�����p ��ʪ���a��o�*�1TŶ81�Ta� �� ���x��v���,��v��%��ó���~%�ff���В��츷&���N�)e��"Aq~��-*����Y�  z�����NK,��K����B�$��x�����ק�����c����oH���a�s�$-yjI��@\��˩����2Qh}��t���o�Ry�ln��I���h�*� ���II �������� ��߫��@��)�S��$
-   �����l�   �tRNS����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������� �z�~  P�IDATx��y`V՝��-ɳ$O��$�IB �,$�� $l#�RT ���(XD��@���Z�uyulն�ֺ�3�j�>c��2��3󶝶3��vϽ�����,���Hؒ��$�s��~�z�=�,�s��������� �TP__������
-���'AP/��	& " ��I�&L2�DY <Vh
-
-�̈:��:�ĝP�EPj1��z�8��	L Lb
-
-�
-
-&�������"�	0-�'�c 4`�䤞�
-@�&`P2� �9	�u�Ȣ$���*�f� &TpC	��K0�V��|ը�3`���o�-��@P�@��Tzk�5aX0Jذ~�H�3ꏂlV���d/gٲ������lq��� �^)��D	�rb��N��:;{�������r��r�8'0Y`�pP� ���T�7�$����0�Ef�QNN�٩ Č�S ��(���Ǚ�����`f~t&�p0�������7r�~�S���|���Jè>e�air��Ֆ��Sg�A�>�+��r���_�X��G��g���$��=<9w�� a�%�@����sP���0#�M:9W�;J�ѝ���^�1����l?�f�\����<�����!O��$��/%��h�/��ӟ�O�����ӧ��O�����u� �Q?�7q��$@�°��X]M����a�v`�e�������z���&c����//K���F�m�S��:O֖;AԟУ��Q	Ku�s����x��υ�0��Pة F�WBL�~F�y�Q�VgUWgi�)���4�۫��DVWk"��:LYT[f�I��� G@$�T�zԕ�(��6���ą1���0�ƙ�zV�2��ZF=K��+�?zq O��EV�i�Z�K�4���f�BQ�Ȫ��XF�*�C���iӘd����P6�'Z�M����^4�R|7Zw��p���B�%��)�#U��YYA�2-�5�@����)IM� �*@����ˌ��P�,�o��� 73O�y4Ͻ;c:y�dl]·œ��O��3�>��B �:p3 ��F䀘��]�3�KyA$n�0��(�M��	���O*��
-����VN�;����MK�tX=�T$O�fO�:LES�_A��[��x��q6�;�t̋͋�4	��bA
-l���b1��n |ʁ� ���1������Â�=���@�;
-|�7�+�c.�?l��ʢ��~��T��T�<�b^�1���x�,�; ̼ѿ=l� �=u���N������M��?�C8���4%~��_LO��-c1�{k`�c���~����_N�������<���мyS����Q�[�2���$7
-$��J�*ؤa����M���K2)+� @�7��&5@��T\F8��F���!�%�љ��p&;'��G����A���B��&O"T���l~
-ܐl���myAv��){=7$�Οk�?�7��ix��N�~6�cڵ�,��)��Nb�����Cb&YܞO.����>b��s�Y��([���>�1�y�
-pP�L|D�Pr��@�)<�0�BMf�����I
-LO��5i���$� �Z外$jm�]�hm����������_�h����OH��A�`�%�k��dS��6����j�IZ۲��+_�l�������cƜ*�D�0AU(ǆ< Ucn.��r�ȭ "����:s�y�qR-6�������Q�N��>�2?pG�E��R���I�V�us�F�dR����>���������V��J�:��֪T*�����U�=��Rݤr�xU��r�&�7N<XI�*u�S��P�dԧS�q+6u�W�򖵒�$"��ƷV�<�)F&�q}�i��өH��
-"�ll�V��٩̸���Q�Oϸ20��M�&�)qӦ�P��d�
-f�� {I	+a� ()����	�VQ�H�'��O޺(�+b�'��fZJ�H�'�!���'��va�<b�88M�(�_r<����7���c�/�\e�pJ(�i��bv�dy��L�����̮��2j�b��
-����/
-W`�:4��^V���4��ɊmR��ɥ��p^YϏɹ�K*�Dn�Ң���%ayu��P�KrK�ua�eJXu��������%,,���2��Q�7�������80-�[�Jߌ�������n���G�|v�����(��_!n��i*ĝ�S &�v��~ɼ���� lPR�n�q����>ͯp���&-���������������2�?S7>�7��|D|s N��A��g'Θ��	�ܠ2x70��Z�7Du �Pp
-�$��9�)� �R�r�3vj,Y��NO[��ӫ�Q+�(��e��ϕ�l�$���X�N���V
-���(p]ҷ����D,�����J�9((���^�$ �C�k2X>�U����1��ξv0��h�6;;i���ESHnm�$�	�<X'H��DJ�q�f�Pm)a2֤z��
-jC葜n��#��-P��&r�������~4q�N�@����g��Q^{]�K4 D
-2|��քLH�!"Q�YAm7�U2?������M�s���o��%%���m�@e���^�G��h1�(����*>�����X${� 7س���|��VB�b�����^�E�0����.��2�*/�$�g�,����_����֨�~�H����8b¿�˖Upn�����
-���XA>/�����@��C�ֆ�����p�9[��.�f3~WB8����-��90�7��	`���xӝ~ɧ?�W����L��O��km��Ot~��.��������2?�f����:E�ޣ��>~dg������?���??x}�:opAi.(��)�=U}��1�Oms2��F 8Z@FJ؏<b/p���8�Y��;��Դ Y��A��@b5'IB.���#�sS��3dy�\@dzNl�9`l3�;M��d�F�4�f�k����G:O?F����H� ��#0���9QB�SI�`��q=������\?N�W֖��{ ���C
-��1���I���P~J	�)� ��G�� `��u��o׭�a���[����x�,w��{G����u#b�,���9�ą| ���ӀP�� � �rOx'JeҤ�h8	P?);�
-8$c
-��0'"qb�.�Դ�h0C/����1X��Ц���b�`��O�0j
-BS܅�DS�7��!$B�Aσ7MM��'MB"��<�� �P���A7��zw�	�ޔ$/��x`jCQ'���Jƨ�h�s�xq�]�֭m� ��ܦ��M��J��Z�?���l���Wp��r�Cf~d�A���0;��<��Nr�� 5;iR6�n����0�J���T3��˔�)o���q���L���EXaZ$�-4�@{�q�=P���LS
-Wxc����Z�(�(� �5��s�#ļ^ bZO���T���#o�ܽy��˟)f�.���g�o6%�1��į}~l����ј�*Y���w%�̥=�d6a�[,�&,M�A�j�M��Դ�
-�Ҫ �����r�Ou����B�ll��̻��{|�'w�o�~A�Î��-& ����Fd
-�_����M87d&���&(��.1�Mf�~,TWޯ7otރ������6�nd{�m9(��7áR��&�HH_L˲�����4�p�� ���ٴ?Τ���r�����.������|����`��#?��@�4�1�?N���K2��?����Йp��نrKAAq����n�
-T\�e�@�,��@~6�2�Nʵ
-��]�ˇr>-����O+ ���`6MNpC�@v��1l�	���0���BO,./�+������(�5Dd	��ee�uc�Ӵ��k��A,�r�~�4\!�_Ȫ�](��ʚ��SZ'3��B��rH}0�uC��j8�t���rBN�^��Vr1w�o ���~T�*`�څe��'�mPJ\>t:���!'MP`�Cb�P�Y�0��0ƌ�pV>���H�����MH�Ð�	�O�&j~lr8<9,#�'��d1�7�dd���œ�;;l����Ų�Ei �,̇V�^,�\]�|��X���%c&0n �2����g�Y5o ��J�@��7.���Њ:����@;�}2#�_�%By�P��0\�w������(�D>[Ǒ��F8�|"�@ҐXh�Oq1�D\�şE��"�XHC��/H��������?JEW���b8XD4�Н��/���Y0�5O	|v��5�5=�L~��x}*�x}
-h������ѩOç_n;�$��iScnr�S�|,�,���Scrq�k�Zg
-bS��dl*�ќ:��Wu2�N�nA9�q�[�'S��+I��j�
-�Ys�=zǚPH����W��U�&IptMhhͤ�����@Q���Uw\�F��]��Pnn.��5h��9s��������r��o4��ee��CH���c$n��. �����r?S|Sjq�e&�I3.<�e�2�cseB� ��2l��#� �Q@�b�u^S�����xݹ�D�EWA�����	�%(*"�Uw���Ё*?���^
-	��C+�"ԢS��`��)��* WI����t��i�-ˠ�TNy��%�@E�@�2c3�\��ᠩ��Շ�1Db�s�o�K��jK� ��ۍ��L.���A�+FE.�����~�R1S�0<n��C~p�cJ���zP���>���H�^��Gy"r9��S -r��i�t$�%�n8�di�� ��^}mK�i��[��F?H�)����H3L.�݁���)ƥ�Os4cD/�������>�eis�\��Z���*�耆t�W�d(��2��e�\ܱ��KʾiP� ��f�rD�ꏠ��!��x�Allb�+�r�}�� 3Z�Z-��?
-W?c9�Yee��.Z���F����|4b,�u�����0o=I���0V/T�g�����4v* 1����r�i�y�N��T��[�ŷ����Ʈ� ��f��Q��W-d�C	""��� X���V=[���� "$X^}u}u����w^9ͫ!��[=��j\?�7���e�e� ����*�jm���eJ�Nڵ�H��E�G�ꓡ/�f����M����q���zS\�_�hQ�ЅW�׺ʉK��]c�^}�����o���ݠ�sP�+��GA^^}�y�EQ7
-�8\��{��#��$��l�+7��[@V`uR__�'����x[/"���t&*�Iu��}#zY�W[��l��pn��C$�Z��:��<"V�~v��P
-P=;�WPP���d^^��
-�&�D\7/��F7��p�>	��)ov5f@0{ �j�)��ٳq�#�6�_�����`77DjZ._�)���h�JK-v��N}�q>�f�qV,� ��IB�����dg2��:~��*/��I�$Õ?�}S���7�|?/ӏ�>��I=^Ǔ�v<H[N(���AZN��r#�rY�����W.���h�j笯�I%�g�M^?{v��_*�G�<5~�`����
-X�ǒ$�n䔠� Io߫�K�����˘Yk� ��Ó�o�Q>.^����|��3 ����������%��9�����deee���9ڇ�:�"������uu����@��+����XZ�X|��l>�)ެ�k�L��_�R�� ��np��
-0�ܥ\��@�l`�8���-/zKj!L���.�~9�z��B�����W�Y1�Np�z^�	�{bX�P|��_���v�#0_Y��s���r��.T$����W�Õ.�2S��B{~9J�#�X��r�.��'�+��q��gݺuw���+��������}�U(� ���1������h�l��mv�$cԟ���xfx2G|���9sr�E�[�s�O>�(�<y�5Ey���3�O�&��Ջ���v���%�ʱ��y�L�|:W�e���@T{̔h;��p���9��Yd���������ڻ ��b����r���_��9�����0�̿i�X$.c���d��5�V�ZE��3�%`1�K Nc3�6�"�|�oB������}��T7�9�ٻ���L.��Ӯ�
-��f������d����F�0y�o�-:1��f�QL#c��6�}88	��T����<{8����nʂڄ]���˃,6!<!�އS��pcr� ���}�[�h�^�d�����Q��:ߙP���N�U�)t�;q��}'y����1~��9�և뫍x�h`6vy���H�����l�1_���+[��}{�/+V����j�� �䯸���á}p^]��j3�r/���ł���1�M^�GY0��G�������h7�y���ܓ�T b��ԠlP�<���|�z�e��7�AQx;��5.S�)Y+*�
-;V�@{�Yd��B�u���	Ѫ<��AQ�XAE���+_+�Pk��ʘ~gG�!��=��%=�{hf��N�lo�E��1}z��<8���K&�����M��Mb����JV����������^W*tωԩ�.�Jm�o��'�͢hI&3��d>J_/'�e,��s| ��~�Gj��������	*Rm�
-���\?�V�R�DĢ^a��U"7"�����7�g�b�Q�Õh�������+�
-	��Տ���KX��"$W��P�Տ�v��D!���<���<��o�~(6������P�3�ca�!+8f���O��ŷ툷�	�o]r�o?}��ۉ�߉p��(O��T��P�������Q�=�}���lsw�
-n����?2�i7)��D� �4�T�O|�}��I���J7p���P����4�f�S�!��mȽ����&jNX�b�����^I�V ��yyB� c�'�?������QN�C=d��6o����.�E��3�x��yH:�s}G�K~l~��W�������柽��zL7��裯���Q#-�M'$��6�%Ϋ}*�A�\t���DͲe7ݴlYM�z�.#�=^�;'g.�zd���.���9�:�b'�_� X��~��˙3�0_���sv�)�c��I�sΜ�omu��@g�׎���$:�&�t���~t;V�RuL���-=U�j!_t>p�k��tzF�G�����J���I"���_� ���_�n��W���B>�4����dP�閧�dSӚ���ɑ��<�����bM��<��M+���y�t�H�#�5Mk�4��6��ր�n�Gi��v�����-_����,A���õ}[~@�_2�Ǯ����L e��!�����|���`L�[�;?A�N�^��_t�E���d��G&��O��_��+ؙ�sy�,^Lu���~��[�X\�pqm� �|o�,���}�VԖ������VǗ��|�זO �p�֗8��� P�%��,���j�������������Ԣ�� ����_��6C�u_��m&�i:A��N_~��"�En ,����M�Ib�/���YF�K,���4?>v�%�(��M`�v��k�X����k����˾�L\J��l񥋵�q�T���O�����9P��x �����w=��EoO�idN��JN���Oy�M��`��� ���o���[2���c�����S^}Z�)2Zm�	��o�ꯆ����ؙ��h�O!�)�h�e�D�;eK4��eJ�(!��o�B��K�,��@�oY0�|"'h_ �I�<������m�$P:�%9@~Vr � �	H#�;z�Q���[��ƈw6FjK%}�[}ुJ4/��Ur�/���G%%U_�`Ar��mvz|ة�B~l��[(�-^L!�W/��z:�/:��Q�>���6^����6����}\֧�(-ٿK�V�Y���fe}�[|�����ڊBβ��0��&�����/��w�ۭ��^�y�^�~��q��/d៝�������}�s, �c�h �>��,�������	���>�^j����$.s���2�o7��o����ʾ�6��7�a�o�Vth��[���n���	���"�@�k6 } m����ۻ��P�[����\���s�����.��oK.C��)�J��'1���n��{�^Ɲ\�<�֛u�y2��c��ƾ��6�8Q=�/|���r���� �"@����oٛp�/��.��� �@�]w�{"�����`�n�F2w7mq����x��hi1�o5"@�����o[8�w�l�%���4����(R6��H�w!Y8�p���/�u�p�׿�I�Ep�Ș���S����r+���+���?ߪ���A�pp߭����J�n��>���"�K�@�Ve�yf�'����O��`��@��O~��-�q ��3��䓝��N�@$��`��s�3?���!�zū�n��o�������Zm�͍�۱߸�'q㆒OJ6�X�E,����rX��b�>ŷx��q�%�h�~�#��S8`(�ۧx ����~F�b���'>����Q��ֲ�v}�+����"�'�eÉߏ2������N`�r�[�\��e7�T��u��X�x�4˖]���cǎ���g�S�̇��?\�������O�f9���؎�iZ��eˍ�/� ˟Z~��W�i��\Kh�z�� �
-��9�ᴶ*���U�#�C�tT����8w�
-�*oM��bQ;�qE�/*��Rt�࢙��ͳV�uѢ��]�Pd����81򣨨�����8`(��< C�@���>;7����V��V����xo�]�j��	��>?��d}vMM�{`��gL0k�,��AW�k,g�,��������pfM�LM��݇�y��	����ո��?3K�Rs�BP���,3���������{�2f�7��ʽL�������o-�I���2��`���5����\][+vN?|�~���̱�q��4`��J;��G| q#:�\tmD`��"����E`v�_�zѝw^t����)#��ȝ]t�E;v�E�}�$@���5ϒ�D���m ;v@L D^���x��r���F�����.����Zo%���B,w�y1�q�J۝��\�#�C�����k�� �� � ע�e����D4TL! ���D8@������~�1<��	{�� `��� ��r/�Hs�-��[�|��-��(q˛EG��ͫ��^��ź�M��
-�_��m��E3����-�|�#C��h8�@k��zd�vx���N��@;U�����2֫߹o�w���TOD �w�� *�^v��WG۝(q'�������!��m���vW�P��/Z���ڝ�?���d���7���EWw>��X��hѢ����]�l�Mg'��آ�Eσ�{�=f@�É�#�h��hvj`D3h�0x������M�&n�HN&Fɤ�W 0�4����F&�In�D�4� ^���o0�� �n�I�D�T3�����%Z��ڈ�(d'�<��k}5]�y�j�%��Ⱥ�jm~���(>�_=`"X���#�S���Er�F~(�^� c}��W�1?��վMgt�a�wBN��������~O��IF������?x�׬�
-G�w���T�jL�ʠ���jD�_����6cpg��7�Pm�c���\�M�^�-��S������W>L����Њ���rt��cOm@0��)��ym!�_s_;`�Qt��X�-�kL���~�A̋��5�߸�ai\���1|�����o��ޠ�7�_/E(�aP$B-:��m��\��8F�u�/#�߸�'⽤��O���O?��A��C(e�O���8��s�luk�y�����<mٿw�p������/$ȉ��B'��=��R`�Xte������ )�D{k<�yk���uE�>����R@){�����1\�T�9���З�?����{t���/���}����r\~��o���$ �;}���r��`ݷP��.��u��
-�rW�����b����}P.�w�5�,T�<���"�k.�>}�+��0�/��3#�c����Ǒ{~+��3r�=�D:�y�7�%��=h������=¼��߾� ��k�{f��-�7~{��9s�d����̙�����Fd�?�'=�3'���� ���}���|TDN>��'кu�<�
-��}��盞#�PbMMk���?��K�7e�s�}�u����`����:@"tKE�<�3��Y�0����>���&`߾px��.�N�5�~,\�7��s����"&�S�oω�C�GL� �b���'k)�x���-U��ܼ�����
-��̙C�/��ֽ�6"�?6ޞ����+H����[ș 6�	�=�櫍�,o�/��α�3�9s<ݯ96�̩Q 4�${vȞSc<M���l���a�n��\_��,�,Y�D�	sS�on���� ���(����M���H V��%��������(�%������#�	p1�m�Տ<���W��R���3�W+w�w�NZZКuZ��z5;�w�湓?g���9���SJx�/۶G<��/�jB�^N�	���li1$���E��TR볥
-���n���s|`���0���u��Ǉ��>�?��̨;��՚��?��qGax�����	����_7gD#�1g�Np%����Q�U&��rs�ˁ�Hܟ@��$��v�wB��nbJ$��{7��y�v��� x?�'����'7�M������M�����5���s��;�|x(��A<N�}��G�5D����M���ji���8�����:Z�u�--�u�Vz��HГ~�I�6�G[hAгiS�G(�9u�>���t�lJ����g�:oD^"/�=W��t��À������t]�by7^m�����M?�[腸�cuoC���PK�^ӵ���x�y��J�yO�q���򇝇�{��)o=644�h�*V;��(�0��:��j�Qnǎ��ڬ��uȈ:�?fۗ�1+z9����*��C�ǜrG�sNKk�ʁgXS��g����#3�QKK����E� ��B]�_=�-���߻A�mTMT�p��Ӗ܁m�oT�\�|#��m�`�x�p'K�+�-��\m�n[`#�c�㏃�=�(/e���8J0���ҥ��(�?!��o	Ǹ����t��K�.��ח�Ѻ^g ��.����ח.�D4����诏�����}����H_ۯ�h?����mG���QA,!�FYT �?�D�m��Q(s� ���q�h�����`A�f�_���aF��� ��~��_�m���>��M��6i��`���<������C�כ��/Թ&.�Wjw#��P{m�"`G�����Zp�A�����g/~�]L�G�/~��������%��D{;8y��=����श��EʞOk�_"qo��j� ?���AG"���_" T �[�+� ��۽���H�Rx�j�l���*�^��@����w�w��"�O��/&�~��� �D�[�rq;��I-f/�y1�]�D-E}f'��2��_�Jܚv�l$0r���^\_���/~V�]<{�4���j�2Y�(*<Q/$��}�K��u���EH,��8�eP�H_��	��`1��@��(&��b
-0VTK�t�j�[<p�0qEE���4S?�L�p�i�[F��+���O�P`��u�������]c�5�v`��q� `Y���^�����`�4�%�o>�ࡎ���%t���K�����{�C�E��_�<�\9m�"������)V�U��A��)S~ W�;��>x���Z����B Δ�z�A�w9Sf͚��V;��"�x��y��Ў��)��g�p-睫큎��*\�����@�js��K�W$t�zuG�H�ʹ4xa�n$ܑ��}g�A�\�l;<H���U�"CS���}Gh�i}�w�ygD�q���Mm�Gz��
-y����GǏW�UU?6@��� ���g�Gy����P�l����c��R9��UU._�A�'�t�mThO9�w�⮻�rݡֻl��������s�J\?	p%kܔ���c�����`b�w�w�V��Ĕ�9��l���<l��[m{h�V�����
-�/?�u�V��:�~�}p�A{����e4X����[c=�q ��E䲗|��A:oF �[_~p(�#��Sv�7v��v ���\�	�}��>�q�;���n8,�H��Cy���L��]v��A�b�]��� �]�������?�z�N�M��Ӟ�^���O�/�8�RZ?=�r�1~��ϟx}S�?����|�D�>~��'|�?���0~�>�C����M�ҟ��6^���x��3^�i�o�0�>�޴I/�o����/Lo2��M�����M��BH�7^8��sǏ���B��c��LJ��^xL�u�ǀ<F)��<�"���_|]t<q�8|��߁�����<�������j�=Fv��Im�/ ��49�|�R�� �;/h��1ݯo���x/:g��ߟWY�����\д+�k�QC": @IUrP�B���E���G�h�����f~T������g \�o���6%��o�:p}���ɥ�;�p@�;�������;-�~��X@h�N���`>���!@ad(ԿLUU��8��"𩊹=rH�v" bFLAl$S�o�?��7���r����s+���/67{�Ν;71w.�����=0��򓁏�V��?�V��W��~�$�����o�}��~��<�G��s����F*E< �#8�o|�� |����o&�~4`��Q���������tu���8�/��9УW(���JI����X�|�)@�<0��iڸR��n��V�n��Ѡ�����~�ڑ���&)�+# ��r1���l�b5E����f6�a�c�ǻ��d�`��ŷP�[|C�m�������G��<��џ�0��?���O|�/��l;����&�4+��=O�po9���n�29v,�E�+w�䱖�c?>���Z��Ƕ�<)�<���)��:oB��*CM|��w�<_���]ܫ�,C==?��O���� ��Cp�n��~y��NNV�Ĭ��,G��~$fݶ,?]�S��" ������j�I ʏ�z���-�]w]�����]'�}|5�}���|�����\�A���i�=���է(?oP$B-:��ͣ���;�=�p_Fl�Ǚ���*m�\��i]G Ο<�?���{�V�Y��I��{Z��W�
-8i��W�?>��݌6��~,��}CC����� n�#�΃C��)���g��r�j��*c��Iح�N��2��t-�V�����.�UW^�r��-���ʥ���h����qm<l�ɓ���G?� σǁc?�U0?2Bv������H�
-�G�#�c��W&xF,��4a`ӶM7���tz"����ζ��iA�;q �'�Z�+��n�r�`'��܌�)\�Ulժ��D��dN���'\�+W��o\ɿ��[���Rk���Wk����� &��ڧ<"'��R W�:&��(�P4Fs�m�z�+��b~������W�� %���c�������+3�o:��{Ƚu\�g��7�/8���{����n�25����F����,R3��,6�$0��K�,��+��K���'��		|��PM ș 5K��3�,���z��G����6��u5� ��Xޱľ·�cI�/�X�K}j��<��c,���u��iަ�"oE�ko"� ��@%��7m`���UBPzj� D����Kf���n�끹s�\��J� 7 V���+W��%�C��r�+�\E�r.�jԓD��/�KVϨe�op��tQ ��NO���t��{�]����}W�r�e,�?7�f���KL v�����&p��W��_���n��ii�W���૳�_�*7k�,Cd�D ��C��7k`�G�8k����\�]�����nR'�pt���h���K�|T�n<�\�b0�_�QVĤ�,� �G8-�S���]�lI���U�H��K.�4"�Cqcwݵ��K�|���ڊ��_rɛ(r��y��8a�(r"_~�t�N�"'�� ��8�<�P����{1��D<A<L���{�D�����
-0�Gvʔ{ES���/3���Q{�ҋ,7���.y��7�X��=���/"XR<���]�Ks������\2�<�T�+.��z1��|]�)��)5fj!�f<t���)
-���)"��zɥ@�b`Ť*@� On�� 6%BVF�ss�
-�,��z��*�%S:x��S8�9�q�����%�\���R�K��%�\z)�3�\r	Ə%K��d��G^�x���!���
-�x�Bn\H� X|#7.& ..���[��j�׆¯-$��J���ܮ^}�嵈�Ȝ������7����֛��6�� ]���_v3���q����>�2��i��>��
-l}�����7����O|¼���C7��gq�2"؛)l�k��h��\���b�+V����uR��?��Ø�������Xq���8H&���3�����g���?���' ֻ���ܣ������!���+tp�s��������������P W�[����t?�X���c<׭�h�.�=|��x��g��i�}}}��^��N������z{�޾�~�]�����Ƅ#j���XĶ�Ru���������եl�]�E[:�����]�O�.�69�Mcp ��w�s�X��_З�F�����T�ȅ�����d�^[�,H�-�w�>t�	���_p����G�i?��9r����\`���~����9B�����G@�Gnx"R���'n�D<�Z���.	��� <��΁����ā|{�#>^X�`����n��k���{�ކ���fU�@���ʪje��� ML[��v��B<��PW�O�8���՛�Œ���������JZ�T�7^����f�p��L39iޝ�߽{w����f�C��Q�<��*nw-��d�$��l��f� �+��L�n �Z��~ U���f��3��9&�ÿ8���7Xu����k����jh�oT�/̲�
-טY"X�Y^<,��X"XK�:/� %bJ���G�da4Fs�������A�*�ОP��/D'�N���PU5���ic�/UclH榚k��5����5�TM�������}��`�f}��u�+ `�;��۲�-)�?l8;njߊ5
-x�~��R��O�' �	��&�(��[�H��rrr�2��/���Z�7���8�n��'9� ,�VW�"��pR��[9�x\ܯV7�=_���x�⎲��j|g��k�k�i0��5� P��rz�9j�\CCN|o��A��k���ġ���9� ֜�_.��a��p��� '��<������ʁ*#��ruu 0�xC0���o�k�v/�`=��s��f�x� �"�[I���U.�+$��q	�r��\X"`�D(q+�G�#����ȡP����.G֖(�.�r
-2𗣗dpeY�{7ϗ��^x����]��<qe��PT8�gI���� �r,����h1$��QN&���=�y�=_D4TL�A�Cq�cqr����=_p���=_��R>�L`��0����B�ݛ�� �T`AU��|���g���o^��+G>P-~(��â�9�߇-��t�����{�TQ?�
-����R��buPW����� ��R���z�Ԭ�����@zVoJ�z�TJl�B�����^���^�zeЇ꓏�T���j'��J�>Z/��^*�^K�:�&c�����L֋�����z������󭏂,�х��> �v�.��ܾ�\�ȡ �Ű��p>���E$��6̀�?PH,Y�E"p�x���A�����W�������Am}T�%��k9^�	�"��T���\��Z��Lz�P}�)Ac}����h�R[����G�9'N@b[=p�=q�n0�+�?qdw�U��G��o@N�]�4Or�v���QA�0s}�;�:�[�Yݽ;�/ƒ@���Q�.FH�N�X�t��iݽ<v4Vw�v��G�a�6�h�����v+"��w_��Q��$���rx�Ӫ�G���g}�Xų�U[��#3���\��Ov���F��.h��GtooЯ��[�뺽�u��>�����S���s,r���{L��޺��h��,���mbaus��W4���;A4�$H|{-j��	
-:���:���GG��ł����*Rc���AS�m�E�!XW����ݯ����}A�}kp��|#H���Z���q3��V�4��ʕ+?��$���DB_����Y�ș ���ʁ�{�R`�;�E��|�&����@>n�K��?�S�Z���R+�I_� ��ݠ��i�BٜR ��ԥ���X�u���z�h`��)�n^����Z��
-� �W`BC������fg=Xn�p��_�G�x�KK2�@`�z��`�K �欗�4��<����?Z}Յ�2Akj�O���)��n|���$����5)��7�i��d�눖R�m��xʫPx���K���y�1胛�c����1��rrL�1x��c�qC�����k6����S���j�G�G t��A]]]�~Pk�� R?�m�n؋"\?h��8����!@(H?�pW������7�~H��A]~����$FzG"�a�޽d¿�x���@�7А:�9������]]�7�M�҂ۣ�x��lꠦ�NW��M55�w�k@u�x��&U�^�	ֺ� P+�k0����pp%��8�k��ZW' �h�X�
-�_�1��O��P ��4a<%�g�����|��mkw����5)@_xQ�,�%�P��o���u]�lW�/]�$XlL�c�TU���pu*��g��P���g����G9u���L������ �C�*l��� b��ݚ���,�сg3� ��{K�ϠjT�38'��h�֯o�%� o����K��pU �p�>�t������T
-KtW:�����Ӈ� ������'C�>¨P2���y��os��;��Yr"P���om�:���zk0��Gj�^����ex���j���q+����ZQ�P+9{����it�p']�W<=�C���{�2��o�J�O\π&oQ��~�*g+؈Nת9ӥrbލ��*�����h��U�;�*!�9 9(Qey �>	&f��}9T�~���`׿_�lyj��N���k��~�~��9q�~��������}����]��vWׅ��+��7ص�K���޽�k�6����<��c�]]�A���Q��|A�~�9|�� ���9�>�)v�W�~4��x��}(� ��z8�h�X�U����QV[����m�3�
-����$Tm�3f��%�Č���X �8J�6���7��%J�Q�<x��,?ߖ ;u�i">�@>���}ks,���&�?�D��ٳgmb�ڵ	�J�B��Xb
-5=��]}J�l�� �H3i ��If� k��0Cw9�H�gD
-�_���Odˍ&�kRE�݁t4�V\J����%�M�Ӂ��F�� �}#��� nG2 p�A`K����(E�6��*E`�N���ii��" �����B�,:���Qƻ���uK�ta:M�<@SY�@�X��۷�peei�1QZ�KqK���Iws�9P#C���1��F7��Dca�͍���ͮ(��pz{ia#𻡱��tWi[c"A�Q��Ҷ�R�JKI��$�Z��o�Į�]��Iac)���]�i!x�*��C�� TMi$mm���	��1� �h�;�E;H��6r��t��Hm"�8u4��
-�C{�Da7��A!�.$J�7�T�]r ��"��@)�N
-� OR(P�r�V((P]z�d�P/�Tp��np��!��t;���)٥��Q&+�p E����B��p�  W� ������Q��tc����\�'*��R� ȡR�c�K7��B����g�wS�`�L,�E�p�,!��]�k94X�j�F^��6�������� �@d�B�C�H�9N�F�����$�&O��P�S�KE}�Rm�PW��R7@})K�KE��)}����l�R =k#T��T4���R\���h	})\�Z;N���ʷj\ml���m�(��(u�r�BnT;��%��t��SI���(�����O��G����t�v�Ң�=jG��nY�&m�Rւ'e�^�Y�i3L�30�p����k a�z���흘����3-#�ѭ3fH�1�ԝt�-���J��C=�wY(1#Y
-��dii[��X�-\�J	�VV2Y�6�5��<� c�l�km��o��_j]�HY-Q��P�Z=T0E�t# W�t#[Hrg�Fwca�s����6�@�0y(��^��D�tc)h�bC���(ﯞD3���`��^n�cl[{��Zi�cem�<�Z��ÛQ���C6���6B�BsU�]@�b���៍�)iG�
-�n� 菵�cA�K`0�.<q;���.D��=r;m�'=��c=i�?���`�U�k����ۼ��4dؠ>�������XOO�}6aϞti��?��y�te#�N�>Bb�:�{������	��˻g�� on9�k��Ǡ�ޣ��j�=�����=FY�B�2��B��=Π�������r�������|~�����ο��j3�s��f%����U�N�&���X��j-�lo��ӳ}����tZ�׶��*��.���7���������R7�/J}��5���Љǻ�;z�o}��+u�e��$M�ؠ2�}*�@Y�Cg;�]�!w�|@��?S���9F�#��ۘ6[J�^��mmz�N[kuИ�-�DzP��7�C a� �*÷�)�	�����tQ�	�-�p�=��m�n��?
- X�`��m�/���t��T�jC;��N78L i(A��N���q}�6�ϠЗj��9���(�K����&�v�$���R���K����It0C_*��/5��?�$�/u���K���T����6�t76�m�h'�Ag̘��H����� "Yghc}࠱Q��P~�0  ���/�����r����5��~����~��6@IuK�<����J}�c���Xa��?O`Slm��?��4��*�fZ*����XsB	��@2`����D$Y�XY�,�ǒ�� ���ġ��d�H��Xb׮R؅nH,q"T��1	N�&P���wJ+��K�	���8H<��P����{��&���5'�<A�c��IS,q�����w2�,�w����z�l,M�ѯ��R�I6�!:�9>��U.�Oewe%����{e@6P��x�z������ س�4���/��}Kֶ� ��k:��D[�O��p��$���V�j�6h�������.h�F<��b�Q	s'��@`�	{؈՞���E��P�|��|�y���m��#��J35���ǂ�Jlƌ��?��z�cѵ f88�A-��ڵk�Ea�Zj;D�n	ו�O��3�	��T�dw���n|fX�m�>�-j��L�3c�菩�]Y���=�K�� ���K��pU �P��������e=X�P����N����>n�Z2��',+U~�/Pjf��X7��j;9#��yB|��2�J1���|��g��h�}��tzP�*�
-���g��h�]`;����]�A���p׮� >�z�wR	_��D�)�N�"�I%�g��J@#r�$��PUL �6���y�5X[Z0��f�� �$��e2	mK�)9������((� �(D�D��'qfO���k�돕����2���2��J3�ǰr5����>��ҵ�c�	��Xrm���]�tl돌�Z�ʴ_g3]�G���*�={*�h��`I �ÿeL����{�aU�Ƒ�X!�<%�1��BG�A!m�f4��=QF>C>�c�Q��>����JS�l�q]�^�V�	�Yx���j����=m���?pu�Y
-+�Ӥe���? ?J�[�    IEND�B`���PNG
-
-   IHDR      �   �K��   tEXtSoftware Adobe ImageReadyq�e<   `PLTE!!��Ψ����� ��?? dD�˥�mmJݤafff�l$��:?7:?RIme>$��s��s�s��mITpx��� �Ɨ���g   ������    tRNS������������������������������� \\�  �IDATx����r� `!�92�����[�,��3�h�4�3�3�� 6�x�a�Ȱ���A��58A���b��k� Q%�;KP۶�&B������"�݊H���������׬�_ۣ���8�˘�Ҹp�!��q���S\��b�
-�*�h�vK{w�,U>���c�� 24�8�#h���\�9t��q�=^"8�W��a�1<��l6��;��D��m�z��1�d��f�Os�i�^���#�Ȑ�8��!j]W���9��?V�rDc�I�u}F�n<N~�(>�1ҩj%�4mo�4_/�w�Q�Ȱ���A�T����Q�d��W�����D��^��d�~���[����������E�gDxj������^�򬳯���^��Y'�":m앁�T���B�`H!�����w�M�Zh��rB�F��p։��w$��@����  �n�i6�'�u�WG�fh^GE�yQ$u4����⒱��Ki���,�#Z����ud����c�PGJ	�ՑX7��a��$LE�dF��Ցb�W�*�zTG�v��S:BJmb'}���\qZaX4ԑ�*�u���G�m&���=�fu�������l��Mʶ��x�ʭ��j�R+7�[Д��h�I��/RJ���R�[��R�2����VFhu�TF��6��M�{4n�/O���ʯܣO ��c��u6�    IEND�B`���PNG
-
-   IHDR      �   �K��   tEXtSoftware Adobe ImageReadyq�e<   �PLTE�eeڑF������� ��  ZZZm$ � ?5333T5m? �  �^ �?cY:� ,�՟��m�$d�  ��M�I ۶I�m �R�,4�����m�}^�0s��b����TF��y ���� �,,��$����#����m$����������;~��Ē�����ߨi�׺�Ŧ�II����  ���   ���3��n   @tRNS��������������������������������������������������������������� �{�D  �IDATx���V�0�˥�J)wĂ
-�pUA�Iy��rOҖ�v��u���$,��I;�S����WW(�R��:S��ΐԙ*�`��(M5��<Ju�;��K������|!� P
-��Ƅ~��m��,؅�����c{<Xc_�k{�XR��5�O�t��w�v�~׌C�t���R�l�Y������]Cm�,��>�C�m�*�\�%DEXN�V��Tz��uo!H�pF�Iˤ������EXB� z��L���=�6z��ԝ��A4夣��C���0��к�����Q��®��v�қ��h�Ð���}�;{%��Qww�nt#*�����I9����s�{tO��g���3
-�2����63�D���!&��U�`6��f3o5ygZaM<oD5�ՈN��f�ժ�5��� �������D8#�*r�̌8�x*joi�X�=�cj�$���m|���e�;��Ѭ�'NY��`�m��{^ތB��3�^K[K;��ahY��*,��W���F5���h�>�J�~_�m�T�Ѭ�J��fM*�y�^һ��3��.pFn��u���u��s�-��Ņ��y<#7�C/��o���E�vؖ�uW�:��)k֥���s��g�)� �H�x�GI    IEND�B`���PNG
-
-   IHDR     �   ��E   tEXtSoftware Adobe ImageReadyq�e<   rPLTE�J�������H �S�h�������T��Z!��hH���q�   ���U  n�����plp`�������H���� ����� ��T��`�������[�����0��`�p �Ed�  ������   &tRNS������������������������������������� �z��  �IDATx�옍��8�� ���:.1|�W���	���f���V��;^��t�I��|�{07_a�|�/�ҁA|��䈈�Mn���&J�&�f���$V�4�3�,Y��݈{�u &�;��1���b�����]0�B"R���0h(B	ih+DX:CC��:�.nGG��`�]|�t����2_E�J�Z��o0���zFȖVd	�n�b1�q���]�S�<�ޣa���u��B��]@�U����L�V�3�k��5�a�]�m�� @�-ۦm�aTCPR=���f��h�ˆӕ���U�.�,�ɦF�ߊy�k�&�0.��j�et���o�r�՟����O/�[��TF��'�4y�r=㠡�B�irÈ����� ��L�^ǍkCQn4����<�5����Z'�	-�3L�ҋ�����v[e��[DY6�v;C�
- �l�*֕[��dʰ,�Q!Tt�-`H�]ָ�D]�4�CJ�8* ��χtJ��ғ�['���6�t����~6O�(NR4e�ݦAeg�k��s,��=-�X�l�)K��(��9_� ��D��R"�C�
-�DX#t,���B`6��+@�*�"4bJ�H(�	�-e$���]6��y�%��?����t \��?�Gǣ�:��GD���x��3�9s{�X�%�V���RT����k.��d�ƃ�.@������hj��9�aP�6!��tK��\���x���3?�d�&�y��橀����6��.F}��=ҝ�J-�R��]Mg�6����9]�{.��t�V
-2O2�� I�w=F�+�ư�Z�쵊P��|y�r5�_E����(�}7Մ��7C��X�z2�s�����O�r�Un���@����t 2'��أ�>����׫=���:8[���Z�^�2���(�� *:�G�Rgg���9�QG��r
-JEH�C�uNOj�NQ�:�t���mp?��6�Ӂ���Z��@��)������~L1Ï�ǂ*�="u	�s����� �}�������]8��YHjJ��8��ۈKa��K��|=�ף��{�C,! ��z��*�;����E�N���=�#ħ����ϐ��1A�#a��=}2�T e�'m
-�W.�z��#��>��Q�i<%�
-�y��2���!w���Mw�M��Fz�������Gb	��"r�����YP2U�Z��p�
-�z�\���o�mI�N�e��oo�	��ߪ�"�RvK�}�&���]Lr��Vo�[������| (.�����xk�tt/(��!k���\.��aL��%.#p�L�
-�Q��jU�.�Gx���p��a�D��	�	+c*�a�@�2McH��6���"���L�F�;�U�@*P�=ǰ��e�B�8N�cd��hE�q�j���#���-���n�������c�J7
-V9P�?898�����G�j�&�{h��ae8��6��`N��5��CCP����6�3��bR�A!��X�}��� y@C��Y���9�� ?ߑ�:�o���n	��5]�gH��2����A�R5 ��A�\?�$|�3\�#��5�@]���¬i�:�n֍�͚J�ԉ�YH�8���OI��E��i�vk��fX�2��d�eb��$��D��GG��WC��mK��Ќ��n��D����l���"U°ƌ�:�`�n�d"f�ml#���0Dvf�Ȑ�<��M�i��I9�7i�ԗ!a�=#d;�}�e6��6�6�d���i6��6����{=��eo�?�o��#n��y��!Tg���^�b�m/q�1ex;�8B����Ǟ0�����ox�L��~���sP��!�|>�S����ܿK#j��>ߣ%4��߃��<�Gq:���v��Ӂ ηs����u���u��G���������
-0 A�`ٌ��o    IEND�B`��PNG
-
-   IHDR      �   �K��   tEXtSoftware Adobe ImageReadyq�e<   �PLTE�g ��� �  ���cY:3.��������  �Y��xު ��`�p�������������  ��@��������� �ے����� � www���tlT����@ ��ڵ� ��H����T  ������rkD�IIddd�}*�mm�  ��������������$�����lB*(((@@@CCCoGAAA   ������1   @tRNS��������������������������������������������������������������� �{�D  �IDATx��is�0�í��Z
-�hk��>w���U�4����㌼3��B�}��"lS!�(h+��U�m�́9cuh�(�x$y��wi}:��[@UZ��N�X2�#�E9�Z"V�Q~�:�;�@�E%c��y&1?Q���c��f^�G�I9bMVr��S���@D��>�]׍c�g
-�n�t����i���]���'����@����^���:�=�uD*�:�#��=�1!4a#��h�����%���MB'��@B>�|~x���i�ˉG�Z���T�t0��#gz�xu�tuG�s��Csē���;����e�$��2�&Y;�c��FͥHn'�Ϻ(��4�#5�䬋��h4�������ʆ�Q)h����#\ő-�ya8���,��\wdg���w�v�0wd���=�9Z�&�+� AIF��]��    IEND�B`�݉PNG
-
-   IHDR      �   �K��   tEXtSoftware Adobe ImageReadyq�e<   �PLTEl  ��$NNNYD�  �m �R7/|||�� �U ��r���YC2�� �_�ѯ���xjA͂,��w��IAAA��  ��3 ����� kDcY:����������jj999^<���������   ���W�U_   +tRNS������������������������������������������ #ɧ�  �IDATx��Uks�0�c��(4���N�����]�T��C��g<vĮV�12K|�n-@D!$��[� A�j�
-�sz&,x@�`��3�U��W��:������g��@��w;��ˈUg����?���PJ�5��$F��k��*�o"%L���1X��GO  �� e�B�U�s��K_��qD�9~jJw�����I����թK�q���I�u��ȈH�}����2#D����f�q���S�oW�#�W���G�wvJ�t�q p����㻛������ny���,����AO��J��sƜ�n�0Gl�3��n��� �U�rz�%�}���N��~r�ߒQʜ���]���r�i/+�n->=�>�e��^F)���#N�sF�:ߤZ�l�ɦ��MY��2+S�*��*g��Z���Rg���8�睝��f$c殓���%h���c�gD_c�~F[؊3}>��4sF[��IJa��L�]�"�9�C�*�\��i<N^���#���2���	T�Uxvn/Ak�������(�:�j�;:UGϵ"�W��RDQ_w���(rq�}M��oE5XԯT�2O������t��V���o��;⼳S�{eTq�aH}�xhKG��^�a(
-���˨���*$lpv�E�@��!��)^'?T�Q5�
-�����!U6s��$��q:��~��o��;�W_�� 08�[�q    IEND�B`�	��PNG
-
-   IHDR     �   ����   tEXtSoftware Adobe ImageReadyq�e<   oPLTE$$$�� UUU��uMMM�� g]@�$$�������$�H�$$A��� $������  ,,,����� ���111����� ::: ��m���� ���mm����� ���  ���   ���Rm�y   %tRNS������������������������������������ ?�BO  �IDATx��Z{�:uH`	���Z����$?";*t���Z���ى����85G�0�L@ �@�z<� {����Hh ����1�Am:�л���+@5x}�oN���@G�vJ��S��E��l(ɮ�A :@�$�=(Ή s���	��t.ji���С�r�i��1=��!0'.
-�ȼ���8��t���P).%$=��M�,:��\�̼Ս�����`3��@�&��+y�ƹ�BB�+`����ɤ����q���G��?����K0�Am�/���N/��m]�Q2$Y��ԏ(���(�ȃ����~ą4�#��G��(&YrD9�t�E0���ܤ����G�ӽɏ./�~��s w��7�Q	ʥ��#�}������a�[�AG���H���ܤ@��/���#�|�G�[%N����Ϗ�w�>0�#$K�&e����r�G��G���e!��L*�ԉ��࿕M@B�GH�r�G��a9���r�G������W��ep���oh�&�[3�$#Ձ��	1�m�N���1���sM��Gk��ҏԑ�9�r�Br����o��N�]��gٚ��/L�~�&%n�G�;�%� �#�c�Y_�D��d��đ#�I�l&���I97�����o��.LI���{��7ܰ��/\�����(�dl�I2id�t�\�~T�����^Lg����p�iH|V���!���q��n�C�e���d)�R�M*=�7@���`�L��\\dm�^N��uN�r�#��C���g�O�#��_�,�is?������~d�Y��j���2����ďVέ&~T�T�P�[��ޏl�GV`�������Q��=�Gv�`;%%� �#�c)m>#q�f sd��Ȟ�f�#�~�������������D3�I�$I?B:�W����2�B�m�#+�h����J~�n�G��~d5?���<V�� lZp,�%@�G�^�k5?��Y͏���~��q�Vᨭ'҆���-�a��:����b����zP/r�;d>�ikκ[;y�4qzM�wdB4a)$�gWwP�X$L,�n�	�S�'�څ������Vt0{�(�����8�I����� ,�3j���	c��Ӆ0;ϦدC���6�1����X"��5�� }�Z����E�$�)9BB�ɓd|.���*5	c�<J�(�L� ��-���[�7��ky��u;.�bר�>�K%���m�N�Ӛ:�az�?uy��)G98�y�:2��n��p� w@$s���D{2���G5���h��wx�z�����Ŧ1���8�C��-��~	q�9��0�g^_\]��X�!b�dD�����ϊP�������e�	�S�g�)�H����Տ�>ȄQ��+u���[���2pO�Qh����g�
-��e�° �(N�A�Q��su��?*�ah���+F~?��Ð���	�ϱ��7*Z �B�8}y�5\�C��EjB����T���C҃ח�BB���� ��t��u���5�[4*��DF�������1xp������4�յ�1�(�(ظ$|��Q. =wc�PK�f�����R2���Y�G���,�������Kd~�fw����(.�����B>�n�l�n�
-?�9�[��L�7p�BJHz��2Մ�{�{Eݹ6�C�4�k��7������i+:�!D(o?P;4~�x�����4��O�砿P�\��_�\M����\�Q��,�#�#�c%oPт��J����J�pi΢�f\�"%��)P��^(���C҃ח��~�?Q�h�G�a#��B-���r��X�%H/��AD2`Ո�#�I��?A �dF��Dw�;�_�o�8�>�U:l3�&�����J�	?��(��܏�{
-�Uֽ����+��s�jΜ_ \��_,T2b�È�~48�(�hj�_�����L5!z�����S=�?V�j=��zp\\�)�*v�'��\���a�)y��;09���S��
-�#T��y���j	%LZ�2��x��T��}���Ф�U�G�>�J~�a��D���;���Ҭ�*.R�ϒ�e�"�LW/����/�c���G��S�G�v�Dg�|q�JCy?z� �G�0J��	| �����4E_bi��<�䠧n���h!o��� �h>?��{�    IEND�B`�S�PNG
-
-   IHDR      �   �K��   tEXtSoftware Adobe ImageReadyq�e<   `PLTE���ݳM�����www�GLF ��zS� �������}*ZT/@@@rI��MI�b{���0�������M�q+��@F# �  ���Lj��    tRNS������������������������������� \\�  ]IDATx�ԕs�0�l�	��0 �����=$�v��&mop���NZ31�A�/��J���^�\��(��9�dw��r��E
-����a'/��3;Ǭȍ3w�=��y9߃])�[��J��1��H&�ۼ�������ן���w�e�f;SmrSj�����z�1;ѫT,�ۃӜ����R^�|�]=�6����z���4�.��6?Җ�Aw���3��~�Y��H}P�"��~Q�Pm|����r�'�2�q�y_Q5x����v�f��+�ܤ�yaP:ǅ=��&>ON�b�m���t)f:Җ�Aw��.oIC��I}GF�<�8x��Y��LT8*���g|�q�K��t���,�����`�*qLp2S#M�8Ǣ<#������]�UR;Q�d���vV�#it�M�R��������ܟ�g2��}���m0+��m�L�v(��JF�jFBqJ�SF��?˨E�f�f�~Ȉ����lF�=��>�#@0�}8�n���Z��@��`^��|{˕�e�n|^D�}N�Q�)�/�"�J��G�lX�'�B��!6<7D���"*����G��z,��o�Ɠ9��.��Q�����Ig4e��kFy2Z�՟<=�72ZW�j��N���������]O+���?d��JK#PO���@�[����a!��3�V�}��R�c���Ad����?�&����$IRQ�#�p����+OU�T'��d��V�&�Clxl�UU!��zV�R���R�>,��NeN�n�#�$K���;�2��2*��p�QY����e��!���K�8dt��2�邲��2��U�2"'Ѻ��X2�kKP����j��3b��]Fu��/��  G�V�+�~    IEND�B`�a�PNG
-
-   IHDR      �   �K��   tEXtSoftware Adobe ImageReadyq�e<   `PLTE�[VVV555�������� g  �jg�  ��c�����vQ4�   ����O����WT�� xrZPH0�����בA ���  ���̿�b     ������    tRNS������������������������������� \\�  kIDATx��֋�� `TP�j�����:�s�I�C���U`:I3ć���@�n�j����W��sV�4^�5�[@�=N�~ %.A�:�rkZMww��d?��Ϣ������[����z�jku�,�Ɓ��ҮKni�!�I�W5��,r���g?�z�_��ņ�,)Y����u����y���̠�g̑�1���Aؕ�\쀗���L��4Jwf���h�1y��b�E���4In�5�8�i��� �$܉�%�=��\K�Ě9Tt#߭#~9���<f?82�(�+�ُ��|feYfgA@l�2{o�� �M���[4������2�эܝ����lG�����3��9��s�G��0�� �;�cX�<�w��c��8�;���tL<��B�`ʬ9�y
-�4�ا7��d~7'�rF�{�CZ�4���m;�:i�vz��m�q<��|����}qGlr��k����L��s�;/!)covq �WG��'Fnđ��u�����<��fH�I�ǈ���ႈ�T2�8��IL�:�1:���TR��g4V�R�j��p��8�����f$��ġFEQ.#,�6D0�*E�a�Nb:~"�_ �!�kPE�;    IEND�B`���PNG
-
-   IHDR      �   �K��   tEXtSoftware Adobe ImageReadyq�e<   `PLTE���zNJJJ�z2����ȧ���=�O�����y��>�   ��^R$peC�[=��UD ��~��nb8YMM�Q ��z����7��_���   ����Ri    tRNS������������������������������� \\�  �IDATx�Ė��� ��[۪��f����Pj�̴�g{���$$�5�#-�%DD�qW9�lpG��Ģ�%I�I���f���}	��@�C�Ҍ18c$��{��{^.�¨�ȱ���^��z��ҩ�,d��RV�RX��Zj7�ұDJ��r״��"N�5Uj�%�E��~�a��.
-?���5�Apܞ:,�q,8	[i��z<�u �c}��H�=w�00hR���9�py�8\�Ns,|94���kF*����M�?9G�3�\8i���4�IO8IyJ�"K-��ÃU(��]s�c"1�tF�����HƄ�o	'��Q�����p@�Ĝ3�s��~���W*������q��t:��%�3 �μ�<�������)v:��G��#�[` �p�Z0�o�`F��LО[�C�0��{���}@��7�#���0�6xt:4gk.�[7�����So�@��n�_%���@!��{0����օ��'�sӾ��Y�a:��z�tka[���9��q�/!�[h^��Č)�c�G�.�4M��Y���`6�te&�n��]�pM��I){��������O���y��0���%�4�F=(\�Bt�E�	�fWщk�aw%��v��%���DW�^��h$b�1��X�E����G� K|���    IEND�B`���PNG
-
-   IHDR      �   �K��   tEXtSoftware Adobe ImageReadyq�e<   `PLTE��kkk���   �	T<���ϸ���� �?FC?�f�c��iii�>�ľ�������`m���c�c髫��ch�`�c�`�c���?����������65    tRNS������������������������������� \\�  �IDATxڜ���:`�^n
-
-u��oy��$M;Gi�k�ca��6!/���	�&_1�_��/��\y�@_n�}�T�!��������Á��>m�AjTշ��!B��%�*ݒ����|ă��4���0��rDQ����w�o{h�5
-4�;��-�BS0�h�}�̰�V���g&_��|>�u؇]��}\��a���q��~|:�;'߷T]�N�TKM|ڡ�Ԩ�OW{C�cGR��-Y)����G<)�>�� �=v�N�P6T�b�N]��F�f�<�8��vM�u�'Y6���Ψ�V���g&�0?�n؃��Ԁ|��Rc�,�q<o�RMs<2����7t�M�5�!IȒR�n�JIvk|ģ��4���0�x�&�{���5�X��햡F�f�<�8��vM�u�#Y6���Ψ�V���g&_2�^/��{�^̥����)��J3dA�sy�o]H����H���� 5��Ֆ�!IȒR�nIK�%kK�=� ��[.ӻ<��\$4�߰5
-4���1�E�Ch
-��(_ɲ��vFK�.K>#0����~ˌް7��i��|��PZ`{�Q��(��eI/�eh�Aj,˻]�‐$dI�E��R"�v��a�G݇� ��c�����-� *ߔ�_Q�@�x�hs[t;���:��,�ѲlgD�
-H��L���~?����#�~�.���Rƌ�~|��2s���zu,I/Q�2:p'Ͽ���!�%h�=Y)���|ī [OC-�$�#�AֽQz����z ڈeOj��]���Dc�9�{��h�Pv���9#�팊l,�|F`��i�dFlr\x*@��O�MP*̐M�K!��TQ\.��/�)���(�	5b�M�^�^	�r�ȣ�4������	E/W������l��y�1G۠�!����(�dٌ�b;�1[�1�����|>��?aO���z�=�J���'��x�)����#�� 5��y�!\��Ԩ[�R��GqTԞ�VU���<�w(/<���jh��cn�n��\�1>�e3���z7ϳs��{��4�>���&4�À����7g�G��G�0�����2�z�W�Z����GVj���p��g��F�c�P�p{�F}����~w��}�������h��}��  Ce�$�h    IEND�B`�
-
-================================================================================
-// File: cache/icondata2
-================================================================================
-)~87,	F#W 1W*  *
-)I@&	eV*; c`�U[8,@/[		\T*8"  !W&O#�S*% c`UR*"c`}Q*?9G	>IgP*7% F#W 1�_*3
-8 `
-	K8 ^*89	`
-	K88 7	!)I@&	x|W* #	c`<|V* 1c`y|U*5 )F#W 1�|T*  "@ F>	�|S*
- 1#_F#W 1�|R*
- 1#\F#W 1�|Q*  *G	>IW|_*:( Y`
-	K8�|^*:( Z`
-	K8|8#(@/[		 �}87@ F>	 �zV*;
-%>,"Y`
-	K8�zU*;
-%>,"Z`
-	K8�zT*;
-%> % %/[x *�zS*;
-%><"F#W 1�zR*;
-%>:F#W 1�zQ*;
-%>;&@/[		RzP*;
-%>,,!	[x *�z_*;
-%>&,	&&W&O#�z^*;
-%>)%`
-	K8 �z8
-9	!)I@&	�{W*;
-%>)%`
-	K8({8 >.)I@&	 �x8#,@/[		Ty89	/ `
-	K88v88c`0w888 `
-	K8a% 7@=	�<
- c`6�7;>hdLknMic!#'yenanMxfkNgu# 4�anMp-&! (i/!Y,77�YnVav%:-G��(ّΰ�[��������:������R�uye�%/��ܬ{�EbR�06��D�sLZy���	.K��;#�����,LM���.���A�7fw�����H��(h+IeF �Ӭ�!�E�])Z;NvR�0I��+��皟v��	ul�!n�S2l�#��3l�qUnP�y�v�a�guye'/*�+��7;>hdLknMic!#'yeneanMsfkNguT���anMp-&! (i/!Y,77�YnVav%:-�������	H��>����ļ����;���uye�%/��چ�UbՂJ����8�문��E���%+>ɛg��O5!5ZT?9�"���D6�i���J�ߧ~�a�W��b2y�����s��j��]�X�j�2�7h�Oi)�N>�Ji�"`�F�T'&���@Lg�yҢ���$�Ak�9�Jl$56��T��-���ż���&��;MV>Xxp[ӡi����[��`��]@�=S�~,��!��Mjn%-x�>V�(anMi'- #�;��1 
-ddrDguyh'%<Min#Ngu`mmVan�MLNgu`+="/y$
-9m 	)'
-/�(UnhN%51+����������������񴷱����N/�^nMh'!
-&!���8��Yf,��P����W%�[ N�~ � b<LR}�H0K
-bݓYf�*��#��r|1���6���J��x�����o,�C{��_R�#*��,A�"t�8d�	��� ۉ2���0Ȕ^[���葱�4S/��p ��}��$�b�y�"��Д���A��V�}�jB��nNQp��\J�h�*��IZ)ճd�������51h�ě�69y�� ���?�����I{ݼ��̭V�l�6�g?��L�5�AK�0��+�Ij)..xP��0-fGvM0y>�����ι����Y��Ȧ��!5�A׻w��"��WLkuD�`u�nhNg<<+*�#��>&	jconVac!*:NguBenV{fNinhpl�kenVx1;!3a/)n.)�+[uyev-:�������������������������p�hNg�0!/���?z�G}=�3a��<$<[����QN�La�<q��՗�P(JR�+T�t���1�C�mJ��F���U��*�<����'b�T����U�� �鈽/�Do�r����z��q�9\�;�`���P���!�Y7���yBa���%���^� L���m~&8&��m��o�1b����B�Z�8���Lyx�h����3��|�5Z�[��&��pmvhX�SP*l�nMin!)1�'��>.cbTmuyec)*inhsguy@fUanM�Wycguy|99e/2(I'/ + 2�RhNgy)):������I���
-�mini.181��8{mIF,���T��nxγ�/{'zUg�j�	�=��7	�	
-��"�4�`�ƘK�M�UqG'+vo���7�^�eȓ(�ï�MA���?��������K��q��aMKeFy�.�@�-F��!�~��:����>|+nXeP���e�ФtQ��2��	�RS��x8��xy����V��W�����!�CD�r[x4˧��ؽ���,�Y�|i����<ك�;s��;�9>�?�\��q����G#!1��j��3
-�E�����	&u��
-R��i�i��*��)2r��J}��nX
-�搰�fh�8�(�%�֭�]��>\n��#�J�h�ec*`��nMin!)1�'��>.cbTmuyec)*inhguyufUanM ��guy|99e/2(I'/ + 2�RhNgm)):�������������Ԯ����������=�*Min�#4-���7C�^`
-���
-�ZQ���Mթj�.�{CUͼMx�mI_ɗ:�>yw{�؂��r<��nY�N���g�?���1��)���k���]b��\��a���"\|o����:zc������=�^ب�(1�H
-�B��V��NJ(��p�8�ҎE�{�i���E�9��a�<:"�'�F/��p3lS�8{_0!�m�uk>v���a�nhNg<<+*�#��>&	jconVac!*:NguKenVIfNinh��,enVx1;!3a/)n.)�+[uyev-:������%����ի4�����/�i�hNg�0!/���/�W}:d���Y��wX�_1�q��8N[�oE�e�թ8����ε�XF���gNaX���'����o}N�{'��������9������`x�%ן)�w��q����#�n���P�(�)�!j�ġg ��_."��G�����i�������sӱi}F��U+�\mE����2���&GP��N����V�'t�/�0��_��3���L�_8/L����:A[�g����s5�Pۂ1X��tV��b1j.>ouyen$ 	�,��%7"c\{dMine/1+enV(nMi}`Mguy�ֆnMiw?*
-"?n)*E'; 	(;	*� RVanU9"<�����&�������� �߫������̉�]yen�(*=����k�^Z"�ӑ�-�9����R�Z5 �t�
-��<��.�Oi�z���a���jHw�Y�����B:�����s3��^������&}��cFz��Gt٪���N֗�]���0�9Xu���u�������h�G��i5ߍhC���	;�h�5��� �=�SQ��kYEE��G��燧�NѪ�����ϱV��� 5\�;�z+�ڦT�p�x�lVg�;w}�inhN.07!���9 /CmosenVl'-<hNg<yen@imMin�;&�yenO+=(V 
-"H
- <3 
-4�rguy}>5+��م��������������������ce�nhO4<=$:.������nk6:?����x9�Q���A�,`lb�0�r����4Y����;_��Ǥ�ڧlV~�|�C��o��v�<g@F�] G�
-�q�N�P6%;�o_�֧�@�
-h1�:m�����х�ҙF7���wP,2H"�S馈�)A]�����ŷ�[�ޯ��q�;U������%����x?�|�]����꫋�)�w�� ��<o�����
-�C���=?072cծ�da����zc�h���} 8C":�,ɨ��5$��E�.Yt!�1Pc:5��^X.]�U8U>��eP����X�;�.��ڝ���k�È����̭��� P�����s�GWu��y��=nhNg<<+*�#��>&	jconVac!*:Ngu6enVzfNinhD�W,enVx1;!3a/)n.)�+[uyev-:�����;������[��	��������BhNf0!/��=�ލG}rŖ�R	�B��������~ϛ��l�FV�1�z$,�a��͟�M���L +*��t�?͕vg+�e-�'
-S~�S�Y�v�S�-�{a�G��O��c�l���T��������(��$�Dʒ��9#��ŵ�#5̔�� ���zmP�H�����^��B�U<�~7=oU�/�*r�pa�b���h��-�=��ؾ���2���w[�zv��-�_��O<�Ҥ��wB�����@`��yݺrxˍ���
-4K��|������L��?L�	���4�wcx[F�Ts�Y+��PD�#��R��N;- _7NB�[{��PY�즢���������A4HVT�	Ù�B	Yڊ[lZa�G�-d�2yenV(+-�*.��)+)[ktGinhC.==7nVa!Min@Fduye�M68Minq:"-60,h N*</�janMq>$"�����>����q'<�������<zzenW�'	(:�� ���fm{���(�)=�agTB��n��Ú�6-�6�ĬxAH�����^^F���R�����cЄ��l��1Cur�+�mJ����t?�,�ov�N^��њ#�O�: lSC#υN�[>�e.��/�e:�� �ڊ���7��|�35d�IN+��G����-����E=�J����u���;�;��v��N�ʹ����7<NY���2�C�㾱	�$�G����`<z�C�_̈́z��l8��ԕ�,ܲA�����qE,;{�Ƥ�V��]&�	M�B��i'D�T�D񐴖YL�q�yǙ��@�/�琂}T�k��,�O�i�MVs��Ӥ3��~+���nH���~/ܓ�}eM y1ݰ�5U��k�:.�<�@�	ֳty�h��3�chNgu0  �,-��8  xsdVan@ &,guy/nVacEjnhN^&q�nVaw9,6$n
-+G<	33,�IyenN1",��Ғ������?�ܺ�����S����l��Ngu�,*5��<�X�Uu��������!����A��~�u)�ų2��<,S�Ean��d������wކ5������"x��Ô6������>���װ��s�?�T�8򖩸�^�+}��]�c��|�T=?U�Z�`�,%�.�~��g����e�_�nO�8_�A��%Pʌ��´̨@
-��23��v�Ĭx��!	z�n����1�o�6")��ECۀD
-昛H���$9�U��B�}wOau�Ha��p��nhNg<<+*�#��>&	jconVac!*:Ngu6enVfNinh_ƟenVx1;!3a/)n.)�+[uyev-:��Å����������6�?S�������f ^hNf�0!/��?5��Gy�x����f��~���BfO�[��&h^~i���+�+�VuL��K�<x�o��J�~�M�P������-�6Ԑ"y`pr`��S~�y��$.�yjG\X�7��V.��<���"�ge�	(��|j;'|st�+�@�C��:�O���htÓ��m7��\�I7����M=��[�c��wMO{l�V��1[
-A����.��:�O	o��u�,�?�~[�q��N'�i��m�ą7?�@ql��R�2%�0J��f�߿j&�OP�1b���휥ƴ�>o�&��v��V�}#�(s�4>����e֊v_�1���E���.� q �n�:>>��
-�����J�������b/?"�z�(B����p�p�����2���hN�R��8�~�+�ֲs�Y�J��f����^�/�fup�Y	�i�nhNg<<+*�#��>&	jconVac!*:Ngu7enVhfNinh�N��enVx1;!3a/)n.)�+[uyev-:���������:6?�������~b�ZhNg�0!/�1;'��Gy�㖩�)_=�F�xHX�s�{�d��yb�������A1w�3��[
-�m�Z�U���/,!)K�v"�nҥR��8� 5u��z-����q�30��}�W3�x��ϫ�90U�5m�0W�h��u�<��)?4�d;�FT��@f>�x�k�lŊ=��h�Sj�ի7V��f�ZԾ�v4m�T	_�D�^f�Q��2`U��&J�P���}��%jN��Byb�Lku��b&#��enhNg<<+*�#��>&	jconVac!*:Ngu0enVAfNinh'1�enVx1;!3a/)n.)�+[uyev-:��������!�;���>37D�t���N��9hNfq0!/������W}�bv�����Ա��$��p�y����7���ʛ6k�"�]N�A(|�.�h���\��;�s +o�]A8�5��i{�gy�������	0NH?��l0�M8ʶR�����HVv��7�υ�g����go��ZHc6b��z��T����=��Ɂ�ZG�ms���W�Jl�&e�78��������&��HsW����~t1��L=��v��3ba�_��}G��$2�󴘌��P�
-���Ӣ�5Չ[4�_u,>T,�>dNnhNg<<+*�#��>&	jconVac!*:Ngu6enV|fNinh�˴1enVx1;!3a/)n.)�+[uyev-:���������ȗ~������(�H�hNfX0!/������W}<JN����^
-ͪ6����u�-VjL��{���V�=1�4�cv�k�X��r.�K[:��7	���,�4��:��m��P�'xHFЯ�܇$�_��C������ԋI�5���KO�ю �yBG�Ы<����/�U:=�s�a��-l7��a��W8Ɩ�j[�ٳ�1W���S�P��'脧��֊C-�WW���߆]��������q=�O�"�����xs�U�����A�MS��&�ѩE���!bS���g���G����T8�`4�kP�����}Ie�kY���HINguy,+%�	��)2tot\anMd' 
-5uye VaneamhNg�YVanT+0:47M(
-,U01<(
-?�EenVm>=+����ۄ�(��!uyd]%/���׺Efe���UK�t��#�XNP`ZJV�x�>V7�Ȋ^`?�d��b�^�����~C�Q���H:n�L�Y�,��>��ʪ� /T
-�I�� /9!E�SB��C�6�v���ǰ�cuf��N�^��{�/�oY��T&�I�왁��Ѱ,�˭nL��:6��']B|8���`2�0��:�U����w����Q�ǚ�"S�RFt�
-�C n}>��D������7�N3x��KG�+"G�F�i�F$�W�`d	�G0TC�@��P<�9�AO&�a�>]����hԿq��	Q��i�N�'�����������jpN3�z�E�Minh";=�,6��')eD}yen[(&	;nhN.uyeI^bnMi;ۣuyew"$69:: n/N!#77<�TNguu5"$&��/)�ݤ���PY~mnhO_<=$:.���(x�no1~ّ��,�-��(]�P�Q�͙�+ý���R���JOS�P�9D)��w��eB�q���o%���[�
-��s6���@[�]V�'�cg�jA��7J�\��4Z�aw����C}O-�p%;ߊ"�A�&�-k�AG.���:�O�N{L�N�yU�}q�t`ǐ��m�w�־:�d�$�_T,}D�����D/s�ܒ���ϴ�=�$��/o�n�v*f <k#*}|߄~���\��uU��/�QK,�3o��pSy~���P���O,�y�U�O_��D���\��⥴� 5	2��hMg!�xU����inhN.07!���9 /CmosenVl'-<hNg;yenqimMin����yenO+=(V 
-"H
- <3 
-4�rguyi>5+���܃���0@���U%hNg�0!/���of�G}<����� ��,3���;���fJ@4 � ـO�o�ʿ6��v� aqy퇅�1U:����ߩ��6��OʤX1vu���Y��0���F��<h���BO��]�!b����ai/��U#7qPT{�sQ�Z�wFH�{��/H��Ia}�#���e�+�~(Kx����T4�3�%�WD.s� �f�7�nq��I� ��Ҵ��4�2�oV��O���8uyen$ 	�,��%7"c\{dMine/1+enV1nMiN`Mguy׃Y?nMiw?*
-"?n)*E'; 	(;	*� RVan�9"<�������6Td����M�5m���B]d =!���+8\z����� #������5>��������������������ͼ�>��Ɣ�������jġ����39>��6�i2	>��X�����>����c����������������}%pa�4����u���<!p�
-V��������B�����K�����*��&uyd�%/��ڊ�Uz�pB#QjlY�iaj}Sj�[������,�����>�) �V�Z�2�{I�&Đ���U$i�������in��F<�o�0�@Jhb]25��1{Amx6c5@�C�8%Zۣo>T�\B��}kB
-��qA�O��ő�t�_2�l�epCM�n�t����x�J&5�	eA8�DJy6�3���u�d
-�|ǀ�jK]f>A�B@������˫a��W��ɞ�Л7��"}��������u���嚈d���Ӊ�Ji��D/=�V�'��<A��֬]1��U0�����9�h�
-��U'��f�z�	����%��C�U�RD��alG3�qYH��\��o.FJ���3>��)@�{VHļ�nkN�{c{H%�Minh";=�,6��')eD}yen[(&	;nhN(uyeu^bnMid�l2uyew"$69:: n/N!#77<�TNgu�5"$��Ƅ�g��W��b��W�6f��ޟ�%%-{�~"�
-�������������󟓰���������"�J��������熈�;A|G~S�����4&����L�������9��=�����ԩ�1������o��������֡������������������������{��Ԁ����r��T���֙܊��g_��Mil�#4-��5:�^xÕk�sqje����s�+�����;�[��Ԩv�a��uz����<q�������l�<[�ӑTҝ�R��cx�Ǹ�K��R�,�SI~M���6�|��j�MM�4x��Є����N�Φ����$<�|�c�)���/�Ļ9�.!�I3���i�� 5�^�;t�'����9�������.�+�A��fw�3I���[�����Lu��.,.��Z�^����F����t8]'�W�n�-��G%����v�����֌�x���p߉�6^#��a�YA�5��X)���[��J�������Ŋkb�ȱB�f�>'!�L��#2�Z�?��fBeD@ ��8���v'�K�E�Q�������߯Cw�r@r
-�����!����9�U;�{��R.u�i��'���)8GjЏ�B���]Q":���p�n��47��mV�b	��x
-�v��31/ۢ�*D���\��fo|�b���R��#��~)��+��ݳ��k6�	�x��p}���C���\Q����xY�_�Ν��0�^��D�3I���](^S����m�̴u����x%�ƺ�be�of
-��D!��yb����XS<do�8�-ŻjZ�� ��~\�l�[܋L�ѫ�[E�g��O�TIokyrn�C&�tՈs�R�l�
-�6�����t1k��N�OO5�%�\ߔ3�D�O���	L������^"X�CZ�Lk�%�4�|T.Ht��/�\�n/��:�^�uguye'/*�+��7;>hdLknMic!#'yenjanMyfkNgu)�[anMp-&! (i/!Y,77�YnVav%:- 3(3���)57���"�Cuye%/���n�EbR�Z���dIsG_Z��b?�:�Y��7'��������H�.��D�\��'�2��*��le��D��8jg�Hh�9Jd�M��[k|g�����X����_��k��Y�DYnPIv}�J�anMi'- #�;��1 
-ddrDguyh'%<MinTNguhmmVan�yQ�Ngu`+="/y$
-9m 	)'
-/�(UnhN%51+9�������ç �2.5	=������nMi!
-&!��(dN)f㵘
-��%R^�!z\?��sX���4�c�[;����v)�K�8f���7L��6E͛�BŇ��ʼR*�� a�@{8�����q�LLJ,�[X���U�ϕ/�fu\�{�4nhNg<<+*�#��>&	jconVac!*:Ngu6enVqfNinh.U��enVx1;!3a/)n.)�+[uyev-:�ݡ��ܝ����Ґ�����������w���hNf$0!/�����Gy��������m�༜߶�/���8�8�5���E�Hb^��]�m0��9�Drps��p��H~u�}k�M�Q��I}�?ͯ��P�E7�!�i�1��{�Y��AR��-^��D<=�]-��:���k��(t������+��K������P�����ʗ�H;.6������F��D��ܪ�Ay������%��1E��48e���P�-gz�[�rA#۔�5L�}��5(�Y��(#�0ڎ��b��SR�i0>��h�������G��<
-�ť,$̝A�NS?g���\{�[���dW�� k��F������/�-�Ogڝr����inhN.07!���9 /CmosenVl'-<hNg%yen~imMin6��FyenO+=(V 
-"H
- <3 
-4�rguyi>5+��ֻ����͑��6���hNf>0!/���/~�Gy:��ZaH-B�n���eۜW�X7������f1�ƙ��q�MY����z�n��w,,�58��Y��r|$��/+#k6���I&u	%5w�PH�ii%u?���>=��A�d/�p����%���aI�[�C���G�E�6���Y�f��@����{�����a�i��6����k!AupL[G���=��u��!��Hb��6s9�
-3�/�L�M$l�;��9.dD�~r�{���O�>bq8A#m�M�o)��Kբ{M����&�'|��N*��%�Yw�g����k7=�r`����?pS#B�b� 0j�u�n�ORq��enVa''*���5 ldWcnhNj<1!<Vaninhhovyen�3UinhW0!=9:N&v(,:+ �3]nMiv830����ۤ��̠��,$���<���I�-�nV`J-/<6��/���QfI����Ʃ�� s#��\ ���iKG����K�Jl��p,r3���E�j����>��߻��)o<���h�+�������2�@k$�:I_V[)��ߞo;�� 1��cX �NHo��v*i�_ս��3�.N�şr����q�`���#S�a�3~� ������qW/EG�&Ysʬ���Z�+�5�,Oč�����	��������R��̨m���F��5*�e�p�2�Po-�����Q��/zpY�Hu�@��6���B���@�!�Og��#�w �ainhN.07!���9 /CmosenVl'-<hNg8yenJimMin{K��yenO+=(V 
-"H
- <3 
-4�rguy}>5+��ʉ�� #'�����9�����AnhOg<=$:.��h�loo^-��i�\��4x�I}h��>���/Q� m�m�Hs%?#�S��Ooy�&~~"�WGة���Æ�u� Cv��a�ϛ��$."ᬠe>k�z�w )ͮJ�O��o���1K���+4��c�4�J��6?��j��ŎC�/���^|�ӽ}E��߳mI��_��ҵm=�7�O�*#���"�+�� zPG �F����;U#�%,��������	��G S����c�~oKi�`%�l]VanM +&
-�7��/)@ctbNgut,&3nMi>hNgWqfnVa�h�;hNgl 6"2+	<u84N+5'�qinhV79- �����Ϻ܇����������豘�8sK�anL=',3��8���me�=���6��tɆ��W���:0�V%RWVS5�)��D�ұ�����0V���a�!v�6�|���G4y��!3���H*��^���U��?�[Uq8��u��3(��&81���wC�׎\+T(u�HeX9�����Mh�˞��N��/;J!��"=���UD�v
-��@��E$AͲ��2hY����ST���Я(����3:W�����@FF?+<�2�/{�~��"��
-�y���s��g���k�:I��G���� �^'�IW�k��vl�b�GZ�1�V�أ�xm�y�wsMQ߳(-����+Y�����dl<���$�rhhh�He�_U�nMin!)1�'��>.cbTmuyec)*inhguytfUanM��guy|99e/2(I'/ + 2�RhNgm)):��� /W��*%�8�4�����������oPMin�#4-��25C�Nd}F���jk���?E�4v�W����bOF��F�_,' PL����� �Y���_Z2��1+�X�N�?��n�u9'��#X��_#CeeS��A1�����m���h3�E�mvh��yhʃ��Ǻ�����#	麱�R�=9vt��VѨ�r�9�'Bؼh��͸��I꿊�TO�*���&�_EW��;���ⷃ�J�h-}j�S��nMin!)1�'��>.cbTmuyec)*inhguyDfUanMߴ�guy|99e/2(I'/ + 2�RhNgm)):潿
-ȭ����������������MilA#4-��4g/�^d�n���J�=����[u0�q7q�x#H��沢ya��j�0f��
-�`�h���SV�ځ@.yu�@��"�}��،&^�|���l�y����Pbb*�^�C�31������g�6Ʌ��||����7�N�ꫡ.�d7m��ԓf3_X��0۸��>��-=W�Z�L�5=\%ْ:~᷅q�2��E��g��x�J0JpFS&e����Ơi��g�D��L��'��zǨE����Mpܛ�J���3s�<e ��
-zy�	���X���#*4�-��7
-��j���ʞ�[vgK����CΘ���r@I@;g�܊z�y�����^�yF�r���ڥK�~@Rۆ���	q������}��1im=�E�u�@���@�L��Qd/t8�6.��Wi��k�/g;b�.��ܜ�	�(P�<�d5k\�����J�fs��>0�ݐ�'nu�5�k\���PmSL|�g�D�L)�9��C�4�G��#�D�J�7e�*i�ޯ��t�'�'@�7.f`:�T?�9�7u�fdhV_�{z��I�uyen$ 	�,��%7"c\{dMine/1+enV.nMi`Mguy� WRnMiw?*
-"?n)*E'; 	(;	*� RVanU9"<���� 74���������ﲖ�jHByeoN(*=�����N^%3]��2�����Ϥ%�Gܭ���P�­S6t�;=��1���x�DZF®;�yCUZ�׊�6�*�|k�"���ɠQ���P`���	 �8oj��1�����a�wU�X�B��<O�~�I�ؼ�{��h�"D|'4sx;V4B��K�
-j8��e��i�Q�m��~R�F��y�:G^U�3j���
-)1�qT��u�jŧ=8Ƈ
-�b�4��Ke�KZD� ����`�	��j��u����@�ܰ.�iN��g��J�Minh";=�,6��')eD}yen[(&	;nhN(uyeJ^bnMi���Juyew"$69:: n/N!#77<�TNguu5"$]P�������2,�nhN�<=$:.��ٸd�~o0�����B%���@C�����LiY�pv�¦D�u͚-��Y���ϚI^1u��ׁt_�Y.�p��1��*�3>��)��g�d����Ę�
-�����>��� �O�2� 1f�H�Nhwu��!Minh";=�,6��')eD}yen[(&	;nhN%uyeu^bnMi�c�uyew"$69:: n/N!#77<�TNgua5"$������������֬�7[���y*��iniE.181�����HB$������H��K<v��7���^bK�(�M뼺�/�+�D�'�%MM��f��2y/mE=�O�*��c)�oo��+q.Нv{X�+])a�1yNN�}��0���EO�9�x$�]�\Aw]���ȵ��K��7�\OQ��Jt2Z����x#�y 'CZ�A8�A�jp�u�������4U�@1�ȫ���N��cl;"�6�Qj���lr��u��=j8�1a��r@qdbڥ������QP��v!q�k�M�avfB�!�iayenV(+-�*.��)+)[ktGinhC.==7nVa!MinNFduye�GWHMinq:"-60,h N*</�janMe>$";[�8	�����Ա�unVa�-/<6���`�AfО��[�(��{����q;i;��r(!|��r�I.���,'��M&�ޟ6�S��x��v�&�ʹ	`�H��7��P�e�VL"d����[����\p�.�l�I�8�.��k������lPߧ�H]���X����P��:.�$e+?6�4Ewʙ^�.�#��kywue�Ju,�+��Nguy,+%�	��)2tot\anMd' 
-5uyerVanAamhNg3|HSVanT+0:47M(
-,U01<(
-?�EenVy>=+#�����ε���)+ˇ����guy' :5���i�Yim�ᅲ��LO��7�~z/Fw%<Ӑ�Q�yh�q�Ulg�
-h��5L��o㭭�Lٻ}4�JQ�X��F�5$Q-f!^Vkܗ|��"D^�pu�5+C�{in��h]�`cDguye'/*�+��7;>hdLknMic!#'yenanM~fkNgu�e7{anMp-&! (i/!Y,77�YnVab%:-�����������V��yen�(*=����w�N^%ᦖ�Q
-6�O��$+��zd����,�SN$F��U�a�QU�P��}��VjN*�݄!��e�j�-L���=�{V�p���Q[}��
-��K��7+�2���_&�$3��=J
-9	��k>��.�� ���=��Šў皌6"�%N���,���y����q�걩P�*:���d]�vTFX8]ejT\i�t׵(���r.�E�a�Mya.�yenV(+-�*.��)+)[ktGinhC.==7nVaSMinaFduye��Minq:"-60,h N*</�janMq>$"⦚���|��_��(����v������BW'enV�'	(:���"w�vmjjFҗ�*Sx���aPH�s��l{R]�5��w�C�ԅu�4����P-�w��ܾ�O�N�L����;FPg��&Pp2~�c@����-�O�>����_��p��c\�'\�6Q5l�$�`M/{h�b��Cwt���N��Tݾ��R�D����}����R�ϕ!��kNa�`SV�>�yenV(+-�*.��)+)[ktGinhC.==7nVaBMinKFduye�Zy�Minq:"-60,h N*</�janMq>$"/��ǣ�����>�OQ3DVז��7�%�enV�'	(:���omvi+��ڗ����S��N�-������L�r�,����ئL��w�/j� �N�US���OH��-� �Ԛ�v�)~�pZGS=+R.�癬���l�j�=:�{t�c̻]9��ps����HC�\�(u���FX%�x�oG���d���U���d�\>{���oh�9P���nMin!)1�'��>.cbTmuyec)*inhdguyvfUanM�Bguy|99e/2(I'/ + 2�RhNgm)):�����������.���,A����z�Min�#4-����C�N`
-&M��Q���ڶ-�Q�U���͂�o�N"�s�ym��`��bHJsC*^���ׂ��:A���S���4>F�G�M���k�uZ�'_̈́)̇Y����Щy]��t���Ф�΁;9��]��5�z3㩥h��X���σVY1��m�yQ~	O:q�7;r �%CN,)�<d�w������{<�n=��E����hAѠ-�� �����%�Ogkt�T�inhN.07!���9 /CmosenVl'-<hNg%yendimMin��˻yenO+=(V 
-"H
- <3 
-4�rguyO>5+MS<7Ȋ��^�к����uyӵ�m_*��h��n)mnGK>Min�*�yenX<:�������������n-���yen�(*=����w�NF'��ALX���d�<49%6YI:ďU%�U@oe��"#����8����!_{�WI�p�-�rh�DB��.�/4��A�5HFۗ+|	P�n>����'D��c� `�W�k&nge�r�i�v��N�AA,�ai5d:�1N����+~���.�U&��u�}&:*l�N �U�Rnj�%�h��d�"L�RLU����Fc�y��b��n|ޚZ�\�
-M�E��3�QJ�I����O�dvMV��T�	~nVan, ,�%��>&cGsdhNgx0-*anM{nhNz}zenV�(��nhN~<=9+g4
-3A' 	�RMinX+!<��ߝ������EW��ɆP_�VQ����	�,�4����;7����zY�����,�enV�'	(:�ä�w�vik�,���T=��Ԥ��QM�s!w�:�9�w��!]�l-�Ȟ̅hޝb����Wv`�����, h�jR����ѣ^����=�8w/RO���E�݀ɟvnƦ�VA|��Ґe�ƒ�� )�T��i���^�dZ��.�Wau�s�(��5yenV(+-�*.�
-
-================================================================================
-// File: cache/levelCData2
-================================================================================
-! ...� Phụng hoàng thép� Phụng hoàng sắt� Rồng thép� Rồng sắt� Phụng hoàng đất� Phụng hoàng lửa� Phụng hoàng băng� Rồng huyền thoại� Rồng lửa� Rồng băng� Rồng đất� Rồng đenx Rồng vàngn Rồng đỏd Rồng xanh_ Rồng trắngZ T.REXU Đại bàngP Diều hâuF Voi< Gấu2 Sư tử- Hổ( Báo# 	Tê giác Hà mã Sói Cáo Đà điểu
- Gà lôi Gà con Trứng gà 
-
-================================================================================
-// File: cache/msg/101
-================================================================================
- ��������������������
-
-================================================================================
-// File: cache/msg/3
-================================================================================
-                    ����     ����     ����       ����     ����     ����     ����     ����     ����     ����     ����     ����    �����    F����    d����   d����    �����    �����   �����    �����   �����   �����    d����    �����   ,����   �����   �����    �����   �����   ,����   ,����   �����   �����    �����   X����   X����   �����   �����   ,����   �����   X����   �����   �����   �����   �����    ����  (          d P  2 (  F @  x ` ABOUT ME http://localhost/about http://localhost/regteam
-
-================================================================================
-// File: cache/msg/64
-================================================================================
-P2P(2
-(
-������   �� �� 
-
-
-#
-d
- !"#$%&'
-
-================================================================================
-// File: cache/msg/88
-================================================================================
- 
-
-================================================================================
-// File: cache/msg/92
-================================================================================
- 	 F G I J K M N O a
-
-================================================================================
-// File: cache/msg/99
-================================================================================
-        
- 
- 
-      �    
-
-================================================================================
-// File: cache/playerdata2
-================================================================================
-(
-/x *�/W 1�,:7@=	, K8�, :8?
-F>	[,K8 �,
-1O#{,
-4c �,
-7c �,&2@=	G,&8O#�,&	1O#
-, x * �-2O#�-K8�-"$@=	*
- 2O# �+W 1,(HK8(KK8 �(K8 �(10  c )[		$
-)>x *4)W 1
-)	x *E'	2O#:
-%x *�"W 1s#[		q#GW 1q#7O#�#"8O#(	<@&	P< 3@=	[
-= x *�:K8�!:W 1�!:?3O# �7
-O#�7;>hdLknMic!#'yenNanM�fkNguT�:sanMp-&! (i/!Y,77�YnVa%:-qVD��anx=%���zFq�T�!�����6-.Y_����������� )�:�L���-!���Z@c^ECG`r�����EafhNg�����P�MinH:5;*�������������������������������M52s�gu{�' :5�����Ii�[hJn �\�U���$������B�Ko��i
-�p�#��lV{Mq�)O������@�C.;��%�>!jS�(}O�z�`�#"w�	�[�Le�Ԑ��Vh�a:8R�tA�bٸ���^o5CI�� >Qh����pa��Ϙ��$�n�knl����z2e=�82�fn��gB
-0�_��j�> L�"ƹg��5�jy��q5|9\��+��4��k�::@p�sk�7jJ���!��#&խ_3Q)�����3&or6���:mZe�h*��E2p�31�L�&�$�&d�/���8�V�B�]���j��U�x��Q������d�$���H���Su���eᢪ���
-�*N�%�y*�f$Z56CsxU�/�(T�6U?%��VFS�����$�.0�9V��^b�K6�L��jx�* �Cw]���`m*����?�~$�A|_��&��ӆ�;�qV숗4�9��n�č
-�l��b!�S+���;��)^�K@a�K[>��/U-��c����%�1p��k9qt�{i���j� ���3ލ�����=��5U���M�}�yܣ���zO�^||���Q�ܓ�F�X�PX��8�O�Ո�{���Y"�YQi.L!��z
-[��"����d�T�hb%ed�IU$��V���4��W,9a%z�}��m���R!��z��+�}�(� 2Q��L+P��"�_��<hq	r/�z~tK�ſ���R@������s1��8G4K����ᡩ�uze�-�Ƹ�INguy,+%�	��)2tot\anMd' 
-5uyeMVan�amhNg�Z@sVanT+0:47M(
-,U01<(
-?�EenVR>=+�g���ꭖ�i^X�TU֮��VPV���QM.y�W�p�UYE0������uye"3 ����������������NB��nVbh-/<6����Ab������ǚ��ތq�����M9�ː9i
-n���)e�5uX-Ѳ��2�4Fʰ�0�(�U{�k�f����	�	7��w
-�0�A�g��s&L4Έ��u��l�.��<�	EcN�m�	q]$j~����oԒ�'1�|F���M��n|/'�2h��R[+lq�U}X=��}hlr
-eY&Du)�|)=	�C�zY�o���2O����J�m|���fJ�Hҵ��g:�rd����y.�cw_dK>0%S%�Lh��Ӓ(�"���_�R��0����ر=����<� ����Rb��R[FP��I��&��VP�Mcz�|r�{��a�=XwHR�I�gK4�# �7%7���//#�A���b��Y�}��V�L&n	ŭU�r>�5�A����
-3�8����,$��36�ąK�6�Χ�1�7�_ѭڔ�������^G�*Aew�8M.��n���tQ��#a�ϟ���,F.�*?V͓�nt���=^����`��-+R��u���P��NPwv�E'b�����2��2CB�6���ʹ,�A1.�
-&$V�@g2�g��mBB/��2�F���a���*�]��t�d�	�a&Ʈ4錨��~�i>#�0����'Y���o���P-���<�\���O�R���i,�"1a�iӎe�ë�w�9pf�=6�uݽ���W����-ڔ�>ȿ�"�i�%y@��֋�����}�q� =�ah�E,v�!����1�����?[�ٞ�.�����WLku�[���AnhNg<<+*�#��>&	jconVac!*:NgumenVrfNinh�5��enVx1;!3a/)n.)�+[uyeO-:]i��6k�uw�B^�Ŭ����*nhN���3CD+nMie)&����������N-:x�nVa-/<6��,|�AbI��W��� jCŤ?gW�o���!;r�&�!Ď���ӶW��eLZ~�/�,IU���V��W6��q�r��`����a���+����Ư�K�VHF�k�uyen$ 	�,��%7"c\{dMine/1+enVCnMiB`MguyR���nMiw?*
-"?n)*E'; 	(;	*� RVan~9"<}�}%�N����h�7u	��$��P�����NmI���WE95>>+���!��enVp'=����������������u\��4anL',3������mek8�]B�����H�,���ۣ�v5XZ�mh�ƛ��.ܖȁ����T�a&�e<0~�1qCa��z�b����[��]=�]�hxp�
-Ɨ���Ey��=A�鈂�}9E��F�߷����_C����*�d�홄��-O;� o�z�~�x��{IYC�WLZU��I�n��<%0��@_��쑈��Al�4_��@
-���$�}����:&6�rQ��9�&̬���!�f��"+}6f��x�Z��+}H�T)�&9FK�֭��vTZ:|6-����Ju�y#�:�)nhNg<<+*�#��>&	jconVac!*:NguHenVUfNinhZ�U�enVx1;!3a/)n.)�+[uyeQ-: V�"���"uQV&<�����%tY���$=4����$3;)F,8���|XZ82hdx����� phNg`7 ��������������������g^��Val� *)������N],�j��!Y��:�{}{� N����&K,4�;kg�p/�9j��f��bi�$�� f*ٲ�i�%�����s�� ^���
-F����� �d������bB~��˵Tz�'Ko��� ��Ɓ��9Z��#&�L���g'Hyv�U�权ot�\��׉:�9ey���5��IC6	=��!1NZȆ�h�@�������9_�����
-�<���҂
-pȉ| l��7�SM�$�s�|��n��j���9{s�KMj��#(��KH_R{���)ت!io�:e�Ԕv�w�CF���r�=���,僐�R������f#������|���u؟��ML�7��k�b�ۏ��e`<ύw,�g��?���Z������4x�ƿ�~��@`���7������R�
-�m�܌��G���-Q��S�7����M�kJۼT�"m����zWs�>`�D�V�����g��=D��A��*!�Do>�5r�=P+&I�c�q�>ұ�C�|��	�&+��θT�L�a>����Ψ{�V���}�/,1�暽�{�W5��K�t�5;����&�B��"�:|���ڼ�N^'�\-���ӓ�C ߽��0�F�d� ���9}�/U�𶴜ԃX�v�cmy9;�>t��hNgu0  �,-��8  xsdVan@ &,guysnVaiEjnhN\�4RnVaw9,6$n
-+G<	33,�IyenN1",�C~�a`��y��t�=m��|yen���1��xNguq<2�������u���anM%',3�	�oo�am黖�f�%�u�O"M��s��3l"7q��=ġ����	Y�?Xk���%i���ZRyn�Ml����enVa''*���5 ldWcnhNj<1!<VanSinh�ovyen
-!��inhW0!=9:N&v(,:+ �3]nMiJ830��t��3�3q}a�PGd@SUsr`l���anM���#RJeenVm'=�����������i|���uyg�%/�����Eb�(@uW�����D��=� ��k&U����j�~>J�����!'bכ���؄�ѷ�ZNoǽ��L	���XШ�	:G	Z	����6�p:�-�k2񶝱e7�������Nj|1��߁Qj�z.���_*ksj 2JK U��(��BQ��g~�1H�~A]�n�ƛ�0M�_6�њ�����H_���p	�'vX���M�9�L��}�5Ds��n�e��j�8�D���0�Q�9�*]�/���N�yy�����q*�V��*�
-��[������B�����mO�� ���Bm��nI��P�&Y�_�<ˍ���xj>4�v��4�����(F�޴�:|\j�w��Zx�m�)�/(Or���2m|<ܜ�5޹o�U��]���S�����.2��wI:�}о����ؘ�@;7�µvptg-Z=��l��U����ʇ���5����Mnϼ*G��|ChEN����b/��(�<	��~�@��!¼_�uow0�6��4"$�AS��A�oxށV��Ҭm46*���=�|l�c�i.-�e �����n�3��$��'ҞF�J)����o�pt]�D2�0?��ϭ��M�qI��!R�5�硛�k��T��>�%ҧ*�ׅ��p�z��H����1�=��m4�"]]ԩ�C�x�^�ʖ^*�V����(D�wLku�����y�nhNg<<+*�#��>&	jconVac!*:NguaenWofNinh�6R�enVx1;!3a/)n.)�+[uye&-:��{�E����|Y^ScJrn<0lH "GK-:wT���~jw��z�VY�.)�������Ny%nhN����-��nMiv)&�����������������������N�fW�nVdj-/<6����K~�����W%�����dF��&�UA��$�g����o������M	N�E%mqu�)A>�!�ء\^)lo�-XB��J6�y2XR�~j�x��/�k����𮐀/��WUa�Ɋ����	Ů��j��t�8{O�^Z��iZ�d�9f�.Hi�;q(8�'|�bE��a5��#s�a�s4d+F[������ϴK'�X�B���a�i���n���.�E
-b��SFL��Y���T�*y�_Y��8|�Kװ���	�'��,�G�n[�St�%{���Z�>(��0��p�)��ov�0�'.�9�U�)�h�K�v�h�{P�xNv���un�}D϶�~"=��R'/�w��xh9w�} ��B�{*�8�m��g�IЯ5x�^�c}둉0.z�ή~�
-�X��^��߃ţ����볺��$h��|xh� ����<��&v��J@���؞R���eNFܚ�����-ɳ�G��,yU� 8��]5
-㼾-u��n�ҡ��j4Q#��]���xߘ�z¢��mh��H���d���<��������cŨ�*{�y��%�L��crN�4�)�:N�C����3��Ķ!\Dw��e�Se��������B0�4h���v�<�R���tZ9I,�Ta����?c>�s ��dk�WJ2�!��Uk��%�$�о��B����آʏ�������"�R�8��섈���l��dSds4�
-�Jܺd�El)�~����LFp/DV�#�����й�}�M;��|�G���a�,�!	ʭv0U�I��q��R�S��U���ϫ"���4&�6�4�%�v�<���Bx(P=�O}�`O�T��}�E�]��®n~���c�~�0�nDrC���w�5�z��j��+o� ��/m>3X���\޻Qo���B�3���m���-���#_��a���{�>�b�\�f�i_?J��a�Փ
-d�7By\%&U�F�w�����u��㈁�:>^�
->��ќ����I�����S��P���R���f��S ��6�6B!�6NL�;�hĚ(��o�s�80�{�/�����E������y߈҉���8�8����;%r�m ny��~���靔�Ćz{ƪ�ז�j���9IR��pO���ᕋ�I��M�+_�yS&��KD�e�r�v���z)B����T�_�U_��*�E�_8"ք�	\�����E��"(>?�:�Q�
-%r��1OPoj��Dm�9ܔ\z����#��u��}}n�J�4�W�guye'/*�+��7;>hdLknMic!#'yenDanM%fkNgu.�y�anMp-&! (i/!Y,77�YnVap%:-��o��3�8�VHDX{Ct���nhN���pk��nMid)&���������h��Y�enW)'	(:���(׬vm+I2����u�����ߚ$f�e4���'���e2�n��md�n�KnPrm�7���WX�T8x=Kh"�%k+�j��*m9#,"���9>80� �TR��ӊ�4�vKJ�܊ЈȊ�����ތN�P�g�<fF ϧ�1tq�@"��ѽ	2�u���m;��cV+3f?=��A��!⏹BB�������X����*������{�ED�l{㐻MX{�pOߓ	�24��J�nC*�k���J�Wz�$g�Wl�D�t��x6�O����77����������$�!c��w�.�Li�+h�m)VkVanM +&
-�7��/)@ctbNgut,&3nMiDhNgIqfnVaI߱�hNgl 6"2+	<u84N+5'�qinh"79- 	W��e��[g׆���r��%�6��3���'	^U'�7FW���*8S�͗�����Yz%#_vd.P[�AN_{|pVlc��aNmLJLv -0�hU$E\ZN��yen���o�|$Ngu]<2�����������������������������������e6zlcMil)#4-����NdH�<�����l^����nxt¶��[��JT^N�HY��ll�����m�O�����H����z��>����oSGc�) تV��O�z��ɪpv`D)��Q��$P5��1ܒ������v>����������ob� ���{W	�{iD-�& 7��K��uNe�U��&��a�.��Rv#�x���$�T���J3�w^eh?Kè�a�@ߒ�/C�c���&%^,P6D3T�5���|���S*rԤb�Qxy�����{9��g��2�*6��֬�p���x@�7��e���r��� J����\�A�ߥ���_z�~�Y��Z��aw����
-�x�>����s�o��0J��v��SrH���$ %�Ć�$D����K�*���6�v=?Qs+����Ev�l���Ӯ��a�/�^0C�E�����xW����Yt(��,�/����Uً��+�)C����dc"T���&��K�9J�^���r�O���*pe3���p�D�$?>W̺�EڹԚ�R�]�.8��u�&�q
-�e����&h�����GO����ϩV8���@�de�oAI%��:Nguy,+%�	��)2tot\anMd' 
-5uyeaVanqahhNg�A�'Vam� *)���z	U�Qǣ�xH��'����.Ó%$*l�|!�\(���gN���<�k(�X쥧���X��K�7E^v�jL-�Φ���t���π��ɝ+ߡ���ViC�㍊�k1h1��P�|E~;>�Wa]VC���ܽLY��O[��x��v��/2p����ŜOU���^�1�1�c)���t�$��BY�5��v᝹�-�%F���MW"nC��9���laKP�lˋ^���z�qރ���mPlv����5���\x{M��7y7��z<ǮCni^��i>���2�b�cA�o$aU�P��c;M-<�(J�t����W��3O����h�||js��\p�k��y���Xn��i�=��VƥQx/�ٺ4`�: [kf[�q�,�!J��_.����s�
-�oc�&5!�����V��j[	;+;n�~t�뇥OG�&�7�mOAI�({�(�`�XM�!�XUԱ�b���cV�-�,�Fs�Ԇ1����<�0ژI�[P�!���ɧ�ⴑ����9e����f�_�@?TAV�	�iK��j��ݘI�є����Z_��4�We�i�Iy�������w}*������r�-a�!<�ϓj��g�e�!Ɂ��d�E�|� .Q�8`*�w���f3�aCi��w��f�ԔoGN�5^�`q���%Rv�"��ڀ� ��r*\N��r1��]d��
-��e���p��|��- �sΤ:KD�<;j<? 4�(VC��}�W��s>9��o���X�-:^>]X4B�	��WV�[�G6zڰ�+Ҷ�mmT0S���S�y� D��.�?����U%������^�*P7�%ף\v>�M��7mq�'�k��h���S��� *�R�r��`��*0��82�>#�%!?��2��I��\/�E>i*�guye'/*�+��7;>hdLknMic!#'yenzanM"fkNguE���anMp-&! (i/!Y,77�YnVa%:-lEP��n4::rWV��r��ZZ+��$)3��&�NH).IV] /���Yp�NRhPgbAe���O]QxsKBMn71'6��S#=��b.W�[JrYnMi����I\�nVaM9; ;����������������������������������n+@��Ngv|,*5�����Ui����ڵ��R��)�myH���FֆnȒ���_�h7����3cH�4�k�~��3�&�J����łR����e���X���l��Z��Mn�O%���謙�ۦ�I�?�������C����i�FQ<�*�5�!����69P#l�Vf��0W�6�&�Z�Ϸ,�G	�l���@b`��P�bt�ڬ+�Ǒ;�ﬔ׌������F��tOKI|��y�Fc��E��C,Kub��w�F������B���A̧AZ����:�>~����B=�]���H%q(1 0/!-Vе	��!���&`����;v�C�E��@m�Y�N�Й�A���E$4\ �K(��R�$K���k�����᠒1A ����+��%���5;5C8�
-�ꃯ1G�����z�*��5�_���3�k��S-�S���~�S�K>q��)߄��̼��s�Z�4yw�7/�5��Vw��ʡ�ƚ�$RSr��`�C��Q��)sp�-GSU��m�_x�&��b�/���i�x�B|������ ��%?kC\G���"���&S�O}�C�)��� I�͓O��Fw�et���Hɾ9��y<�=�52d��|��
- U�
-���	=8n)����{p-��hvx��oh���Ξ6��8f@x�Q�cp?��h�7%���?��mD��s�,D��/��.㭵Z/~���<IS^���`��e�X�D�T�'���&��"����\_�;c�����amMy%� ��{nVan, ,�%��>&cGsdhNgx0-*anMcnhNs}zenV�^nhN~<=9+g4
-3A' 	�RMing+!<����ʲi���g����@m�inhK'76����M��fguy&' :5�:�iuIam�Ӱ�����X+jdJ���}��K�!n�G��P0��cH���U���7&�b.�oV��Od����uyen$ 	�,��%7"c\{dMine/1+enVnMh.`Mguy�sj�nMiw?*
-"?n)*E'; 	(;	*� RVanU9"<��$uhPw_�vp����w|�<T���H��yen^<:�������n���inm@.181�����HB����)���(N��Ӽ?��Wƨ���#���=�	��LMGd[�\6D��H�Ҥ$C�7D��7����-�~��T:�r./H�91�t�`������s�IY̦�_�|�>G`.�'�
-��9� 7�mR��9{�n��PU���+m�c9�s�`�ZZ{=���o3�z��rz~.���18�GY��ٷ�~�7�wU�����a���M�����z� �!1�m$w��<`�x�|��<�N�@�������E�Z����90�� [1�L�M��~��E�fN�/�vMO�#��vU"MY�ɥ�.��+ǚ�Z�(S����z��r�F�8�M�+oM�ٛӿi\ra gRsmH�n�Zy�z~�� T�֣��Nh���-(�#U�8��v�y��/�u'b����"MUMm
-_~�i�8o�����"��k�lM�
-�Ϳ����<�%Ryh�J�'s�8�wQ-$ީ�&&;�8Hm�>�Uu?��f'I�QN z'GR!,/|C�#=9F�V�Ov�LD6	�v�kl_O���w��9Zp5�J�;�֯���ʪ�}+�Qj#�E�Y���R�
-��}�:Ɏ���0�ѥ����^�&KS�i�2�W���o露T�@T��)8~N<��]�%�x
-�g�d���=�gUd6��S�#��O���~�������ּ�ܟ��J�:����:Q��צ���0�}����r1��= H��(Q� �K�i����Ե��6Įu�n7�C{ʬ�:�����}�ͫ��oBkԫ?����R"��5���V���h�E ��[���+�����q"���5et����{���.X
-H©�,R���������Ϛh�1=k �g�����W�� ��=T��x=�V��\�ؔ���)���H��S)���ƀ��9�e�鄲�Z�I��Τ"��D�h!�n���/P4#H'��eD��~��S|'�L�z �-�q�V����Ňߕ���-l�%a���"ֵaJ��hԽ��r:.-NK2
-��Omj>µP���Z6:��/���������j.U�!E�C1������*A�I��D�Y
-qH;�!V��J�i�� ��D9��*�{݇�e�~a�^mm�������UK�l��N�R?���S|ib˴���V�V�G�:�g��4(lnvț��ץh޻%��~R�U�nfV�h)�x���n�u�k��`�c�/�MuyE��\��21mi���;"&��A�1�-s2�Δ�nUa�ʤX���yenV(+-�*.��)+)[ktGinhC.==7nVavMin�FduyeC�5KMinq:"-60,h N*</�janM�>$"qb,gIfEa��j�������Ngu�4��<�;=���n��i��ߘ���������𱼊����anMi3Puy�(bJ���.�<0,'���"�'"��gm� ?<+����0Ara��ܑ��4pJnVaE9; ;������������������������������������������yF��nMj�!
-&!����S~.˧�P�X���͇�ޣ��� c�H�zx�d�jэ+TfƆzX[dN�zU��gAhkH���\_�m�\d�{�V팱�/AY���ٰA��I���d��VqJ� ��a�򖢑Pe�[�v�����pmp7L�M�ӎC#���W�6�����|F��3n�������	!�ۗ�m�kΓN���kW�ZX��n��|I�P�^�"���5;��A���N#���F���Z�6!����$����D��aNt$B�p�IT��7�T����Z��S�ʀ������!���D��Y���B�Mxf[7y���41fQ�l���x4����=A-8N4�5H}��[�����t��	I��6�o� �:6���Yw�ew�W�{�f\�e�vl��D@�V+J�%R	�A��f�u��m���Ao���oA���֡�"تm�h�-N~FH6��{�O�Apo,�o,]���'xD��$O,k[fmGc���d�����q09<ڳGuʁ���4A��`�d4���`Q>���6`�cď�[�QcDt�Y6Ƹ4�k2�k�v����eu.9j�luuiiA��uϺ��)�bD#��S`$�4qE�6K	Z-�����f��o� ���e�<0tP�%�6,�Yn�~tY8v�R[lRk� ����L�	�yE�0�$L���ɘ�YQ5���s}��Q�"���i^H] ��F����T���*�2��ڊ�#^Q(P���ʞY�toX&1����2�i�����ސG!����u��எ�Kh��6Roq=ͫ�0��Ï��by!W�4���]}&���϶�&���|�L���ϳ�j�1M�V��hQ3�Zd�����|��i4s�ݚ�K�;n\2(0��;�����R�&�\��eyyE�`A�I`hNgu0  �,-��8  xsdVan@ &,guy}nVa�EjnhNJ�-@nVaw9,6$n
-+G<	33,�Iyen-1",���msOC|���KLJ\ugHd�?70�;=�)��#;' ?8rgkP[c@Ol��7$���|KDin�4s�%����X^x�C|����>B!���=En�����׊�쑡�fEanhN�����nMiG)&����������������������������������������e<�A�Mijh#4-�����Vx�d�}tkA��FUM��:�9�n��� ʕ�4;��ik�j�jv�Cm[�rɽz��Q�Ye�$L
-9s�n?,"t�Rp�8�n�jA�wҜ�*�U�|.�����C%�!��N�w��K��#R�m��+p�O��[�kCvt�G��^ר����<�m=8L�|n(?��l�Z+�@Oٜv�I�cɞ��_�LUt�8�= �X�	�b�~a[��M�O�H�*2qS%嫋L��T?y��Fn	l]Jz�����M�J��cnL�$����1���2��|�.B�u4�A�7KW�s�m�٦)G9%�4�>�(^#at���@���gH�f��0�Q�-_uj@�|C��Y��̀hSٶ�d����b�Nͦe_򳷙)r����k	��d���}"�{�^Y�78h 䝕j\6��_�hոD�d&�.�'Z`R5+Z���?Y��S{Li_	K��������6G��h��<b�*-$�-�N�:����QL
-�\Yg2Qy'��\ş���⨮�(?�ꆵ��u��=���qP�o�u���<3(K����o)�/9��Y���w׺�:���?�LV��`���!����>�ڛ9�E e75'��_$�xLE�����{���y`�,��d��5d�K$���5���,��������%<bS��R�?��Ǡ�=)��I�V���"0�ϳ��%{z}W����ک�����K�^�����JP৖qW��\�������m�{���0l?��/BF {��S��2N���������>BgS/��ZE(ȼQ�ccptwQsRѬ�g]灓�<;�A�L��\1�s�$�x}��5߃g��z�8��	o\N	M����-����a8n��v�~�]�B��)�y
-��}������n�VU*�gp=�Nl�����@�PB���u���7G�?_H��<�rV���J�k�F�l���y�y���U�b���lZ˺˻2ż��)�����])kh9Mof�� DV4
-�/�A��amM���%@"nVan, ,�%��>&cGsdhNgx0-*anMgnhNv}zenV�x �nhN~<=9+g4
-3A' 	�RMing+!<ݾ�Yݙ��������"��inhK'76����M��fguy>' :5�"�eqXmle�2�{���ޯ�c{��&K8�1kr/��JzS�Ϥ|ZW�%�	���Ɠ>OOxbTϵ���h�/��8��[�(�xeJ�c�$��Nguy,+%�	��)2tot\anMd' 
-5uyebVaniamhNg�-N�VanT+0:47M(
-,U01<(
-?�EenV@>=+hNg�OwX���hN��y��V�GdKLROft���膧�inhE'76����������u3*o�anM�',3���o�maj�_H���q�QN��T7EWx�L��$&2��5�N�v.>H>�i[��_��eoy.��\��(�яQh{��~D�@^k�VoN� ������MT�N����T�?�ch.�葭3� m��(����ln�Di��"guye'/*�+��7;>hdLknMic!#'yenRanMGfkNguA}&JanMp-&! (i/!Y,77�YnVaI%:-��T��Ʈ�����r�m|�}Q��n����p!5&anM���ޒT�enVl'=������������nU�E�yen(*=�ª�k�N^d>wD�����8M�}Ay��G�&�i%i7�6�`TSc�X�7b�M�u#�2'��C���g��i������eyyD�P�͒hNgu0  �,-��8  xsdVan@ &,guywnVamEjnhN���>nVaw9,6$n
-+G<	33,�IyenD1",�'��l�zO��-5���kT3anMo: 4�����a����hNgQ0!/�/	�jhAm�d@�a}.	
-(d^��EyhT#u���nMin!)1�'��>.cbTmuyec)*inhKguyqfUanMUo�guy|99e/2(I'/ + 2�RhNgy)):��݋�`�%b������inhJ'76���nCǜNguK,*5���CgUuf/�ܑ�M,,����o�
-9�/i�}G/���?��@iHgX�e��aL�inhN.07!���9 /CmosenVl'-<hNg{yenAimMind��yenO+=(V 
-"H
- <3 
-4�rguy~>5+��Z~�RU�������#.	enV����$;lguyl/=��������e=|Min#4-�"�?CidJ7.C��q�`��!j�ӑs�Ii�,����d���6�A�A�G5C�S�s㩢&p���?���c���Wֶ���4׎�.��Y��[�F<
-D�/�wue��i=���Nguy,+%�	��)2tot\anMd' 
-5uyesVan�amhNg���VanT+0:47M(
-,U01<(
-?�EenV>=+.�Ø9.�>,Su'L@�zB�����뷜��69Y}z;�������59����+(.������\JY�X:=������_zM�����|nb����g�nhNF++=��������������������������������hѦ�XenUK'	(:�����fq+\�v$RX�OȪ��1����=���:��Z�	 � �g��b˪E�i�`1��V&,���y"�K�5��K�=Vm	�X+g;w�/��4��A����1 �3ݶ��z��e�f7�(���;�;-���X0$��1������ùϩZ;��$�"z��[��,E�@����[sA ��ݥ=5�4�?��i�Ӗ�7�I����k��Y��������{D��B	v�� �M3����*.�����z�>}>���;hꖦ��n�r�1�C�v,<D���>(�Q��?��?&��q��9�g�l���0
-����O,��ll�G��{��d/�W~Z���۩�B6<��>˟�"�����gt�5���ᴟ�:@E�,�9��;�����m��z)���6�=�}==I<����/c:�5�/��U�����%��7�0� W��&�ڻQ�?�ӸyŃl?�$�e6|����*�Y!��$-�]AZ���b�� ��p3���B/#��	0�^��g�I'�'�0"Mճ���H�gu1�\��GN3	�s�>���2�����2u�tZd>�(�}�͈�'���#Dj5\J�?�1��)ݸT������������"��s_I�aG�_VOy����o���O��L���ҥݏ�[�g���{��s#k�58ՉA�YC�F�e�mWͫ�z]@�rS�����Ҙ��z��r�� ��	�*+�/ړ�҆W$kӉI��@uZC���#�Py�p�K̵�|Y�7d�<%�x��>���ݘ�|�/_�FYn6�DUa�;�anMi'- #�;��1 
-ddrDguyh'%<MinpNgu�mmVan`�:MNgu`+="/y$
-9m 	)'
-/�(UnhN3%51+���EafhNg��_?HRlLTBuy��.���
-��ZW2=���6���.؂��j[���w!s^E@�<s���ڕ+�.���an����_�3yenJ<:���������������������������hY՗�enU/'	(:�����fm.`0' |-*�o���*)*|��f�,�܌�y/���on��4W��g�/�b�g�R��jm�`�*f�Xc�M�[�94N{�I�tqo0�W��@%ʷ%K
-�_�l>�'kw�q>��\��b0A� ��e$��(e�9�v7�
-p��s$h(�����a
-l?��O?x��Q�M��x�?�4+�j~[īF0�,����sn�1�H;�0�h���`�:9pj7�h(������+��U�w�ۜ<�;�M�Q�N����,.��ɝ��U�Գ�Å�P�E[);t�����>�(�*{�n�}�7N{!e�NC8pQ(,�`Y������B��U�M"kV�j�=�L� ЦA��V��f�~Z�_[���U[�� �6�E@�?Į��G��	U��<�/���*�K����$5{���n�7�71;���⢂�{|��jl9^�.����E>��M����Ģև���ʻ]�I0��5���q;�O�/{%�� g���lVv�R���QgD����/���^']�~��>�4���JಋsV���xtX�y���������՘S��f��]�BH;�`�0��z0�o���~{�.؊wޓh�M����P¿g�M�/�E���ٝ�1����������Ģ"f�y{�1^�B&Z�}��G��<�n�:no����LԎ�n���s��\�N)������v�U<����k�[�9q�Dg�/�N<�9c��`�P�r�g8��R�!,`K#V����&�� w��B�Ze�C>�.�6�|5��f{��`�\\_a@.�D���4Js!�;C �10��]�''����y�!.\Qn*��_��;enVa''*���5 ldWcnhNj<1!<VanCinhEosyen��/inh�.181���|c�8B���`���N0J��� ~�L�w���qk��/'sr�:�voiÜ4c@ҍ���j(ӲhͧeQǐ�j�6���ȵ�/�A�L�h��.��2�z���%��U��~��Ŵx�̛�%ֵ���W�i<�Cn}/�' o��`�t���l�>�EP	p[�YEFA�([�Iz��v�t��Fy(������#�h0��1�x�k�<\>�v�VanM +&
-�7��/)@ctbNgut,&3nMi_hNgRqfnVa��9�hNgl 6"2+	<u84N+5'�qinhr79- 
-jImVC���enV���=m��L��AhS'��n��n�m|�����ӑ�N�^I�tH� �����lLenVu'=�������������������n.�\ini1.181������HBg%�4/;������Oow"S]k�&%�� m�	��D 0�FoG�����~ao		 læq�|*+4>�:��iDC�Hn��}(ڮ=� ;��;'J-��#�ĳ���L��E��b�V�tx�O �w
--��i�f�lk�Sno�O���.Cj�!�~Q���E:��U�����N���X{Gf��·��:.2�d�{wk�*J�)�8;�,g�MXۜ������Q�;b�D���;/g��i��!"<ae��C�lX�/$���X]����Ɂ[�߱-k���q���j�g����|��(d��H���(��1���<{w��RPO ="B�J�=�{��N���7,��V=���ek��!i�Oz��=]@����]�T�.�oVH{
-ouf�uyen$ 	�,��%7"c\{dMine/1+enVonMiJ`Mguy�ϭ�nMiw?*
-"?n)*E'; 	(;	*� RVanU9"<��l�Q��D��INguVo�2k����D��yen^<:�������n���inh�.181���gmIF$lq��I�z)��	��|��G06b��=W�>�lK�XB�=]�X����
-.�v��� �E��{� m�ӈkLk���0�r�՝�t,���3��+뷇�3��+6"�����m�.�b�YA����K�O�+�r}���Ȟ�{�n��e�F0�enVa''*���5 ldWcnhNj<1!<Van�inhovyen�d�inhW0!=9:N&v(,:+ �3]nMi�830
-en�yt���Mj_����3	��� ϩuyenVkgE�LK����K^�uw��n��g��e�?a���jlJ�uy�Z��M�#%�qc}fn28Mq��8�yrm4Vf*��������mbA����y�=
-��in�T}������n���Pw���Ӟ͎�>8����[P�ej>"s**,=��������^I0"��������7'enV!'=���������������������������������������������������������������i��#uy`7%/�����]~�,N�ZW�s}T#v*$lҳa�.��� 'M��B���Sp ��p�.l��_��lΩf~j���5��j�I�^�$�<�Ƶ]��T�`����Ń�WmN�$h/�*O9}s�%�c��׺Ӄ"����Ld�h���un��l������n|K �t"h�<�⽋�yt��E����N:��W�ST�v[5�HY1�`#C(�]��0qp�h�iw�y���&m����2o4a�v�C �
-��16��]���)��l�t~�.���L�w�z����G��A�_-e[��1��d��AGL�pQ>0w�gkƜ�[���>�i��FDc�o}XS�Yr�U{�'��F�mB)H"b�b>��Pvuس�����w�~`�ʭf-j�&~N8#�:W���%)e��/g\%��0�Z�׈/���Ԕ�,�н*�ڱ̅�6gh�7U����s�.q�������I�̂��_gom#F��8Ъ
-���l���?iĩ�3HĶj��6�۫��p,�`��"[:|�t]I��Է�y�Y�'M����[b���̛�0����"�\�o�XJ�	UÕ"w)����=�(!�*Y66�i�ַ*�r�D��8VRX����`Z~����bs�q���o��e<_[!�`��0c'�nql�w�	�+�*�\S�F�|Rr�&����vA��T��dtBP@�,���zh='�$3GD�0o��b��(��������o�"9g�xuH�b߰6��4����Gaj�or�fo���FxRjZ�6�b}{�s��N����+�ؕs�����8�dUv���L$8#u9݃����2������v����)�`)!6 A��\�c&����(��!O���xaTbhO��$U�,� �:����!	�������h��ma@�v�;�����==8��հ�!��7D;/��/�2嬬}�$���i���;���g ��0X#������PB��K�U�]�%�2���H���'��C�O�F��y�Ѧ�I�����-���B;-��?�6= M�]>��W���X��X�Ց�2��+:0�_�*"rf��)fí�|�O1��oh!�Qv6TQ&oQ�q�`�WnBE����Y��,Ra�g嫈]�աZ��;��h��N6Ɯ���3!:Z���􎥆�N��4����@�6��+_3vb���ίb{$<M+��S|�����Uwa?�����l68��$B#�`����@t_)r0��\���u�@ԱfV�u��姆���g&�@�~�����F�_o^��,Ԁ�}���Cͺ��c�0R�۹��qh"��W��)_=Оĩ�[
-����M�6��n
-�����։`���amMwc#k��3nVan, ,�%��>&cGsdhNgx0-*anMDnhNw}zenV�NK�nhN~<=9+g4
-3A' 	�RMinB+!<��V���VPV~W5�5nL
-�b������Iev�>(GUY���U�nhNi++=�������������V$���nhN�<=$:.��0`�nkq)mjZ-�2�0��!���.���Ǒm0=������ R;c�t��I8�sE܈T���������fv���n�|�Y�֘�?�)	��R��[�E�c{������޽��W�cy�ׄ)|�*�-�f�������l�H�i�WsL��?T�3�Ӟ��C����ϐ��%��L=�����oEy��H0�s��hNgu0  �,-��8  xsdVan@ &,guyFnVa�EjnhN��YNnVaw9,6$n
-+G<	33,�Iyenr1",95*�l`nV�mN���������é��hNg��������hNgy7 �����������nD���inj�.181����JIF'��Q$���"}��������/K��v����v�*�~U���7dl&��W�O~�Z��d�-�����rfTl�I��v���ѶҞg5�f�>v�Ϛ�eWs1mto���J�I��Gd��Ly���qh=\�h��.��n7eA:�L��
-X3��:���i�S�`��*�{����3�e<���AM�P�<��U܉�~eh �Y*��6���oS��%u9��`�e�vND��4�P<�qH�Q�0?��2�L����L��rX����!Ҥ�t�a�M4�*����b��œ&�� ���N����l���J��\#�IjN��W���E��W��0�*U��\���V�8h`�'�z������>�k��BQ�0ay�q��o�=�lܶ �����2��zr}EG��A,	`B%�)i[S��ZqW�:�`	^��	���g�#N��J�RE* #`�y,���̠��~����!]��^V�����>*�a��_o��y*�R<Tշ.���YKI�m���?�^/4����Х�<�#����
-�2ב"�����ݠ7�a8���u�&�B�ˀ��s���p�	�B4]+��H�ca�69�>��*���VӓZJ�m���\�N�^깽
-D�f�Bz�&#����k�=��.pt�*����Nd�̑J��V�/�~��ldNV9�����vMinh";=�,6��')eD}yen[(&	;nhNDuye�^bnMi��nLuyew"$69:: n/N!#77<�TNgu]5"$���nhN����*�������O]�QZyv1KL������p(��Mind:5;*�����������uk���anO�',3����2la.m�	�����qm�����)\�҄guO�qX�`�oSndHP'��$���j���#x�}e���l,�q�\��%���MI	����F&�pO���3��]���4M���&m�%�.�@��Ym����D�#n��A{?��Z��-�kbA6�h�]P�(w�-��c�o��R�#�E]���Ъ����PO����q�n{ݲ�a�	���AK.��W:	�h׾]�2��Bǆ���X\��[��ۓ�u���E���"-qp�ͱ�Μ6�����o����
-ۇ�{��>Zχ��v��0��2Z��IuĀ��MU�6r��@�������2��('�15ϥԟ�<��O�돽lJ��Mıٖ�6i�>kn���\����%���6��7\n�3�e����MFޕq���ɉA��5�>��73t�U.�I�g�7]�n�)���Z���Cm��m~W�������E��)�1d��s}��ZMד�\j�M&�G,+AE�Iv&��T'L�us��/$N[��+���+�����6�)�`a��Fla��0�e�T��mgE����L�Q���k���R���+`�G)�݆�'�㢸֓ĝ�s�0й6\ �s�a�����V�r5Ϛ��D��.�U�V0� ��ԑ"�v��<p��س"_���}�O٨�fNސcr�(�`O�1���KL��搽�nNi�����(�VanM +&
-�7��/)@ctbNgut,&3nMiNhNf5qfnVa�j�FhNgl 6"2+	<u84N+5'�qinhV79- nVa��i�PN�yen��nM�������b�anMn: 4������nW"m.NgrM,*5��4a�|Bu	l���R�V�O��vI��6>x3r�xi})��"nn��|�ۙC���L�a��K�Q�S1z�l��j�����{
-L��uN�%Y�뜸���y����ؠ�� �vՕ���4�����n{���m���3�L�4Gz��h��}9U�#�&�1jUn0%<K�?�I�ϟK�j#��Q���(k�.�tٳ��P�i�mЃ���|��@H,�.�H���EԻ�d>�Y��T�m�蘿N|���ԫ`���3L;�jN���z����9B����,�}�ua�Ȍ�i�s�X��~��D���b�zv��nĕ&8`vaQ}��i��A(v�	=���p�k�g���z#A� #�Ob�clh�N���d�-ƀMш؁�p��`�J����b�y�C�E(7��$��o�� G�7���eC~4��p�gӊq�6����`�q5~\[ ���;Rڹ�Gj߀���œ��9����\�͵�$jeNp�j���J�o^��u'�4N���?�O|��fTМ`ُ!�$.��ʛ!a�ӫ(W�o�Ap��.z9��p!��;�1�yN®P�n�nr�1��V���P�'�>?��Z��QQ,@�؛j|�?MT%�]�Nm�Uy�tcD�II=Kp�Hhd����K_��e^R����J��h4��N��v�7�х�L
-I=��̭LO0�H�z�4��7a ��}�N�`ٹ�}��vn�p�[w��Zى��d��.T>nSl�i��>�E���[�(:F(xs.[��>8�����P2���s�����[�^a�V�x�Zg�����ؘbj5kp�
-�">��=��U��Xxd~G�T��m�Փ��,�y}��S��|�yB�<l��By�t��lN�#�!�F���O�~����Um}G/�6�7���u�g�_� ��4�EUZǭg��O���@�-	k����"��j�z7��Ao�E/NJ9��b��p��n�<�/���j��؅����Z��V����u�	�"�1�b����,~��O���ܶyu��y�¦��_r���d��@�_�J{�)�Ἢ���Μ}�՗s��i��Pϊ׫i�IV�E)���@s���L.�b�I|�X����?�4��mi�XS������B.���M0����=��I0ƵM�!n�-�^���p�a��畾M}"�<�Hc�%�G"v��Y�X�أ���"���5}l��r������� �}w���D��O�\l\(
-��/54�b��Eg�x`#�0q��-|�%1t�`j.r�cy�vt�Z��ڵi������R}�穄~��'�y��� �l�ė�����p �����Xӹ�!AF�Zg	�杼�Wi&.:���j*XG3w3Io<ʉ5QCPv^�__�@x�Ř�YY�6�m����~?農�:c����:%x>ȡf��j�Ӑ���T�!��?"]?����	�6k����o���X#/[��YU��zv��|��ޅ��Z>
-�RL�Am�z�d���V���f���D�Ew�G c}o�E���\Qh��P0�Zv���^��a�fs�6� ��vv����5�4����Yޜ�`��e�t�c��
-R���P�f�ϤST��d1��տ�L�0�cSg4q�־�˿�rB�p̑�Q�X�L�2����v���G��o+��ZSԀƩ摬d�_A�p�H�� �W�Ę8�Ӛ��ש�gfs��ė��ǻ���H`q�is��n	���Z�i�V���Oa
-�LS�K�r�;��pa�,�%I��?<O�r�tb)��2\����u7X��Qh0ai�Y��B��ȑ%�Ogv��32ȚinhN.07!���9 /CmosenVl'-<hNg`yen~imMinNc&�yenO+=(V 
-"H
- <3 
-4�rguy{>5+"���$`���e`��H��[#.	�ɖanM���"�Y�enVk'=���������n��B�Ngu�,*5���)@�Uq`>Ff����w��+�UmQu�>�o:T]��Y�O��p;;��	?	k���L�-N�RT��-��[�ە}��$߆��o@3��W�A���(ռ^w�m�������#ʰp	����o�MjnDw|Ub(�anMi'- #�;��1 
-ddrDguyh'%<MinpNgu�mmVan`�:MNgu`+="/y$
-9m 	)'
-/�(UnhN�%51+��!`LK���� �(8��>EDsdh�>\5Ps06cJX�9XUZanSVcjv�,��������AnV�����Ӳ��s5׊��Eaf�6gkw���>�9����%���cCGo}���hR]���������
-2>+����:Te'�����������/
-eHO���/32-sPtRZ|���Hd\���0|b���yen�����P�Ngu;<2�����������������������������������������������������������������n	~hNgq�,*5����?i��_@~]�Y�L�8���Թ��V�]�M�_��%��.>zK��]veI9Fr[i�q%4?`*f���w�!�l Nh�5icy�a��)hkk�w H��%8_�u�~"-��8�0b97�u~��)`Ԫvi�3�
-���R;�3�o����o�iN�4X�P5���;��T��W��3�/���j����W���T3��yc���Q;)���z+	)0��]>@��~7o��'�1>&��:Pq+���|���=爝�p�<�-Z�=.��6����a��;ð�MW�g���za�_f��h�y��A�6E��!�(�{$����vzO0n����(jR')|E��X^��:n"NΨǄD�����eA���8�;��-�l��v��@J���&�趦.�>��I�`�F�V��d�������$�Zq�],��79z��y],�N����n���f��[�IϿ /�0bƕ���YGbn��}Ew��˴;27Yb5��󱌨�yN�_��_x�y'���Z���W�cT�(�_y@R��Mamw��̼�xS�Ra�)��Ij��Ur5Wqs��F�(��[w�>U�Ta��N��Z%����=qDP����u�m:�.Jvk]l[� �[�-ڤ'��j�������#�S=Ţ�u2�<m￴�=7o)��K�+�Pͥ:W�f*�j0c���Bc� ���mv�k��x1��_	�3u�θ K�$?�n1`�.A�歎��2M��i���^N|��@��X�+*��n��2��X� ղ����> h��5B�#�]){\��+V^ᗨ���XrW]�#�b�q���M��94
-��Йst���B���R��Yd_���~����2+]���M�����ML3�VU-X�T�r����g"��ާ��W��GM�{�7�JN�8�ª.~�l�JKf� �m�� ~ݓ�6�� ��ӭzT�A���x�w� 43�j@�H�g9�"��F'uW(t�GМ�3ϧ��M�q)�z%)Om�@�a�`���l�@m���!%f4�i�>�3Q�|�<���m�L�ܱqw�:�1�@�k�f�[�)B�O-��Η�����n*�>��Q��L{ޤC90Q�����Wɗ6,.����[I'�8�0��a�:T}�����)����C���y����f$5(���E5_��i�>�ul�36�[IG2?�$�ՌZ$��^�uZ�y<{=�6����DWu�8�af�Z�nhNg<<+*�#��>&	jconVac!*:NguaenV�fNinhc�!\enVx1;!3a/)n.)�+[uye�-:aE�������) ग़�E?ё�&0=1eJ;"Yz��� 2yenFq~}AF��������������$@�!�!?�07���⌳����������>	������������JEf�>P���pmf���Eaf���QʲDVan`<&��������������������������������������������VāF�nhJV<=$:.��Ղ�vw�\��[g�5�����[o��i����܅��[�g�Ɇ�=r�!����KI6j^:g��)�Ynm��JR�nx��O��g8�{��4��r���{� k=�7�b����s��
-�?�sj_�̽�cgzP���F;�H쯺o�@�t��2�iŔ�?_r���f�_�a�'�Ё��
-@p�k}�{Kn�cஞjFO'�銢96c�ӛ�Y��N%��	d�l�;���]Miqɕ������kw�Ջ/�����v8k{(��ǒ�*��p���X��hT�c����Io�)?NG�-E;�N� ���C����V�	*���I�[ӓ�$��rP��h��?P�>h��px�M�	�U�"�a��S����Ҷ��았���X
-����;A�sh���f���1�_l�x���u5�dMX��3B����LD����^��eж�.��Q���V/�q����Ew1�0|�DF�J��0�]��:t�KF9!^��[�>��;Ru�jtҷ�G���D;���8KGzâ�k$�6BK��юX�)��W^	��hu��|5�����~�s�ԯ;�BH�Wq]x�7%h#~�����~�Ǭ^�4�
-�.���v(*�Mb�&M  �����Թ#1����8c
- ��+z�`��B9wo"��ɧGZٔH�8ي<�Jy�1������aR��T��߫�ЫC�Ch��"k�,����;@�eS�m.���2��q��wS���#���a}�L�dFf�13����u|�j�++NX�a<D$�q7,KByV�g�
-�]Y������>vl��w�GﮉO�V�K��.3�INs���X�J@�oЦ�t���:<���#a�^a��ҳ�lb�B_֒i*��g���+�n�<?*p��u��Yx�;@睳XiyR�͸h`��[����o�����f�J='0W���tp�w��5�"���Y�4B�2�^2}Z�u�Ì��U<��u�g���I&���u��P�*�s���IK�4\̾o:��LΨғ&@����y��L�� ѓu�n��?����enVa''*���5 ldWcnhNj<1!<Vandinhovyen	�@�inhW0!=9:N&v(,:+ �3]nMi4830�u�u[���MdlAo~=�3���iOH1s��� ,J6	��6Nen7`oLmo`zsP+���ײ�1	Wd~z���',*-+,>{NePrMin���HQ�VanS<&�����������������������������e�N}0Mil�#4-������^djq��?7����K�e�څ� ��H�)�C�[޷X)�.�yr�[Mh�h%��)�eF��7j[��:r���N�Jn��7!�^&��TSʹ�Z��9B�C�9Mu��8k�k��N&o|; .�MJ��X�5�w:���f�]���xAƀ��=+Ǥ���N7\Vf�_U�	�T4B0��A݅��2�"��[��z��#u5���-
-�#����L��k���F�t'6Zb\\EՌ̒m{�1H Vb7l���tKCP����NE�j����%�/}�?ֽ��uؕ�w|��ӭ]��ڟ�gM%��J>�M�u����=]Ч����<������ER������􌤡���r��DK1]��������܉+��$Nz���D~!�/ޠ���%��b��}�ə�d~;#��U8\%�����+�����녽K�X=f�N�QH�r�4g;�M0��<���0�e�A�{|���Fb�~�c��)��8�&��W�Ћ�H�=o�b�� �Z�U�џ�V��G[T��O�`�%z9�A���ddI����<��$H�}t�����gx�&�����JS^L��25�	|�໪�e���?./�\�K��at�`ҦI�� $��0q
-��[$�b�8�����Ba6)Py�e��ԃ��ˤ��dGXk���]��VbnOx*�	&�enVa''*���5 ldWcnhNj<1!<Vanminiovyen�F�einhW0!=9:N&v(,:+ �3]nMi?830�4cLCDaf	pe�2`"! 7LN���__g�+nh�ev]zqVan�����ҵ K��� +�!5Aa����� af`�������m��inhU'76��������������������������nqUexink�.181�����RB�0���Y�{��q�HY'p �~���_�j8�_d>�c�m��e��f�u:k��bu{.�/婀7��BN�a1�b0��웨�T�=_;h������B�D'3��z<z��Y���j�.j7e�q>�������ƀ�?y����aa�y���>n��|��ih`��l�0+��������LzӘ�Y���k.B��B�s�T�e��� ��������k�A�Q�Bo�xv'x���s�|����O�@���̔,K��6�x`��a�u馗��Ņ�/?&�l]I����a�iF��ixpD�BfǢ��C͕��BLcc�q��Kl�1oeJ\��������t����z4�itXȣ'�&�:z#ﳣ�Pk��zL{΅.�s�C�A5n&`�Dy�q^d_����&���N!��͡�w}��Y���a���EK�9`f��!N_�7m�۲�l,��1t{DHK�n	�3V��~h��� ���<2�NA����O4�oG�x��n"V�a���c����Q8�V�{�5�]�/��M8�j�+QEG�q���]'c�@�sP�K��W�CHZnEN�3�Tj�i0q�\Zak�J�� 8l�V4r�oypl�Z�oL|wݔhd��"	w�jm��D �?�N�:c����Kb�Y	�C�iRI�n�c �5d����Ѝ�9�8�E�-�n��&�#��J@��[Ǭ�ˍ^ynM[�"y�hYj�_빌����$^�6��@����<��f��t��o�����_nU���D{��������t �*V�]�V�.g�]YC�ܩ��62�p �)��X��uI��4�/�Z����`�q��8x�q�v,�i��@K��4A�tt}�.���+C�E�R�h�͠��L0)Ľ9_m+��<�����Eb(qp�7O��T*c�b�A�/S�FA4�9/18��)p!�x�A(�m��L�qsGl�
-z>�Ńq�[u��,9f{یZ�ra���q���a�u���|����nhNg<<+*�#��>&	jconVac!*:NguJenV�fNinh~���enVx1;!3a/)n.)�+[uye-:�ۗ��1ݚ�/��'1���1�3���iNl;�̚3���h"CU#P<��䗓���ņ�K"ƺ�~`f$U���3�gB[._;ItqMinh������-F�MinI:5;*��������������������������������i�Fuyc�%/������]b����!�gI-��E>����9�	�<i�f9�+,@���0�x�ȘF����k	�e�S���GqF��ɞ�	�6�	�!��}!l�O�V�e��/��v��Mz�R� �ڰ��v5L=�P:.9D��F����^����k�-��(��?p�]��mӵ�{'q��߭LS;�_$���8�
-_%�����>�q'i��ޖ��2��0��t5=!'��DƂK�bf#�������e���%��A��'�ޡ^%9�u5-k�Z��o�-n����~Ǧ�����e�O:�0�U�}���ݐ�?�X����X���͜�� 
-�[|����������L�����w�������.˦:��� 5�	��׃��6+�00ՓT2�P���NzX��f��K�R.��y5!8���ej�k�˜��F�u�9�>C��b��哻_��d�H_$�3|��L{Rɳ2M�MQf�7��+f�eO��	�[b}1���e�e�c`e�4\��N`m�OE](�Ζh
-\�ص.A1`�˸Ipw�8���Aڻ:�͈~X7�c�T��]۵�	�6+�gk�k��~�b�R?9�Jt%�f ��NMڙz�ꫂ�n�}xz{,���,�t�|ҥ�:�wN��6X��9H�FP����]�%;S�}l�>&�t�˳��å^�A���eު�ޟ��;�ʺ}�ʬey;�(��Sg3	ſ�p4w1��q?�.� ����fC]���u��<'o�#�mR��Y��ѱ<#%Y�vcǌ%�rK棳P��F*��t@��[���;�*���6�	�i7q�h{�&JT�d�� �|%�O)��v�ɤ����fE�؏�*/�Ϲ8^��y��q���v���C��x#�?��@��w(�y{x��]OW+˧ʀcq�{� ln�p�}G�7�(��#��ao?Se`%K����r��4����Q���[��] �?�%�Ĵ����ֽ=�����DO�O�&,9޼J0�Qr�,䉕Ϟ��P�/O	���/h9�r5�ɫo����E�N]2sS�[���$��X����u$����Svs��>�⿚���QW�l��"�H;@>�U5N-��f�$����յ_�cI��T|��f��.�'�qMృ,�g�v?���	�e+�ϱ`�� �^�;�-�	3ͥ+m�uگ���r#�j��H��Ԗ�ycj57���Y��_]2�}���d�?�1��v�ݗ�����о��Ӵ�cT�]��+.Zi��9�|R�O�����:��֒��c����wC�]X�ZnI&
-���m��^�	v,JG��� E�3Bv�%b�m����ɻ�Ņ��&G��U��E1��v|�J+�Cz ]tT^Ku;3L����y�/q�:#
-l�t���i8���o+����v����%
-���s&��~g���G��"}����كA���1s��)k�u�d�A�l��S��~��(-�a�+�@z��>}|
-X���0yv�Sz<1ʏ�p�1v�NDԅ�6����%
-_�B�]a��o�t�
-�6@C�u�]�A��f DWF�R9B��W�� �e�R����#�%҈ف^�jvyV�M��Z)z��v���N�b�s�h|)R��e��P獣Q믢N���j:�S	��&ͨ4������Qq@<��*�W�j02���e�u���H�nhNg<<+*�#��>&	jconVac!*:NguienVwfNinh��7enVx1;!3a/)n.)�+[uyea-:���c�� ���ղ���	yenS<:����u��`anM',3��o�}al�d�����8�܁V0 �U�V��:�uHb5?�W�NBrь�0N8�lQ�lz�c$((��yMV�J-A�	ҁ��e���L�g�|Ieb�@�Nguy,+%�	��)2tot\anMd' 
-5uyevVan�amhNgX�1KVanT+0:47M(
-,U01<(
-?�EenV�>=+fBk�%8��4CkO��.����Ȟ��.RT����;Van��&�	���� $���%MA��>(�?Q+2 ���kUS��º��������Sy]���Y@L�"q~]iJ������^JfBE�_p|`���fEaceC��嚑��3��nhNI++=���������������������������������������������h��,enU�'	(:�����`q�( �eJ�X%���y�{җ��j0�纂���Q#��9���U�r���zy`�W+��iW����h=![eg���Q�n �]X�h;��=�A9�d^�3�:�D"��Q���i��C�<BDa�Z��P���xɖ��X{*��mb�4�_�)�Ӕ�Syk�Jv-�y�Ԫ�����!�ߔX�u��Q�.a���l~`0a���л�u�֏��f:��E~��3R&��_p�5�Pm�t�A��X�=�:R�,���,���?�fT��=�W���S<4f>�Lg��h��wG�b���Q{V�	y��%)<՘��s�ؗ��΢�Ѹ�Wg�%��`����XDH�k�؛��
-�kѣ�W����(D���%��1�0F�Pi���{ɚnGP$ߔ���!�K�l�vD�ѡ�o�BU�[����U܆�Y�5I���PГ�k"���p2bE2�qLO��}5;�6P1�4Pk�6 qO�I��a�RrX��6�m� %8��u
-R��t�ζ�$�R`l�A���5sЅ΃�iT4��]���~�\����'�9���'Y Wf�B�?�i+����u�g����,۠|%���~T@{�ew�������.��d�=�b�Vx��c��9|A�^>��Z�71�R 2�y��k?�Z�:��T���NB�V�5,�M�2�U#D�:���z�͋F#[,�`_���2|�e�j��0 ��p>��A�R	`��K�9�ChVĹT��-��_�۴�p����+޹�+���{�;.�'r=�D�ƛ��<��S�;��Z�<�5�*��`Bh�ӯ}�Mʨ ��=�/g7����n�@f ���-UW%³����(X|�p�"cd�4��fM梲��Q��zc�*�)=�]|�g4�Dg%IB��Gj�������>s���%`����>�(=��	��E�1�"�g�����#	�~8��dL��$��B��?s��|�ɂ�R���6�Ԛ%�hnF+��z�anMi'- #�;�
-
-================================================================================
-// File: cache/valuesdata2
-================================================================================
-( * X4/ @�0 Q�0 e�0 y�0 ��0 ��0 ��0 ��0 ��0 ��0�0�0-�0A�0U�0i�0}�0��0��0��0��0��0��0	�0�01�0E�0Y�0m�0��0��1��6 ��6M�5 �|2 ��4 ��4 ��4 ��3�2L�4Y�4l�4�3��4��5�|2��4��4�4$�37�-z�z ��b� ��.����     ��   Cây cầu băng 0_caycaubang.mapz XD _� � �� �� �� �� ` �?�? � � � _������?�� !�~������ ?� �_�^� _� ������_�_���� _� � �� �� �� ��?��_�����������?�_���� ?�  ��� ���� ��?� 2���>���  ������   Khu năng lượng 1_khunangluong.map� XL. g&. �&. �&. �&. �&. �&.&.9&.W&.u&.�&.�&.�&.�&.&.)&.G&.e&.�&.�&. g . � . � .e .� .� . g�. ��. ��. ��. ��. ��.�.9�.W�.u�.��.��.��.��.�.)�.G�.e�.��.��+ g�+ x�+ g�+��+��+��+ ��+ ��+R�+?�+�+�+.�+��+��+��, ��, y�, ��,A�,.�-��-��-,�-��-��+�+��+��H�� q��� ��[�$� �f���  Z      Căn cứ thép 2_cancuthep.map� XN. h. �. �. �. �. �..:.X.v.�.�.�.�..*.H.f.�.�. h�. ��. ��. ��. ��. ��.�.:�.X�.v�.��.��.��.��.�.*�.H�.f�.��.��) h�) ��) ��) ��) ��) ��) ��)�)(�)@�)X�)p�)��)��)��)��)��) �)�)0�)H�)`�)x�)��)��+ h�+��+ q�+��+ z�+��+��+��-p�,��H r�H��H����Y��� ���� ��W�  Z       Sân bay 3_sanbay.map S X	� ����� $�_�0F ��� i��� ��(�a��� �  ���  �� Đảo uốn lượn 4_daouongluong.map ���98; �w9 �9 �9 �99 � �9 � �9 �7 �7 y �8Q9 � �9# �9E �8g �< kw< �w< l�< ��<{w<[w<{�<[�: Ww: X�:Gw:G�; ��;�w;�� � �x � � �R � �xTx � � �      d  	Sinh tử 5_chethoacsong.mapf �@ H 5H UH uH �H �H �H �HH5HUHuH�H�H�H�HH5HUHuH�H�H�H�H	U �			U		� �	� �	�		� �	5 �	U �	U)	u �	� �	�)	�	
- �)
- �	
- �
-5 �
-U �� �� �� �	5) 65 6!�5�!  �� � �5 �!�5�!� � g �	 �)	)
-u �� �e �� �& �I�I A �� �  �      Kim tự tháp 6_kimtuthap.map � �5 � �5L �5� �5 �	5	5�	5	5 V5 �5R5�5N5 55 �5555�5555�5L	�	 � : �� A8�6     ��   Cầu vồng băng 7_cauvongbang.map ��X*   2      �  �  � �  �  v  ` `  :  $    @ @` @� @�1��r������r����u�_r_�9�#�rZZ_Z�Z#  #� 5| 3�|� 9a|` 4  d��    
-Vách núi 8_vachnui.map	 bXl �� �*-� |�i�Q1�� [��*��.# �+ ���� ���� �0�17i7  ���    Chiến trường 9_chientruong.map
- � � �KN<�[�W3V�SLk. �BRY �7R/F �, � �q\ �� � ��\>]�[RT �GDG �3s5  ���    Đảo vòng cung 10_daovongcung.map �RX[ .�[ ��[�[o�[��[E�[��[ mx[ �H[�L[&w[�[��\ �\B![ f�[ ��[:�[��[�[}� �U" �xXw ��'�:���       �� Đảo mây 11_daomay.map XRX
-[ ��[��[ |�[ d=[�=[G�[ �q[��\ �\[ �o �=0> ��{�q��       �� 
-Thang mây 12.thangmay.map ���@wS[`9hj �g �a �Y �K c N c A � 6 � . � - � 1  :A Hb X� � ��^� � �^!� 8 m �� � �g � � �bZ ?^� � �:  2��    Không lối thoát 13_khongloithoat.map� ,N^  �^� �_  �_ ; �_ [ �_ { �_ � �_ � �_; �_ � �_ � �_ �_[ �_{ �_� �_� �_� �_� �_ �_; �_[ �_{ �_� �_� �_� �^ B �^ B �^ j �^ j �_ J �_ J �_ J]� �] �]� �] �] � �]  �]� �] �]� �] �] � �]  �^ B^ j^� �^� �^�^� �^� �^�^ � �^ � �^ �^ �^ �^^� �^� �^�^ �^ �^_ � �_ � �_ �_� �_� �_�_� �_�_� �`  �`� �`w �`e �` � � � �� � � �% � $ �� �I �� � 
-������   Cầu sắt 14_causat.map3��i^  R^  2^  ^  �^  �^  �^  �^  r^  R^  2^  ^   �^   �^�R^�2^�^��^��^��^��^�r^�R^�2^�^� �^� �_ �S_ �3_ �_ ��_ ��_ ��_ ��_ �s_ �S_ �3_ �_ � �_ � �) X) �) X)  �)�X)��)�X)� �) �)) ��)�)) �'   �'  X'  �'  X' ' �' (� �(�X(��(�X( �( ��( �^ � �^ � �^ �^ �3^ �S^ �s^ ��^ ��^ ��^ ��^ �^ �3^ �S^  �^  �^ ^ 3^ S^ s^ �^ �^ �^ �^ ^ 3^ S^  r^ �s^ s^�r^ ��^ �^��_ �s_ ��+   �+� �^  � Y�Y �! ��� $��� 
- P P��   
-Bám trụ 15_bamtru.map� XN_ U�_ ��_��_�_ ��_ ��_ 5�_ u�_ ��_z_��_5�_u�_U�_u�_��_U�_��_u�_��_U�_��_��_��_��_�_z_��_ u�_ ��_��_��_5�_�� 5� U� u� �� �� �� ���5�U�u����������5�U�u�������_ 5�_U�_ 5�_ ��_u�_��_ ��_u�_��_��_u�_�z_ v�_�_�_��_�_���_�Z_��_��T����F� d��� ���� 
- 2  ��   Lưới sắt 16_luoisat.mapG Xm_ B�_ ��_��_"Z_"�_ "9_ "�_ b�_ ��_��_��_b�_b�_BY_��_��_ ��_Y_��_�Y_�9_ �Y_ �Z_��_��_B�_ "�_ B�_ b�_ ��_ ��_ ��_ ��_�_"�_B�_b�_��_��_��_�_"�_B�_b�_��_��_��_ "�_b�_ "�_�Y_b9_ ��_b�_��_B�_ �Y_�y_�_�9_!:_��_��_�y_�Y_��_ "y_ "Y_ BY_ �y_�y_�Y_bY_�Y_ bY_�Y_ �y_ By_�Y_��_ B�_ �Y_ ��_ ��_"�_B�_��_��_�_�y_�y_By_by_b�_�y_by_By_��_��_"�_"y_ �9_"Y_ B�_bY_��_�Y_Z_BZ �aRa Qa�a ���� ��"�  Z  ��   Thoát thân 17_thoatthan.map �\�)2 �$ �b,  �6[� �d\ �1[ �[�z[ �[^.[ { �[� �[�m[ �^[� �\�� � t� � ��+m ��y Z\ � ��S ��S e �H
- �g  q >4 �� � �J� �\=L J� �	^L  � �� ��.�z       �� Thiên đường 18_thienduong.map ��X)n �� � �:(f[ 75[�I[h �[�[ � �8��:>\8��;R\;<f8 m�8 ��8� >4 ��� �$C $ � �� �� �
- � �� �T ��6 | 7 K�7 ��7��7y�7��\ F �\ �\Y b\� � ���� j5J � �� ����       �� Miền đất hứa 19_miendathua.mapk�XAk-D xMD �aD�ND�:DX=C.=CB:COCPC �cD ��D ��D ��D�PD�eD�D<�D +mD}�DuD,�DS�D��D��D��D -�D T�D ��D�D,�C +SD��C�C��Co�CE�C��C��D;!C��CZ�C3�Dc5C�C�5C=�C�C ��D��C ��C ,��� SA �o�Z�B�sC �� {�C��C� C�� eBv/��� �q�[ ���       �� Mê cung 20_mecung.map ���%SqCS�CR -BS�CSBS �BS �AS�CS�CSCSaBS?CS sAS �AS �ASOCS-CS QBT=AS�BS�BS�AS�ASAQ /Q�Q/QoQ�Q �Q �Q oQ/QoQ�Q�Q2 bB&A �A�BbD!C�D�C       �� 	Hang đá 21_hangda.map ��X"�� ��( � �5( ��4 `�� � �� �� ���������� z�B �	� �5 ���4B �� � n� T� n� k� ��x���������@ �A � ���� �6�5 r��  d  ��   Cây cầu dừa 22_caycaudua.map �X2!<�!M�!�!��	��!s�!:�
-�8!��!)�!��!��!�	 Q�`8�W	�7	 ��!�0�!o�
-�W
-��
- @
- 1�	 ��	��	�	O� ��	�!��!��!��!`� `� �` � � � � �`X�w� � �@�X�w ` ����� � _�V�v�w � �� � � �  �    �� Đền tế 23_dente.map � Xq 
-�q _q ��q�qe�r 4�r ��r ��r7�r��q��q�qe�q��r��r8�r��r��s > �ty �s_ �[  �[ � �[m v[ �[ �[~[� � #� ������ �� E �F �       �� Bong bóng 1 24_bongbong1.map � Xq ,�q l�q I�q b�q 6�rpq ��q.�r%�r ��q
-�r J�r�_q��q�Hr�_q��r�lr��rk�r��r��rq�q��[ L [ � �[� �[� �[ �[f�[ b�p�H��" �� � � � �       �� Bong bóng 2 25_bongbong2.map � X+h �i �j �k I�l I�m r�n }�o }�h �oi �oj �UkPlom;onFToFopzqp ��h��i��j��k��l��m�n�o�pJ�hdKiqKjv1k�,l�Km�Kn�1o�LpN[  �[ � �[� �[H �[ �*[a[_�  � �� �njh��5�tK�E       �� Cầu vồng 26_cauvong.map   �� P���� Ngẫu nhiên randomMap.map � �#P @0P� �P �P�2a ��a ��a��a��a��a��a�a0�aS�av�a��a��a�a��a  �a #�a F�a i�a ��a ��a�a;�a^�b A�b��b
-�b��c *�c�c��c�� b1��$ � ���3� �1�~�  ������ 	Halloween 28_halloween1.map � �"P  �P X6P�Pv3P � �P �*PA �P�2P$P� �Q���Q t�Q #�Q M�Q ��Q ��Q ��Q ��Q�Q3�Q]�Q~�Q��Q��Q��Q
-�Q-�QP�Qs�Q��Q��Q�Q��Q�� z7�3/� �b � , ���4  ������ Halloween 2 29_halloween2.map���RI [,I ;LI lI {,I �,I �,I �,I �,I,I;,II;I[,I{,I�,I�,I �LI �lI�II;I[I{I�I�I[ �I; �I�,I�LIlI�,I,I;,I[,I{,I�,I�,I�,I�,I,I;,I{I[I�LI�LI�I�lI[LI{lI{lJ �OJ OJ =/J �G ;lG [LG �LG �lK[J�J}OJ �G�lG�LG�,K{ �K�K�KOK{OK[/K�OF�,F�LF�lJ=F�lF�LF=LF]lF=,G[,���-	-J �j �
-� ������   Bom 1 41_Boss_Boom1.map�LXTI��ItZI@I  .J��JJ8yJ~�JV[J�J�I @I �I `I �I �I �I I I�ZI. �IN �I�ZI �.J�=I� �I� �I� �In �I�I��I@.I�4I��I��I��I�zI��I��L�Lx �L% �J`�I��I �.G�<GG�ZG��G`GVxG�G8�G~�L1L�FL� �I��I�InIn?In_InIn�In�In�In�I��I�I�?I�_I�I��I��I��InI�Lx FL� �I  I  I. �I �I� � \Y �5 � � � ����     Bom 2 42_Boss_Boom2.map ��XPI �I I I@I`I�I�I�I�I I I@I�I`I�I I�I�I I@I I I�I�I�I�I`I@I I I�I�I�I�I`)O)�)�L)�p)p)��)�)��'�L'7p'��'7�'��'6�'5O'�p( �O(�p( �(�L(p(��(��(�I �I �I �I `I`I@'� �' �'� �(� �(� �(� �)� �)� �)� �I @I�I�I�I  I  ��)�)����q,q'P�M 
-�� -��   Thành phố nhện 43_Boss_NhenMay.map!t��v. �. <�. Z�. x�. ��. ��. ��. ��.�.,�.J�.h�.��.��.��.��.��.�.:�.X�.v�.��.��.��.��.�.*�.H�.f�.  �.  �.  x.  a.  J.  7.  !.��.��.��.�x.�a.�M.�8.�%+ ��+m�+Z�+ ��+��+@�+S�+��- ��-G�--�-��, ��,��,f�,�O� �O � �O� �O1 �N� �N �Nw �N � �M� �MI �M� �M �)  ) )�)�' 0(rO  �O �O 0�O H�O `�O x�O ��O ��O ��O ��O ��O�O �O8�OP�Oh�O��O��O��O��O��O��O�O(�O@�OX�Op�O��O��O��O��O��O �O�O0�OH�O`�Ox�O��O�����p�P�6���	��� 
-�� -���� Thành phố máy 44_Boss_Robo.map"�XEI uI �I �I �$I �$I �I �II5I$I5$IUIuI�I�I�I��I��I $I 5$I 5I UJw�K��I�$I$I5$IU$Iu$II�I�$I�$I�$I�I�I�$I$K5I�I��IO�Io�I/�J��J��G��J��J�I t| �|<�� T| �| 4| �|h �hm(� ��rK�I J��I�I��I�� d � D � � � � � ����     Khủng long máy 45_Boss_TRex.map# ��� 9 >v9 `v9 �%9 �%9VO9xO9�99u�9$;9;7 v8 �v7 �%8%74O7�;7�7S�8F;8��8-8�OE9���9��<	TT 
-C $aV'mr \w< �&��%&DzO� ���� �  Khu vực cấm 46_Boss_UFO.map$ ��U����`9^�?�B q�Ic��� �b�w���� �2 � c� �� � w �  6�&6  �6� �6�$6� �6  �c�����1� 0 ��$� �P ��&� �5 � W  �������� Đỉnh hi mã lạp sơn 47_Boss_Balloon.map%�X,R  "R �"R��R��S �"S"!S��S "S $!TD T�T F"T��U b#U x#U5�U}�U�U �#U �#UM�Ue�Q 	�Q6�QY�Q��Q��S��Sv�ST�S6�U��U��U��R�U�5U�5U�5R�4R4S�3SB3Td4T4 D"��>� �#"����X� �� P���� Hang nhện 48_Boss_HangNhen.map& �.a Ya "Ya DYa fYa �Ya �Ya �Ya �YaYa2YaTYavYa�Ya�Ya�Ya�Ya YaCYd  Ad � �e	 �e " Af � �f  �e # �e " �f  �b � �b  *b 
- sb  �b EcuLc  �c � �c�Kg�Yg�Yg�Yg�YgfYgYc�@c�Mc^Ic 4 6 A 3 � 8 � %Y SY � � � ~Y  ������ Nghĩa trang 49_Boss_Ghost.map' �1a �a "�a D�a f�a ��a ��a ��a ��a�a2�aT�av�a��a��a��a��a �aC�d�d �e	e�f �e� �e "Bf Bb � �b� �b� �b +b �cu�c c � �c��c��c��c^�c �d� �a��a��a��a��af�a�P X xP* uP�j� �� � 8BM u } x � j  ������ Nghĩa trang 2 50_Boss_Ghost.map
-
-================================================================================
-// File: lib/nblibraries.properties
-================================================================================
+## lib/nblibraries.properties
+```lib/nblibraries.properties
 libs.CopyLibs.classpath=\
     ${base}/CopyLibs/org-netbeans-modules-java-j2seproject-copylibstask.jar
 libs.CopyLibs.displayName=CopyLibs Task
 libs.CopyLibs.prop-version=3.0
 
-================================================================================
-// File: manifest.mf
-================================================================================
-Manifest-Version: 1.0
-X-COMMENT: Main-Class will be added automatically by build
+```
 
-
-================================================================================
-// File: nbproject/build-impl.xml
-================================================================================
+## nbproject/build-impl.xml
+```xml:nbproject/build-impl.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 *** GENERATED FROM project.xml - DO NOT EDIT  ***
@@ -5527,9 +3533,10 @@ is divided into following sections:
     </target>
 </project>
 
-================================================================================
-// File: nbproject/genfiles.properties
-================================================================================
+```
+
+## nbproject/genfiles.properties
+```nbproject/genfiles.properties
 build.xml.data.CRC32=cce20d91
 build.xml.script.CRC32=22e87cc9
 build.xml.stylesheet.CRC32=f85dc8f2@1.109.0.48
@@ -5539,15 +3546,17 @@ nbproject/build-impl.xml.data.CRC32=cce20d91
 nbproject/build-impl.xml.script.CRC32=f0f88c24
 nbproject/build-impl.xml.stylesheet.CRC32=12e0a6c2@1.109.0.48
 
-================================================================================
-// File: nbproject/private/private.properties
-================================================================================
+```
+
+## nbproject/private/private.properties
+```nbproject/private/private.properties
 compile.on.save=true
 user.properties.file=C:\\Users\\Admin\\AppData\\Roaming\\NetBeans\\24\\build.properties
 
-================================================================================
-// File: nbproject/private/private.xml
-================================================================================
+```
+
+## nbproject/private/private.xml
+```xml:nbproject/private/private.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -5562,9 +3571,10 @@ user.properties.file=C:\\Users\\Admin\\AppData\\Roaming\\NetBeans\\24\\build.pro
     </open-files>
 </project-private>
 
-================================================================================
-// File: nbproject/project.properties
-================================================================================
+```
+
+## nbproject/project.properties
+```nbproject/project.properties
 annotation.processing.enabled=true
 annotation.processing.enabled.in.editor=false
 annotation.processing.processor.options=
@@ -5675,9 +3685,10 @@ source.encoding=UTF-8
 src.dir=src
 test.src.dir=test
 
-================================================================================
-// File: nbproject/project.xml
-================================================================================
+```
+
+## nbproject/project.xml
+```xml:nbproject/project.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://www.netbeans.org/ns/project/1">
     <type>org.netbeans.modules.java.j2seproject</type>
@@ -5697,9 +3708,10 @@ test.src.dir=test
     </configuration>
 </project>
 
-================================================================================
-// File: src/mobiarmy/Cache.java
-================================================================================
+```
+
+## src/mobiarmy/Cache.java
+```java:src/mobiarmy/Cache.java
 package mobiarmy;
 
 import com.google.gson.Gson;
@@ -5867,9 +3879,129 @@ public class Cache {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/MobiArmy.java
-================================================================================
+```
+
+## src/mobiarmy/io/IMessageHandler.java
+```java:src/mobiarmy/io/IMessageHandler.java
+package mobiarmy.io;
+
+public interface IMessageHandler {
+
+    void onConnectOK();
+
+    void onConnectionFail();
+
+    void onDisconnected();
+
+    void onMessage(Message message);
+}
+
+```
+
+## src/mobiarmy/io/Message.java
+```java:src/mobiarmy/io/Message.java
+package mobiarmy.io;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+
+public class Message {
+
+    private byte command;
+    private ByteArrayOutputStream os;
+    private DataOutputStream dos;
+    private ByteArrayInputStream is;
+    private DataInputStream dis;
+
+    public Message(int command) {
+        this((byte)command);
+    }
+    
+    public Message(byte command) {
+        this.command = command;
+        this.os = new ByteArrayOutputStream();
+        this.dos = new DataOutputStream(this.os);
+    }
+
+    public Message(byte command, byte[] data) {
+        this.command = command;
+        this.is = new ByteArrayInputStream(data);
+        this.dis = new DataInputStream(this.is);
+    }
+    
+    public byte getCommand() {
+        return command;
+    }
+
+    public void setCommand(int cmd) {
+        this.setCommand((byte)cmd);
+    }
+    
+    public void setCommand(byte cmd) {
+        this.command = cmd;
+    }
+
+    public byte[] getData() {
+    	return this.os.toByteArray();
+    }
+
+    public DataInputStream reader() {
+        return this.dis;
+        
+    }
+
+    public DataOutputStream writer() {
+        return this.dos;
+    }
+
+    public void cleanup() {
+    }
+    
+}
+
+```
+
+## src/mobiarmy/io/Write.java
+```java:src/mobiarmy/io/Write.java
+package mobiarmy.io;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+
+/**
+ *
+ * @author Văn Tú
+ */
+public class Write {
+    
+    private ByteArrayOutputStream os;
+    private DataOutputStream dos;
+    
+    
+    public Write() {
+        this.os = new ByteArrayOutputStream();
+        this.dos = new DataOutputStream(this.os);
+    }
+
+    public DataOutputStream writer() {
+        return this.dos;
+    }
+    
+    public byte[] getBytes() {
+        return this.os.toByteArray();
+    }
+    
+    public int size() {
+        return this.os.size();
+    }
+}
+
+```
+
+## src/mobiarmy/MobiArmy.java
+```java:src/mobiarmy/MobiArmy.java
 package mobiarmy;
 
 import javax.swing.*;
@@ -5976,257 +4108,10 @@ public class MobiArmy extends JFrame {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/Test.java
-================================================================================
-package mobiarmy;
+```
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import mobiarmy.server.GameData;
-
-public class Test extends JPanel {
-    
-    public class Player {
-        private final int x = 400;
-        private final int y = 400;
-        
-        BufferedImage image;
-
-        public Player() {
-            try {
-                this.image = ImageIO.read(new File("res/player/conKhiP.png"));
-                this.image = this.image.getSubimage(6, 10, 24, 24);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-    
-    public Player player = new Player();
-
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-        
-        // Vẽ người chơi
-        //g2d.drawRect(player.x - player.w / 2, player.y - player.h, player.w, player.h);
-        g2d.drawImage(player.image, player.x - player.image.getWidth() / 2, player.y - player.image.getHeight(), this);
-        for (int i = 0; i < 360; i += 10) {
-            shoot(g2d, i, 20, player.image.getWidth(), player.image.getHeight());
-        }
-    }
-    
-    private void shoot(Graphics2D g2d, int ang, int force, int w, int h) {
-        int x = player.x + ((w - 4) * GameData.cos(ang) >> 10);
-        int y = player.y -(h / 2) - ((h - 4) * GameData.sin(ang) >> 10);
-        int vx = force * GameData.cos(ang) >> 10;
-        int vy = -(force * GameData.sin(ang) >> 10);
-        drawBullet(g2d, x, y, vx, vy, 60);
-    }
-    
-    private void drawBullet(Graphics2D g2d, int x, int y, int vx, int vy, int g100) {
-        int vyTemp2 = 0;
-        for (int i = 0; i< 100; i++) {
-            g2d.setColor(Color.BLUE);
-            g2d.drawLine(x, y, x += vx, y += vy);
-            vyTemp2 += g100;
-            if(Math.abs(vyTemp2) >= 100) {
-                vy += vyTemp2 / 100;
-                vyTemp2 %= 100;
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Draw Line and Rectangle");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 800);
-        Test panel = new Test();
-
-        frame.add(panel);
-        frame.setVisible(true);
-    }
-}
-
-================================================================================
-// File: src/mobiarmy/Util.java
-================================================================================
-package mobiarmy;
-
-import java.util.concurrent.ThreadLocalRandom;
-
-/**
- *
- * @author Văn Tú
- */
-public class Util {
-    
-    public static int nextInt(int min, int max) {
-        if (min == max) return min;
-        if (min > max) {
-            return ThreadLocalRandom.current().nextInt(max, min);
-        }
-        return ThreadLocalRandom.current().nextInt(min, max);
-    }
-
-    public static <T> T nextT(T ...array) {
-        return array[Util.nextInt(array.length)];
-    }
-    
-    public static double nextDouble() {
-        return ThreadLocalRandom.current().nextDouble();
-    }
-    
-    public static int nextInt(int bound) {
-        return ThreadLocalRandom.current().nextInt(bound);
-    }
-    
-    public static String formatNum(int num) {
-        return String.format("%,d", num).replace(",", ".");
-    }
-    
-    public static String getRandomCharacters(String inputString, int numberOfChars) {
-        if (numberOfChars > inputString.length()) {
-            numberOfChars = inputString.length();
-        }
-        
-        StringBuilder result = new StringBuilder(numberOfChars);
-        
-        for (int i = 0; i < numberOfChars; i++) {
-            int randomIndex = nextInt(inputString.length());
-            result.append(inputString.charAt(randomIndex));
-        }
-        
-        return result.toString();
-    }
-}
-
-================================================================================
-// File: src/mobiarmy/io/IMessageHandler.java
-================================================================================
-package mobiarmy.io;
-
-public interface IMessageHandler {
-
-    void onConnectOK();
-
-    void onConnectionFail();
-
-    void onDisconnected();
-
-    void onMessage(Message message);
-}
-
-================================================================================
-// File: src/mobiarmy/io/Message.java
-================================================================================
-package mobiarmy.io;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-
-public class Message {
-
-    private byte command;
-    private ByteArrayOutputStream os;
-    private DataOutputStream dos;
-    private ByteArrayInputStream is;
-    private DataInputStream dis;
-
-    public Message(int command) {
-        this((byte)command);
-    }
-    
-    public Message(byte command) {
-        this.command = command;
-        this.os = new ByteArrayOutputStream();
-        this.dos = new DataOutputStream(this.os);
-    }
-
-    public Message(byte command, byte[] data) {
-        this.command = command;
-        this.is = new ByteArrayInputStream(data);
-        this.dis = new DataInputStream(this.is);
-    }
-    
-    public byte getCommand() {
-        return command;
-    }
-
-    public void setCommand(int cmd) {
-        this.setCommand((byte)cmd);
-    }
-    
-    public void setCommand(byte cmd) {
-        this.command = cmd;
-    }
-
-    public byte[] getData() {
-    	return this.os.toByteArray();
-    }
-
-    public DataInputStream reader() {
-        return this.dis;
-        
-    }
-
-    public DataOutputStream writer() {
-        return this.dos;
-    }
-
-    public void cleanup() {
-    }
-    
-}
-
-================================================================================
-// File: src/mobiarmy/io/Write.java
-================================================================================
-package mobiarmy.io;
-
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-
-/**
- *
- * @author Văn Tú
- */
-public class Write {
-    
-    private ByteArrayOutputStream os;
-    private DataOutputStream dos;
-    
-    
-    public Write() {
-        this.os = new ByteArrayOutputStream();
-        this.dos = new DataOutputStream(this.os);
-    }
-
-    public DataOutputStream writer() {
-        return this.dos;
-    }
-    
-    public byte[] getBytes() {
-        return this.os.toByteArray();
-    }
-    
-    public int size() {
-        return this.os.size();
-    }
-}
-
-================================================================================
-// File: src/mobiarmy/server/Bot.java
-================================================================================
+## src/mobiarmy/server/Bot.java
+```java:src/mobiarmy/server/Bot.java
 package mobiarmy.server;
 
 import java.util.ArrayList;
@@ -6531,9 +4416,10 @@ public class Bot extends User {
 
 }
 
-================================================================================
-// File: src/mobiarmy/server/Caption.java
-================================================================================
+```
+
+## src/mobiarmy/server/Caption.java
+```java:src/mobiarmy/server/Caption.java
 package mobiarmy.server;
 
 import java.sql.SQLException;
@@ -6562,9 +4448,10 @@ public class Caption {
     
 }
 
-================================================================================
-// File: src/mobiarmy/server/Confirm.java
-================================================================================
+```
+
+## src/mobiarmy/server/Confirm.java
+```java:src/mobiarmy/server/Confirm.java
 package mobiarmy.server;
 
 import mobiarmy.Util;
@@ -6732,9 +4619,10 @@ public class Confirm {
     
 }
 
-================================================================================
-// File: src/mobiarmy/server/ControlHandler.java
-================================================================================
+```
+
+## src/mobiarmy/server/ControlHandler.java
+```java:src/mobiarmy/server/ControlHandler.java
 package mobiarmy.server;
 
 import java.io.IOException;
@@ -7196,9 +5084,10 @@ public class ControlHandler {
     
 }
 
-================================================================================
-// File: src/mobiarmy/server/DBManager.java
-================================================================================
+```
+
+## src/mobiarmy/server/DBManager.java
+```java:src/mobiarmy/server/DBManager.java
 package mobiarmy.server;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -7393,9 +5282,10 @@ public class DBManager {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/server/Equip.java
-================================================================================
+```
+
+## src/mobiarmy/server/Equip.java
+```java:src/mobiarmy/server/Equip.java
 package mobiarmy.server;
 
 import com.google.gson.Gson;
@@ -7579,9 +5469,10 @@ public class Equip {
     
 }
 
-================================================================================
-// File: src/mobiarmy/server/Exp.java
-================================================================================
+```
+
+## src/mobiarmy/server/Exp.java
+```java:src/mobiarmy/server/Exp.java
 package mobiarmy.server;
 
 import java.sql.SQLException;
@@ -7633,9 +5524,10 @@ public class Exp {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/server/GameData.java
-================================================================================
+```
+
+## src/mobiarmy/server/GameData.java
+```java:src/mobiarmy/server/GameData.java
 package mobiarmy.server;
 
 import java.awt.image.BufferedImage;
@@ -7889,9 +5781,10 @@ public class GameData {
 }
 
 
-================================================================================
-// File: src/mobiarmy/server/Glass.java
-================================================================================
+```
+
+## src/mobiarmy/server/Glass.java
+```java:src/mobiarmy/server/Glass.java
 package mobiarmy.server;
 
 import com.google.gson.Gson;
@@ -8071,10 +5964,10 @@ public class Glass {
     }
 
 }
+```
 
-================================================================================
-// File: src/mobiarmy/server/Item.java
-================================================================================
+## src/mobiarmy/server/Item.java
+```java:src/mobiarmy/server/Item.java
 package mobiarmy.server;
 
 import java.sql.SQLException;
@@ -8127,9 +6020,10 @@ public class Item {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/server/LinhTinh.java
-================================================================================
+```
+
+## src/mobiarmy/server/LinhTinh.java
+```java:src/mobiarmy/server/LinhTinh.java
 package mobiarmy.server;
 
 import com.google.gson.Gson;
@@ -8193,9 +6087,10 @@ public class LinhTinh {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/server/Map.java
-================================================================================
+```
+
+## src/mobiarmy/server/Map.java
+```java:src/mobiarmy/server/Map.java
 package mobiarmy.server;
 
 import com.google.gson.Gson;
@@ -8265,9 +6160,10 @@ public class Map {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/server/MapBoss.java
-================================================================================
+```
+
+## src/mobiarmy/server/MapBoss.java
+```java:src/mobiarmy/server/MapBoss.java
 package mobiarmy.server;
 
 import java.sql.SQLException;
@@ -8295,9 +6191,10 @@ public class MapBoss {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/server/MessageHandler.java
-================================================================================
+```
+
+## src/mobiarmy/server/MessageHandler.java
+```java:src/mobiarmy/server/MessageHandler.java
 package mobiarmy.server;
 
 import java.io.DataInputStream;
@@ -8479,9 +6376,10 @@ public class MessageHandler {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/server/Mission.java
-================================================================================
+```
+
+## src/mobiarmy/server/Mission.java
+```java:src/mobiarmy/server/Mission.java
 package mobiarmy.server;
 
 import java.sql.SQLException;
@@ -8557,9 +6455,10 @@ public class Mission {
     
 }
 
-================================================================================
-// File: src/mobiarmy/server/Pack.java
-================================================================================
+```
+
+## src/mobiarmy/server/Pack.java
+```java:src/mobiarmy/server/Pack.java
 package mobiarmy.server;
 
 import java.io.ByteArrayOutputStream;
@@ -8613,10 +6512,10 @@ public class Pack {
         return outputStream.toByteArray();
     }
 }
+```
 
-================================================================================
-// File: src/mobiarmy/server/Select.java
-================================================================================
+## src/mobiarmy/server/Select.java
+```java:src/mobiarmy/server/Select.java
 package mobiarmy.server;
 
 import java.util.ArrayList;
@@ -8708,9 +6607,10 @@ public class Select {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/server/Server.java
-================================================================================
+```
+
+## src/mobiarmy/server/Server.java
+```java:src/mobiarmy/server/Server.java
 package mobiarmy.server;
 
 import java.io.IOException;
@@ -8894,14 +6794,10 @@ public class Server {
     
 }
 
-================================================================================
-// File: src/mobiarmy/server/ServerManager.java
-================================================================================
+```
 
-
-================================================================================
-// File: src/mobiarmy/server/Session.java
-================================================================================
+## src/mobiarmy/server/Session.java
+```java:src/mobiarmy/server/Session.java
 package mobiarmy.server;
 
 import java.io.IOException;
@@ -9006,9 +6902,10 @@ public class Session {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/server/SessionHandler.java
-================================================================================
+```
+
+## src/mobiarmy/server/SessionHandler.java
+```java:src/mobiarmy/server/SessionHandler.java
 package mobiarmy.server;
 
 import java.io.IOException;
@@ -10246,9 +8143,10 @@ public class SessionHandler {
     
 }
 
-================================================================================
-// File: src/mobiarmy/server/SessionManager.java
-================================================================================
+```
+
+## src/mobiarmy/server/SessionManager.java
+```java:src/mobiarmy/server/SessionManager.java
 package mobiarmy.server;
 
 import com.google.gson.Gson;
@@ -10571,9 +8469,10 @@ public class SessionManager {
 
 }
 
-================================================================================
-// File: src/mobiarmy/server/ShopEquipment.java
-================================================================================
+```
+
+## src/mobiarmy/server/ShopEquipment.java
+```java:src/mobiarmy/server/ShopEquipment.java
 package mobiarmy.server;
 
 import com.google.gson.Gson;
@@ -10613,9 +8512,10 @@ public class ShopEquipment {
     
 }
 
-================================================================================
-// File: src/mobiarmy/server/ShopLinhTinh.java
-================================================================================
+```
+
+## src/mobiarmy/server/ShopLinhTinh.java
+```java:src/mobiarmy/server/ShopLinhTinh.java
 package mobiarmy.server;
 
 import java.sql.SQLException;
@@ -10649,9 +8549,10 @@ public class ShopLinhTinh {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/server/Text.java
-================================================================================
+```
+
+## src/mobiarmy/server/Text.java
+```java:src/mobiarmy/server/Text.java
 package mobiarmy.server;
 
 /**
@@ -10666,9 +8567,10 @@ public class Text {
     
 }
 
-================================================================================
-// File: src/mobiarmy/server/User.java
-================================================================================
+```
+
+## src/mobiarmy/server/User.java
+```java:src/mobiarmy/server/User.java
 package mobiarmy.server;
 
 import java.util.ArrayList;
@@ -11572,9 +9474,144 @@ public class User {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/BigBoom.java
-================================================================================
+```
+
+## src/mobiarmy/Test.java
+```java:src/mobiarmy/Test.java
+package mobiarmy;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import mobiarmy.server.GameData;
+
+public class Test extends JPanel {
+    
+    public class Player {
+        private final int x = 400;
+        private final int y = 400;
+        
+        BufferedImage image;
+
+        public Player() {
+            try {
+                this.image = ImageIO.read(new File("res/player/conKhiP.png"));
+                this.image = this.image.getSubimage(6, 10, 24, 24);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+    
+    public Player player = new Player();
+
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        
+        // Vẽ người chơi
+        //g2d.drawRect(player.x - player.w / 2, player.y - player.h, player.w, player.h);
+        g2d.drawImage(player.image, player.x - player.image.getWidth() / 2, player.y - player.image.getHeight(), this);
+        for (int i = 0; i < 360; i += 10) {
+            shoot(g2d, i, 20, player.image.getWidth(), player.image.getHeight());
+        }
+    }
+    
+    private void shoot(Graphics2D g2d, int ang, int force, int w, int h) {
+        int x = player.x + ((w - 4) * GameData.cos(ang) >> 10);
+        int y = player.y -(h / 2) - ((h - 4) * GameData.sin(ang) >> 10);
+        int vx = force * GameData.cos(ang) >> 10;
+        int vy = -(force * GameData.sin(ang) >> 10);
+        drawBullet(g2d, x, y, vx, vy, 60);
+    }
+    
+    private void drawBullet(Graphics2D g2d, int x, int y, int vx, int vy, int g100) {
+        int vyTemp2 = 0;
+        for (int i = 0; i< 100; i++) {
+            g2d.setColor(Color.BLUE);
+            g2d.drawLine(x, y, x += vx, y += vy);
+            vyTemp2 += g100;
+            if(Math.abs(vyTemp2) >= 100) {
+                vy += vyTemp2 / 100;
+                vyTemp2 %= 100;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Draw Line and Rectangle");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800, 800);
+        Test panel = new Test();
+
+        frame.add(panel);
+        frame.setVisible(true);
+    }
+}
+
+```
+
+## src/mobiarmy/Util.java
+```java:src/mobiarmy/Util.java
+package mobiarmy;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+/**
+ *
+ * @author Văn Tú
+ */
+public class Util {
+    
+    public static int nextInt(int min, int max) {
+        if (min == max) return min;
+        if (min > max) {
+            return ThreadLocalRandom.current().nextInt(max, min);
+        }
+        return ThreadLocalRandom.current().nextInt(min, max);
+    }
+
+    public static <T> T nextT(T ...array) {
+        return array[Util.nextInt(array.length)];
+    }
+    
+    public static double nextDouble() {
+        return ThreadLocalRandom.current().nextDouble();
+    }
+    
+    public static int nextInt(int bound) {
+        return ThreadLocalRandom.current().nextInt(bound);
+    }
+    
+    public static String formatNum(int num) {
+        return String.format("%,d", num).replace(",", ".");
+    }
+    
+    public static String getRandomCharacters(String inputString, int numberOfChars) {
+        if (numberOfChars > inputString.length()) {
+            numberOfChars = inputString.length();
+        }
+        
+        StringBuilder result = new StringBuilder(numberOfChars);
+        
+        for (int i = 0; i < numberOfChars; i++) {
+            int randomIndex = nextInt(inputString.length());
+            result.append(inputString.charAt(randomIndex));
+        }
+        
+        return result.toString();
+    }
+}
+
+```
+
+## src/mobiarmy/war/Boss/BigBoom.java
+```java:src/mobiarmy/war/Boss/BigBoom.java
 package mobiarmy.war.Boss;
 
 import mobiarmy.Util;
@@ -11648,9 +9685,10 @@ public class BigBoom extends Boss {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/Boss.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/Boss.java
+```java:src/mobiarmy/war/Boss/Boss.java
 package mobiarmy.war.Boss;
 
 import java.util.ArrayList;
@@ -11722,384 +9760,10 @@ public class Boss extends Player {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/GiftBox.java
-================================================================================
-package mobiarmy.war.Boss;
+```
 
-/**
- *
- * @author Văn Tú
- */
-public class GiftBox extends Boss {
-    
-    public GiftBox(int x, int y) {
-        super("Hộp quà", (byte)23, 1, 0, 0, 0, 0, 24, 24, x, y);
-        super.isTurn = false;
-        super.isFaction = false;
-    }
-    
-}
-
-================================================================================
-// File: src/mobiarmy/war/Boss/GiftBox2.java
-================================================================================
-package mobiarmy.war.Boss;
-
-/**
- *
- * @author Văn Tú
- */
-public class GiftBox2 extends Boss {
-    
-    public GiftBox2(int x, int y) {
-        super("Hộp quà", (byte)24, 1, 0, 0, 0 ,0 , 24, 24, x, y);
-        super.isFly = true;
-        super.isTurn = false;
-        super.isFaction =false;
-    }
-    
-}
-
-================================================================================
-// File: src/mobiarmy/war/Boss/Robot.java
-================================================================================
-package mobiarmy.war.Boss;
-
-import mobiarmy.Util;
-import mobiarmy.server.GameData;
-import mobiarmy.war.Boss.bullet.BulletTrajectory;
-import mobiarmy.war.Player;
-
-/**
- *
- * @author Văn Tú
- */
-public class Robot extends Boss {
-
-    
-    public Robot(int hp, int att, int x, int y) {
-        super("Robot", (byte)14, hp, att, 0, 0, 0, 24, 25, x, y);
-    }
-    
-    @Override
-    public void update() {
-        super.update();
-        //Đến lượt chưa
-        if (super.index == super.mapData.getTurn() && System.currentTimeMillis() > super.mapData.timeUntilAction2) {
-            //Bắn
-            if (!super.isShoot) {
-                if (super.trajectory == null) {
-                    //Tìm đối thủ gần
-                    Player player = super.mapData.getPlayerNear(super.index);
-                    if (player != null) {
-                        if (Math.abs(super.x - player.x) < 40 && Math.abs(super.y - player.y) < 40) {
-                            super.mapData.shootBullet(super.index, false, 35, super.x, super.y, super.width, super.height, 0, 1, 0, 1, 500, 70);
-                            super.mapData.shootBullet(super.index, false, 36, super.x, super.y, super.width, super.height, Util.nextInt(45, 135), Util.nextInt(5, 10), 0, 1, 0, 0);
-                            super.mapData.updateAffect(super.index);
-                            super.mapData.isTurn = true;
-                            super.isShoot = true;
-                        } else {
-                            int arrBulletId[] = new int[]{36, 36, 0, 1, 2, 6, 7, 10, 11};
-                            int bID = arrBulletId[Util.nextInt(arrBulletId.length)];
-                            int w = player.width + GameData.radius(bID);
-                            int h = player.height + GameData.radius(bID);
-                            int toX = player.x - w / 2;
-                            int toY = player.y - h;
-                            this.trajectory = new BulletTrajectory(super.mapData, super.index, bID, super.x, super.y, super.width, super.height, toX, toY, w, h, 60, 10, true, true);
-                            this.trajectory.start();
-                        }
-                    } else {
-                        super.mapData.isTurn = true;
-                    }
-                } else if (super.trajectory.complate) {
-                    if (super.trajectory.place) {
-                        super.mapData.shootBullet(super.index, false, super.trajectory.bulletId, super.x, super.y, super.width, super.height, super.trajectory.ang, super.trajectory.force, super.trajectory.force2, 1, super.att, -1);
-                        super.mapData.updateAffect(super.index);
-                        super.isShoot = true;
-                        super.mapData.isTurn = true;
-                    } else {
-                        super.mapData.shootBullet(super.index, false, 36, super.x, super.y, super.width, super.height, Util.nextInt(45, 135), Util.nextInt(5, 10), super.trajectory.force2, 1, 0, -1);
-                        super.mapData.updateAffect(super.index);
-                        super.isShoot = true;
-                        super.mapData.isTurn = true;
-                    }
-                }
-            }
-        }
-    }
-}
-
-================================================================================
-// File: src/mobiarmy/war/Boss/RobotSpider.java
-================================================================================
-package mobiarmy.war.Boss;
-
-import java.util.ArrayList;
-import mobiarmy.Util;
-import mobiarmy.war.Boss.bullet.BulletTrajectory;
-import mobiarmy.war.Player;
-
-/**
- *
- * @author Văn Tú
- */
-public class RobotSpider extends Boss {
-
-    public RobotSpider(int hp, int att, int x, int y) {
-        super("Robot", (byte)13, hp, att, 0, 0, 0, 42, 42, x, y);
-    }
-    
-    @Override
-    public void update() {
-        super.update();
-        //Đến lượt chưa
-        if (super.index == super.mapData.getTurn() && System.currentTimeMillis() > super.mapData.timeUntilAction2) {
-            //Bắn
-            if (!super.isShoot) {
-                if (super.trajectory == null) {
-                    //Tìm đối thủ gần
-                    Player player = super.mapData.getPlayerNear(super.index);
-                    if (player != null) {
-                        if (Math.abs(super.x - player.x) < 40 && Math.abs(super.y - player.y) < 40) {
-                            super.mapData.shootBullet(super.index, false, 8, super.x, super.y, super.width, super.height, Util.nextInt(180, 360), Util.nextInt(1, 5), 0, 1, super.att, -1);
-                            super.mapData.shootBullet(super.index, false, 36, super.x, super.y, super.width, super.height, Util.nextInt(45, 135), Util.nextInt(3, 10), 0, 1, super.att, -1);
-                            super.mapData.updateAffect(super.index);
-                            super.mapData.isTurn = true;
-                            super.isShoot = true;
-                        } else {
-                            int arrBulletId[] = new int[]{1, 8, 10, 33};
-                            int bID = arrBulletId[Util.nextInt(arrBulletId.length)];
-                            this.trajectory = new BulletTrajectory(super.mapData, super.index, bID, super.x, super.y, super.width, super.height, player.x - player.width / 2, player.y - player.height, player.width, player.height, bID == 8 ? -45 : 60, bID == 8 ? 1 : 10, bID == 8, true);
-                            this.trajectory.start();
-                        }
-                    }
-                } else if (super.trajectory.complate) {
-                    if (super.trajectory.place) {
-                        super.mapData.shootBullet(super.index, false, super.trajectory.bulletId, super.x, super.y, super.width, super.height, super.trajectory.ang, super.trajectory.force, super.trajectory.force2, 1, super.att, -1);
-                        if (super.trajectory.bulletId == 8) {
-                            super.mapData.shootBullet(super.index, false, 36, super.x, super.y, super.width, super.height, Util.nextInt(45, 135), Util.nextInt(3, 10), 0, 1, super.att, -1);
-                        }
-                        super.mapData.updateAffect(super.index);
-                        super.isShoot = true;
-                        super.mapData.isTurn = true;
-                    } else {
-                        
-                    }
-                    super.mapData.isTurn = true;
-                }
-            }
-        }
-    }
-
-}
-
-================================================================================
-// File: src/mobiarmy/war/Boss/SmallBoom.java
-================================================================================
-package mobiarmy.war.Boss;
-
-import mobiarmy.war.Player;
-
-/**
- *
- * @author Văn Tú
- */
-public class SmallBoom extends Boss {
-    
-    public SmallBoom(int hp, int att, int x, int y) {
-        super("boss", (byte)11, hp, att, 0, 0, 0, 18, 18, x, y);
-        super.theluc = 100;
-    }
-    
-    @Override
-    public void update() {
-        super.update();
-        //Đến lượt chưa
-        if (super.index == super.mapData.getTurn() && System.currentTimeMillis() > super.mapData.timeUntilAction2) {
-            //Bắn
-            if (!super.isShoot) {
-                if (super.trajectory == null) {
-                    //Tìm đối thủ gần
-                    Player player = super.mapData.getPlayerNear(super.index);
-                    if (player != null) {
-                        //di chuyen
-                        int xOld = super.x;
-                        super.updateXY(player.x, player.y);
-                        if (Math.abs(super.x - player.x) < 30 && Math.abs(super.y - player.y) < 30) {
-                            super.mapData.shootBullet(super.index, false, 32, super.x, super.y, super.width, super.height, 89, 1, 0, 1, 600, -1);
-                            super.mapData.updateAffect(super.index);
-                            super.mapData.isTurn = true;
-                            super.isShoot = true;
-                        } else if (super.buocdi < super.theluc) {
-                            super.mapData.shootBullet(super.index, false, 5, super.x, super.y, super.width, super.height, super.x < xOld ? 70 : 110, 5, 0, 1, 0, -1);
-                            super.mapData.updateAffect(super.index);
-                            super.mapData.isTurn = true;
-                            super.isShoot = true;
-                        } else {
-                            super.mapData.isTurn = true;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-}
-
-================================================================================
-// File: src/mobiarmy/war/Boss/Trex.java
-================================================================================
-package mobiarmy.war.Boss;
-
-import mobiarmy.Util;
-import mobiarmy.war.Boss.bullet.BulletTrajectory;
-import mobiarmy.war.Player;
-
-/**
- *
- * @author Văn Tú
- */
-public class Trex extends Boss {
-
-    public Trex(int hp, int att, int x, int y) {
-        super("T-rex", (byte)15, hp, att, 0, 0, 0, 45, 50, x, y);
-    }
-    
-    @Override
-    public void update() {
-        super.update();
-        //Đến lượt chưa
-        if (super.index == super.mapData.getTurn() && System.currentTimeMillis() > super.mapData.timeUntilAction2) {
-            //Bắn
-            if (!super.isShoot) {
-                if (super.trajectory == null) {
-                    //Tìm đối thủ gần
-                    Player player = super.mapData.getPlayerNear(super.index);
-                    if (player != null) {
-                        if (Math.abs(super.x - player.x) < 90) {
-                            super.mapData.shootBullet(super.index, false, 35, super.x, super.y, super.width, super.height, 0, 1, 0, 1, 1200, 400);
-                            super.mapData.updateAffect(super.index);
-                            super.mapData.isTurn = true;
-                            super.isShoot = true;
-                        } else {
-                            player = super.mapData.popPlayerRand(super.index);
-                            if (Util.nextInt(100) < 30) {
-                                super.mapData.shootBullet(super.index, false, 37, super.x, super.y, super.width, super.height, 90, 10, player.x, 1, 750, -1);
-                                super.mapData.updateAffect(super.index);
-                                super.mapData.isTurn = true;
-                                super.isShoot = true;
-                            } else {
-                                int w = player.width * 2;
-                                int h = player.height;
-                                int toX = player.x - w / 2;
-                                int toY = player.y - h;
-                                this.trajectory = new BulletTrajectory(super.mapData, super.index, 40, super.x, super.y, super.width, super.height, Util.nextInt(toX - 50, toX + 50), toY, w, h, 60, 15, false, false);
-                                this.trajectory.start();
-                            }
-                        }
-                    }
-                } else if (super.trajectory.complate) {
-                    if (super.trajectory.place) {
-                        super.mapData.shootBullet(super.index, false, super.trajectory.bulletId, super.x, super.y, super.width, super.height, super.trajectory.ang, super.trajectory.force, super.trajectory.force2, 1, 300, 50);
-                        super.mapData.updateAffect(super.index);
-                        super.isShoot = true;
-                    }
-                    super.mapData.isTurn = true;
-                }
-            }
-        }
-    }
-
-}
-
-================================================================================
-// File: src/mobiarmy/war/Boss/Ufo.java
-================================================================================
-package mobiarmy.war.Boss;
-
-import mobiarmy.Util;
-import mobiarmy.war.Player;
-
-/**
- *
- * @author Văn Tú
- */
-public class Ufo extends Boss {
-    
-    private boolean isLod;
-    
-    public Ufo(int hp, int att, int x, int y) {
-        super("UFO", (byte)16, hp, att, 0, 0, 0, 51, 46, x, y);
-        super.isFly = true;
-        this.isLod = false;
-    }
-    
-    @Override
-    public void update() {
-        super.update();
-        //Đến lượt chưa
-        if (super.index == super.mapData.getTurn() && System.currentTimeMillis() > super.mapData.timeUntilAction2) {
-            //Bắn
-            if (!super.isShoot) {
-                if (this.isLod) {
-                    int yfake = super.y;
-                    conguoichoi:
-                    {
-                        while(true) {
-                            if (super.mapData.isCollisionMap(super.x, yfake)) {
-                                break conguoichoi;
-                            }
-                            if (yfake > super.mapData.height + 100) {
-                                this.isLod = false;
-                                break conguoichoi;
-                            }
-                            yfake++;
-                        }
-                    }
-                }
-                if (!this.isLod) {
-                    //Tìm đối thủ gần
-                    Player player = super.mapData.getPlayerNear(super.index);
-                    if (player != null) {
-                        this.isLod = true;
-                        short toX = player.x;
-                        short toY = super.y;
-                        if (super.y > player.y - 200 || super.y < player.y + 200) {
-                            toY = (short) (player.y - Util.nextInt(200, 350));
-                        }
-                        while(true) {
-                            if (!super.mapData.isCollisionMap(toX, toY)) {
-                                break;
-                            }
-                            toY--;
-                        }
-                        super.changeLocationFly(toX, toY);
-                    }
-                    super.mapData.isTurn = true;
-                } else {
-                    this.isLod = false;
-                    super.mapData.shootBullet(super.index, false, 42, super.x, super.y, super.width, super.height, 270, 10, 0, 1, 600, -1);
-                    super.mapData.updateAffect(super.index);
-                    super.isShoot = true;
-                    super.mapData.isTurn = true;
-                }
-            }
-        }
-    }
-    
-    @Override
-    public void die() {
-        super.die();
-        super.isCollision = false;
-    }
-    
-}
-
-
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/AddBoomBullet.java
-================================================================================
+## src/mobiarmy/war/Boss/bullet/AddBoomBullet.java
+```java:src/mobiarmy/war/Boss/bullet/AddBoomBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12126,9 +9790,10 @@ public class AddBoomBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ApacheBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ApacheBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ApacheBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.server.GameData;
@@ -12180,9 +9845,10 @@ public class ApacheBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/BicycleBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/BicycleBullet.java
+```java:src/mobiarmy/war/Boss/bullet/BicycleBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12218,9 +9884,10 @@ public class BicycleBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/BigBoomBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/BigBoomBullet.java
+```java:src/mobiarmy/war/Boss/bullet/BigBoomBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12258,9 +9925,10 @@ public class BigBoomBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/BigLaserBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/BigLaserBullet.java
+```java:src/mobiarmy/war/Boss/bullet/BigLaserBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12282,9 +9950,10 @@ public class BigLaserBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/BigRocketBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/BigRocketBullet.java
+```java:src/mobiarmy/war/Boss/bullet/BigRocketBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12333,9 +10002,10 @@ public class BigRocketBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/BomBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/BomBullet.java
+```java:src/mobiarmy/war/Boss/bullet/BomBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12373,9 +10043,10 @@ public class BomBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/Bullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/Bullet.java
+```java:src/mobiarmy/war/Boss/bullet/Bullet.java
 package mobiarmy.war.Boss.bullet;
 
 import java.util.ArrayList;
@@ -12588,9 +10259,10 @@ public class Bullet {
 }
 
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/BulletTrajectory.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/BulletTrajectory.java
+```java:src/mobiarmy/war/Boss/bullet/BulletTrajectory.java
 package mobiarmy.war.Boss.bullet;
 
 import java.util.ArrayList;
@@ -12708,9 +10380,10 @@ public class BulletTrajectory extends Gun {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ChickyBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ChickyBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ChickyBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12740,9 +10413,10 @@ public class ChickyBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/FlyPortBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/FlyPortBullet.java
+```java:src/mobiarmy/war/Boss/bullet/FlyPortBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12770,9 +10444,10 @@ public class FlyPortBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemB52Bullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemB52Bullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemB52Bullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12798,9 +10473,10 @@ public class ItemB52Bullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemBlindBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemBlindBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemBlindBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12822,9 +10498,10 @@ public class ItemBlindBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemBomBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemBomBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemBomBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12855,9 +10532,10 @@ public class ItemBomBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemEarthHole2Bullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemEarthHole2Bullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemEarthHole2Bullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12897,9 +10575,10 @@ public class ItemEarthHole2Bullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemEarthHoleBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemEarthHoleBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemEarthHoleBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12931,9 +10610,10 @@ public class ItemEarthHoleBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemFreezeBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemFreezeBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemFreezeBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12955,9 +10635,10 @@ public class ItemFreezeBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemLandBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemLandBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemLandBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -12980,9 +10661,10 @@ public class ItemLandBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemLaserBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemLaserBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemLaserBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13008,9 +10690,10 @@ public class ItemLaserBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemMeteorBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemMeteorBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemMeteorBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13042,9 +10725,10 @@ public class ItemMeteorBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemMouseBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemMouseBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemMouseBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13119,9 +10803,10 @@ public class ItemMouseBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemNoCollisionMap.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemNoCollisionMap.java
+```java:src/mobiarmy/war/Boss/bullet/ItemNoCollisionMap.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13158,9 +10843,10 @@ public class ItemNoCollisionMap extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemPoisonBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemPoisonBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemPoisonBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13182,9 +10868,10 @@ public class ItemPoisonBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemRainBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemRainBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemRainBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13229,9 +10916,10 @@ public class ItemRainBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemRocketBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemRocketBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemRocketBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13258,9 +10946,10 @@ public class ItemRocketBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemSilkBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemSilkBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemSilkBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13285,10 +10974,10 @@ public class ItemSilkBullet extends Bullet {
     }
     
 }
+```
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemSilkBullet2.java
-================================================================================
+## src/mobiarmy/war/Boss/bullet/ItemSilkBullet2.java
+```java:src/mobiarmy/war/Boss/bullet/ItemSilkBullet2.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13314,9 +11003,10 @@ public class ItemSilkBullet2 extends Bullet{
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemSuicideBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemSuicideBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemSuicideBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13343,9 +11033,10 @@ public class ItemSuicideBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemTeleportBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemTeleportBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemTeleportBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13373,9 +11064,10 @@ public class ItemTeleportBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemTeleportBullet2.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemTeleportBullet2.java
+```java:src/mobiarmy/war/Boss/bullet/ItemTeleportBullet2.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13403,9 +11095,10 @@ public class ItemTeleportBullet2 extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemTimeBombBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemTimeBombBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemTimeBombBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13434,9 +11127,10 @@ public class ItemTimeBombBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemTornadoBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemTornadoBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemTornadoBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13463,9 +11157,10 @@ public class ItemTornadoBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemUfo.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemUfo.java
+```java:src/mobiarmy/war/Boss/bullet/ItemUfo.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Boss.Boss;
@@ -13555,9 +11250,10 @@ public class ItemUfo extends Boss {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/ItemUfoBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/ItemUfoBullet.java
+```java:src/mobiarmy/war/Boss/bullet/ItemUfoBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13589,9 +11285,10 @@ public class ItemUfoBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/MirrorBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/MirrorBullet.java
+```java:src/mobiarmy/war/Boss/bullet/MirrorBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import java.awt.Color;
@@ -13704,9 +11401,10 @@ public class MirrorBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/RocketExpBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/RocketExpBullet.java
+```java:src/mobiarmy/war/Boss/bullet/RocketExpBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13764,9 +11462,10 @@ public class RocketExpBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/SmallBoomBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/SmallBoomBullet.java
+```java:src/mobiarmy/war/Boss/bullet/SmallBoomBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13804,9 +11503,10 @@ public class SmallBoomBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/TarzanBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/TarzanBullet.java
+```java:src/mobiarmy/war/Boss/bullet/TarzanBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13849,9 +11549,10 @@ public class TarzanBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Boss/bullet/UfoLaserBullet.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/bullet/UfoLaserBullet.java
+```java:src/mobiarmy/war/Boss/bullet/UfoLaserBullet.java
 package mobiarmy.war.Boss.bullet;
 
 import mobiarmy.war.Gun;
@@ -13931,9 +11632,391 @@ public class UfoLaserBullet extends Bullet {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Gun.java
-================================================================================
+```
+
+## src/mobiarmy/war/Boss/GiftBox.java
+```java:src/mobiarmy/war/Boss/GiftBox.java
+package mobiarmy.war.Boss;
+
+/**
+ *
+ * @author Văn Tú
+ */
+public class GiftBox extends Boss {
+    
+    public GiftBox(int x, int y) {
+        super("Hộp quà", (byte)23, 1, 0, 0, 0, 0, 24, 24, x, y);
+        super.isTurn = false;
+        super.isFaction = false;
+    }
+    
+}
+
+```
+
+## src/mobiarmy/war/Boss/GiftBox2.java
+```java:src/mobiarmy/war/Boss/GiftBox2.java
+package mobiarmy.war.Boss;
+
+/**
+ *
+ * @author Văn Tú
+ */
+public class GiftBox2 extends Boss {
+    
+    public GiftBox2(int x, int y) {
+        super("Hộp quà", (byte)24, 1, 0, 0, 0 ,0 , 24, 24, x, y);
+        super.isFly = true;
+        super.isTurn = false;
+        super.isFaction =false;
+    }
+    
+}
+
+```
+
+## src/mobiarmy/war/Boss/Robot.java
+```java:src/mobiarmy/war/Boss/Robot.java
+package mobiarmy.war.Boss;
+
+import mobiarmy.Util;
+import mobiarmy.server.GameData;
+import mobiarmy.war.Boss.bullet.BulletTrajectory;
+import mobiarmy.war.Player;
+
+/**
+ *
+ * @author Văn Tú
+ */
+public class Robot extends Boss {
+
+    
+    public Robot(int hp, int att, int x, int y) {
+        super("Robot", (byte)14, hp, att, 0, 0, 0, 24, 25, x, y);
+    }
+    
+    @Override
+    public void update() {
+        super.update();
+        //Đến lượt chưa
+        if (super.index == super.mapData.getTurn() && System.currentTimeMillis() > super.mapData.timeUntilAction2) {
+            //Bắn
+            if (!super.isShoot) {
+                if (super.trajectory == null) {
+                    //Tìm đối thủ gần
+                    Player player = super.mapData.getPlayerNear(super.index);
+                    if (player != null) {
+                        if (Math.abs(super.x - player.x) < 40 && Math.abs(super.y - player.y) < 40) {
+                            super.mapData.shootBullet(super.index, false, 35, super.x, super.y, super.width, super.height, 0, 1, 0, 1, 500, 70);
+                            super.mapData.shootBullet(super.index, false, 36, super.x, super.y, super.width, super.height, Util.nextInt(45, 135), Util.nextInt(5, 10), 0, 1, 0, 0);
+                            super.mapData.updateAffect(super.index);
+                            super.mapData.isTurn = true;
+                            super.isShoot = true;
+                        } else {
+                            int arrBulletId[] = new int[]{36, 36, 0, 1, 2, 6, 7, 10, 11};
+                            int bID = arrBulletId[Util.nextInt(arrBulletId.length)];
+                            int w = player.width + GameData.radius(bID);
+                            int h = player.height + GameData.radius(bID);
+                            int toX = player.x - w / 2;
+                            int toY = player.y - h;
+                            this.trajectory = new BulletTrajectory(super.mapData, super.index, bID, super.x, super.y, super.width, super.height, toX, toY, w, h, 60, 10, true, true);
+                            this.trajectory.start();
+                        }
+                    } else {
+                        super.mapData.isTurn = true;
+                    }
+                } else if (super.trajectory.complate) {
+                    if (super.trajectory.place) {
+                        super.mapData.shootBullet(super.index, false, super.trajectory.bulletId, super.x, super.y, super.width, super.height, super.trajectory.ang, super.trajectory.force, super.trajectory.force2, 1, super.att, -1);
+                        super.mapData.updateAffect(super.index);
+                        super.isShoot = true;
+                        super.mapData.isTurn = true;
+                    } else {
+                        super.mapData.shootBullet(super.index, false, 36, super.x, super.y, super.width, super.height, Util.nextInt(45, 135), Util.nextInt(5, 10), super.trajectory.force2, 1, 0, -1);
+                        super.mapData.updateAffect(super.index);
+                        super.isShoot = true;
+                        super.mapData.isTurn = true;
+                    }
+                }
+            }
+        }
+    }
+}
+
+```
+
+## src/mobiarmy/war/Boss/RobotSpider.java
+```java:src/mobiarmy/war/Boss/RobotSpider.java
+package mobiarmy.war.Boss;
+
+import java.util.ArrayList;
+import mobiarmy.Util;
+import mobiarmy.war.Boss.bullet.BulletTrajectory;
+import mobiarmy.war.Player;
+
+/**
+ *
+ * @author Văn Tú
+ */
+public class RobotSpider extends Boss {
+
+    public RobotSpider(int hp, int att, int x, int y) {
+        super("Robot", (byte)13, hp, att, 0, 0, 0, 42, 42, x, y);
+    }
+    
+    @Override
+    public void update() {
+        super.update();
+        //Đến lượt chưa
+        if (super.index == super.mapData.getTurn() && System.currentTimeMillis() > super.mapData.timeUntilAction2) {
+            //Bắn
+            if (!super.isShoot) {
+                if (super.trajectory == null) {
+                    //Tìm đối thủ gần
+                    Player player = super.mapData.getPlayerNear(super.index);
+                    if (player != null) {
+                        if (Math.abs(super.x - player.x) < 40 && Math.abs(super.y - player.y) < 40) {
+                            super.mapData.shootBullet(super.index, false, 8, super.x, super.y, super.width, super.height, Util.nextInt(180, 360), Util.nextInt(1, 5), 0, 1, super.att, -1);
+                            super.mapData.shootBullet(super.index, false, 36, super.x, super.y, super.width, super.height, Util.nextInt(45, 135), Util.nextInt(3, 10), 0, 1, super.att, -1);
+                            super.mapData.updateAffect(super.index);
+                            super.mapData.isTurn = true;
+                            super.isShoot = true;
+                        } else {
+                            int arrBulletId[] = new int[]{1, 8, 10, 33};
+                            int bID = arrBulletId[Util.nextInt(arrBulletId.length)];
+                            this.trajectory = new BulletTrajectory(super.mapData, super.index, bID, super.x, super.y, super.width, super.height, player.x - player.width / 2, player.y - player.height, player.width, player.height, bID == 8 ? -45 : 60, bID == 8 ? 1 : 10, bID == 8, true);
+                            this.trajectory.start();
+                        }
+                    }
+                } else if (super.trajectory.complate) {
+                    if (super.trajectory.place) {
+                        super.mapData.shootBullet(super.index, false, super.trajectory.bulletId, super.x, super.y, super.width, super.height, super.trajectory.ang, super.trajectory.force, super.trajectory.force2, 1, super.att, -1);
+                        if (super.trajectory.bulletId == 8) {
+                            super.mapData.shootBullet(super.index, false, 36, super.x, super.y, super.width, super.height, Util.nextInt(45, 135), Util.nextInt(3, 10), 0, 1, super.att, -1);
+                        }
+                        super.mapData.updateAffect(super.index);
+                        super.isShoot = true;
+                        super.mapData.isTurn = true;
+                    } else {
+                        
+                    }
+                    super.mapData.isTurn = true;
+                }
+            }
+        }
+    }
+
+}
+
+```
+
+## src/mobiarmy/war/Boss/SmallBoom.java
+```java:src/mobiarmy/war/Boss/SmallBoom.java
+package mobiarmy.war.Boss;
+
+import mobiarmy.war.Player;
+
+/**
+ *
+ * @author Văn Tú
+ */
+public class SmallBoom extends Boss {
+    
+    public SmallBoom(int hp, int att, int x, int y) {
+        super("boss", (byte)11, hp, att, 0, 0, 0, 18, 18, x, y);
+        super.theluc = 100;
+    }
+    
+    @Override
+    public void update() {
+        super.update();
+        //Đến lượt chưa
+        if (super.index == super.mapData.getTurn() && System.currentTimeMillis() > super.mapData.timeUntilAction2) {
+            //Bắn
+            if (!super.isShoot) {
+                if (super.trajectory == null) {
+                    //Tìm đối thủ gần
+                    Player player = super.mapData.getPlayerNear(super.index);
+                    if (player != null) {
+                        //di chuyen
+                        int xOld = super.x;
+                        super.updateXY(player.x, player.y);
+                        if (Math.abs(super.x - player.x) < 30 && Math.abs(super.y - player.y) < 30) {
+                            super.mapData.shootBullet(super.index, false, 32, super.x, super.y, super.width, super.height, 89, 1, 0, 1, 600, -1);
+                            super.mapData.updateAffect(super.index);
+                            super.mapData.isTurn = true;
+                            super.isShoot = true;
+                        } else if (super.buocdi < super.theluc) {
+                            super.mapData.shootBullet(super.index, false, 5, super.x, super.y, super.width, super.height, super.x < xOld ? 70 : 110, 5, 0, 1, 0, -1);
+                            super.mapData.updateAffect(super.index);
+                            super.mapData.isTurn = true;
+                            super.isShoot = true;
+                        } else {
+                            super.mapData.isTurn = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+```
+
+## src/mobiarmy/war/Boss/Trex.java
+```java:src/mobiarmy/war/Boss/Trex.java
+package mobiarmy.war.Boss;
+
+import mobiarmy.Util;
+import mobiarmy.war.Boss.bullet.BulletTrajectory;
+import mobiarmy.war.Player;
+
+/**
+ *
+ * @author Văn Tú
+ */
+public class Trex extends Boss {
+
+    public Trex(int hp, int att, int x, int y) {
+        super("T-rex", (byte)15, hp, att, 0, 0, 0, 45, 50, x, y);
+    }
+    
+    @Override
+    public void update() {
+        super.update();
+        //Đến lượt chưa
+        if (super.index == super.mapData.getTurn() && System.currentTimeMillis() > super.mapData.timeUntilAction2) {
+            //Bắn
+            if (!super.isShoot) {
+                if (super.trajectory == null) {
+                    //Tìm đối thủ gần
+                    Player player = super.mapData.getPlayerNear(super.index);
+                    if (player != null) {
+                        if (Math.abs(super.x - player.x) < 90) {
+                            super.mapData.shootBullet(super.index, false, 35, super.x, super.y, super.width, super.height, 0, 1, 0, 1, 1200, 400);
+                            super.mapData.updateAffect(super.index);
+                            super.mapData.isTurn = true;
+                            super.isShoot = true;
+                        } else {
+                            player = super.mapData.popPlayerRand(super.index);
+                            if (Util.nextInt(100) < 30) {
+                                super.mapData.shootBullet(super.index, false, 37, super.x, super.y, super.width, super.height, 90, 10, player.x, 1, 750, -1);
+                                super.mapData.updateAffect(super.index);
+                                super.mapData.isTurn = true;
+                                super.isShoot = true;
+                            } else {
+                                int w = player.width * 2;
+                                int h = player.height;
+                                int toX = player.x - w / 2;
+                                int toY = player.y - h;
+                                this.trajectory = new BulletTrajectory(super.mapData, super.index, 40, super.x, super.y, super.width, super.height, Util.nextInt(toX - 50, toX + 50), toY, w, h, 60, 15, false, false);
+                                this.trajectory.start();
+                            }
+                        }
+                    }
+                } else if (super.trajectory.complate) {
+                    if (super.trajectory.place) {
+                        super.mapData.shootBullet(super.index, false, super.trajectory.bulletId, super.x, super.y, super.width, super.height, super.trajectory.ang, super.trajectory.force, super.trajectory.force2, 1, 300, 50);
+                        super.mapData.updateAffect(super.index);
+                        super.isShoot = true;
+                    }
+                    super.mapData.isTurn = true;
+                }
+            }
+        }
+    }
+
+}
+
+```
+
+## src/mobiarmy/war/Boss/Ufo.java
+```java:src/mobiarmy/war/Boss/Ufo.java
+package mobiarmy.war.Boss;
+
+import mobiarmy.Util;
+import mobiarmy.war.Player;
+
+/**
+ *
+ * @author Văn Tú
+ */
+public class Ufo extends Boss {
+    
+    private boolean isLod;
+    
+    public Ufo(int hp, int att, int x, int y) {
+        super("UFO", (byte)16, hp, att, 0, 0, 0, 51, 46, x, y);
+        super.isFly = true;
+        this.isLod = false;
+    }
+    
+    @Override
+    public void update() {
+        super.update();
+        //Đến lượt chưa
+        if (super.index == super.mapData.getTurn() && System.currentTimeMillis() > super.mapData.timeUntilAction2) {
+            //Bắn
+            if (!super.isShoot) {
+                if (this.isLod) {
+                    int yfake = super.y;
+                    conguoichoi:
+                    {
+                        while(true) {
+                            if (super.mapData.isCollisionMap(super.x, yfake)) {
+                                break conguoichoi;
+                            }
+                            if (yfake > super.mapData.height + 100) {
+                                this.isLod = false;
+                                break conguoichoi;
+                            }
+                            yfake++;
+                        }
+                    }
+                }
+                if (!this.isLod) {
+                    //Tìm đối thủ gần
+                    Player player = super.mapData.getPlayerNear(super.index);
+                    if (player != null) {
+                        this.isLod = true;
+                        short toX = player.x;
+                        short toY = super.y;
+                        if (super.y > player.y - 200 || super.y < player.y + 200) {
+                            toY = (short) (player.y - Util.nextInt(200, 350));
+                        }
+                        while(true) {
+                            if (!super.mapData.isCollisionMap(toX, toY)) {
+                                break;
+                            }
+                            toY--;
+                        }
+                        super.changeLocationFly(toX, toY);
+                    }
+                    super.mapData.isTurn = true;
+                } else {
+                    this.isLod = false;
+                    super.mapData.shootBullet(super.index, false, 42, super.x, super.y, super.width, super.height, 270, 10, 0, 1, 600, -1);
+                    super.mapData.updateAffect(super.index);
+                    super.isShoot = true;
+                    super.mapData.isTurn = true;
+                }
+            }
+        }
+    }
+    
+    @Override
+    public void die() {
+        super.die();
+        super.isCollision = false;
+    }
+    
+}
+
+
+```
+
+## src/mobiarmy/war/Gun.java
+```java:src/mobiarmy/war/Gun.java
 package mobiarmy.war;
 
 import java.util.ArrayList;
@@ -14218,9 +12301,10 @@ public class Gun {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/MapData.java
-================================================================================
+```
+
+## src/mobiarmy/war/MapData.java
+```java:src/mobiarmy/war/MapData.java
 package mobiarmy.war;
 
 import java.awt.image.BufferedImage;
@@ -15412,9 +13496,10 @@ public class MapData {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/PathSimulator.java
-================================================================================
+```
+
+## src/mobiarmy/war/PathSimulator.java
+```java:src/mobiarmy/war/PathSimulator.java
 package mobiarmy.war;
 
 import java.util.ArrayList;
@@ -15490,9 +13575,10 @@ public class PathSimulator {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/war/Player.java
-================================================================================
+```
+
+## src/mobiarmy/war/Player.java
+```java:src/mobiarmy/war/Player.java
 package mobiarmy.war;
 
 import java.util.ArrayList;
@@ -16004,9 +14090,10 @@ public class Player {
     }
 }
 
-================================================================================
-// File: src/mobiarmy/war/Poison.java
-================================================================================
+```
+
+## src/mobiarmy/war/Poison.java
+```java:src/mobiarmy/war/Poison.java
 package mobiarmy.war;
 
 /**
@@ -16025,9 +14112,10 @@ public class Poison {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Room.java
-================================================================================
+```
+
+## src/mobiarmy/war/Room.java
+```java:src/mobiarmy/war/Room.java
 package mobiarmy.war;
 
 import java.sql.SQLException;
@@ -16076,9 +14164,10 @@ public class Room {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/RoomInfo.java
-================================================================================
+```
+
+## src/mobiarmy/war/RoomInfo.java
+```java:src/mobiarmy/war/RoomInfo.java
 package mobiarmy.war;
 
 import com.google.gson.Gson;
@@ -16202,9 +14291,10 @@ public class RoomInfo {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/RoomWait.java
-================================================================================
+```
+
+## src/mobiarmy/war/RoomWait.java
+```java:src/mobiarmy/war/RoomWait.java
 package mobiarmy.war;
 
 import java.io.IOException;
@@ -16676,9 +14766,10 @@ public class RoomWait {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/TimeBomb.java
-================================================================================
+```
+
+## src/mobiarmy/war/TimeBomb.java
+```java:src/mobiarmy/war/TimeBomb.java
 package mobiarmy.war;
 
 /**
@@ -16720,9 +14811,10 @@ public class TimeBomb {
     
 }
 
-================================================================================
-// File: src/mobiarmy/war/Tornado.java
-================================================================================
+```
+
+## src/mobiarmy/war/Tornado.java
+```java:src/mobiarmy/war/Tornado.java
 package mobiarmy.war;
 
 /**
@@ -16757,3 +14849,4 @@ public class Tornado {
         
 }
 
+```

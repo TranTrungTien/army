@@ -1,14 +1,17 @@
+import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:mobiarmy_flutter/core/network/command/commands.dart';
+import 'package:mobiarmy_flutter/core/network/data_sync_service.dart';
 import 'package:mobiarmy_flutter/core/network/dispatcher/message_dispatcher.dart';
 import 'package:mobiarmy_flutter/core/network/network_provider.dart';
+import 'package:mobiarmy_flutter/core/network/ping_heartbeat.dart';
 import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/core/network/transport/session_state_listener.dart';
 import 'package:mobiarmy_flutter/core/network/transport/tcp_session.dart';
 import 'package:mobiarmy_flutter/features/authentication/application/auth_state_machine.dart';
-import 'package:mobiarmy_flutter/features/authentication/data/account_storage.dart';
 import 'package:mobiarmy_flutter/features/authentication/data/auth_repository.dart';
+import 'package:mobiarmy_flutter/features/authentication/data/post_login_service.dart';
 import 'package:mobiarmy_flutter/features/authentication/data/session_packet_mapper.dart';
 import 'package:mobiarmy_flutter/features/authentication/domain/account_credentials.dart';
 import 'package:mobiarmy_flutter/features/authentication/domain/authentication_state.dart';
@@ -22,6 +25,8 @@ class AuthController extends Notifier<AuthenticationState>
   late final TcpSession _session;
   late final AuthRepository _repository;
   late final SessionPacketMapper _mapper;
+  PingHeartbeat? _ping;
+  Timer? _authTimeout;
 
   @override
   AuthenticationState build() {
@@ -37,6 +42,8 @@ class AuthController extends Notifier<AuthenticationState>
 
     ref.onDispose(() {
       listenerHolder.delegate = null;
+      _authTimeout?.cancel();
+      _ping?.stop();
     });
 
     return _machine.state;
@@ -57,7 +64,7 @@ class AuthController extends Notifier<AuthenticationState>
     try {
       await _session.connect(server.host, server.port);
     } catch (e) {
-      state = _machine.connectionLost('Không kết nối được ${server.endpoint}');
+      state = _machine.connectionLost('Khong ket noi duoc ${server.endpoint}');
     }
   }
 
@@ -67,26 +74,40 @@ class AuthController extends Notifier<AuthenticationState>
   }) async {
     if (state.status != AuthStatus.connected) return;
     state = _machine.loginRequested();
+    _authTimeout?.cancel();
+    _authTimeout = Timer(const Duration(seconds: 20), () {
+      if (state.status == AuthStatus.authenticating) {
+        state = _machine.connectionLost('Dang nhap qua lau — server khong phan hoi');
+      }
+    });
     try {
       await _repository.login(credentials);
-      if (remember) {
-        await ref.read(accountStorageProvider).save(credentials);
-      }
+      // Cho cmd 3 toi qua _onLoadInfoAll — o do moi chay PostLogin + sync.
+      _pendingCredentials = (credentials, remember);
     } catch (e) {
-      state = _machine.connectionLost('Gửi yêu cầu đăng nhập thất bại: $e');
+      _authTimeout?.cancel();
+      state = _machine.connectionLost('Gui yeu cau dang nhap that bai: $e');
     }
   }
 
-  Future<AccountCredentials?> loadRememberedCredentials() =>
-      ref.read(accountStorageProvider).load();
+  (AccountCredentials, bool)? _pendingCredentials;
+
+  Future<AccountCredentials?> loadRememberedCredentials() async {
+    final remembered = await PostLoginService.loadRemembered();
+    if (remembered == null) return null;
+    return AccountCredentials(
+      username: remembered.$1,
+      password: remembered.$2,
+    );
+  }
 
   Future<void> disconnect() async {
     try {
       if (_session.isConnected) await _repository.sendQuit();
-    } catch (_) {
-      // Server may already be gone; dispose below is authoritative.
-    }
+    } catch (_) {}
     await _session.dispose();
+    _authTimeout?.cancel();
+    _ping?.stop();
     state = _machine.logout();
   }
 
@@ -99,6 +120,7 @@ class AuthController extends Notifier<AuthenticationState>
 
   @override
   void onDisconnected(String? reason) {
+    _authTimeout?.cancel();
     state = _machine.connectionLost(reason);
   }
 
@@ -112,10 +134,31 @@ class AuthController extends Notifier<AuthenticationState>
   void _onLoadInfoAll(Message message) {
     try {
       final session = _mapper.decodeLoadInfoAll(message);
-      state = _machine.loginSucceeded(session);
+      final pending = _pendingCredentials;
+      _authTimeout?.cancel();
+
+      // Post-login flow: platform_request + bangxephang + sync chain 90.
+      final sync = DataSyncService(_session, ref.read(messageDispatcherProvider));
+      if (pending != null) {
+        PostLoginService.run(
+          _session,
+          sync,
+          username: pending.$1.username,
+          password: pending.$1.password,
+          remember: pending.$2,
+        );
+      } else {
+        sync.start();
+      }
+      sync.done.then((_) {
+        state = _machine.loginSucceeded(session);
+        _ping = PingHeartbeat(_session)..start();
+      }).catchError((Object e) {
+        state = _machine.connectionLost('Dong bo du lieu that bai: $e');
+      });
     } catch (e, stack) {
       _logger.severe('loadInfoAll parse failed', e, stack);
-      state = _machine.connectionLost('Phản hồi đăng nhập không hợp lệ');
+      state = _machine.connectionLost('Phan hoi dang nhap khong hop le');
     }
   }
 
@@ -123,22 +166,17 @@ class AuthController extends Notifier<AuthenticationState>
     final text = _mapper.decodeLog(message);
     final next = _machine.logReceived(text);
     if (next != state) {
+      _authTimeout?.cancel();
       state = next;
     } else {
-      // General server notice outside the auth flow — surface, don't die.
       _logger.info('Server notice: $text');
     }
   }
 
   void _onIdNotCollision(Message message) {
-    // Phase 12/17 ownership: tile ids that ignore terrain collision.
     _logger.info('idNotCollision: ${_mapper.decodeIdNotCollision(message)}');
   }
 }
-
-final accountStorageProvider = Provider<AccountStorage>((ref) {
-  return InMemoryAccountStorage();
-});
 
 final authControllerProvider =
     NotifierProvider<AuthController, AuthenticationState>(AuthController.new);

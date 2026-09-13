@@ -37,16 +37,16 @@ class GameplayHandler {
   void _handleShoot(Message message) {
     final reader = message.reader();
     final typeShoot = reader.readByte();
-    final isPow = reader.readByte();
+    reader.readByte();
     final playerIndex = reader.readByte();
     final bulletId = reader.readByte();
-    final gunX = reader.readShort();
-    final gunY = reader.readShort();
-    final angle = reader.readShort();
+    reader.readShort();
+    reader.readShort();
+    reader.readShort();
 
     // ... handle special bullets ...
 
-    final nShoot = reader.readByte();
+    reader.readByte();
     final numBullets = reader.readByte();
 
     final allTrajectories = <ProjectileTrajectory>[];

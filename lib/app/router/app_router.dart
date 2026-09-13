@@ -3,11 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobiarmy_flutter/app/router/app_route.dart';
 import 'package:mobiarmy_flutter/app/router/navigation_state.dart';
+import 'package:mobiarmy_flutter/core/assets/game_asset_loader.dart';
 import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
 import 'package:mobiarmy_flutter/features/authentication/domain/authentication_state.dart';
 import 'package:mobiarmy_flutter/features/authentication/presentation/login_screen.dart';
 import 'package:mobiarmy_flutter/features/authentication/presentation/server_selection_screen.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/gameplay_sandbox_screen.dart';
+import 'package:mobiarmy_flutter/features/gameplay/presentation/lobby_screen.dart';
+import 'package:mobiarmy_flutter/features/gameplay/presentation/offline_demo_screen.dart';
+import 'package:mobiarmy_flutter/features/gameplay/presentation/online_game_screen.dart';
+import 'package:mobiarmy_flutter/features/gameplay/presentation/room_screen.dart';
 import 'package:mobiarmy_flutter/shared/widgets/placeholder_screen.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
@@ -33,7 +38,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           location == AppRoute.login.path;
 
       if (auth.isAuthenticated) {
-        // Never allow an authenticated user back into the auth flow.
         if (inAuthFlow) return AppRoute.lobby.path;
         return null;
       }
@@ -42,8 +46,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         return AppRoute.serverSelection.path;
       }
 
-      // Login screen is only reachable with a live, handshaked connection
-      // (or while a login round-trip / failure is being shown).
       if (location == AppRoute.login.path &&
           auth.status != AuthStatus.connected &&
           auth.status != AuthStatus.authenticating &&
@@ -72,11 +74,19 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: AppRoute.lobby.path,
-        builder: (_, _) => const PlaceholderScreen(title: 'Lobby (Phase 14)'),
+        builder: (_, _) => const LobbyScreen(),
       ),
       GoRoute(
         path: AppRoute.room.path,
-        builder: (_, _) => const PlaceholderScreen(title: 'Room (Phase 15)'),
+        builder: (_, _) => const RoomScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.game.path,
+        builder: (_, _) => const OnlineGameScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.demo.path,
+        builder: (_, _) => const OfflineDemoScreen(),
       ),
       GoRoute(
         path: AppRoute.gameplaySandbox.path,
@@ -106,9 +116,13 @@ class _BootstrapScreenState extends ConsumerState<BootstrapScreen> {
   @override
   void initState() {
     super.initState();
-    Future<void>.microtask(
-      () => ref.read(navigationControllerProvider.notifier).completeBootstrap(),
-    );
+    Future<void>.microtask(() async {
+      // Load asset THAT 1 lan duy nhat truoc khi vao app
+      await GameAssets.load();
+      if (mounted) {
+        ref.read(navigationControllerProvider.notifier).completeBootstrap();
+      }
+    });
   }
 
   @override

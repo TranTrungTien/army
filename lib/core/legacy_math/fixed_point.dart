@@ -13,7 +13,7 @@ abstract final class JavaInt32 {
   static int multiply(int a, int b) => wrap(a * b);
   static int shiftLeft(int value, int bits) => wrap(value << (bits & 0x1f));
   static int divide(int dividend, int divisor) {
-    if (divisor == 0) throw IntegerDivisionByZeroException();
+    if (divisor == 0) throw UnsupportedError('Integer division by zero');
     if (dividend == minValue && divisor == -1) return minValue;
     return dividend ~/ divisor;
   }

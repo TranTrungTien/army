@@ -26,6 +26,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       if (saved != null && mounted) {
         _username.text = saved.username;
         _password.text = saved.password;
+        setState(() {});
       }
     });
   }
@@ -67,10 +68,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(
-                    'Đăng nhập',
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
+                  Text('Dang nhap',
+                      style: Theme.of(context).textTheme.headlineMedium),
                   const SizedBox(height: 4),
                   Text(
                     'Server: ${auth.server?.endpoint ?? '-'} · client ${AccountCredentials.kClientVersion}',
@@ -79,7 +78,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   const SizedBox(height: 16),
                   TextField(
                     controller: _username,
-                    decoration: const InputDecoration(labelText: 'Tài khoản'),
+                    decoration: const InputDecoration(labelText: 'Tai khoan'),
                     textInputAction: TextInputAction.next,
                     onChanged: (_) => setState(() {}),
                   ),
@@ -87,7 +86,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   TextField(
                     controller: _password,
                     obscureText: true,
-                    decoration: const InputDecoration(labelText: 'Mật khẩu'),
+                    decoration: const InputDecoration(labelText: 'Mat khau'),
                     textInputAction: TextInputAction.done,
                     onSubmitted: (_) => canLogin ? _login() : null,
                   ),
@@ -97,7 +96,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         value: _remember,
                         onChanged: (v) => setState(() => _remember = v ?? true),
                       ),
-                      const Text('Nhớ tài khoản'),
+                      const Text('Nho tai khoan'),
                     ],
                   ),
                   if (auth.status == AuthStatus.failed &&
@@ -105,14 +104,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Colors.red.withOpacity(0.15),
+                        color: Colors.red.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(color: Colors.redAccent),
                       ),
-                      child: Text(
-                        auth.message!,
-                        style: const TextStyle(color: Colors.redAccent),
-                      ),
+                      child: Text(auth.message!,
+                          style: const TextStyle(color: Colors.redAccent)),
                     ),
                     const SizedBox(height: 8),
                   ],
@@ -124,7 +121,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             height: 18,
                             child: CircularProgressIndicator(strokeWidth: 2),
                           )
-                        : const Text('Đăng nhập'),
+                        : const Text('Dang nhap'),
                   ),
                   const SizedBox(height: 8),
                   TextButton(
@@ -133,7 +130,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         : () => ref
                               .read(authControllerProvider.notifier)
                               .disconnect(),
-                    child: const Text('Quay lại chọn server'),
+                    child: const Text('Quay lai chon server'),
                   ),
                 ],
               ),
