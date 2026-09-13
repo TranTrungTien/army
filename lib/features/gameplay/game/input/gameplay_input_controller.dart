@@ -9,6 +9,13 @@ class GameplayInputController extends Component with ChangeNotifier {
 
   /// Speed of charging, 100 units in 2 seconds
   static const double chargeSpeed = 50.0;
+  static const double angleChangeSpeed = 40.0; // degrees per second
+
+  int _angleDelta = 0;
+
+  void setAngleDelta(int delta) {
+    _angleDelta = delta;
+  }
 
   void updateAngle(int delta) {
     // Legacy MobiArmy2 angle often cycles or clamps.
@@ -44,11 +51,36 @@ class GameplayInputController extends Component with ChangeNotifier {
     notifyListeners();
   }
 
+  void reset() {
+    _state = const GameplayInputState();
+    _angleDelta = 0;
+    notifyListeners();
+  }
+
   @override
   void update(double dt) {
+    bool changed = false;
     if (_state.isCharging) {
       final newForce = (_state.force + dt * chargeSpeed).clamp(0.0, 100.0);
-      _state = _state.copyWith(force: newForce);
+      if (newForce != _state.force) {
+        _state = _state.copyWith(force: newForce);
+        changed = true;
+      }
+    }
+
+    if (_angleDelta != 0) {
+      final double delta = _angleDelta * angleChangeSpeed * dt;
+      var newAngle = _state.angle + delta.round();
+      while (newAngle < 0) newAngle += 360;
+      while (newAngle >= 360) newAngle -= 360;
+
+      if (newAngle != _state.angle) {
+        _state = _state.copyWith(angle: newAngle);
+        changed = true;
+      }
+    }
+
+    if (changed) {
       notifyListeners();
     }
   }

@@ -43,7 +43,7 @@ class TerrainComponent extends PositionComponent {
   TerrainComponent({
     required DestructibleTerrain terrain,
     this.cellSize = 2,
-    this.groundColor = const ui.Color(0xFF8B6F47),
+    this.groundColor = const ui.Color(0xFFB0E2FF), // Màu xanh băng giá (Ice Bridge)
   }) : _terrain = terrain,
        super(
          size: Vector2(terrain.width.toDouble(), terrain.height.toDouble()),
@@ -65,6 +65,10 @@ class TerrainComponent extends PositionComponent {
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);
     final paint = ui.Paint()..color = groundColor;
+    final linePaint = ui.Paint()
+      ..color = ui.Color(0xFF000000).withOpacity(0.1)
+      ..strokeWidth = 1;
+
     final w = _terrain.width, h = _terrain.height;
     for (var cy = 0; cy < h; cy += cellSize) {
       for (var cx = 0; cx < w; cx += cellSize) {
@@ -78,6 +82,20 @@ class TerrainComponent extends PositionComponent {
             ),
             paint,
           );
+
+          // Draw simple brick pattern every 16 pixels
+          if (cx % 16 == 0 && cy % 8 == 0) {
+             canvas.drawLine(
+               ui.Offset(cx.toDouble(), cy.toDouble()),
+               ui.Offset(cx.toDouble() + 16, cy.toDouble()),
+               linePaint,
+             );
+             canvas.drawLine(
+               ui.Offset(cx.toDouble(), cy.toDouble()),
+               ui.Offset(cx.toDouble(), cy.toDouble() + 8),
+               linePaint,
+             );
+          }
         }
       }
     }

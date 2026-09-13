@@ -37,6 +37,7 @@ class SandboxScenario {
       int spawnIndex,
       List<dynamic> equipment,
       Color bodyColor,
+      int classId,
     ) {
       final point = map.spawnPoints[spawnIndex % map.spawnPoints.length];
       final groundY =
@@ -45,6 +46,7 @@ class SandboxScenario {
       final character = SandboxCharacterComponent(
         slotEquipment: {for (final e in equipment) e.slot as dynamic: e},
         bodyColor: bodyColor,
+        classId: classId,
       );
       character.moveTo(point.x.toDouble(), groundY);
       return character;
@@ -52,8 +54,8 @@ class SandboxScenario {
 
     final characters = [
       // Spawn points 4/5 land on the two side platforms (y=404 row).
-      spawn(4, SandboxEquipmentData.gunnerSet(), const Color(0xFFF97316)),
-      spawn(5, SandboxEquipmentData.miss6Set(), const Color(0xFF22D3EE)),
+      spawn(4, SandboxEquipmentData.gunnerSet(), const Color(0xFFF97316), 1),
+      spawn(5, SandboxEquipmentData.miss6Set(), const Color(0xFF22D3EE), 2),
     ];
 
     return SandboxScenario._(

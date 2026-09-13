@@ -15,6 +15,7 @@ abstract final class Commands {
   static const int startGame = 20;
   static const int move = 21;
   static const int shoot = 22;
+  static const int shootResult = 23;
   static const int setTurn = 24;
   static const int setWind = 25;
   static const int useItem = 26;
@@ -24,6 +25,7 @@ abstract final class Commands {
   static const int deleteFriend = 33;
   static const int userInfo = 34;
   static const int findUser = 36;
+  static const int finishMatch = 100;
   static const int ping = 42;
   static const int log =
       45; // SessionHandler.log — server notice / auth failure

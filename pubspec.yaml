@@ -27,3 +27,15 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/gui/
+    - assets/map/
+    - assets/map/bgItem/
+    - assets/font/
+    - assets/font/fontT/
+    - assets/item/
+    - assets/equip/
+    - assets/music/
+    - assets/sound/
+    - assets/effect/
+    - assets/BigImage/
+    - assets/manifests/

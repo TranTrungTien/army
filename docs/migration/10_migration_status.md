@@ -65,3 +65,29 @@ Phase 1 foundation may begin without claiming full source parity. Before a sourc
 - Character/equipment domain, parser, resolver, layers, animation controller: `COMPLETE_SOURCE`.
 - Real character and equipment rendering: `BLOCKED_ASSET_MISSING`.
 - Flutter analyzer/tests: `BLOCKED_ENVIRONMENT`.
+
+
+## Phase 6
+
+- Status: `COMPLETE_SOURCE`.
+- Domain states, intent-driven mechanics, systems (`PlayerMovementSystem`, `PlayerCollisionSystem`), and pixel-mask `GroundProbe`: `COMPLETE`.
+- Verification with advanced terrain/wind dynamics: `DEFERRED_TO_ONLINE`.
+
+
+## Phase 7
+
+- Status: `COMPLETE_SOURCE`.
+- Viewport bounds clamping, flexible targeting modes (`playerFollow`, `bulletFollow`, `freePan`), automatic focus timeout, and screen shake effects: `COMPLETE`.
+
+
+## Phase 8
+
+- Status: `COMPLETE_SOURCE`.
+- `GameplayInputController` component integrated with a reactive Flutter overlay HUD layout (`GameplayHud`), including input gestures, charging indicators, wind visuals, and chat scopes: `COMPLETE`.
+
+
+## Phase 9
+
+- Status: `COMPLETE_SOURCE`.
+- Trajectory specifications, `ProjectileComponent` frame playback systems, deterministic Q10 `BulletSimulator` engine matching legacy math formulas: `COMPLETE`.
+

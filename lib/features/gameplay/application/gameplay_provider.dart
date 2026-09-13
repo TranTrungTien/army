@@ -4,7 +4,7 @@ import 'gameplay_handler.dart';
 
 final gameplayHandlerProvider = Provider<GameplayHandler>((ref) {
   final dispatcher = ref.watch(messageDispatcherProvider);
-  final handler = GameplayHandler(dispatcher);
+  final handler = GameplayHandler(dispatcher, ref);
   handler.init();
   return handler;
 });

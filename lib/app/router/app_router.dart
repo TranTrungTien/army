@@ -8,11 +8,18 @@ import 'package:mobiarmy_flutter/features/authentication/application/auth_contro
 import 'package:mobiarmy_flutter/features/authentication/domain/authentication_state.dart';
 import 'package:mobiarmy_flutter/features/authentication/presentation/login_screen.dart';
 import 'package:mobiarmy_flutter/features/authentication/presentation/server_selection_screen.dart';
+import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/gameplay_sandbox_screen.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/lobby_screen.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/offline_demo_screen.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/online_game_screen.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/room_screen.dart';
+import 'package:mobiarmy_flutter/features/inventory/presentation/inventory_screen.dart';
+import 'package:mobiarmy_flutter/features/lobby/application/lobby_controller.dart';
+import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
+import 'package:mobiarmy_flutter/features/lobby/presentation/lobby_screen.dart';
+import 'package:mobiarmy_flutter/features/room/application/room_controller.dart';
+import 'package:mobiarmy_flutter/features/room/presentation/room_screen.dart';
 import 'package:mobiarmy_flutter/shared/widgets/placeholder_screen.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
@@ -22,6 +29,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
       final nav = ref.read(navigationControllerProvider);
       final auth = ref.read(authControllerProvider);
+      final lobby = ref.read(lobbyControllerProvider);
+      final gameplay = ref.read(gameplayControllerProvider);
       final location = state.matchedLocation;
 
       if (!nav.bootstrapped && location != AppRoute.bootstrap.path) {
@@ -39,6 +48,21 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 
       if (auth.isAuthenticated) {
         if (inAuthFlow) return AppRoute.lobby.path;
+
+        // Gameplay transition
+        if (gameplay != null && location != AppRoute.gameplaySandbox.path) {
+          return AppRoute.gameplaySandbox.path;
+        }
+
+        // Lobby -> Room transition
+        if (lobby.status == LobbyStatus.joined && location != AppRoute.room.path) {
+          return AppRoute.room.path;
+        }
+        // Room -> Lobby transition (if we left the room)
+        if (lobby.status != LobbyStatus.joined && location == AppRoute.room.path) {
+          return AppRoute.lobby.path;
+        }
+
         return null;
       }
 
@@ -102,6 +126,9 @@ class _RouterRefresh extends ChangeNotifier {
   _RouterRefresh(this.ref) {
     ref.listen(navigationControllerProvider, (_, _) => notifyListeners());
     ref.listen(authControllerProvider, (_, _) => notifyListeners());
+    ref.listen(lobbyControllerProvider, (_, _) => notifyListeners());
+    ref.listen(roomControllerProvider, (_, _) => notifyListeners());
+    ref.listen(gameplayControllerProvider, (_, _) => notifyListeners());
   }
   final Ref ref;
 }
