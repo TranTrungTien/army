@@ -6,6 +6,8 @@ import 'package:mobiarmy_flutter/features/gameplay/domain/player/movement_intent
 /// placeholder sandbox character and the real [CharacterComponent] can be
 /// driven by PlayerMovementSystem / PlayerCollisionSystem.
 abstract base class GamePlayer extends PositionComponent {
+  GamePlayer({super.priority});
+
   PlayerMovementState get movement;
   set movement(PlayerMovementState value);
   void moveTo(double x, double y);

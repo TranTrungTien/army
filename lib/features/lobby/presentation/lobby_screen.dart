@@ -13,7 +13,7 @@ class LobbyScreen extends ConsumerWidget {
     final lobby = ref.watch(lobbyControllerProvider);
 
     ref.listen(lobbyControllerProvider, (previous, next) {
-      if (next.status == LobbyStatus.inRoom) {
+      if (next.status == LobbyStatus.joined) {
         context.go(AppRoute.room.path);
       }
     });
@@ -28,11 +28,11 @@ class LobbyScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: lobby.status == LobbyStatus.loading
+      body: lobby.isBusy
           ? const Center(child: CircularProgressIndicator())
           : lobby.status == LobbyStatus.boardsLoaded
               ? _BoardList(
-                  areaId: lobby.currentAreaId!,
+                  areaId: lobby.selectedAreaId!,
                   boards: lobby.boards,
                 )
               : _AreaList(areas: lobby.areas),

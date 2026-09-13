@@ -27,6 +27,7 @@ class AudioService {
 
   void setVolume(double volume) {
     _volume = volume.clamp(0.0, 1.0);
+    _logger.info('Volume set to $_volume');
   }
 
   void setMuted(bool muted) {

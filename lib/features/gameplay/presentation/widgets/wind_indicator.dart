@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 class WindIndicator extends StatelessWidget {
   const WindIndicator({
@@ -17,29 +16,43 @@ class WindIndicator extends StatelessWidget {
     final absWind = windX.abs();
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       decoration: BoxDecoration(
-        color: Colors.black54,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white24),
+        color: Colors.black87,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.orange.withOpacity(0.5), width: 1.5),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.air, color: Colors.lightBlueAccent, size: 16),
+          if (windX != 0)
+            Transform.flip(
+              flipX: !isLeft, // wind.png usually points left or right, adjust based on convention
+              child: Image.asset(
+                'assets/wind.png',
+                width: 22,
+                height: 14,
+                fit: BoxFit.contain,
+                errorBuilder: (_, __, ___) => Icon(
+                  isLeft ? Icons.arrow_back : Icons.arrow_forward,
+                  color: Colors.lightBlueAccent,
+                  size: 16,
+                ),
+              ),
+            ),
           const SizedBox(width: 8),
-          if (isLeft)
-            const Icon(Icons.arrow_back, color: Colors.white, size: 14),
           Text(
-            '$absWind',
+            'WIND: $absWind',
             style: const TextStyle(
-              color: Colors.white,
+              color: Colors.yellow,
               fontWeight: FontWeight.bold,
+              fontFamily: 'monospace',
               fontSize: 16,
+              shadows: [
+                Shadow(blurRadius: 2, color: Colors.black, offset: Offset(1, 1))
+              ],
             ),
           ),
-          if (!isLeft)
-            const Icon(Icons.arrow_forward, color: Colors.white, size: 14),
         ],
       ),
     );

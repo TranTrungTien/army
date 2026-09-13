@@ -75,6 +75,7 @@ class ArmyGame extends FlameGame with DragCallbacks {
       final character = SandboxCharacterComponent(
         slotEquipment: const {},
         bodyColor: color,
+        classId: p.base.team == 0 ? 1 : 2,
       );
       character.moveTo(p.x.toDouble(), p.y.toDouble());
       await gameWorld.add(character);
@@ -87,13 +88,14 @@ class ArmyGame extends FlameGame with DragCallbacks {
   }
 
   @override
-  Color backgroundColor() => const Color(0xFF0F172A);
+  Color backgroundColor() => const Color(0xFF87CEEB); // Sky blue background color
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
 
     gameWorld = World();
+    world = gameWorld; // Gán world để camera nhìn thấy
     await add(gameWorld);
 
     inputController = GameplayInputController();
@@ -106,6 +108,7 @@ class ArmyGame extends FlameGame with DragCallbacks {
     await add(cameraSystem);
 
     camera.viewfinder.anchor = Anchor.center;
+    camera.viewfinder.zoom = 2.0; // Zoom in to see characters clearly as in original game
 
     final scenario = this.scenario;
     if (scenario != null) {
@@ -128,6 +131,7 @@ class ArmyGame extends FlameGame with DragCallbacks {
         await gameWorld.add(character);
         players[i] = character;
       }
+      activePlayerId = 0; // Đặt nhân vật đầu tiên làm người chơi hiện tại để Camera follow
     }
 
     onLoaded?.call();

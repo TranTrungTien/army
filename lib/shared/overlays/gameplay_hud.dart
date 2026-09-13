@@ -56,38 +56,38 @@ class GameplayHud extends ConsumerWidget {
             Positioned(
               left: 0,
               right: 0,
-              bottom: 40,
-              child: IgnorePointer(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _AngleDisplay(game: game),
-                    const SizedBox(height: 8),
-                    SizedBox(
-                      width: 300,
-                      // Legacy force range is 1..30; PowerBar expects 0..100.
-                      child: PowerBar(
-                        power: game.inputController.state.force * (100 / 30),
+              bottom: 10,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _AngleDisplay(game: game),
+                      const SizedBox(width: 20),
+                      SizedBox(
+                        width: 240,
+                        child: PowerBar(
+                          power: game.inputController.state.force * (100 / 30),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                ],
               ),
             ),
             if (matchResult == null)
               Positioned(
-                top: 20,
+                top: 10,
                 left: 0,
                 right: 0,
-                child: Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      WindIndicator(windX: windX, windY: windY),
-                      const SizedBox(height: 8),
-                      _TurnTimer(seconds: turnTime),
-                    ],
-                  ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    WindIndicator(windX: windX, windY: windY),
+                    const SizedBox(height: 4),
+                    _TurnTimer(seconds: turnTime),
+                  ],
                 ),
               ),
             if (matchResult != null)

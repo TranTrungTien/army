@@ -6,7 +6,7 @@ import 'package:mobiarmy_flutter/core/network/network_provider.dart';
 import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/application/chat_controller.dart';
-import 'package:mobiarmy_flutter/features/lobby/application/lobby_controller.dart';
+
 import 'package:mobiarmy_flutter/features/room/application/room_state_machine.dart';
 import 'package:mobiarmy_flutter/features/room/data/room_packet_mapper.dart';
 import 'package:mobiarmy_flutter/features/room/data/room_repository.dart';
@@ -37,20 +37,20 @@ class RoomController extends Notifier<RoomSessionState?> {
 
   void _registerHandlers(MessageDispatcher dispatcher) {
     dispatcher
-      ..register(Commands.loadRoomWait, _onLoadRoomWait)
+      ..register(Commands.joinRoomWait, _onLoadRoomWait)
       ..register(Commands.ready, _onReadySync)
       ..register(Commands.changeTeam, _onTeamSync)
-      ..register(Commands.changeMap, _onMapSync)
+      ..register(Commands.selectMap, _onMapSync)
       ..register(Commands.chat, _onChat)
       ..register(Commands.startGame, _onGameStart);
   }
 
   void _unregisterHandlers(MessageDispatcher dispatcher) {
     dispatcher
-      ..unregister(Commands.loadRoomWait, _onLoadRoomWait)
+      ..unregister(Commands.joinRoomWait, _onLoadRoomWait)
       ..unregister(Commands.ready, _onReadySync)
       ..unregister(Commands.changeTeam, _onTeamSync)
-      ..unregister(Commands.changeMap, _onMapSync)
+      ..unregister(Commands.selectMap, _onMapSync)
       ..unregister(Commands.chat, _onChat)
       ..unregister(Commands.startGame, _onGameStart);
   }

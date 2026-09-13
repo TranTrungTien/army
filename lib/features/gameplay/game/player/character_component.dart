@@ -29,9 +29,8 @@ final class CharacterComponent extends GamePlayer {
   final Map<EquipmentSlot, EquipmentLayerComponent> _layers = {};
 
   @override
-  MovementIntent intent = MovementIntent.none;
-
   int hp = 1000;
+  @override
   int maxHp = 1000;
 
   @override
@@ -113,6 +112,7 @@ final class CharacterComponent extends GamePlayer {
     _synchronizeLayers();
   }
 
+  @override
   void moveTo(double x, double y) {
     // Simple teleport for now, can add lerp later
     position.setValues(x, y);
