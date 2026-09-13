@@ -34,6 +34,9 @@ final class CharacterComponent extends GamePlayer {
   int maxHp = 1000;
 
   @override
+  MovementIntent intent = MovementIntent.none;
+
+  @override
   PlayerMovementState get movement => _movement;
   @override
   set movement(PlayerMovementState value) {

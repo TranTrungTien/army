@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:mobiarmy_flutter/core/network/data_cache_parsers.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/player/movement_intent.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/equip_anchor.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart';
@@ -26,10 +27,12 @@ final class OnlineCharacter extends GamePlayer {
   final int glassId;
   final List<int> equipIds;
   final String name;
-  final int maxHp;
+  @override
+  int maxHp;
   ui.Image? equipAtlas;           // imgData[glass] — TODO nap tu cmd 126
   ui.Image? _body;
 
+  @override
   int hp = 1000;
   int look = 0;                   // 0 = phai, 2 = trai
   int frame = 0;                  // 0..5 animation frame
@@ -37,6 +40,9 @@ final class OnlineCharacter extends GamePlayer {
 
   @override
   PlayerMovementState movement = PlayerMovementState(isOnGround: true);
+
+  @override
+  MovementIntent intent = MovementIntent.none;
 
   @override
   void moveTo(double x, double y) => position.setValues(x, y);

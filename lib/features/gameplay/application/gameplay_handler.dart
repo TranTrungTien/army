@@ -90,43 +90,8 @@ class GameplayHandler {
   }
 
   void _handleShoot(Message message) {
-    final reader = message.reader();
-    final typeShoot = reader.readByte();
-    reader.readByte();
-    final playerIndex = reader.readByte();
-    final bulletId = reader.readByte();
-    reader.readShort();
-    reader.readShort();
-    reader.readShort();
-
-    // ... handle special bullets ...
-
-    reader.readByte();
-    final numBullets = reader.readByte();
-
-    final allTrajectories = <ProjectileTrajectory>[];
-
-    for (int i = 0; i < numBullets; i++) {
-      final numFrames = reader.readShort();
-      final frames = <TrajectoryFrame>[];
-
-      int lastX = 0;
-      int lastY = 0;
-
-      for (int j = 0; j < numFrames; j++) {
-        if (j == 0 || typeShoot == 1) {
-          lastX = reader.readShort();
-          lastY = reader.readShort();
-        } else {
-          lastX += reader.readByte();
-          lastY += reader.readByte();
-        }
-        frames.add(TrajectoryFrame(x: lastX, y: lastY));
-      }
-      allTrajectories.add(
-        ProjectileTrajectory(bulletId: bulletId, frames: frames),
-      );
-
+    try {
+      final data = _mapper.decodeShoot(message);
       for (final trajectory in data.trajectories) {
         _game?.spawnProjectile(trajectory);
       }
