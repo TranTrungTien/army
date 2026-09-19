@@ -29,9 +29,18 @@ final class CharacterComponent extends GamePlayer {
   final Map<EquipmentSlot, EquipmentLayerComponent> _layers = {};
 
   @override
-  int hp = 1000;
+  int get hp => _animation.hp;
   @override
-  int maxHp = 1000;
+  set hp(int value) {
+    _animation = _animation.copyWith(hp: value);
+  }
+
+  @override
+  int get maxHp => _animation.maxHp;
+  @override
+  set maxHp(int value) {
+    _animation = _animation.copyWith(maxHp: value);
+  }
 
   @override
   MovementIntent intent = MovementIntent.none;
@@ -74,7 +83,7 @@ final class CharacterComponent extends GamePlayer {
       case PlayerMovementKind.walking:
         nextKind = CharacterAnimationKind.walk;
       case PlayerMovementKind.falling:
-        nextKind = CharacterAnimationKind.idle; // or falling specific if exists
+        nextKind = CharacterAnimationKind.idle;
       case PlayerMovementKind.hurt:
         nextKind = CharacterAnimationKind.hurt;
       case PlayerMovementKind.dead:
@@ -117,7 +126,6 @@ final class CharacterComponent extends GamePlayer {
 
   @override
   void moveTo(double x, double y) {
-    // Simple teleport for now, can add lerp later
     position.setValues(x, y);
   }
 
@@ -141,4 +149,6 @@ final class CharacterComponent extends GamePlayer {
       );
     }
   }
+
+  CharacterAnimationState get animationState => _animation;
 }

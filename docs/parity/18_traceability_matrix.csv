@@ -1,0 +1,20 @@
+Requirement ID,Java Component,Flutter Component,Test Case ID,Status
+REQ-NET-CORE,Session_ME,lib/core/network/tcp_session.dart,TC-NET-01,VERIFIED
+REQ-MATH-LEGACY,m.a (Math Utility),lib/core/legacy_math/*,TC-MATH-01,VERIFIED
+REQ-ASSET-CORE,FilePack,lib/core/assets/file_pack_decoder.dart,TC-PACK-01,IMPLEMENTED_UNVERIFIED
+REQ-NET-OPCODES,Cmd_Client2Server,lib/core/network/commands.dart,TC-NET-02,IMPLEMENTED_UNVERIFIED
+REQ-MAP-TERRAIN,CMap,lib/features/gameplay/destructible_terrain.dart,TC-MAP-01,IMPLEMENTED_UNVERIFIED
+REQ-BULLET-PHYSICS,Bullet,lib/features/gameplay/bullet_simulator.dart,TC-BULLET-01,IMPLEMENTED_UNVERIFIED
+REQ-RMS-STORAGE,RMS,lib/core/assets/legacy_rms.dart,TC-RMS-01,VERIFIED
+REQ-UI-LOBBY,RoomListScr,lib/features/lobby/lobby_screen.dart,TC-UI-01,IMPLEMENTED_UNVERIFIED
+REQ-UI-GAME,GameScr,lib/features/gameplay/gameplay_page.dart,TC-UI-02,IMPLEMENTED_UNVERIFIED
+REQ-FLOW-LAUNCH,AndroidLauncher,lib/main.dart,TC-FLOW-01,IMPLEMENTED_UNVERIFIED
+REQ-FLOW-HANDSHAKE,Session_ME.run,lib/core/network/tcp_session.dart,TC-FLOW-02,IMPLEMENTED_UNVERIFIED
+REQ-FLOW-SHOOT,GameScr.fire,lib/features/gameplay/game/combat_system.dart,TC-FLOW-03,IMPLEMENTED_UNVERIFIED
+REQ-FLOW-RECONCILE,GameScr.updateXY,lib/features/gameplay/game/player_movement.dart,TC-FLOW-04,IMPLEMENTED_UNVERIFIED
+REQ-PROT-FIRE,GameScr.fire,lib/features/gameplay/data/gameplay_packet_mapper.dart,TC-PROT-01,IMPLEMENTED_UNVERIFIED
+REQ-PROT-SYNC,DataSyncService,lib/core/network/data_sync_service.dart,TC-PROT-02,VERIFIED
+
+
+
+

@@ -31,7 +31,7 @@ class BackgroundComponent extends PositionComponent with HasGameReference<ArmyGa
 
     if (_bgImage != null) {
       // Vẽ lặp lại hình nền (Tiled) thay vì kéo giãn toàn bộ
-      final paint = ui.Paint();
+      final paint = ui.Paint()..filterQuality = ui.FilterQuality.none;
       for (double x = 0; x < size.x; x += _bgImage!.width) {
         canvas.drawImage(_bgImage!, ui.Offset(x, 0), paint);
       }

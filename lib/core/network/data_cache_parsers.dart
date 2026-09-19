@@ -40,6 +40,7 @@ class DataCache {
   static List<EquipEntry> equips = [];
   static List<String> levelCaptions = [];
   static List<int> levelCaptionTypes = [];
+  static Map<int, int> glassMaxDamage = {};
 }
 
 abstract final class DataCacheParsers {
@@ -66,10 +67,12 @@ abstract final class DataCacheParsers {
   static void parseEquipTree(Uint8List data) {
     final r = ByteReader(data);
     DataCache.equips = [];
+    DataCache.glassMaxDamage = {};
     final nGlass = r.readByte();
     for (var g = 0; g < nGlass; g++) {
       final glassId = r.readByte();
-      r.readShort(); // maxDamage
+      final maxDamage = r.readShort();
+      DataCache.glassMaxDamage[glassId] = maxDamage;
       final nType = r.readByte();
       for (var t = 0; t < nType; t++) {
         final type = r.readByte();

@@ -23,10 +23,9 @@ class GameplayPacketMapper {
         players[id] = MatchPlayer(base: base, x: x, y: y);
       }
     }
-    // byte 0 at end
     if (r.available > 0) r.readByte();
 
-    return MatchState(mapId: mapId, players: players);
+    return MatchState(mapId: mapId, players: players, status: MatchLoopStatus.loadingMap);
   }
 
   /// cmd 24 `setTurn`
@@ -39,7 +38,6 @@ class GameplayPacketMapper {
   (int, int) decodeWind(Message message) {
     final r = message.reader();
     final windX = r.readShort();
-    // Some server versions send windY as well
     final windY = r.available >= 2 ? r.readShort() : 0;
     return (windX, windY);
   }

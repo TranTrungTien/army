@@ -3,9 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mobiarmy_flutter/core/assets/file_pack_decoder.dart';
 
 void main() {
-  test('FilePack decode res/effect/effect', () {
-    // TODO: sua duong dan toi thu muc clone repo cua ban
-    final file = File(r'D:\personal\army\assets\effect\effect');
+  test('FilePack decode assets/effect/effect', () {
+    final file = File('assets/effect/effect');
     final bytes = file.readAsBytesSync();
 
     final pack = FilePackDecoder.decode(bytes);
@@ -26,5 +25,10 @@ void main() {
       final d = pack.files[e]!;
       expect(d[0], 0x89, reason: '$e khong phai PNG');
     }
+  });
+
+  test('FilePack handles malformed data', () {
+    expect(() => FilePackDecoder.decode(Uint8List(0)), throwsArgumentError);
+    expect(() => FilePackDecoder.decode(Uint8List.fromList([1, 1])), throwsRangeError);
   });
 }

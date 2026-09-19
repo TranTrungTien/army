@@ -1,6 +1,8 @@
 import 'dart:ui' as ui;
 import 'package:flame/components.dart';
+import 'package:mobiarmy_flutter/core/assets/bmfont.dart';
 import 'package:mobiarmy_flutter/core/assets/game_asset_loader.dart';
+import 'package:mobiarmy_flutter/core/assets/graphics_utility.dart';
 
 /// Port effect/Explosion.java + Smoke.java — frame size lay DUNG tu source:
 ///   explode ex3.png 59x64 x6f | teleport 32x32 x5f | waterBum 32x48 x5f
@@ -62,11 +64,19 @@ class ExplosionEffect extends Component {
     if (!_loaded || img == null) return;
     final sx = (curFrame * frameW) % img!.width;
     final sy = (curFrame * frameW ~/ img!.width) * frameH;
-    canvas.drawImageRect(
+
+    // Original anchor: HCENTER | VCENTER with -12 vertical offset
+    GraphicsUtility.drawRegion(
+      canvas,
       img!,
-      ui.Rect.fromLTWH(sx.toDouble(), sy.toDouble(), frameW.toDouble(), frameH.toDouble()),
-      ui.Rect.fromLTWH(x - frameW / 2, y - frameH / 2 - 12, frameW.toDouble(), frameH.toDouble()),
-      ui.Paint(),
+      sx.toDouble(),
+      sy.toDouble(),
+      frameW.toDouble(),
+      frameH.toDouble(),
+      GraphicsUtility.transNone,
+      x,
+      y - 12,
+      GraphicsAnchor.hCenter | GraphicsAnchor.vCenter,
     );
   }
 }

@@ -1,0 +1,3 @@
+Equipment ID,Name,Java Handling,Flutter Handling,Status
+0,HAIR_STYLE_1,Equip.java,EquipmentLayerComponent.dart,IMPLEMENTED_UNVERIFIED
+1,ARMOR_SUIT_1,Equip.java,EquipmentLayerComponent.dart,IMPLEMENTED_UNVERIFIED

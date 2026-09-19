@@ -1,3 +1,4 @@
+import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/area_summary.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/board_summary.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
@@ -35,9 +36,9 @@ class LobbyStateMachine {
     return _set(const LobbyState.joining());
   }
 
-  LobbyState joinSucceeded() {
+  LobbyState joinSucceeded(RoomSessionState initialRoomState) {
     if (_state.status != LobbyStatus.joining) return _state;
-    return _set(const LobbyState.joined());
+    return _set(LobbyState.joined(initialRoomState));
   }
 
   LobbyState joinFailed(String message) {

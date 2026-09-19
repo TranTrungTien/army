@@ -8,6 +8,7 @@ import 'package:mobiarmy_flutter/features/lobby/application/lobby_state_machine.
 import 'package:mobiarmy_flutter/features/lobby/data/lobby_packet_mapper.dart';
 import 'package:mobiarmy_flutter/features/lobby/data/lobby_repository.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
+import 'package:mobiarmy_flutter/features/room/data/room_packet_mapper.dart';
 
 class LobbyController extends Notifier<LobbyState> {
   final _logger = Logger('LobbyController');
@@ -15,15 +16,21 @@ class LobbyController extends Notifier<LobbyState> {
   late final LobbyStateMachine _machine;
   late final LobbyRepository _repository;
   late final LobbyPacketMapper _mapper;
+  late final RoomPacketMapper _roomMapper;
 
   @override
   LobbyState build() {
     _machine = LobbyStateMachine();
     _mapper = const LobbyPacketMapper();
+    _roomMapper = const RoomPacketMapper();
     _repository = LobbyRepository(ref.watch(tcpSessionProvider));
 
     final dispatcher = ref.watch(messageDispatcherProvider);
     _registerHandlers(dispatcher);
+
+    ref.onDispose(() {
+      _unregisterHandlers(dispatcher);
+    });
 
     // Initial load
     Future.microtask(() => loadAreas());
@@ -37,6 +44,14 @@ class LobbyController extends Notifier<LobbyState> {
       ..register(Commands.roomWaitList, _onRoomWaitList)
       ..register(Commands.joinRoomWait, _onLoadRoomWait) // cmd 8
       ..register(Commands.log, _onLog);
+  }
+
+  void _unregisterHandlers(MessageDispatcher dispatcher) {
+    dispatcher
+      ..unregister(Commands.roomList, _onRoomList)
+      ..unregister(Commands.roomWaitList, _onRoomWaitList)
+      ..unregister(Commands.joinRoomWait, _onLoadRoomWait)
+      ..unregister(Commands.log, _onLog);
   }
 
   // ---------------------------------------------------------------- commands
@@ -98,10 +113,13 @@ class LobbyController extends Notifier<LobbyState> {
   }
 
   void _onLoadRoomWait(Message message) {
-    // Phase 15 ownership will decode the full room state.
-    // For Phase 14, receiving this means success.
-    _logger.info('Received loadRoomWait (cmd 8) - success joining room');
-    state = _machine.joinSucceeded();
+    try {
+      _logger.info('Received loadRoomWait (cmd 8) - success joining room');
+      final roomState = _roomMapper.decodeLoadRoomWait(message);
+      state = _machine.joinSucceeded(roomState);
+    } catch (e, stack) {
+      _logger.severe('loadRoomWait parse failed in LobbyController', e, stack);
+    }
   }
 
   void _onLog(Message message) {

@@ -27,7 +27,7 @@ abstract final class LegacyAngle {
     int angle;
     if (dx != 0) {
       final shifted = JavaInt32.shiftLeft(dy, 10);
-      final tangent = JavaInt32.divide(shifted, dx).abs();
+      final tangent = JavaInt32.abs(JavaInt32.divide(shifted, dx));
       angle = LegacyTrigonometry.atan(tangent);
       if (dy >= 0 && dx < 0) angle = 180 - angle;
       if (dy < 0 && dx < 0) angle += 180;

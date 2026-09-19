@@ -137,8 +137,11 @@ class AuthController extends Notifier<AuthenticationState>
       final pending = _pendingCredentials;
       _authTimeout?.cancel();
 
+      _logger.info('Login successful, starting data sync chain...');
+
       // Post-login flow: platform_request + bangxephang + sync chain 90.
       final sync = DataSyncService(_session, ref.read(messageDispatcherProvider));
+
       if (pending != null) {
         PostLoginService.run(
           _session,
@@ -150,15 +153,18 @@ class AuthController extends Notifier<AuthenticationState>
       } else {
         sync.start();
       }
+
       sync.done.then((_) {
+        _logger.info('Data sync chain completed, transitioning to authenticated state');
         state = _machine.loginSucceeded(session);
         _ping = PingHeartbeat(_session)..start();
       }).catchError((Object e) {
-        state = _machine.connectionLost('Dong bo du lieu that bai: $e');
+        _logger.severe('Data sync failed: $e');
+        state = _machine.connectionLost('Đồng bộ dữ liệu thất bại: $e');
       });
     } catch (e, stack) {
       _logger.severe('loadInfoAll parse failed', e, stack);
-      state = _machine.connectionLost('Phan hoi dang nhap khong hop le');
+      state = _machine.connectionLost('Phản hồi đăng nhập không hợp lệ');
     }
   }
 

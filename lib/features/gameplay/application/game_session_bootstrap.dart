@@ -1,30 +1,29 @@
 import 'package:mobiarmy_flutter/core/network/data_cache_parsers.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/game_start_handler.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/match_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/destructible_terrain.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/map_binary_parser.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/terrain_component.dart';
 
-/// Noi GameSessionStart (cmd 20) -> GameMapDefinition + terrain thuc.
+/// Noi MatchState (from startGame cmd 20) -> GameMapDefinition + terrain thuc.
 /// Map lay tu valuesdata2 da sync (DataCache.mapFiles), parse bang
 /// MapBinaryParser — khong can JSON nua.
 class OnlineGameSetup {
   OnlineGameSetup({
-    required this.session, required this.map,
-    required this.terrain, required this.spawnPoints,
+    required this.match, required this.map,
+    required this.terrain,
   });
-  final GameSessionStart session;
+  final MatchState match;
   final GameMapDefinition map;
   final DestructibleTerrain terrain;
-  final List<SpawnPoint> spawnPoints;
 }
 
 abstract final class GameSessionBootstrap {
-  static OnlineGameSetup? build(GameSessionStart session) {
-    if (session.mapId < 0 || session.mapId >= DataCache.mapFiles.length) {
+  static OnlineGameSetup? build(MatchState match) {
+    if (match.mapId < 0 || match.mapId >= DataCache.mapFiles.length) {
       return null;
     }
-    final entry = DataCache.mapFiles[session.mapId];
+    final entry = DataCache.mapFiles[match.mapId];
     final bin = MapBinaryParser.parse(entry.data);
 
     // Brick rects tu nhi phan. tileSize approximation 20px —
@@ -38,14 +37,12 @@ abstract final class GameSessionBootstrap {
     ];
 
     final spawnPoints = <SpawnPoint>[];
-    for (var i = 0; i < session.playerX.length; i++) {
-      if (session.playerX[i] != -1) {
-        spawnPoints.add(SpawnPoint(x: session.playerX[i], y: session.playerY[i]));
-      }
+    for (final p in match.players.values) {
+      spawnPoints.add(SpawnPoint(x: p.x, y: p.y));
     }
 
     final map = GameMapDefinition(
-      id: session.mapId,
+      id: match.mapId,
       width: bin.width,
       height: bin.height,
       layers: [MapLayerDefinition(id: 'terrain', bricks: bricks)],
@@ -61,7 +58,7 @@ abstract final class GameSessionBootstrap {
 
     final terrain = TerrainMaskBuilder.build(map, tileSize: 20);
     return OnlineGameSetup(
-      session: session, map: map, terrain: terrain, spawnPoints: spawnPoints,
+      match: match, map: map, terrain: terrain,
     );
   }
 }

@@ -1,0 +1,3 @@
+Java RMS Key,Flutter Storage Key,Data Type,Parity Status
+acc_creds,account_credentials,String JSON,IMPLEMENTED_UNVERIFIED
+game_settings,app_config_prefs,String JSON,IMPLEMENTED_UNVERIFIED

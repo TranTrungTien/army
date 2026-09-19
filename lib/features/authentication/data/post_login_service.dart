@@ -5,13 +5,10 @@ import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/core/network/transport/tcp_session.dart';
 
 /// Port doan cu MessageHandler case 3 (onLoginSuccess) — chay NGAY sau khi
-/// nhan cmd 3 loadInfoAll thanh cong:
-///   1. luu caroun/caropass (RMS UTF-8) — tich "nho dang nhap"
-///   2. gui platform_request (cmd 114) — thong tin thiet bi
-///   3. gui bangxephang (-14) — bang xep hang
-///   4. bat dau DataSyncService (sendMapData chain)
-/// Note: MessageHandler goc con set CCanvas.loginScr timePing o day.
+/// nhan cmd 3 loadInfoAll thanh cong.
 abstract final class PostLoginService {
+  static const String kDefaultAgent = '';
+
   static Future<void> run(
     TcpSession session,
     DataSyncService sync, {
@@ -27,20 +24,27 @@ abstract final class PostLoginService {
       await LegacyRms.clear('caropass');
     }
 
-    // GameService.platform_request() — cmd 114, ghi 3 UTF
-    final p = Message(114);
-    p.writer().writeUTF(''); // agent/device info (ban goc de trong nhieu noi)
+    // GameService.platform_request() — cmd 114, ghi 3 UTF.
+    // Port parity: server checks agent for custom client behavior.
+    final p = Message(Commands.platformRequest);
+    p.writer().writeUTF(kDefaultAgent);
     p.writer().writeUTF('');
     p.writer().writeUTF('');
     await session.sendMessage(p);
 
-    // GameService.bangxephang((byte)-1, -1) — cmd -14: type + page
+    // getString() — cmd 115
+    final s = Message(Commands.getString);
+    s.writer().writeUTF('abc'); // Default handshake string
+    await session.sendMessage(s);
+
+    // GameService.bangxephang((byte)-1, -1) — cmd -14: type + page.
     final b = Message(Commands.topInfo);
     b.writer().writeByte(-1);
     b.writer().writeByte(-1);
     await session.sendMessage(b);
 
-    await sync.start(); // sendMapData chain
+    // Mandatory data sync chain start
+    await sync.start();
   }
 
   /// Doc lai tai khoan da nho (LoginScr.init prefill).

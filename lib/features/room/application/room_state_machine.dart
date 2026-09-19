@@ -21,7 +21,14 @@ class RoomStateMachine {
     if (_state == null) return;
     final players = Map<int, RoomPlayer>.from(_state!.players);
     players.remove(playerId);
-    _state = _state!.copyWith(players: players);
+
+    // Automatic master transfer logic if the host left and room is not empty
+    int newMasterId = _state!.masterId;
+    if (playerId == _state!.masterId && players.isNotEmpty) {
+      newMasterId = players.keys.first;
+    }
+
+    _state = _state!.copyWith(players: players, masterId: newMasterId);
   }
 
   void readySynced(int playerId, bool isReady) {
@@ -52,6 +59,21 @@ class RoomStateMachine {
   void masterChanged(int masterId) {
     if (_state == null) return;
     _state = _state!.copyWith(masterId: masterId);
+  }
+
+  void betChanged(int bet) {
+    if (_state == null) return;
+    _state = _state!.copyWith(bet: bet);
+  }
+
+  void glassChanged(int playerId, int glassId) {
+    if (_state == null) return;
+    final player = _state!.players[playerId];
+    if (player == null) return;
+
+    final players = Map<int, RoomPlayer>.from(_state!.players);
+    players[playerId] = player.copyWith(glassId: glassId, gun: glassId);
+    _state = _state!.copyWith(players: players);
   }
 
   void reset() {

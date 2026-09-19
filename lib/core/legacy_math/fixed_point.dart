@@ -12,6 +12,15 @@ abstract final class JavaInt32 {
   static int subtract(int a, int b) => wrap(a - b);
   static int multiply(int a, int b) => wrap(a * b);
   static int shiftLeft(int value, int bits) => wrap(value << (bits & 0x1f));
+
+  /// Java-style absolute value.
+  /// NOTE: Math.abs(Integer.MIN_VALUE) returns Integer.MIN_VALUE (-2147483648)
+  /// in Java. Dart's standard abs() on 64-bit int would return 2147483648.
+  static int abs(int value) {
+    if (value == minValue) return minValue;
+    return value < 0 ? -value : value;
+  }
+
   static int divide(int dividend, int divisor) {
     if (divisor == 0) throw UnsupportedError('Integer division by zero');
     if (dividend == minValue && divisor == -1) return minValue;

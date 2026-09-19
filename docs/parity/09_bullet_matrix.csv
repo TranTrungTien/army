@@ -1,0 +1,5 @@
+Bullet ID,Name,Java Logic,Flutter Logic,Status
+0,NORMAL_BULLET,Bullet.java,bullet_registry.dart,COMPLETED
+1,GRENADE,BomBullet.java,bullet_registry.dart,COMPLETED
+2,LASER,ItemLaserBullet.java,bullet_registry.dart,COMPLETED
+3,MISSILE,ItemMissile.java,bullet_registry.dart,COMPLETED

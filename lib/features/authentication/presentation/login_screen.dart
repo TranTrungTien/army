@@ -3,6 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
 import 'package:mobiarmy_flutter/features/authentication/domain/account_credentials.dart';
 import 'package:mobiarmy_flutter/features/authentication/domain/authentication_state.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_panel.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_button.dart';
+import 'package:mobiarmy_flutter/shared/widgets/bitmap_text.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -40,9 +44,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   Future<void> _login() async {
     FocusScope.of(context).unfocus();
-    await ref
-        .read(authControllerProvider.notifier)
-        .login(
+    await ref.read(authControllerProvider.notifier).login(
           AccountCredentials(
             username: _username.text.trim(),
             password: _password.text,
@@ -54,90 +56,145 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final auth = ref.watch(authControllerProvider);
-    final canLogin =
-        auth.status == AuthStatus.connected && _username.text.isNotEmpty;
+    final isBusy = auth.status == AuthStatus.authenticating;
 
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 420),
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text('Dang nhap',
-                      style: Theme.of(context).textTheme.headlineMedium),
-                  const SizedBox(height: 4),
-                  Text(
-                    'Server: ${auth.server?.endpoint ?? '-'} · client ${AccountCredentials.kClientVersion}',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  const SizedBox(height: 16),
-                  TextField(
-                    controller: _username,
-                    decoration: const InputDecoration(labelText: 'Tai khoan'),
-                    textInputAction: TextInputAction.next,
-                    onChanged: (_) => setState(() {}),
-                  ),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: _password,
-                    obscureText: true,
-                    decoration: const InputDecoration(labelText: 'Mat khau'),
-                    textInputAction: TextInputAction.done,
-                    onSubmitted: (_) => canLogin ? _login() : null,
-                  ),
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: _remember,
-                        onChanged: (v) => setState(() => _remember = v ?? true),
-                      ),
-                      const Text('Nho tai khoan'),
-                    ],
-                  ),
-                  if (auth.status == AuthStatus.failed &&
-                      auth.message != null) ...[
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.red.withValues(alpha: 0.15),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.redAccent),
-                      ),
-                      child: Text(auth.message!,
-                          style: const TextStyle(color: Colors.redAccent)),
+      body: GameViewport(
+        child: Stack(
+          children: [
+            // Background (Placeholder for Cloud/Balloon animation)
+            Container(color: const Color(0xFF77D3FF)),
+
+            Center(
+              child: LegacyPanel(
+                width: 200,
+                height: 180,
+                title: 'Đăng nhập',
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _LegacyTextField(
+                      controller: _username,
+                      label: 'Tài khoản:',
+                      enabled: !isBusy,
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 10),
+                    _LegacyTextField(
+                      controller: _password,
+                      label: 'Mật khẩu:',
+                      obscureText: true,
+                      enabled: !isBusy,
+                    ),
+                    const SizedBox(height: 5),
+                    GestureDetector(
+                      onTap: () => setState(() => _remember = !_remember),
+                      child: Row(
+                        children: [
+                          Icon(
+                            _remember ? Icons.check_box : Icons.check_box_outline_blank,
+                            size: 16,
+                            color: Colors.black54,
+                          ),
+                          const SizedBox(width: 4),
+                          const BitmapText('Nhớ tài khoản', scale: 0.8),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                    if (auth.status == AuthStatus.failed)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: BitmapText(
+                          auth.message ?? 'Lỗi đăng nhập',
+                          colorIndex: 8, // RED
+                          scale: 0.7,
+                        ),
+                      ),
                   ],
-                  FilledButton(
-                    onPressed: canLogin ? _login : null,
-                    child: auth.status == AuthStatus.authenticating
-                        ? const SizedBox(
-                            width: 18,
-                            height: 18,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        : const Text('Dang nhap'),
-                  ),
-                  const SizedBox(height: 8),
-                  TextButton(
-                    onPressed: auth.isBusy
-                        ? null
-                        : () => ref
-                              .read(authControllerProvider.notifier)
-                              .disconnect(),
-                    child: const Text('Quay lai chon server'),
-                  ),
-                ],
+                ),
               ),
+            ),
+
+            // Soft Keys (Bottom Bar)
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 35,
+                color: Colors.black54,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    LegacyButton(
+                      label: 'Menu',
+                      width: 60,
+                      height: 25,
+                      onPressed: () => ref.read(authControllerProvider.notifier).disconnect(),
+                    ),
+                    if (isBusy)
+                      const SizedBox(
+                        width: 15,
+                        height: 15,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    else
+                      LegacyButton(
+                        label: 'Đăng nhập',
+                        width: 80,
+                        height: 25,
+                        onPressed: _login,
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _LegacyTextField extends StatelessWidget {
+  const _LegacyTextField({
+    required this.controller,
+    required this.label,
+    this.obscureText = false,
+    this.enabled = true,
+  });
+
+  final TextEditingController controller;
+  final String label;
+  final bool obscureText;
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        BitmapText(label, scale: 0.8),
+        const SizedBox(height: 2),
+        Container(
+          height: 25,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: const Color(0xFF303030)),
+          ),
+          child: TextField(
+            controller: controller,
+            obscureText: obscureText,
+            enabled: enabled,
+            style: const TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'monospace'),
+            decoration: const InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 12),
             ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

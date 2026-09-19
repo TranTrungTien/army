@@ -49,8 +49,14 @@ abstract final class LegacyRms {
     return b[0] > 127 ? b[0] - 256 : b[0];
   }
 
-  static Future<void> save(String filename, List<int> data) async =>
-      File('${(await _dir()).path}/$filename').writeAsBytes(data);
+  static Future<void> save(String filename, List<int> data) async {
+    final root = await _dir();
+    final tempFile = File('${root.path}/$filename.tmp');
+    final targetFile = File('${root.path}/$filename');
+    tempFile.writeAsBytesSync(data);
+    if (targetFile.existsSync()) targetFile.deleteSync();
+    tempFile.renameSync(targetFile.path);
+  }
 
   static Future<void> saveRmsInt(String filename, int x) =>
       save(filename, <int>[x & 0xFF]);

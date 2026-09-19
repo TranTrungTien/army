@@ -1,0 +1,5 @@
+Java Class,Java Method,Flutter Class,Flutter Method,Parity,Notes
+Session_ME,sendSessionKey,XorCodec,setKey,IMPLEMENTED_UNVERIFIED,Sets custom byte encryption rolling key
+Session_ME,sendMessage,TcpSession,send,IMPLEMENTED_UNVERIFIED,Writes encoded message frames to TCP stream
+Bullet,nextPosition,BulletSimulator,step,IMPLEMENTED_UNVERIFIED,Computes discrete frame-by-frame ballistic step
+CMap,loadMap,LegacyMapParser,parse,IMPLEMENTED_UNVERIFIED,De-serializes destructible brick layouts

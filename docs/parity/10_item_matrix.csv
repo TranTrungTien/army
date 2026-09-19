@@ -1,0 +1,5 @@
+Item ID,Name,Java Effect,Flutter Effect,Status
+1,TELEPORT,ItemTeleportBullet.java,item_registry.dart,COMPLETED
+2,HEALTH_PACK,Item.java,item_registry.dart,COMPLETED
+3,DOUBLE_SHOT,Item.java,item_registry.dart,COMPLETED
+4,INVISIBLE,Item.java,item_registry.dart,COMPLETED

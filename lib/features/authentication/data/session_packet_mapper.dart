@@ -1,3 +1,4 @@
+import 'package:logging/logging.dart';
 import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/features/authentication/domain/user_session.dart';
 
@@ -7,6 +8,8 @@ import 'package:mobiarmy_flutter/features/authentication/domain/user_session.dar
 /// loadInfoAll (cmd 3), log (cmd 45), idNotColision (cmd 92).
 class SessionPacketMapper {
   const SessionPacketMapper();
+
+  static final _logger = Logger('SessionPacketMapper');
 
   static const int glassCount = 10; // glass table ids 0..9
   static const int equipSlotCount = 5; // gun, hat, armor, glasses, wing
@@ -57,12 +60,16 @@ class SessionPacketMapper {
       );
     }
 
-    // Trailing UTFs "a", "b", "c" — consume if present, but do not fail the
-    // parse if a future server version appends more fields.
+    // Trailing UTFs "a", "b", "c"
+    if (r.available > 0) r.readUTF();
+    if (r.available > 0) r.readUTF();
+    if (r.available > 0) r.readUTF();
+
+    // STRICT PROTOCOL PARITY: ensure all bytes consumed.
     if (r.available > 0) {
-      r.readUTF();
-      if (r.available > 0) r.readUTF();
-      if (r.available > 0) r.readUTF();
+      _logger.warning('loadInfoAll: ${r.available} bytes remaining unread. Possible protocol extension.');
+      // Consume remaining bytes to prevent dispatcher corruption.
+      r.readBytes(r.available);
     }
 
     return UserSession(

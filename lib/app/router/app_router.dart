@@ -15,8 +15,17 @@ import 'package:mobiarmy_flutter/features/gameplay/presentation/online_game_scre
 import 'package:mobiarmy_flutter/features/lobby/application/lobby_controller.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
 import 'package:mobiarmy_flutter/features/lobby/presentation/lobby_screen.dart';
+import 'package:mobiarmy_flutter/features/clan/presentation/clan_hub_screen.dart';
+import 'package:mobiarmy_flutter/features/content/presentation/formula_screen.dart';
+import 'package:mobiarmy_flutter/features/content/presentation/lucky_game_screen.dart';
+import 'package:mobiarmy_flutter/features/content/presentation/mission_screen.dart';
+import 'package:mobiarmy_flutter/features/inventory/presentation/inventory_screen.dart';
+import 'package:mobiarmy_flutter/features/profile/presentation/profile_screen.dart';
+import 'package:mobiarmy_flutter/features/profile/presentation/ranking_screen.dart';
 import 'package:mobiarmy_flutter/features/room/application/room_controller.dart';
 import 'package:mobiarmy_flutter/features/room/presentation/room_screen.dart';
+import 'package:mobiarmy_flutter/features/shop/presentation/shop_screen.dart';
+import 'package:mobiarmy_flutter/features/social/presentation/friend_list_screen.dart';
 import 'package:mobiarmy_flutter/shared/widgets/placeholder_screen.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
@@ -46,14 +55,14 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       if (auth.isAuthenticated) {
         if (inAuthFlow) return AppRoute.lobby.path;
 
-        // Gameplay transition
-        if (gameplay != null && location != AppRoute.gameplaySandbox.path) {
-          return AppRoute.gameplaySandbox.path;
+        // Gameplay transition: Authoritative Online Match route
+        if (gameplay != null && location != AppRoute.game.path) {
+          return AppRoute.game.path;
         }
 
         // Lobby -> Room transition
         if (lobby.status == LobbyStatus.joined && location != AppRoute.room.path) {
-          return AppRoute.room.path;
+          if (gameplay == null) return AppRoute.room.path;
         }
         // Room -> Lobby transition (if we left the room)
         if (lobby.status != LobbyStatus.joined && location == AppRoute.room.path) {
@@ -108,6 +117,42 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoute.demo.path,
         builder: (_, _) => const OfflineDemoScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.inventory.path,
+        builder: (_, _) => const InventoryScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.shop.path,
+        builder: (_, _) => const ShopScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.friends.path,
+        builder: (_, _) => const FriendListScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.clan.path,
+        builder: (_, _) => const ClanHubScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.missions.path,
+        builder: (_, _) => const MissionScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.luckyGame.path,
+        builder: (_, _) => const LuckyGameScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.ranking.path,
+        builder: (_, _) => const RankingScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.formulas.path,
+        builder: (_, _) => const FormulaScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.profile.path,
+        builder: (_, _) => const ProfileScreen(),
       ),
       GoRoute(
         path: AppRoute.gameplaySandbox.path,

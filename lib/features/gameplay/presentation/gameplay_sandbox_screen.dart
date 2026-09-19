@@ -25,32 +25,20 @@ class _GameplaySandboxScreenState extends ConsumerState<GameplaySandboxScreen> {
   @override
   void initState() {
     super.initState();
-    final matchState = ref.read(gameplayControllerProvider);
+    // Sandbox uses internal audio but no network connection lifecycle
     final audio = ref.read(audioServiceProvider);
 
-    if (matchState != null) {
-      _game = ArmyGame(audio: audio);
-    } else {
-      final scenario = SandboxScenario.buildDefault();
-      _game = ArmyGame(scenario: scenario, audio: audio);
-    }
+    final scenario = SandboxScenario.buildDefault();
+    _game = ArmyGame(scenario: scenario, audio: audio);
 
     _lifecycle = AppLifecycleCoordinator(
       game: _game,
       connection: NoopConnectionLifecycle(),
     )..start();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(gameplayHandlerProvider).attachGame(_game);
-      if (matchState != null) {
-        _game.setupMatch(matchState);
-      }
-    });
   }
 
   @override
   void dispose() {
-    ref.read(gameplayHandlerProvider).detachGame();
     _lifecycle.dispose();
     _game.pauseSafely();
     super.dispose();
@@ -58,9 +46,6 @@ class _GameplaySandboxScreenState extends ConsumerState<GameplaySandboxScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final matchState = ref.watch(gameplayControllerProvider);
-    final isOnline = matchState != null;
-
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -74,21 +59,19 @@ class _GameplaySandboxScreenState extends ConsumerState<GameplaySandboxScreen> {
                 initialActiveOverlays: const ['HUD'],
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 12,
               left: 12,
               child: DecoratedBox(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: Color(0xAA000000),
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: EdgeInsets.all(10),
                   child: Text(
-                    isOnline
-                        ? 'MobiArmy Online — Live Match'
-                        : 'Gameplay sandbox — offline vertical slice',
-                    style: const TextStyle(color: Colors.white, fontSize: 12),
+                    'Gameplay sandbox — offline vertical slice',
+                    style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ),
               ),

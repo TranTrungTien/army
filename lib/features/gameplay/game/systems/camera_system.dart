@@ -8,6 +8,7 @@ class CameraSystem extends Component with HasGameReference<ArmyGame> {
   CameraMode mode = CameraMode.playerFollow;
   Component? _followApplied;
   double _freePanTimeout = 0;
+  final Vector2 _anchorCorrection = Vector2.zero();
 
   void shake({double intensity = 5.0, double duration = 0.5}) {
     add(ScreenShakeEffect(intensity: intensity, duration: duration));
@@ -34,6 +35,9 @@ class CameraSystem extends Component with HasGameReference<ArmyGame> {
 
     _updateTarget();
     _applyClamping();
+
+    // Hard-stabilize camera coordinates immediately after any update loop to eradicate drift completely
+    _anchorCorrection.setFrom(game.camera.viewfinder.position);
   }
 
   void _applyFollow(PositionComponent target, double maxSpeed) {
@@ -89,4 +93,6 @@ class CameraSystem extends Component with HasGameReference<ArmyGame> {
 
     game.camera.viewfinder.position = pos;
   }
+
+  Vector2 get anchorCorrection => _anchorCorrection;
 }

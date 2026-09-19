@@ -42,6 +42,7 @@ class GameplayController extends Notifier<MatchState?> {
       ..register(Commands.setWind, _onWind)
       ..register(Commands.move, _onMoveSync)
       ..register(Commands.setXy, _onUpdateXy)
+      ..register(Commands.shoot, _onShootSync)
       ..register(Commands.shootResult, _onShootResult)
       ..register(Commands.chat, _onChat)
       ..register(Commands.skipTurn, _onSkipTurn)
@@ -57,6 +58,7 @@ class GameplayController extends Notifier<MatchState?> {
       ..unregister(Commands.setWind, _onWind)
       ..unregister(Commands.move, _onMoveSync)
       ..unregister(Commands.setXy, _onUpdateXy)
+      ..unregister(Commands.shoot, _onShootSync)
       ..unregister(Commands.shootResult, _onShootResult)
       ..unregister(Commands.chat, _onChat)
       ..unregister(Commands.skipTurn, _onSkipTurn)
@@ -166,6 +168,16 @@ class GameplayController extends Notifier<MatchState?> {
       state = state!.copyWith(players: players);
     } catch (e) {
       _logger.warning('updateXy parse failed: $e');
+    }
+  }
+
+  void _onShootSync(Message message) {
+    if (state == null) return;
+    try {
+      final shootData = _mapper.decodeShoot(message);
+      state = state!.copyWith(lastShoot: shootData);
+    } catch (e, stack) {
+      _logger.severe('shootSync parse failed', e, stack);
     }
   }
 

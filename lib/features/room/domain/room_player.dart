@@ -10,6 +10,8 @@ class RoomPlayer {
     this.isReady = false,
     this.team = 0,
     this.slotIndex = -1,
+    this.gun = 0,
+    this.connectionState = 'connected',
   });
 
   final int id;
@@ -21,22 +23,29 @@ class RoomPlayer {
   final bool isReady;
   final int team;
   final int slotIndex;
+  final int gun;
+  final String connectionState;
 
   RoomPlayer copyWith({
     bool? isReady,
     int? team,
     List<int>? equips,
+    int? gun,
+    String? connectionState,
+    int? glassId,
   }) {
     return RoomPlayer(
       id: id,
       name: name,
       level: level,
       clan: clan,
-      glassId: glassId,
+      glassId: glassId ?? this.glassId,
       equips: equips ?? this.equips,
       isReady: isReady ?? this.isReady,
       team: team ?? this.team,
       slotIndex: slotIndex,
+      gun: gun ?? this.gun,
+      connectionState: connectionState ?? this.connectionState,
     );
   }
 

@@ -1,0 +1,4 @@
+Test Case ID,Feature,Description,Expected Result,Java Status,Flutter Status
+TC-MATH-01,Fixed Point Math,Verify trigonometric tables for sine and cosine angles,Exact match with Java lookup matrices,VERIFIED,IMPLEMENTED_UNVERIFIED
+TC-NET-01,XOR Key Rotation,Verify byte sequence encoding rolls key bytes,Identical ciphertext output stream,VERIFIED,IMPLEMENTED_UNVERIFIED
+TC-PACK-01,FilePack Asset Extract,Verify dictionary lookup parses named assets,All sub-files successfully mapped,VERIFIED,IMPLEMENTED_UNVERIFIED

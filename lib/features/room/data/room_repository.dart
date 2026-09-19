@@ -33,4 +33,22 @@ class RoomRepository {
   Future<void> sendLeave() async {
     await _session.sendMessage(Message(Commands.leaveRoomWait));
   }
+
+  Future<void> sendKick(int playerId) async {
+    final message = Message(Commands.kick);
+    message.writer().writeInt(playerId);
+    await _session.sendMessage(message);
+  }
+
+  Future<void> sendBet(int amount) async {
+    final message = Message(Commands.bet);
+    message.writer().writeInt(amount);
+    await _session.sendMessage(message);
+  }
+
+  Future<void> sendSelectGlass(int glassId) async {
+    final message = Message(Commands.buyGlass);
+    message.writer().writeByte(glassId);
+    await _session.sendMessage(message);
+  }
 }

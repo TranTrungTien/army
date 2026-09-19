@@ -1,0 +1,3 @@
+Map ID,Name,Java Config,Flutter Config,Status
+0,GREEN_HILL,MapFile.java,LegacyMapParser.dart,IMPLEMENTED_UNVERIFIED
+1,DESERT_OUTPOST,MapFile.java,LegacyMapParser.dart,IMPLEMENTED_UNVERIFIED

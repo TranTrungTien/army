@@ -1,0 +1,23 @@
+Java File,Flutter File,Status,Notes
+CLib/RMS.java,lib/core/assets/legacy_rms.dart,IMPLEMENTED_UNVERIFIED,Emulates J2ME record management system
+CLib/mSocket.java,lib/core/network/tcp_session.dart,IMPLEMENTED_UNVERIFIED,Maps network raw client sockets
+CLib/mGraphics.java,lib/features/gameplay/map_component.dart,FRAMEWORK_REPLACE,Absorbed by Flame Canvas rendering layers
+model/FilePack.java,lib/core/assets/file_pack_decoder.dart,IMPLEMENTED_UNVERIFIED,Parses custom binary asset packs
+network/Message.java,lib/core/network/message.dart,IMPLEMENTED_UNVERIFIED,Matches binary byte-stream payload envelope
+network/Session_ME.java,lib/core/network/tcp_session.dart,IMPLEMENTED_UNVERIFIED,Handles raw TCP streams and XOR encryption key rolling
+network/Cmd_Client2Server.java,lib/core/network/commands.dart,IMPLEMENTED_UNVERIFIED,Contains client opcode indices constants
+network/Cmd_Server2Client.java,lib/core/network/commands.dart,IMPLEMENTED_UNVERIFIED,Contains server opcode broadcast constants
+map/MapFile.java,lib/core/map/legacy_map_parser.dart,IMPLEMENTED_UNVERIFIED,Loads destructible background grids
+map/CMap.java,lib/features/gameplay/destructible_terrain.dart,IMPLEMENTED_UNVERIFIED,Maintains alpha collision mask arrays
+item/Bullet.java,lib/features/gameplay/bullet_simulator.dart,IMPLEMENTED_UNVERIFIED,Simulates gravity and wind trajectories discrete equations
+item/Item.java,lib/features/gameplay/online_game_service.dart,IMPLEMENTED_UNVERIFIED,Handles local storage inventory lookups
+player/CPlayer.java,lib/features/gameplay/character_component.dart,IMPLEMENTED_UNVERIFIED,Coordinates combatant parameters positions
+screen/LoginScr.java,lib/features/auth/login_screen.dart,IMPLEMENTED_UNVERIFIED,Authentication view credentials inputs
+screen/ServerListScreen.java,lib/features/auth/server_selection_screen.dart,IMPLEMENTED_UNVERIFIED,Handles server cluster list mapping navigation
+screen/RoomListScr.java,lib/features/lobby/lobby_screen.dart,IMPLEMENTED_UNVERIFIED,Displays available active room grids
+screen/GameScr.java,lib/features/gameplay/gameplay_page.dart,IMPLEMENTED_UNVERIFIED,Renders primary match viewport engine arena
+Equipment/Equip.java,lib/features/gameplay/equipment_layer_component.dart,IMPLEMENTED_UNVERIFIED,Parses avatar item appearance definitions
+mobiarmy/io/Message.java,lib/core/network/message.dart,SERVER_AUTHORITY,Server-side byte data frame container
+mobiarmy/server/Session.java,lib/core/network/tcp_session.dart,SERVER_AUTHORITY,Tracks active client connection identifiers sockets
+mobiarmy/war/Boss/bullet/Bullet.java,lib/features/gameplay/bullet_simulator.dart,SERVER_AUTHORITY,Server authoritative projectile collision confirmation checking
+

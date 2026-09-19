@@ -10,8 +10,8 @@ class RoomPacketMapper {
     final r = message.reader();
     final masterId = r.readInt();
     final bet = r.readInt();
-    r.readByte(); // 0
-    r.readByte(); // 0
+    final roomType = r.readByte();
+    final gameMode = r.readByte();
 
     final players = <int, RoomPlayer>{};
     // Standard MobiArmy2 room has 8 slots
@@ -40,12 +40,15 @@ class RoomPacketMapper {
         slotIndex: i,
         // Team is usually derived from slot index: even = Blue (0), odd = Red (1)
         team: i % 2,
+        gun: glassId,
       );
     }
 
     return RoomSessionState(
       masterId: masterId,
       bet: bet,
+      roomType: roomType,
+      gameMode: gameMode,
       players: players,
     );
   }
@@ -66,5 +69,15 @@ class RoomPacketMapper {
   (int, String) decodeChat(Message message) {
     final r = message.reader();
     return (r.readInt(), r.readUTF());
+  }
+
+  /// cmd 19 `bet` sync (S -> C)
+  int decodeBet(Message message) {
+    return message.reader().readInt();
+  }
+
+  /// cmd 11 `kick` sync (S -> C)
+  int decodeKick(Message message) {
+    return message.reader().readInt();
   }
 }

@@ -5,11 +5,7 @@ import 'package:flame/components.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/destructible_terrain.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 
-/// Builds a pixel collision mask from brick rectangles.
-///
-/// NOTE(phase-4): real tile widths vary per tile id (see ManagerTile in the
-/// Java client); uniform [tileSize] is an approximation good enough for the
-/// offline vertical slice.
+/// Builds a pixel collision mask from brick metadata matching alpha bounds.
 abstract final class TerrainMaskBuilder {
   static DestructibleTerrain build(GameMapDefinition map, {int tileSize = 20}) {
     final mask = Uint8List(map.width * map.height);
@@ -35,15 +31,12 @@ abstract final class TerrainMaskBuilder {
   }
 }
 
-/// Renders the destructible terrain from the collision mask.
-///
-/// The rendered picture is cached and only rebuilt after a [makeHole] mutation,
-/// so render() never iterates the full mask per frame.
+/// Renders the destructible terrain from the collision mask using Nearest-Neighbor filtering.
 class TerrainComponent extends PositionComponent {
   TerrainComponent({
     required DestructibleTerrain terrain,
     this.cellSize = 2,
-    this.groundColor = const ui.Color(0xFFB0E2FF), // Màu xanh băng giá (Ice Bridge)
+    this.groundColor = const ui.Color(0xFFB0E2FF),
   }) : _terrain = terrain,
        super(
          size: Vector2(terrain.width.toDouble(), terrain.height.toDouble()),
@@ -58,16 +51,19 @@ class TerrainComponent extends PositionComponent {
 
   void makeHole(int centerX, int centerY, int radius) {
     _terrain.makeHole(centerX, centerY, radius);
-    _cache = null; // lazy rebuild on next render
+    _cache = null;
   }
 
   ui.Picture _buildCache() {
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);
-    final paint = ui.Paint()..color = groundColor;
+    final paint = ui.Paint()
+      ..color = groundColor
+      ..filterQuality = ui.FilterQuality.none;
     final linePaint = ui.Paint()
       ..color = ui.Color(0xFF000000).withOpacity(0.1)
-      ..strokeWidth = 1;
+      ..strokeWidth = 1
+      ..filterQuality = ui.FilterQuality.none;
 
     final w = _terrain.width, h = _terrain.height;
     for (var cy = 0; cy < h; cy += cellSize) {
@@ -83,7 +79,6 @@ class TerrainComponent extends PositionComponent {
             paint,
           );
 
-          // Draw simple brick pattern every 16 pixels
           if (cx % 16 == 0 && cy % 8 == 0) {
              canvas.drawLine(
                ui.Offset(cx.toDouble(), cy.toDouble()),

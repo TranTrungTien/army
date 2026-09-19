@@ -1,29 +1,48 @@
 import 'package:mobiarmy_flutter/features/room/domain/room_player.dart';
 import 'package:mobiarmy_flutter/features/gameplay/data/gameplay_packet_mapper.dart';
 
-/// Runtime data for an active match.
+enum MatchLoopStatus {
+  preparing,
+  loadingMap,
+  spawning,
+  turnStart,
+  playerInput,
+  firing,
+  projectilePlayback,
+  resolvingImpact,
+  turnEnd,
+  nextTurn,
+  matchEnd,
+}
+
+/// Runtime data for an active match with strict FSM tracking.
 class MatchState {
   const MatchState({
     required this.mapId,
     required this.players,
+    this.status = MatchLoopStatus.preparing,
     this.currentTurnPlayerId,
     this.turnTimeSeconds = 0,
     this.windX = 0,
     this.windY = 0,
     this.isMatchEnded = false,
     this.matchResult,
+    this.lastShoot,
   });
 
   final int mapId;
   final Map<int, MatchPlayer> players;
+  final MatchLoopStatus status;
   final int? currentTurnPlayerId;
   final int turnTimeSeconds;
   final int windX;
   final int windY;
   final bool isMatchEnded;
   final MatchResult? matchResult;
+  final ShootData? lastShoot;
 
   MatchState copyWith({
+    MatchLoopStatus? status,
     int? currentTurnPlayerId,
     int? turnTimeSeconds,
     int? windX,
@@ -31,16 +50,19 @@ class MatchState {
     Map<int, MatchPlayer>? players,
     bool? isMatchEnded,
     MatchResult? matchResult,
+    ShootData? lastShoot,
   }) {
     return MatchState(
       mapId: mapId,
       players: players ?? this.players,
+      status: status ?? this.status,
       currentTurnPlayerId: currentTurnPlayerId ?? this.currentTurnPlayerId,
       turnTimeSeconds: turnTimeSeconds ?? this.turnTimeSeconds,
       windX: windX ?? this.windX,
       windY: windY ?? this.windY,
       isMatchEnded: isMatchEnded ?? this.isMatchEnded,
       matchResult: matchResult ?? this.matchResult,
+      lastShoot: lastShoot ?? this.lastShoot,
     );
   }
 }

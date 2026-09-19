@@ -36,6 +36,7 @@ class GameAssets {
       'coin', 'cup', 'kim', 'wind', 'wind2', 'mua', 'tuyet', 'icon',
       'iconChat', 'iconcam', 'iconmenu', 'remember', 'lever-up', 'er',
       'tick0', 'tick1', 'v', 'x', 'vong', 'vong_tron', 'arrow', 'randomMap',
+      'map/tab_1', 'map/tab_2', 'map/tab_3', 'map/tab_4', 'map/tab_5',
     ];
     for (final n in looseNames) {
       try {
@@ -63,6 +64,7 @@ class GameAssets {
           final codec = await ui.instantiateImageCodec(bd.buffer.asUint8List());
           return (await codec.getNextFrame()).image;
         },
+        (path) => rootBundle.loadString(path),
       );
     } catch (_) {
       return null;

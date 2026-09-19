@@ -1,3 +1,4 @@
+import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
 import 'area_summary.dart';
 import 'board_summary.dart';
 
@@ -19,6 +20,7 @@ class LobbyState {
     this.selectedAreaId,
     this.boards = const [],
     this.message,
+    this.initialRoomState,
   });
 
   const LobbyState.initial() : this._(status: LobbyStatus.initial);
@@ -48,7 +50,8 @@ class LobbyState {
 
   const LobbyState.joining() : this._(status: LobbyStatus.joining);
 
-  const LobbyState.joined() : this._(status: LobbyStatus.joined);
+  const LobbyState.joined(RoomSessionState initialRoomState)
+    : this._(status: LobbyStatus.joined, initialRoomState: initialRoomState);
 
   const LobbyState.failed(String message)
     : this._(status: LobbyStatus.failed, message: message);
@@ -58,6 +61,7 @@ class LobbyState {
   final int? selectedAreaId;
   final List<BoardSummary> boards;
   final String? message;
+  final RoomSessionState? initialRoomState;
 
   bool get isBusy => {
     LobbyStatus.loadingAreas,

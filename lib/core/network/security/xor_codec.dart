@@ -18,6 +18,12 @@ class XorCodec {
   int _readPos;
   int _writePos;
 
+  /// Lookahead decryption without advancing the internal cursor state.
+  int lookaheadDecryptByte(int b, int offset) {
+    final pos = (_readPos + offset) % _key.length;
+    return (b ^ _key[pos]) & 0xFF;
+  }
+
   int decryptByte(int b) {
     final result = (b ^ _key[_readPos++]) & 0xFF;
     if (_readPos >= _key.length) {
@@ -55,3 +61,4 @@ class XorCodec {
     _writePos = 0;
   }
 }
+

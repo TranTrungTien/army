@@ -1,0 +1,8 @@
+Asset Type,Status,Implementation,Parity Note
+FilePack,VERIFIED,FilePackDecoder.dart,Matches XOR logic and duplicate policy
+Bitmap Font,VERIFIED,BmFont.dart,Full Vietnamese support and colorJava palette
+Graphics Anchor,VERIFIED,GraphicsUtility.dart,Bitwise flags (HCENTER/VCENTER/...) matching J2ME
+Pixel Art Filter,VERIFIED,GraphicsUtility.dart,Force FilterQuality.none (nearest neighbor)
+Sound,VERIFIED,LegacySound.dart,Volume sync with RMS and .mp3/.wav mapping
+Pixel Alpha,VERIFIED,PixelDataExtractor.dart,RAW RGBA extraction for land collision
+Asset Lifecycle,VERIFIED,AssetScope.dart,Reference counting ready for background images
