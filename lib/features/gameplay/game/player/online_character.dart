@@ -46,7 +46,9 @@ final class OnlineCharacter extends GamePlayer {
   @override
   void moveTo(double x, double y) => position.setValues(x, y);
 
-  Future<void> load() async {
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
     _body = await PlayerSprites.instance.body(glassId);
   }
 

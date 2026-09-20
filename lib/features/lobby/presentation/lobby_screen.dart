@@ -133,6 +133,7 @@ class LobbyScreen extends ConsumerWidget {
           spacing: 16,
           runSpacing: 16,
           children: [
+            _MenuIcon(icon: Icons.sports_esports, label: 'Chơi offline', route: AppRoute.offlineSetup),
             _MenuIcon(icon: Icons.inventory, label: 'Hành trang', route: AppRoute.inventory),
             _MenuIcon(icon: Icons.shopping_cart, label: 'Cửa hàng', route: AppRoute.shop),
             _MenuIcon(icon: Icons.people, label: 'Bạn bè', route: AppRoute.friends),

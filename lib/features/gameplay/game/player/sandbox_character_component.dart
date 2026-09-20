@@ -12,7 +12,7 @@ import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart'
 ///
 /// Renders real sprite sheets from Teamobi `assets/equip/` using real frame
 /// geometry so layer offsets and anchor conventions are exercised.
-final class SandboxCharacterComponent extends GamePlayer with HasGameReference<ArmyGame> {
+base class SandboxCharacterComponent extends GamePlayer with HasGameReference<ArmyGame> {
   SandboxCharacterComponent({
     required this.slotEquipment,
     required this.bodyColor,

@@ -93,7 +93,6 @@ class _OfflineDemoScreenState extends State<OfflineDemoScreen> {
       final ch = OnlineCharacter(
         glassId: glass, equipIds: equipIds, name: 'Demo', maxHp: 1000,
       );
-      await ch.load();
       final gy = probe.findGroundBelow(x, 0) ?? 400;
       ch.moveTo(x, gy);
       return ch;

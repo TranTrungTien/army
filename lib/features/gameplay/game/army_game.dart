@@ -4,6 +4,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:mobiarmy_flutter/core/audio/audio_service.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/match_state.dart';
+import 'package:mobiarmy_flutter/features/gameplay/application/game_session_bootstrap.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/effects/explosion_component.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/input/gameplay_input_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/background_component.dart';
@@ -24,11 +25,12 @@ import 'package:mobiarmy_flutter/features/gameplay/game/systems/player_collision
 import 'package:mobiarmy_flutter/features/gameplay/game/systems/player_movement_system.dart';
 
 class ArmyGame extends FlameGame with DragCallbacks, HasKeyboardHandlerComponents, ScrollDetector {
-  ArmyGame({this.scenario, this.onLoaded, this.audio});
+  ArmyGame({this.scenario, this.onLoaded, this.audio, this.myPlayerId});
 
   final SandboxScenario? scenario;
   final VoidCallback? onLoaded;
   final AudioService? audio;
+  final int? myPlayerId;
 
   late final GameplayInputController inputController;
   late final World gameWorld;
@@ -49,7 +51,8 @@ class ArmyGame extends FlameGame with DragCallbacks, HasKeyboardHandlerComponent
 
     // 2. Load Map (Placeholder until Phase 3 complete)
     // For now, we reuse the Sandbox maps logic
-    map = scenario?.map ??
+    final onlineSetup = GameSessionBootstrap.build(matchState);
+    map = scenario?.map ?? onlineSetup?.map ??
         MapJsonLoader.parse(
           SandboxMaps.cayCauBang,
           mapId: matchState.mapId,
@@ -88,7 +91,6 @@ class ArmyGame extends FlameGame with DragCallbacks, HasKeyboardHandlerComponent
           name: p.base.name,
           maxHp: p.maxHp,
         );
-        await (character as OnlineCharacter).load();
         character.hp = p.hp;
       }
 
@@ -124,7 +126,6 @@ class ArmyGame extends FlameGame with DragCallbacks, HasKeyboardHandlerComponent
             name: p.base.name,
             maxHp: p.maxHp,
           );
-          await (character as OnlineCharacter).load();
           character.hp = p.hp;
         }
         character.moveTo(p.x.toDouble(), p.y.toDouble());
@@ -209,7 +210,7 @@ class ArmyGame extends FlameGame with DragCallbacks, HasKeyboardHandlerComponent
   /// Offline shot: legacy force range is 1..30 (charge bar), angle comes from
   /// the input controller, trajectory uses the Q10 legacy math from Phase 2.
   void fire(double rawForce) {
-    final me = players[0];
+    final me = players[myPlayerId ?? 0];
     final terrain = this.terrain;
     final map = this.map;
     if (me == null || terrain == null || map == null) return;

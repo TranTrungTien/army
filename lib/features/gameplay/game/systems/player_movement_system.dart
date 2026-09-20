@@ -19,7 +19,8 @@ class PlayerMovementSystem extends Component with HasGameReference<ArmyGame> {
     final input = game.inputController.state;
 
     // 1. Bridge Input to Intent (for local sandbox or active turn player)
-    final localPlayer = game.players[0] ?? game.players[game.activePlayerId];
+    final localPlayer = game.players[game.myPlayerId] ??
+      game.players[game.activePlayerId];
     if (localPlayer != null) {
       MovementDirection dir = MovementDirection.none;
       if (input.movingLeft) {

@@ -8,7 +8,6 @@ import 'package:mobiarmy_flutter/features/authentication/application/auth_contro
 import 'package:mobiarmy_flutter/features/authentication/domain/authentication_state.dart';
 import 'package:mobiarmy_flutter/features/authentication/presentation/login_screen.dart';
 import 'package:mobiarmy_flutter/features/authentication/presentation/server_selection_screen.dart';
-import 'package:mobiarmy_flutter/features/authentication/presentation/splash_screen.dart';
 import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/gameplay_sandbox_screen.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/offline_demo_screen.dart';
@@ -50,7 +49,9 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         if (inAuthFlow) return AppRoute.lobby.path;
 
         // Gameplay transition: Authoritative Online Match route
-        if (gameplay != null && location != AppRoute.game.path) {
+        if (gameplay != null &&
+          !gameplay.isMatchEnded &&
+          location != AppRoute.game.path) {
           return AppRoute.game.path;
         }
 
@@ -86,7 +87,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
         path: AppRoute.bootstrap.path,
-        builder: (_, _) => const SplashScreen(),
+        builder: (_, _) => const BootstrapScreen(),
       ),
       GoRoute(
         path: AppRoute.serverSelection.path,

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobiarmy_flutter/app/lifecycle/app_lifecycle_coordinator.dart';
 import 'package:mobiarmy_flutter/core/audio/audio_provider.dart';
 import 'package:mobiarmy_flutter/core/network/connection_lifecycle.dart';
+import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
@@ -36,7 +37,8 @@ class _OnlineGameScreenState extends ConsumerState<OnlineGameScreen> {
       return;
     }
 
-    final game = ArmyGame(audio: audio);
+    final myPlayerId = ref.read(authControllerProvider).session?.id;
+    final game = ArmyGame(audio: audio, myPlayerId: myPlayerId);
     await game.onLoad();
     await game.setupMatch(match);
 

@@ -4,6 +4,7 @@ import 'package:mobiarmy_flutter/features/gameplay/game/map/destructible_terrain
 import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/map_json_loader.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/terrain_component.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/character/equipment_definition.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/sandbox_character_component.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/sandbox/sandbox_equipment_data.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/systems/ground_probe.dart';
@@ -44,7 +45,9 @@ class SandboxScenario {
           probe.findGroundBelow(point.x.toDouble(), point.y.toDouble()) ??
           point.y.toDouble();
       final character = SandboxCharacterComponent(
-        slotEquipment: {for (final e in equipment) e.slot as dynamic: e},
+        slotEquipment: {
+          for (final e in equipment.cast<EquipmentDefinition>()) e.slot: e,
+        },
         bodyColor: bodyColor,
         classId: classId,
       );

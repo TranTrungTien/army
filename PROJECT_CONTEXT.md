@@ -27,6 +27,9 @@ lib/
 │   │   ├── legacy_sound.dart
 │   │   ├── map_asset_repository.dart
 │   │   └── sprite_atlas_repository.dart
+│   ├── audio
+│   │   ├── audio_provider.dart
+│   │   └── audio_service.dart
 │   ├── config
 │   │   └── app_config.dart
 │   ├── diagnostics
@@ -81,91 +84,131 @@ lib/
 │   │   └── presentation
 │   │       ├── login_screen.dart
 │   │       └── server_selection_screen.dart
-│   └── gameplay
+│   ├── gameplay
+│   │   ├── application
+│   │   │   ├── chat_controller.dart
+│   │   │   ├── chat_service.dart
+│   │   │   ├── game_session_bootstrap.dart
+│   │   │   ├── gameplay_controller.dart
+│   │   │   └── gameplay_provider.dart
+│   │   ├── data
+│   │   │   ├── character
+│   │   │   │   └── equipment_manifest_parser.dart
+│   │   │   ├── gameplay_packet_mapper.dart
+│   │   │   └── gameplay_repository.dart
+│   │   ├── domain
+│   │   │   ├── camera
+│   │   │   │   └── camera_mode.dart
+│   │   │   ├── character
+│   │   │   │   ├── character_animation_state.dart
+│   │   │   │   ├── character_appearance.dart
+│   │   │   │   ├── character_definition.dart
+│   │   │   │   └── equipment_definition.dart
+│   │   │   ├── player
+│   │   │   │   ├── movement_intent.dart
+│   │   │   │   └── player_movement_state.dart
+│   │   │   ├── match_state.dart
+│   │   │   └── room_list_models.dart
+│   │   ├── game
+│   │   │   ├── effects
+│   │   │   │   ├── damage_text_component.dart
+│   │   │   │   ├── effects.dart
+│   │   │   │   ├── explosion_component.dart
+│   │   │   │   └── smoke_particle.dart
+│   │   │   ├── input
+│   │   │   │   ├── gameplay_input_controller.dart
+│   │   │   │   └── gameplay_input_state.dart
+│   │   │   ├── map
+│   │   │   │   ├── background_component.dart
+│   │   │   │   ├── destructible_terrain.dart
+│   │   │   │   ├── game_map_definition.dart
+│   │   │   │   ├── icon_preview.dart
+│   │   │   │   ├── legacy_map_parser.dart
+│   │   │   │   ├── map_binary_parser.dart
+│   │   │   │   ├── map_component.dart
+│   │   │   │   ├── map_debug_overlay.dart
+│   │   │   │   ├── map_json_loader.dart
+│   │   │   │   ├── map_repository.dart
+│   │   │   │   ├── map_world_controller.dart
+│   │   │   │   └── terrain_component.dart
+│   │   │   ├── player
+│   │   │   │   ├── character_animation_controller.dart
+│   │   │   │   ├── character_component.dart
+│   │   │   │   ├── character_sprite_resolver.dart
+│   │   │   │   ├── equip_anchor.dart
+│   │   │   │   ├── equipment_layer_component.dart
+│   │   │   │   ├── game_player.dart
+│   │   │   │   ├── online_character.dart
+│   │   │   │   ├── player_sprites.dart
+│   │   │   │   └── sandbox_character_component.dart
+│   │   │   ├── projectile
+│   │   │   │   ├── bullet_simulator.dart
+│   │   │   │   ├── projectile_component.dart
+│   │   │   │   ├── projectile_trajectory.dart
+│   │   │   │   └── trajectory_simulator.dart
+│   │   │   ├── sandbox
+│   │   │   │   ├── sandbox_equipment_data.dart
+│   │   │   │   └── sandbox_scenario.dart
+│   │   │   ├── systems
+│   │   │   │   ├── camera_system.dart
+│   │   │   │   ├── combat_system.dart
+│   │   │   │   ├── ground_probe.dart
+│   │   │   │   ├── legacy_camera.dart
+│   │   │   │   ├── player_collision_system.dart
+│   │   │   │   ├── player_movement_system.dart
+│   │   │   │   └── screen_shake_effect.dart
+│   │   │   └── army_game.dart
+│   │   └── presentation
+│   │       ├── widgets
+│   │       │   ├── aim_controls.dart
+│   │       │   ├── movement_controls.dart
+│   │       │   ├── power_bar.dart
+│   │       │   └── wind_indicator.dart
+│   │       ├── gameplay_page.dart
+│   │       ├── gameplay_sandbox_screen.dart
+│   │       ├── offline_demo_screen.dart
+│   │       └── online_game_screen.dart
+│   ├── inventory
+│   │   ├── application
+│   │   │   └── inventory_controller.dart
+│   │   ├── domain
+│   │   │   └── inventory_item.dart
+│   │   └── presentation
+│   │       └── inventory_screen.dart
+│   ├── lobby
+│   │   ├── application
+│   │   │   ├── lobby_controller.dart
+│   │   │   └── lobby_state_machine.dart
+│   │   ├── data
+│   │   │   ├── lobby_packet_mapper.dart
+│   │   │   └── lobby_repository.dart
+│   │   ├── domain
+│   │   │   ├── area_summary.dart
+│   │   │   ├── board_summary.dart
+│   │   │   └── lobby_state.dart
+│   │   └── presentation
+│   │       └── lobby_screen.dart
+│   ├── room
+│   │   ├── application
+│   │   │   ├── room_controller.dart
+│   │   │   └── room_state_machine.dart
+│   │   ├── data
+│   │   │   ├── room_packet_mapper.dart
+│   │   │   └── room_repository.dart
+│   │   ├── domain
+│   │   │   ├── room_player.dart
+│   │   │   └── room_session_state.dart
+│   │   └── presentation
+│   │       └── room_screen.dart
+│   └── shop
 │       ├── application
-│       │   ├── chat_service.dart
-│       │   ├── game_controls.dart
-│       │   ├── game_session_bootstrap.dart
-│       │   ├── game_start_handler.dart
-│       │   ├── gameplay_handler.dart
-│       │   ├── gameplay_provider.dart
-│       │   ├── lobby_service.dart
-│       │   ├── online_game_service.dart
-│       │   └── room_service.dart
-│       ├── data
-│       │   └── character
-│       │       └── equipment_manifest_parser.dart
-│       ├── domain
-│       │   ├── camera
-│       │   │   └── camera_mode.dart
-│       │   ├── character
-│       │   │   ├── character_animation_state.dart
-│       │   │   ├── character_appearance.dart
-│       │   │   ├── character_definition.dart
-│       │   │   └── equipment_definition.dart
-│       │   ├── player
-│       │   │   └── player_movement_state.dart
-│       │   └── room_list_models.dart
-│       ├── game
-│       │   ├── effects
-│       │   │   └── effects.dart
-│       │   ├── input
-│       │   │   ├── gameplay_input_controller.dart
-│       │   │   └── gameplay_input_state.dart
-│       │   ├── map
-│       │   │   ├── background_component.dart
-│       │   │   ├── destructible_terrain.dart
-│       │   │   ├── game_map_definition.dart
-│       │   │   ├── icon_preview.dart
-│       │   │   ├── legacy_map_parser.dart
-│       │   │   ├── map_binary_parser.dart
-│       │   │   ├── map_component.dart
-│       │   │   ├── map_debug_overlay.dart
-│       │   │   ├── map_json_loader.dart
-│       │   │   ├── map_repository.dart
-│       │   │   ├── map_world_controller.dart
-│       │   │   └── terrain_component.dart
-│       │   ├── player
-│       │   │   ├── character_animation_controller.dart
-│       │   │   ├── character_component.dart
-│       │   │   ├── character_sprite_resolver.dart
-│       │   │   ├── equip_anchor.dart
-│       │   │   ├── equipment_layer_component.dart
-│       │   │   ├── game_player.dart
-│       │   │   ├── online_character.dart
-│       │   │   ├── player_sprites.dart
-│       │   │   └── sandbox_character_component.dart
-│       │   ├── projectile
-│       │   │   ├── bullet_simulator.dart
-│       │   │   ├── projectile_component.dart
-│       │   │   ├── projectile_trajectory.dart
-│       │   │   └── trajectory_simulator.dart
-│       │   ├── sandbox
-│       │   │   ├── sandbox_equipment_data.dart
-│       │   │   └── sandbox_scenario.dart
-│       │   ├── systems
-│       │   │   ├── camera_system.dart
-│       │   │   ├── combat_system.dart
-│       │   │   ├── ground_probe.dart
-│       │   │   ├── legacy_camera.dart
-│       │   │   ├── player_collision_system.dart
-│       │   │   ├── player_movement_system.dart
-│       │   │   └── screen_shake_effect.dart
-│       │   └── army_game.dart
-│       └── presentation
-│           ├── widgets
-│           │   ├── aim_controls.dart
-│           │   ├── movement_controls.dart
-│           │   └── power_bar.dart
-│           ├── gameplay_page.dart
-│           ├── gameplay_sandbox_screen.dart
-│           ├── lobby_screen.dart
-│           ├── offline_demo_screen.dart
-│           ├── online_game_screen.dart
-│           └── room_screen.dart
+│       │   └── shop_controller.dart
+│       └── domain
+│           └── shop_item.dart
 ├── shared
 │   ├── overlays
-│   │   └── gameplay_hud.dart
+│   │   ├── gameplay_hud.dart
+│   │   └── match_result_overlay.dart
 │   ├── theme
 │   │   └── army_theme.dart
 │   └── widgets
@@ -204,6 +247,15 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/gui/
+    - assets/map/
+    - assets/map/bgItem/
+    - assets/item/
+    - assets/equip/
+    - assets/music/
+    - assets/sound/
+    - assets/effect/
+    - assets/BigImage/
 ```
 
 ## Source Code
@@ -234,8 +286,9 @@ class ArmyApp extends ConsumerWidget {
 ### `D:\personal\army/lib\app\bootstrap.dart`
 ```dart
 import 'dart:async';
-import 'dart:ui';
+import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -249,11 +302,28 @@ Future<void> bootstrap({bool debug = false}) async {
   await runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
     configureLogging(debug: debug);
-    await SystemChrome.setPreferredOrientations(const [
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
-    ]);
-    await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+    // Platform-specific initialization
+    if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
+      await SystemChrome.setPreferredOrientations(const [
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+      await SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.immersiveSticky,
+        overlays: [],
+      );
+      // Ensure system bars are hidden even after keyboard interaction
+      unawaited(SystemChrome.setSystemUIChangeCallback((systemOverlaysVisible) async {
+        if (systemOverlaysVisible) {
+          await Future<void>.delayed(const Duration(seconds: 2));
+          await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+        }
+      }));
+    } else if (!kIsWeb && (Platform.isWindows || Platform.isMacOS || Platform.isLinux)) {
+      // Desktop specific setup: ensure reasonable minimum size if possible
+      // (Requires window_manager for full control, but we stick to standard here)
+    }
 
     FlutterError.onError = (details) {
       FlutterError.presentError(details);
@@ -276,13 +346,19 @@ Future<void> bootstrap({bool debug = false}) async {
 ### `D:\personal\army/lib\app\lifecycle\app_lifecycle_coordinator.dart`
 ```dart
 import 'package:flutter/widgets.dart';
+import 'package:mobiarmy_flutter/core/audio/audio_service.dart';
 import 'package:mobiarmy_flutter/core/network/connection_lifecycle.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 
 class AppLifecycleCoordinator with WidgetsBindingObserver {
-  AppLifecycleCoordinator({required this.game, required this.connection});
+  AppLifecycleCoordinator({
+    required this.game,
+    required this.connection,
+    required this.audio,
+  });
   final ArmyGame game;
   final ConnectionLifecycle connection;
+  final AudioService audio;
   bool _disposed = false;
 
   void start() => WidgetsBinding.instance.addObserver(this);
@@ -294,12 +370,14 @@ class AppLifecycleCoordinator with WidgetsBindingObserver {
       case AppLifecycleState.resumed:
         connection.onForeground();
         game.resumeSafely();
+        audio.resumeAll();
       case AppLifecycleState.inactive:
       case AppLifecycleState.hidden:
       case AppLifecycleState.paused:
       case AppLifecycleState.detached:
         game.pauseSafely();
         connection.onBackground();
+        audio.pauseAll();
     }
   }
 
@@ -319,6 +397,18 @@ enum AppRoute {
   login('/login'),
   lobby('/lobby'),
   room('/room'),
+  game('/game'),
+  demo('/demo'),
+  inventory('/inventory'),
+  shop('/shop'),
+  friends('/friends'),
+  clan('/clan'),
+  missions('/missions'),
+  luckyGame('/lucky-game'),
+  ranking('/ranking'),
+  formulas('/formulas'),
+  profile('/profile'),
+  offlineSetup('/offline-setup'),
   gameplaySandbox('/gameplay-sandbox');
 
   const AppRoute(this.path);
@@ -333,11 +423,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobiarmy_flutter/app/router/app_route.dart';
 import 'package:mobiarmy_flutter/app/router/navigation_state.dart';
+import 'package:mobiarmy_flutter/core/assets/game_asset_loader.dart';
 import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
 import 'package:mobiarmy_flutter/features/authentication/domain/authentication_state.dart';
 import 'package:mobiarmy_flutter/features/authentication/presentation/login_screen.dart';
 import 'package:mobiarmy_flutter/features/authentication/presentation/server_selection_screen.dart';
+import 'package:mobiarmy_flutter/features/authentication/presentation/splash_screen.dart';
+import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/gameplay_sandbox_screen.dart';
+import 'package:mobiarmy_flutter/features/gameplay/presentation/offline_demo_screen.dart';
+import 'package:mobiarmy_flutter/features/gameplay/presentation/offline_setup_screen.dart';
+import 'package:mobiarmy_flutter/features/gameplay/presentation/online_game_screen.dart';
+import 'package:mobiarmy_flutter/features/inventory/presentation/inventory_screen.dart';
+import 'package:mobiarmy_flutter/features/lobby/application/lobby_controller.dart';
+import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
+import 'package:mobiarmy_flutter/features/lobby/presentation/lobby_screen.dart';
+import 'package:mobiarmy_flutter/features/room/application/room_controller.dart';
+import 'package:mobiarmy_flutter/features/room/presentation/room_screen.dart';
 import 'package:mobiarmy_flutter/shared/widgets/placeholder_screen.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
@@ -347,6 +449,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
       final nav = ref.read(navigationControllerProvider);
       final auth = ref.read(authControllerProvider);
+      final lobby = ref.read(lobbyControllerProvider);
+      final gameplay = ref.read(gameplayControllerProvider);
       final location = state.matchedLocation;
 
       if (!nav.bootstrapped && location != AppRoute.bootstrap.path) {
@@ -363,8 +467,22 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           location == AppRoute.login.path;
 
       if (auth.isAuthenticated) {
-        // Never allow an authenticated user back into the auth flow.
         if (inAuthFlow) return AppRoute.lobby.path;
+
+        // Gameplay transition: Authoritative Online Match route
+        if (gameplay != null && location != AppRoute.game.path) {
+          return AppRoute.game.path;
+        }
+
+        // Lobby -> Room transition
+        if (lobby.status == LobbyStatus.joined && location != AppRoute.room.path) {
+          if (gameplay == null) return AppRoute.room.path;
+        }
+        // Room -> Lobby transition (if we left the room)
+        if (lobby.status != LobbyStatus.joined && location == AppRoute.room.path) {
+          return AppRoute.lobby.path;
+        }
+
         return null;
       }
 
@@ -372,8 +490,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         return AppRoute.serverSelection.path;
       }
 
-      // Login screen is only reachable with a live, handshaked connection
-      // (or while a login round-trip / failure is being shown).
       if (location == AppRoute.login.path &&
           auth.status != AuthStatus.connected &&
           auth.status != AuthStatus.authenticating &&
@@ -390,7 +506,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
         path: AppRoute.bootstrap.path,
-        builder: (_, _) => const BootstrapScreen(),
+        builder: (_, _) => const SplashScreen(),
       ),
       GoRoute(
         path: AppRoute.serverSelection.path,
@@ -402,15 +518,68 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: AppRoute.lobby.path,
-        builder: (_, _) => const PlaceholderScreen(title: 'Lobby (Phase 14)'),
+        builder: (_, _) => const LobbyScreen(),
       ),
       GoRoute(
         path: AppRoute.room.path,
-        builder: (_, _) => const PlaceholderScreen(title: 'Room (Phase 15)'),
+        builder: (_, _) => const RoomScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.game.path,
+        builder: (_, _) => const OnlineGameScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.demo.path,
+        builder: (_, _) => const OfflineDemoScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.inventory.path,
+        builder: (_, _) => const InventoryScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.shop.path,
+        builder: (_, _) => const PlaceholderScreen(title: 'Shop'),
+      ),
+      GoRoute(
+        path: AppRoute.friends.path,
+        builder: (_, _) => const PlaceholderScreen(title: 'Friend List'),
+      ),
+      GoRoute(
+        path: AppRoute.clan.path,
+        builder: (_, _) => const PlaceholderScreen(title: 'Clan Hub'),
+      ),
+      GoRoute(
+        path: AppRoute.missions.path,
+        builder: (_, _) => const PlaceholderScreen(title: 'Missions'),
+      ),
+      GoRoute(
+        path: AppRoute.luckyGame.path,
+        builder: (_, _) => const PlaceholderScreen(title: 'Lucky Game'),
+      ),
+      GoRoute(
+        path: AppRoute.ranking.path,
+        builder: (_, _) => const PlaceholderScreen(title: 'Ranking'),
+      ),
+      GoRoute(
+        path: AppRoute.formulas.path,
+        builder: (_, _) => const PlaceholderScreen(title: 'Formulas'),
+      ),
+      GoRoute(
+        path: AppRoute.profile.path,
+        builder: (_, _) => const PlaceholderScreen(title: 'Profile'),
       ),
       GoRoute(
         path: AppRoute.gameplaySandbox.path,
-        builder: (_, _) => const GameplaySandboxScreen(),
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          return GameplaySandboxScreen(
+            heroIndex: extra?['heroIndex'] ?? 0,
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoute.offlineSetup.path,
+        builder: (_, _) => const OfflineSetupScreen(),
       ),
     ],
   );
@@ -422,6 +591,9 @@ class _RouterRefresh extends ChangeNotifier {
   _RouterRefresh(this.ref) {
     ref.listen(navigationControllerProvider, (_, _) => notifyListeners());
     ref.listen(authControllerProvider, (_, _) => notifyListeners());
+    ref.listen(lobbyControllerProvider, (_, _) => notifyListeners());
+    ref.listen(roomControllerProvider, (_, _) => notifyListeners());
+    ref.listen(gameplayControllerProvider, (_, _) => notifyListeners());
   }
   final Ref ref;
 }
@@ -436,9 +608,13 @@ class _BootstrapScreenState extends ConsumerState<BootstrapScreen> {
   @override
   void initState() {
     super.initState();
-    Future<void>.microtask(
-      () => ref.read(navigationControllerProvider.notifier).completeBootstrap(),
-    );
+    Future<void>.microtask(() async {
+      // Load asset THAT 1 lan duy nhat truoc khi vao app
+      await GameAssets.load();
+      if (mounted) {
+        ref.read(navigationControllerProvider.notifier).completeBootstrap();
+      }
+    });
   }
 
   @override
@@ -665,90 +841,184 @@ class AssetScope {
 ### `D:\personal\army/lib\core\assets\bmfont.dart`
 ```dart
 import 'dart:ui' as ui;
+import 'package:flutter/material.dart';
 
-/// Port cua CLib/SysTemFont: font BitmapFont chuan AngelCode (.fnt TEXT).
-/// Bản gốc load: res/FontSys/x{zoom}/{big|mini}.fnt + .png
-/// (LibSysTem.font = "FontSys/x", SysTemFont chọn big/mini theo ID).
-///
-/// Chi can parser duoc BMFont text format la render duoc dung giao dien,
-/// dung bang mau colorJava[] trong mFont.java (id + 1).
+/// Anchor flags matching J2ME/LibGDX mGraphics.
+abstract final class GraphicsAnchor {
+  static const int hCenter = 1;
+  static const int vCenter = 2;
+  static const int left = 4;
+  static const int right = 8;
+  static const int top = 16;
+  static const int bottom = 32;
+}
+
 class BmChar {
   BmChar(this.id, this.x, this.y, this.w, this.h, this.xOff, this.yOff, this.xAdv);
   final int id, x, y, w, h, xOff, yOff, xAdv;
 }
 
+/// Port of CLib/SysTemFont and mFont.
+/// Supports AngelCode BMFont (.fnt text) and Java color palettes.
 class BmFont {
   BmFont._(this.atlas, this.chars, this.lineHeight, this.charSpace);
+
   final ui.Image atlas;
   final Map<int, BmChar> chars;
   final int lineHeight;
-  final double charSpace; // tuong duong charSpace trong SysTemFont
+  final double charSpace;
 
-  /// Parse .fnt dang TEXT (AngelCode BMFont). Ho tro common + char blocks.
+  /// Palette from mFont.java: colorJava[id + 1].
+  /// Converted from 32-bit signed integers to Flutter Colors.
+  static const List<Color> palette = [
+    Color(0xFFFE9D1A), // -90838
+    Color(0xFF72993F), // -9265665
+    Color(0xFF131113), // -15527149
+    Color(0xFFFDFF9B), // -197061
+    Color(0xFFB472FF), // -4947201
+    Color(0xFFFFFFFF), // -1
+    Color(0xFF66E291), // -10035407
+    Color(0xFF481230), // -12052464
+    Color(0xFFFF0000), // -65536
+    Color(0xFF131113), // -15527149
+    Color(0xFFFFFFFF), // -1
+    Color(0xFFFDFF9B), // -197061
+    Color(0xFFFE9D1A), // -90838
+    Color(0xFFFF0000), // -65536
+    Color(0xFF72993F), // -9265665
+    Color(0xFF66E291), // -10035407
+    Color(0xFFB472FF), // -4947201
+    Color(0xFFFDFF9B), // -197061
+    Color(0xFFFF0000), // -65536
+    Color(0xFF66E291), // -10035407
+    Color(0xFFFFFFFF), // -1
+    Color(0xFFFE9D1A), // -90838
+    Color(0xFFFDFF9B), // -197061
+    Color(0xFFB676B1), // -4819663
+    Color(0xFF131113), // -15527149
+    Color(0xFF676B67), // -10000537
+  ];
+
   static Future<BmFont> load(
     String fntPath,
     Future<ui.Image> Function(String imagePath) loadAtlas,
+    Future<String> Function(String path) loadString,
   ) async {
-    final fntSource = await _readAssetString(fntPath);
+    final fntSource = await loadString(fntPath);
     return parse(fntSource, await loadAtlas(_imagePathOf(fntPath, fntSource)));
   }
 
-  static Future<String> _readAssetString(String path) async =>
-      throw UnimplementedError('inject AssetBundle: rootBundle.loadString(path)');
-
   static String _imagePathOf(String fntPath, String source) {
-    final m = RegExp(r'^page id=\d+ file="([^"]+)"', multiLine: true).firstMatch(source);
+    final m = RegExp(r'page id=\d+ file="([^"]+)"').firstMatch(source);
     final file = m?.group(1) ?? 'big.png';
-    final dir = fntPath.substring(0, fntPath.lastIndexOf('/'));
-    return '$dir/$file';
+    final lastSlash = fntPath.lastIndexOf('/');
+    if (lastSlash == -1) return file;
+    return '${fntPath.substring(0, lastSlash)}/$file';
   }
 
   static BmFont parse(String source, ui.Image atlas) {
     var lineHeight = 12;
-    var charSpace = 2.0;
+    var charSpace = 1.0;
     final chars = <int, BmChar>{};
     for (final line in source.split('\n')) {
-      if (line.startsWith('common ')) {
-        final h = RegExp(r'lineHeight=(\d+)').firstMatch(line);
+      final trimmed = line.trim();
+      if (trimmed.startsWith('common ')) {
+        final h = RegExp(r'lineHeight=(\d+)').firstMatch(trimmed);
         if (h != null) lineHeight = int.parse(h.group(1)!);
-      } else if (line.startsWith('char ')) {
-        int v(String k) => int.parse(RegExp('$k=(-?\\d+)').firstMatch(line)!.group(1)!);
-        final c = BmChar(v('id'), v('x'), v('y'), v('width'), v('height'),
-            v('xoffset'), v('yoffset'), v('xadvance'));
-        chars[c.id] = c;
+      } else if (trimmed.startsWith('char ')) {
+        int? v(String k) {
+          final m = RegExp('$k=(-?\\d+)').firstMatch(trimmed);
+          return m != null ? int.parse(m.group(1)!) : null;
+        }
+        final id = v('id');
+        if (id != null) {
+          chars[id] = BmChar(
+            id, v('x') ?? 0, v('y') ?? 0, v('width') ?? 0, v('height') ?? 0,
+            v('xoffset') ?? 0, v('yoffset') ?? 0, v('xadvance') ?? 0,
+          );
+        }
       }
     }
     return BmFont._(atlas, chars, lineHeight, charSpace);
   }
 
-  /// SysTemFont.getWidth: cong xadvance tung ky tu + charSpace.
   int getWidth(String s) {
     var w = 0.0;
-    for (final ch in s.codeUnits) {
-      w += (chars[ch]?.xAdv ?? chars[32]?.xAdv ?? 4) + charSpace;
+    for (var i = 0; i < s.length; i++) {
+      final code = s.codeUnitAt(i);
+      final c = chars[code] ?? chars[32];
+      if (c != null) w += c.xAdv + charSpace;
     }
     return w.round();
   }
 
-  /// SysTemFont.drawString voi align LEFT(0)/CENTER(2 tuong ung anchor giua).
-  void drawString(ui.Canvas canvas, String s, double x, double y, int align) {
+  /// SysTemFont.drawString with bitwise anchors and optional tint index.
+  void drawString(
+    ui.Canvas canvas,
+    String s,
+    double x,
+    double y,
+    int anchor, {
+    int colorIndex = -1,
+  }) {
     var cx = x;
-    if (align == 2) cx -= getWidth(s) / 2;
-    if (align == 1) cx -= getWidth(s).toDouble(); // RIGHT
-    for (final ch in s.codeUnits) {
-      final c = chars[ch];
+    var cy = y;
+    final totalW = getWidth(s).toDouble();
+
+    // Horizontal alignment
+    if ((anchor & GraphicsAnchor.hCenter) != 0) {
+      cx -= totalW / 2;
+    } else if ((anchor & GraphicsAnchor.right) != 0) {
+      cx -= totalW;
+    }
+
+    // Vertical alignment
+    if ((anchor & GraphicsAnchor.vCenter) != 0) {
+      cy -= lineHeight / 2;
+    } else if ((anchor & GraphicsAnchor.bottom) != 0) {
+      cy -= lineHeight;
+    }
+
+    final paint = ui.Paint()..filterQuality = ui.FilterQuality.none;
+    if (colorIndex >= 0 && colorIndex < palette.length) {
+      paint.colorFilter = ui.ColorFilter.mode(palette[colorIndex], ui.BlendMode.modulate);
+    }
+
+    for (var i = 0; i < s.length; i++) {
+      final code = s.codeUnitAt(i);
+      final c = chars[code] ?? chars[32];
       if (c != null && c.w > 0 && c.h > 0) {
         canvas.drawImageRect(
           atlas,
           ui.Rect.fromLTWH(c.x.toDouble(), c.y.toDouble(), c.w.toDouble(), c.h.toDouble()),
-          ui.Rect.fromLTWH(cx + c.xOff, y + c.yOff, c.w.toDouble(), c.h.toDouble()),
-          ui.Paint(),
+          ui.Rect.fromLTWH(cx + c.xOff, cy + c.yOff, c.w.toDouble(), c.h.toDouble()),
+          paint,
         );
         cx += c.xAdv + charSpace;
-      } else {
-        cx += (chars[32]?.xAdv ?? 4) + charSpace;
+      } else if (c != null) {
+        cx += c.xAdv + charSpace;
       }
     }
+  }
+
+  /// Port of mFont.splitFontVector / SysTemFont.splitFontVector.
+  /// Splits text into multiple lines based on maximum width.
+  List<String> splitFontVector(String src, int lineWidth) {
+    final lines = <String>[];
+    final words = src.split(' ');
+    var currentLine = '';
+
+    for (final word in words) {
+      final testLine = currentLine.isEmpty ? word : '$currentLine $word';
+      if (getWidth(testLine) <= lineWidth) {
+        currentLine = testLine;
+      } else {
+        if (currentLine.isNotEmpty) lines.add(currentLine);
+        currentLine = word;
+      }
+    }
+    if (currentLine.isNotEmpty) lines.add(currentLine);
+    return lines;
   }
 }
 ```
@@ -757,25 +1027,16 @@ class BmFont {
 ```dart
 import 'dart:typed_data';
 import 'dart:ui' as ui;
+import 'package:logging/logging.dart';
 
 /// Port chính xác `model/FilePack.java` của bản gốc LibGDX.
 ///
 /// Các file res/gui/gui, res/item/item, res/effect/effect, res/map/bg
 /// (và res/item/delete) đều là FilePack: archive gồm nhiều PNG nhỏ đặt cạnh
 /// nhau, header lưu tên file, mọi thứ XOR với key chuỗi "NguyenVanMinh".
-///
-/// Định dạng (theo đúng FilePack.java):
-///   [1 byte]  nFile                    -> RAW (encode(int) la identity)
-///   lap nFile lan:
-///     [1 byte]  lname                  -> RAW
-///     [lname]   filename               -> XOR key
-///     [2 bytes] flen (big-endian)      -> RAW
-///   [con lai] fullData                 -> XOR key (tu dau key)
-///
-/// Cach dung dung nhu Explosion.java / Smoke.java:
-///   final pack = FilePack.decode(await rootBundle.load('assets/res/effect/effect').then(...));
-///   final img = await pack.loadImage('ex3.png');
 abstract final class FilePackDecoder {
+  static final _logger = Logger('FilePackDecoder');
+
   static const List<int> _key = <int>[
     78, 103, 117, 121, 101, 110, 86, 97, 110, 77, 105, 110, 104, // "NguyenVanMinh"
   ];
@@ -789,32 +1050,63 @@ abstract final class FilePackDecoder {
   }
 
   static FilePack decode(Uint8List data) {
+    if (data.isEmpty) {
+      _logger.warning('Attempted to decode empty FilePack data');
+      throw ArgumentError('FilePack: data is empty');
+    }
+
     var pos = 0;
-    int u8() => data[pos++];
+    int u8() {
+      if (pos >= data.length) throw RangeError('FilePack: unexpected EOF reading U8 at $pos');
+      return data[pos++];
+    }
     int u16() {
+      if (pos + 1 >= data.length) throw RangeError('FilePack: unexpected EOF reading U16 at $pos');
       final v = (data[pos] << 8) | data[pos + 1];
       pos += 2;
       return v;
     }
 
-    final nFile = u8(); // RAW
-    final names = <String>[];
-    final lens = <int>[];
-    for (var i = 0; i < nFile; i++) {
-      final lname = u8(); // RAW
-      final nameBytes = _unxor(data.sublist(pos, pos + lname)); // XOR
-      pos += lname;
-      names.add(String.fromCharCodes(nameBytes));
-      lens.add(u16()); // RAW
+    try {
+      final nFile = u8();
+      final names = <String>[];
+      final lens = <int>[];
+
+      for (var i = 0; i < nFile; i++) {
+        final lname = u8();
+        if (pos + lname > data.length) {
+          throw RangeError('FilePack: unexpected EOF reading filename of length $lname at $pos');
+        }
+
+        final nameBytes = _unxor(data.sublist(pos, pos + lname));
+        pos += lname;
+        names.add(String.fromCharCodes(nameBytes));
+
+        lens.add(u16());
+      }
+
+      final fullData = _unxor(data.sublist(pos));
+      final files = <String, Uint8List>{};
+      var off = 0;
+
+      for (var i = 0; i < nFile; i++) {
+        if (off + lens[i] > fullData.length) {
+          _logger.severe('FilePack data truncated for file "${names[i]}"');
+          throw StateError('FilePack: truncated data for "${names[i]}"');
+        }
+
+        // Java's Hashtable.put policy: if duplicate key exists, it overwrites.
+        // This is implicit in Dart Map's operator [].
+        files[names[i]] = Uint8List.fromList(fullData.sublist(off, off + lens[i]));
+        off += lens[i];
+      }
+
+      _logger.fine('Decoded FilePack with $nFile files');
+      return FilePack(files);
+    } catch (e, stack) {
+      _logger.severe('Failed to decode FilePack', e, stack);
+      rethrow;
     }
-    final fullData = _unxor(data.sublist(pos));
-    final files = <String, Uint8List>{};
-    var off = 0;
-    for (var i = 0; i < nFile; i++) {
-      files[names[i]] = Uint8List.fromList(fullData.sublist(off, off + lens[i]));
-      off += lens[i];
-    }
-    return FilePack(files);
   }
 }
 
@@ -898,6 +1190,7 @@ class GameAssets {
       'coin', 'cup', 'kim', 'wind', 'wind2', 'mua', 'tuyet', 'icon',
       'iconChat', 'iconcam', 'iconmenu', 'remember', 'lever-up', 'er',
       'tick0', 'tick1', 'v', 'x', 'vong', 'vong_tron', 'arrow', 'randomMap',
+      'map/tab_1', 'map/tab_2', 'map/tab_3', 'map/tab_4', 'map/tab_5',
     ];
     for (final n in looseNames) {
       try {
@@ -919,12 +1212,13 @@ class GameAssets {
   static Future<BmFont?> _tryFont(String base) async {
     try {
       return await BmFont.load(
-        kPrefix + base + '.fnt',
+        '$kPrefix$base.fnt',
         (path) async {
           final bd = await rootBundle.load(path);
           final codec = await ui.instantiateImageCodec(bd.buffer.asUint8List());
           return (await codec.getNextFrame()).image;
         },
+        (path) => rootBundle.loadString(path),
       );
     } catch (_) {
       return null;
@@ -939,8 +1233,8 @@ class GameAssets {
 ```dart
 import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 
@@ -957,7 +1251,8 @@ import 'package:path_provider/path_provider.dart';
 abstract final class LegacyRms {
   static Directory? _root;
 
-  static Future<Directory> _dir() async {
+  static Future<Directory?> _dir() async {
+    if (kIsWeb) return null;
     if (_root != null) return _root!;
     final docs = await getApplicationDocumentsDirectory();
     final d = Directory('${docs.path}/rms');
@@ -966,7 +1261,9 @@ abstract final class LegacyRms {
   }
 
   static Future<void> seedFromBundle(List<String> files) async {
+    if (kIsWeb) return;
     final root = await _dir();
+    if (root == null) return;
     for (final name in files) {
       final target = File('${root.path}/$name');
       if (target.existsSync()) continue;
@@ -978,7 +1275,10 @@ abstract final class LegacyRms {
   }
 
   static Future<Uint8List?> load(String filename) async {
-    final f = File('${(await _dir()).path}/$filename');
+    if (kIsWeb) return null;
+    final root = await _dir();
+    if (root == null) return null;
+    final f = File('${root.path}/$filename');
     return f.existsSync() ? f.readAsBytesSync() : null;
   }
 
@@ -988,8 +1288,16 @@ abstract final class LegacyRms {
     return b[0] > 127 ? b[0] - 256 : b[0];
   }
 
-  static Future<void> save(String filename, List<int> data) async =>
-      File('${(await _dir()).path}/$filename').writeAsBytes(data);
+  static Future<void> save(String filename, List<int> data) async {
+    if (kIsWeb) return;
+    final root = await _dir();
+    if (root == null) return;
+    final tempFile = File('${root.path}/$filename.tmp');
+    final targetFile = File('${root.path}/$filename');
+    tempFile.writeAsBytesSync(data);
+    if (targetFile.existsSync()) targetFile.deleteSync();
+    tempFile.renameSync(targetFile.path);
+  }
 
   static Future<void> saveRmsInt(String filename, int x) =>
       save(filename, <int>[x & 0xFF]);
@@ -1003,7 +1311,10 @@ abstract final class LegacyRms {
       save(filename, utf8.encode(s));
 
   static Future<void> clear(String filename) async {
-    final f = File('${(await _dir()).path}/$filename');
+    if (kIsWeb) return;
+    final root = await _dir();
+    if (root == null) return;
+    final f = File('${root.path}/$filename');
     if (f.existsSync()) f.deleteSync();
   }
 }
@@ -1020,28 +1331,47 @@ abstract final class LegacySound {
   static final _sfx = AudioPlayer(playerId: 'sfx');
   static final _bgm = AudioPlayer(playerId: 'bgm');
   static double _volume = 1.0;
+  static bool _muted = false;
 
   static Future<void> init() async {
     try {
       final v = await LegacyRms.loadInt('sound');
       _volume = ((v < 0 ? 100 : v) / 100.0).clamp(0.0, 1.0);
-    } catch (_) {
-      // web / chua co RMS — mac dinh 100
+
+      final m = await LegacyRms.loadInt('mute');
+      _muted = m == 1;
+    } catch (_) {}
+  }
+
+  static double get volume => _muted ? 0.0 : _volume;
+
+  static Future<void> setVolume(double value) async {
+    _volume = value.clamp(0.0, 1.0);
+    await LegacyRms.saveRmsInt('sound', (_volume * 100).round());
+    if (!_muted) {
+      await _bgm.setVolume(_volume);
+      await _sfx.setVolume(_volume);
     }
   }
 
-  static double get volume => _volume;
+  static Future<void> setMuted(bool value) async {
+    _muted = value;
+    await LegacyRms.saveRmsInt('mute', _muted ? 1 : 0);
+    final v = volume;
+    await _bgm.setVolume(v);
+    await _sfx.setVolume(v);
+  }
 
   static Future<void> playMusic(int id, {bool loop = true}) async {
     await _bgm.setReleaseMode(loop ? ReleaseMode.loop : ReleaseMode.release);
-    await _bgm.setVolume(_volume);
-    await _bgm.play(AssetSource('music/' + id.toString() + '.mp3'));
+    await _bgm.setVolume(volume);
+    await _bgm.play(AssetSource('music/$id.mp3'));
   }
 
   static Future<void> playEffect(int id) async {
-    if (id < 0 || id > 2) return;
-    await _sfx.setVolume(_volume);
-    await _sfx.play(AssetSource('sound/' + id.toString() + '.wav'));
+    // SFX mapping usually from 0..N
+    await _sfx.setVolume(volume);
+    await _sfx.play(AssetSource('sound/$id.wav'));
   }
 
   static Future<void> stopMusic() => _bgm.stop();
@@ -1102,6 +1432,108 @@ class SpriteAtlasRepository {
       image.dispose();
     }
     _images.clear();
+  }
+}
+```
+
+### `D:\personal\army/lib\core\audio\audio_provider.dart`
+```dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'audio_service.dart';
+
+final audioServiceProvider = Provider<AudioService>((ref) {
+  final service = AudioService();
+  service.init();
+  return service;
+});
+```
+
+### `D:\personal\army/lib\core\audio\audio_service.dart`
+```dart
+import 'package:audioplayers/audioplayers.dart';
+import 'package:logging/logging.dart';
+import '../assets/legacy_rms.dart';
+
+class AudioService {
+  final _logger = Logger('AudioService');
+
+  bool _muted = false;
+  double _volume = 0.5;
+
+  final _bgmPlayer = AudioPlayer()..setReleaseMode(ReleaseMode.loop);
+  final _sfxPlayers = <AudioPlayer>[];
+  final _maxSfx = 8;
+
+  Future<void> init() async {
+    _volume = (await LegacyRms.loadInt('sound')).clamp(0, 100) / 100.0;
+    if (_volume < 0) _volume = 0.5;
+    _muted = await LegacyRms.loadInt('vibrate') == 1; // vibrate 1 = muted in some versions
+
+    _logger.info('AudioService initialized (vol=$_volume, muted=$_muted)');
+  }
+
+  void playSfx(String name) async {
+    if (_muted || _volume <= 0) return;
+
+    // Simple pool of players for SFX
+    AudioPlayer player;
+    if (_sfxPlayers.length < _maxSfx) {
+      player = AudioPlayer();
+      _sfxPlayers.add(player);
+    } else {
+      player = _sfxPlayers.first;
+      _sfxPlayers.removeAt(0);
+      _sfxPlayers.add(player);
+      await player.stop();
+    }
+
+    await player.setVolume(_volume);
+    await player.play(AssetSource('sound/$name.mp3'));
+  }
+
+  void playBgm(String name) async {
+    if (_muted) return;
+    await _bgmPlayer.setVolume(_volume);
+    await _bgmPlayer.play(AssetSource('music/$name.mp3'));
+  }
+
+  void stopBgm() async {
+    await _bgmPlayer.stop();
+  }
+
+  void setVolume(double volume) {
+    _volume = volume.clamp(0.0, 1.0);
+    _bgmPlayer.setVolume(_volume);
+    LegacyRms.saveRmsInt('sound', (_volume * 100).toInt());
+    _logger.info('Volume set to $_volume');
+  }
+
+  void setMuted(bool muted) {
+    _muted = muted;
+    if (_muted) {
+      stopBgm();
+    }
+    LegacyRms.saveRmsInt('vibrate', _muted ? 1 : 0);
+  }
+
+  void pauseAll() {
+    _bgmPlayer.pause();
+    for (final p in _sfxPlayers) {
+      p.pause();
+    }
+  }
+
+  void resumeAll() {
+    if (!_muted && _volume > 0) {
+      _bgmPlayer.resume();
+    }
+  }
+
+  void dispose() {
+    _bgmPlayer.dispose();
+    for (final p in _sfxPlayers) {
+      p.dispose();
+    }
   }
 }
 ```
@@ -1175,6 +1607,15 @@ abstract final class JavaInt32 {
   static int subtract(int a, int b) => wrap(a - b);
   static int multiply(int a, int b) => wrap(a * b);
   static int shiftLeft(int value, int bits) => wrap(value << (bits & 0x1f));
+
+  /// Java-style absolute value.
+  /// NOTE: Math.abs(Integer.MIN_VALUE) returns Integer.MIN_VALUE (-2147483648)
+  /// in Java. Dart's standard abs() on 64-bit int would return 2147483648.
+  static int abs(int value) {
+    if (value == minValue) return minValue;
+    return value < 0 ? -value : value;
+  }
+
   static int divide(int dividend, int divisor) {
     if (divisor == 0) throw UnsupportedError('Integer division by zero');
     if (dividend == minValue && divisor == -1) return minValue;
@@ -1229,7 +1670,7 @@ abstract final class LegacyAngle {
     int angle;
     if (dx != 0) {
       final shifted = JavaInt32.shiftLeft(dy, 10);
-      final tangent = JavaInt32.divide(shifted, dx).abs();
+      final tangent = JavaInt32.abs(JavaInt32.divide(shifted, dx));
       angle = LegacyTrigonometry.atan(tangent);
       if (dy >= 0 && dx < 0) angle = 180 - angle;
       if (dy < 0 && dx < 0) angle += 180;
@@ -1689,6 +2130,7 @@ abstract final class Commands {
   static const int startGame = 20;
   static const int move = 21;
   static const int shoot = 22;
+  static const int shootResult = 23;
   static const int setTurn = 24;
   static const int setWind = 25;
   static const int useItem = 26;
@@ -1698,6 +2140,8 @@ abstract final class Commands {
   static const int deleteFriend = 33;
   static const int userInfo = 34;
   static const int findUser = 36;
+  static const int bonusMoney = 52;
+  static const int finishMatch = 100;
   static const int ping = 42;
   static const int log =
       45; // SessionHandler.log — server notice / auth failure
@@ -1705,18 +2149,42 @@ abstract final class Commands {
   static const int setXy = 53;
   static const int dynamicSync = 90;
   static const int idNotCollision = 92;
+  static const int platformRequest = 114;
+  static const int getClanIcon = 115;
+  static const int getString = 127;
+  static const int getBoss = 89;
   static const int changeTeam = 71;
   static const int buyItem = 72;
   static const int buyGlass = 74;
   static const int selectMap = 75;
+  static const int inventory = 101;
+  static const int changeEquip = 102;
+  static const int getShopEquip = 103;
+  static const int buySellEquip = 104;
+  static const int inventoryUpdate = 27;
+  static const int materialUpdate = 125;
+  static const int materialIcon = 126;
+  static const int expUpdate = 97;
+  static const int charInfo = 99;
+  static const int topClan = 116;
+  static const int clanInfo = 117;
+  static const int clanMember = 118;
+  static const int luckyGame = 110;
+  static const int chatTeam = 123;
   static const int getKey = -27;
   static const int requestRenewal = -25;
+  static const int cupUpdate = -24;
   static const int missions = -23;
+  static const int clanMoneyUpdate = -22;
   static const int roomInfoNames = -19;
+  static const int formula = -18;
+  static const int luckyGift = -17;
   static const int topInfo = -14;
+  static const int shopBietDoi = -12;
   static const int quit = -4;
   static const int shopSpecial = -3;
   static const int setEquipVip = -2;
+  static const int ad = -100;
 }
 ```
 
@@ -1729,6 +2197,7 @@ abstract interface class ConnectionLifecycle {
 }
 
 class NoopConnectionLifecycle implements ConnectionLifecycle {
+  const NoopConnectionLifecycle();
   @override
   void onBackground() {}
   @override
@@ -1782,6 +2251,7 @@ class DataCache {
   static List<EquipEntry> equips = [];
   static List<String> levelCaptions = [];
   static List<int> levelCaptionTypes = [];
+  static Map<int, int> glassMaxDamage = {};
 }
 
 abstract final class DataCacheParsers {
@@ -1808,10 +2278,12 @@ abstract final class DataCacheParsers {
   static void parseEquipTree(Uint8List data) {
     final r = ByteReader(data);
     DataCache.equips = [];
+    DataCache.glassMaxDamage = {};
     final nGlass = r.readByte();
     for (var g = 0; g < nGlass; g++) {
       final glassId = r.readByte();
-      r.readShort(); // maxDamage
+      final maxDamage = r.readShort();
+      DataCache.glassMaxDamage[glassId] = maxDamage;
       final nType = r.readByte();
       for (var t = 0; t < nType; t++) {
         final type = r.readByte();
@@ -1859,22 +2331,17 @@ abstract final class DataCacheParsers {
 ### `D:\personal\army/lib\core\network\data_sync_service.dart`
 ```dart
 import 'dart:async';
+import 'dart:typed_data';
 import 'package:logging/logging.dart';
 import 'package:mobiarmy_flutter/core/assets/legacy_rms.dart';
 import 'package:mobiarmy_flutter/core/network/command/commands.dart';
 import 'package:mobiarmy_flutter/core/network/dispatcher/message_dispatcher.dart';
 import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/core/network/transport/tcp_session.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/map/icon_preview.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/player/player_sprites.dart';
 import 'data_cache_parsers.dart';
 
-/// Port CCanvas.sendMapData + MessageHandler case 90 (dynamicSync):
-/// Chuoi dong bo du lieu theo cap, MỖI goi tu server kich hoat goi tiep theo:
-///   login -> sendVersion(2, valuesVersion)
-///   cmd90 type 2 (values) -> luu + readMess(0) -> sendVersion(1, tileVersion)
-///   cmd90 type 1 (icon)   -> luu -> sendVersion(3, iconVersion)
-///   cmd90 type 3 (player) -> luu + CPlayer.init -> sendVersion(4, equipVersion)
-///   cmd90 type 4 (equip)  -> luu + readMess(1) -> sendVersion(5, levelCVersion)
-///   cmd90 type 5 (levelC) -> luu + readMess(2) -> HOAN TAT -> vao lobby
 class DataSyncService {
   DataSyncService(this._session, this._dispatcher) {
     _dispatcher.register(Commands.dynamicSync, _onDynamicSync);
@@ -1890,99 +2357,191 @@ class DataSyncService {
 
   Future<void> get done => _completer.future;
 
-  /// CCanvas.sendMapData()
+  void dispose() {
+    _dispatcher.unregister(Commands.dynamicSync, _onDynamicSync);
+  }
+
   Future<void> start() async {
-    _iconVersion = await LegacyRms.loadInt('iconversion2');
-    if (_iconVersion < 0) _iconVersion = 0;
-    _valuesVersion = await LegacyRms.loadInt('valuesversion2');
-    if (_valuesVersion < 0) _valuesVersion = 0;
-    _playerVersion = await LegacyRms.loadInt('playerVersion2');
-    if (_playerVersion < 0) _playerVersion = 0;
-    _equipVersion = await LegacyRms.loadInt('equipVersion2');
-    if (_equipVersion < 0) _equipVersion = 0;
-    _levelCVersion = await LegacyRms.loadInt('levelCVersion2');
-    if (_levelCVersion < 0) _levelCVersion = 0;
+    _iconVersion = await _safeInt('iconversion2');
+    _valuesVersion = await _safeInt('valuesversion2');
+    _playerVersion = await _safeInt('playerVersion2');
+    _equipVersion = await _safeInt('equipVersion2');
+    _levelCVersion = await _safeInt('levelCVersion2');
 
-    // Cache cu parse lai ngay (giong CCanvas.sendMapData doc RMS local)
-    final valuesCached = await LegacyRms.load('valuesdata2');
-    if (valuesCached != null) DataCacheParsers.parseMapList(valuesCached);
-    final equipCached = await LegacyRms.load('equipdata2');
-    if (equipCached != null) DataCacheParsers.parseEquipTree(equipCached);
-    final levelCached = await LegacyRms.load('levelCData2');
-    if (levelCached != null) DataCacheParsers.parseLevelCaptions(levelCached);
+    try {
+      final valuesCached = await _safeLoad('valuesdata2');
+      if (valuesCached != null) DataCacheParsers.parseMapList(valuesCached);
+    } catch (e) {
+      _logger.warning('Corrupted values cache. Wiping file.');
+      await LegacyRms.clear('valuesdata2');
+      await LegacyRms.clear('valuesversion2');
+      _valuesVersion = 0;
+    }
 
+    try {
+      final equipCached = await _safeLoad('equipdata2');
+      if (equipCached != null) DataCacheParsers.parseEquipTree(equipCached);
+    } catch (e) {
+      _logger.warning('Corrupted equip cache. Wiping file.');
+      await LegacyRms.clear('equipdata2');
+      await LegacyRms.clear('equipversion2');
+      _equipVersion = 0;
+    }
+
+    try {
+      final levelCached = await _safeLoad('levelCData2');
+      if (levelCached != null) DataCacheParsers.parseLevelCaptions(levelCached);
+    } catch (e) {
+      _logger.warning('Corrupted level cache. Wiping file.');
+      await LegacyRms.clear('levelCData2');
+      await LegacyRms.clear('levelCVersion2');
+      _levelCVersion = 0;
+    }
+
+    try {
+      final playerCached = await _safeLoad('playerdata2');
+      if (playerCached != null) await PlayerSprites.init(playerCached);
+    } catch (e) {
+      _logger.warning('Corrupted player sprites cache. Wiping file.');
+      await LegacyRms.clear('playerdata2');
+      await LegacyRms.clear('playerVersion2');
+      _playerVersion = 0;
+    }
+
+    try {
+      final iconCached = await _safeLoad('icondata2');
+      if (iconCached != null) {
+        _logger.fine('Loading icons from cache');
+        await MapIconPack.init(iconCached);
+      }
+    } catch (e) {
+      _logger.warning('Corrupted icons cache: $e. Wiping file.');
+      await LegacyRms.clear('icondata2');
+      await LegacyRms.clear('iconversion2');
+      _iconVersion = 0;
+    }
+
+    _logger.info('Starting sync chain with values version: $_valuesVersion');
     await _sendVersion(2, _valuesVersion);
+  }
+
+  static Future<int> _safeInt(String f) async {
+    try {
+      final v = await LegacyRms.loadInt(f);
+      return v < 0 ? 0 : v;
+    } catch (_) {
+      return 0;
+    }
+  }
+
+  static Future<Uint8List?> _safeLoad(String f) async {
+    try {
+      return await LegacyRms.load(f);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  static Future<void> _safeSave(String f, List<int> d) async {
+    try {
+      await LegacyRms.save(f, d);
+    } catch (_) {}
+  }
+
+  static Future<void> _safeSaveInt(String f, int v) async {
+    try {
+      await LegacyRms.saveRmsInt(f, v);
+    } catch (_) {}
   }
 
   void _onDynamicSync(Message msg) {
     final r = msg.reader();
     final type = r.readByte();
-    switch (type) {
-      case 2: // values
-        final v = r.readByte();
-        if (v != _valuesVersion) {
-          final len = r.readUnsignedShort();
-          final data = r.readBytes(len);
-          DataCacheParsers.parseMapList(data);
-          LegacyRms.save('valuesdata2', data);
-          LegacyRms.saveRmsInt('valuesversion2', v);
-          _valuesVersion = v;
-        }
-        _sendVersion(1, _tileMapVersion);
-        break;
-      case 1: // icon
-        final v = r.readByte();
-        if (v != _iconVersion) {
-          final len = r.readUnsignedShort();
-          final data = r.readBytes(len);
-          // PrepareScr.fileData = data; PrepareScr.init() — icon atlas
-          LegacyRms.save('icondata2', data);
-          LegacyRms.saveRmsInt('iconversion2', v);
-          _iconVersion = v;
-        }
-        _sendVersion(3, _iconVersion);
-        break;
-      case 3: // player
-        final v = r.readByte();
-        if (v != _playerVersion) {
-          final len = r.readUnsignedShort();
-          final data = r.readBytes(len);
-          // CPlayer.fileData -> init body sprites
-          LegacyRms.save('playerdata2', data);
-          LegacyRms.saveRmsInt('playerVersion2', v);
-          _playerVersion = v;
-        }
-        _sendVersion(4, _equipVersion);
-        break;
-      case 4: // equip
-        final v = r.readByte();
-        if (v != _equipVersion) {
-          final len = r.readInt();
-          final data = r.readBytes(len);
-          DataCacheParsers.parseEquipTree(data);
-          LegacyRms.save('equipdata2', data);
-          LegacyRms.saveRmsInt('equipVersion2', v);
-          _equipVersion = v;
-        }
-        _sendVersion(5, _levelCVersion);
-        break;
-      case 5: // level captions
-        final v = r.readByte();
-        if (v != _levelCVersion) {
-          final len = r.readUnsignedShort();
-          final data = r.readBytes(len);
-          DataCacheParsers.parseLevelCaptions(data);
-          LegacyRms.save('levelCData2', data);
-          LegacyRms.saveRmsInt('levelCVersion2', v);
-          _levelCVersion = v;
-        }
-        _logger.info('Data sync HOAN TAT');
-        if (!_completer.isCompleted) _completer.complete();
-        break;
+    _logger.fine('Received dynamic sync type: $type');
+    try {
+      switch (type) {
+        case 2:
+          final v = r.readByte();
+          _logger.info('Sync values version: $v (current: $_valuesVersion)');
+          if (v != _valuesVersion) {
+            final len = r.readUnsignedShort();
+            _logger.fine('Downloading new valuesdata2, length: $len');
+            final data = r.readBytes(len);
+            DataCacheParsers.parseMapList(data);
+            _safeSave('valuesdata2', data);
+            _safeSaveInt('valuesversion2', v);
+            _valuesVersion = v;
+          }
+          _sendVersion(1, _tileMapVersion);
+          break;
+        case 1:
+          final v = r.readByte();
+          _logger.info('Sync icons version: $v (current: $_iconVersion)');
+          if (v != _iconVersion) {
+            final len = r.readUnsignedShort();
+            _logger.fine('Downloading new icondata2, length: $len');
+            final data = r.readBytes(len);
+            MapIconPack.init(data);
+            _safeSave('icondata2', data);
+            _safeSaveInt('iconversion2', v);
+            _iconVersion = v;
+          }
+          _sendVersion(3, _iconVersion);
+          break;
+        case 3:
+          final v = r.readByte();
+          _logger.info('Sync player version: $v (current: $_playerVersion)');
+          if (v != _playerVersion) {
+            final len = r.readUnsignedShort();
+            _logger.fine('Downloading new playerdata2, length: $len');
+            final data = r.readBytes(len);
+            PlayerSprites.init(data);
+            _safeSave('playerdata2', data);
+            _safeSaveInt('playerVersion2', v);
+            _playerVersion = v;
+          }
+          _sendVersion(4, _equipVersion);
+          break;
+        case 4:
+          final v = r.readByte();
+          _logger.info('Sync equip version: $v (current: $_equipVersion)');
+          if (v != _equipVersion) {
+            final len = r.readInt();
+            _logger.fine('Downloading new equipdata2, length: $len');
+            final data = r.readBytes(len);
+            DataCacheParsers.parseEquipTree(data);
+            _safeSave('equipdata2', data);
+            _safeSaveInt('equipVersion2', v);
+            _equipVersion = v;
+          }
+          _sendVersion(5, _levelCVersion);
+          break;
+        case 5:
+          final v = r.readByte();
+          _logger.info('Sync level captions version: $v (current: $_levelCVersion)');
+          if (v != _levelCVersion) {
+            final len = r.readUnsignedShort();
+            _logger.fine('Downloading new levelCData2, length: $len');
+            final data = r.readBytes(len);
+            DataCacheParsers.parseLevelCaptions(data);
+            _safeSave('levelCData2', data);
+            _safeSaveInt('levelCVersion2', v);
+            _levelCVersion = v;
+          }
+          _logger.info('All data sync chains completed');
+          if (!_completer.isCompleted) {
+            _completer.complete();
+            dispose();
+          }
+          break;
+      }
+    } catch (e, stack) {
+      _logger.severe('Exception during sync chain: $e', e, stack);
+      if (!_completer.isCompleted) _completer.completeError(e);
+      dispose();
     }
   }
 
-  /// GameService.sendVersion(type, version) — cmd 90
   Future<void> _sendVersion(int type, int version) {
     final m = Message(Commands.dynamicSync);
     m.writer().writeByte(type);
@@ -2090,7 +2649,6 @@ import '../codec/byte_writer.dart';
 
 class Message {
   final int command;
-  late final ByteReader _reader;
   late final ByteWriter _writer;
   final Uint8List? _data;
 
@@ -2098,15 +2656,13 @@ class Message {
     _writer = ByteWriter();
   }
 
-  Message.fromBytes(this.command, Uint8List data) : _data = data {
-    _reader = ByteReader(data);
-  }
+  Message.fromBytes(this.command, Uint8List data) : _data = data;
 
   ByteReader reader() {
     if (_data == null) {
       throw StateError('Message was created for writing');
     }
-    return _reader;
+    return ByteReader(_data);
   }
 
   ByteWriter writer() {
@@ -2147,6 +2703,12 @@ class XorCodec {
   final Uint8List _key;
   int _readPos;
   int _writePos;
+
+  /// Lookahead decryption without advancing the internal cursor state.
+  int lookaheadDecryptByte(int b, int offset) {
+    final pos = (_readPos + offset) % _key.length;
+    return (b ^ _key[pos]) & 0xFF;
+  }
 
   int decryptByte(int b) {
     final result = (b ^ _key[_readPos++]) & 0xFF;
@@ -2222,11 +2784,10 @@ class SessionListenerHolder implements SessionStateListener {
 ```dart
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 
-import '../codec/byte_reader.dart';
 import '../codec/byte_writer.dart';
 import '../command/commands.dart';
 import '../dispatcher/message_dispatcher.dart';
@@ -2243,22 +2804,25 @@ class TcpSession {
   final _logger = Logger('TcpSession');
 
   Socket? _socket;
+  StreamSubscription<Uint8List>? _socketSubscription;
   XorCodec? _codec;
   bool _getKeyComplete = false;
   bool _intentionallyClosed = false;
 
-  final BytesBuilder _buffer = BytesBuilder();
+  final List<int> _rawBuffer = [];
 
   bool get isConnected => _socket != null;
 
-  /// TCP connect + automatic key request (cmd -27).
-  ///
-  /// PARITY (Session.java): the key response itself travels UNencrypted —
-  /// the server marks the session key-initialized only after sending it.
-  /// All subsequent bytes in both directions are XORed with the key stream.
   Future<void> connect(String host, int port) async {
+    if (kIsWeb) {
+      throw UnsupportedError('TCP Sockets are not supported on Web. Use a WebSocket proxy.');
+    }
     _logger.info('Connecting to $host:$port');
     _intentionallyClosed = false;
+
+    // Cleanup any existing connection completely first
+    await _cleanupSocket();
+
     try {
       _socket = await Socket.connect(
         host,
@@ -2267,9 +2831,9 @@ class TcpSession {
       );
       _getKeyComplete = false;
       _codec = null;
-      _buffer.clear();
+      _rawBuffer.clear();
 
-      _socket!.listen(
+      _socketSubscription = _socket!.listen(
         _onData,
         onError: (Object e) {
           _logger.severe('Socket error: $e');
@@ -2278,7 +2842,7 @@ class TcpSession {
         onDone: () {
           _logger.info('Socket closed');
           final reason = _intentionallyClosed ? null : 'Server đóng kết nối';
-          _reset();
+          _cleanupSocketSync();
           listener?.onDisconnected(reason);
         },
         cancelOnError: true,
@@ -2287,13 +2851,11 @@ class TcpSession {
       await sendMessage(Message(Commands.getKey));
     } catch (e) {
       _logger.severe('Failed to connect: $e');
-      _reset();
+      _cleanupSocketSync();
       rethrow;
     }
   }
 
-  /// Sends are serialized by the Dart event loop (single isolate); socket.add
-  /// preserves ordering, so no extra lock is needed.
   Future<void> sendMessage(Message message) async {
     final socket = _socket;
     if (socket == null) return;
@@ -2317,107 +2879,161 @@ class TcpSession {
       writer.writeBytes(data);
     }
 
+    if (cmd != 42) {
+      _logger.fine('Sending packet command ID: $cmd, length: $size');
+    }
+
     socket.add(writer.toBytes());
     await socket.flush();
   }
 
-  void _onData(Uint8List data) {
-    _buffer.add(data);
-    _processBuffer();
+  void handleDataForTesting(Uint8List data) {
+    _onData(data);
   }
 
-  void _processBuffer() {
-    while (true) {
-      final currentBuffer = _buffer.takeBytes();
-      if (currentBuffer.isEmpty) return;
+  void _onData(Uint8List data) {
+    _rawBuffer.addAll(data);
+    _processBufferIncremental();
+  }
 
-      final reader = ByteReader(currentBuffer);
+  void _processBufferIncremental() {
+    while (_rawBuffer.isNotEmpty) {
+      // Wait, we need an exact checkpointing mechanism. Let's make a mini cursor decoder loop.
 
-      try {
-        if (reader.available < 1) {
-          _buffer.add(currentBuffer);
-          return;
-        }
+      int bufferIndex = 0;
+      if (_rawBuffer.isEmpty) return;
 
-        int cmd = reader.readUnsignedByte();
-        if (_getKeyComplete && _codec != null) {
-          cmd = _codec!.decryptByte(cmd);
-        }
-        final command = cmd > 127 ? cmd - 256 : cmd;
-
-        int size;
-        if (command == -120 || command == Commands.dynamicSync) {
-          if (reader.available < 4) {
-            _buffer.add(currentBuffer);
-            return;
-          }
-          size = reader.readInt();
-        } else {
-          if (reader.available < 2) {
-            _buffer.add(currentBuffer);
-            return;
-          }
-          var b1 = reader.readUnsignedByte();
-          var b2 = reader.readUnsignedByte();
-          if (_getKeyComplete && _codec != null) {
-            b1 = _codec!.decryptByte(b1);
-            b2 = _codec!.decryptByte(b2);
-          }
-          size = (b1 << 8) | b2;
-        }
-
-        if (reader.available < size) {
-          _buffer.add(currentBuffer);
-          return;
-        }
-
-        var payload = reader.readBytes(size);
-        if (_getKeyComplete && _codec != null) {
-          payload = _codec!.decrypt(payload);
-        }
-
-        final message = Message.fromBytes(command, payload);
-        _handleInternal(message);
-
-        if (reader.available > 0) {
-          _buffer.add(reader.readBytes(reader.available));
-          continue;
-        }
-        break;
-      } catch (e) {
-        _logger.severe('Packet parsing error: $e');
-        break;
+      int rawCmd = _rawBuffer[bufferIndex++];
+      if (_getKeyComplete && _codec != null) {
+        // Look up decrypted byte hypothetically using a clean custom lookahead offset
+        rawCmd = (_rawCmdLookahead(rawCmd, 0)) > 127 ? (_rawCmdLookahead(rawCmd, 0)) - 256 : (_rawCmdLookahead(rawCmd, 0));
+      } else {
+        rawCmd = rawCmd > 127 ? rawCmd - 256 : rawCmd;
       }
+
+      int headerSize = 1;
+      int size = 0;
+
+      if (rawCmd == -120 || rawCmd == Commands.dynamicSync) {
+        headerSize += 4;
+        if (_rawBuffer.length < headerSize) return; // Wait for full header bytes
+
+        if (_getKeyComplete && _codec != null) {
+          final b1 = _rawCmdLookahead(_rawBuffer[1], 1);
+          final b2 = _rawCmdLookahead(_rawBuffer[2], 2);
+          final b3 = _rawCmdLookahead(_rawBuffer[3], 3);
+          final b4 = _rawCmdLookahead(_rawBuffer[4], 4);
+          size = (b1 << 24) | (b2 << 16) | (b3 << 8) | b4;
+        } else {
+          size = (_rawBuffer[1] << 24) | (_rawBuffer[2] << 16) | (_rawBuffer[3] << 8) | _rawBuffer[4];
+        }
+      } else {
+        headerSize += 2;
+        if (_rawBuffer.length < headerSize) return; // Wait for full header bytes
+
+        if (_getKeyComplete && _codec != null) {
+          final b1 = _rawCmdLookahead(_rawBuffer[1], 1);
+          final b2 = _rawCmdLookahead(_rawBuffer[2], 2);
+          size = (b1 << 8) | b2;
+        } else {
+          size = (_rawBuffer[1] << 8) | _rawBuffer[2];
+        }
+      }
+
+      // Safeguard against corrupted huge frame sizes
+      if (size < 0 || size > 1024 * 1024 * 5) {
+        _logger.severe('Corrupted frame size detected: $size. Aborting streaming loop.');
+        _rawBuffer.clear();
+        _cleanupSocketSync();
+        listener?.onDisconnected('Dữ liệu luồng mạng lỗi cấu trúc');
+        return;
+      }
+
+      if (_rawBuffer.length < headerSize + size) {
+        // Incomplete packet body segment. Return safely and wait for more data.
+        // Notice we DID NOT consume or commit any cursor drift.
+        return;
+      }
+
+      // Full frame present! Consume header + body payload bytes from raw buffer list
+      final frameBytes = Uint8List.fromList(_rawBuffer.sublist(0, headerSize + size));
+      _rawBuffer.removeRange(0, headerSize + size);
+
+      // Now advance the REAL cursor sequentially because we are executing the packet consumption
+      int finalCmd = frameBytes[0];
+      if (_getKeyComplete && _codec != null) {
+        finalCmd = _codec!.decryptByte(finalCmd);
+      }
+      finalCmd = finalCmd > 127 ? finalCmd - 256 : finalCmd;
+
+      if (finalCmd == -120 || finalCmd == Commands.dynamicSync) {
+        if (_getKeyComplete && _codec != null) {
+          _codec!.decryptByte(frameBytes[1]);
+          _codec!.decryptByte(frameBytes[2]);
+          _codec!.decryptByte(frameBytes[3]);
+          _codec!.decryptByte(frameBytes[4]);
+        }
+      } else {
+        if (_getKeyComplete && _codec != null) {
+          _codec!.decryptByte(frameBytes[1]);
+          _codec!.decryptByte(frameBytes[2]);
+        }
+      }
+
+      var payload = Uint8List.fromList(frameBytes.sublist(headerSize));
+      if (_getKeyComplete && _codec != null) {
+        payload = _codec!.decrypt(payload);
+      }
+
+      if (finalCmd != 42) {
+        _logger.fine('Received message opcode command ID: $finalCmd, size: $size');
+      }
+
+      final message = Message.fromBytes(finalCmd, payload);
+      _handleInternal(message);
     }
   }
 
+  int _rawCmdLookahead(int rawByte, int offset) {
+    if (_codec == null) return rawByte;
+    return _codec!.lookaheadDecryptByte(rawByte, offset);
+  }
+
   void _handleInternal(Message message) {
+    if (_intentionallyClosed) return; // Do not dispatch packets after close/dispose
     if (message.command == Commands.getKey) {
       _codec = XorCodec.fromSessionMessage(message.getData());
       _getKeyComplete = true;
-      _logger.info('Key initialized');
+      _logger.info('Key initialized successfully matching Java contract');
       listener?.onHandshakeComplete();
     } else {
       dispatcher.dispatch(message);
     }
   }
 
-  void _reset() {
+  Future<void> _cleanupSocket() async {
+    _cleanupSocketSync();
+  }
+
+  void _cleanupSocketSync() {
+    try {
+      _socketSubscription?.cancel();
+    } catch (_) {}
+    _socketSubscription = null;
+
+    try {
+      _socket?.destroy();
+    } catch (_) {}
     _socket = null;
+
     _codec = null;
     _getKeyComplete = false;
-    _buffer.clear();
+    _rawBuffer.clear();
   }
 
   Future<void> dispose() async {
     _intentionallyClosed = true;
-    final socket = _socket;
-    _reset();
-    try {
-      await socket?.close();
-    } catch (_) {
-      // Ignore close errors — the listener was already notified via onDone.
-    }
+    _cleanupSocketSync();
   }
 }
 ```
@@ -2563,8 +3179,11 @@ class AuthController extends Notifier<AuthenticationState>
       final pending = _pendingCredentials;
       _authTimeout?.cancel();
 
+      _logger.info('Login successful, starting data sync chain...');
+
       // Post-login flow: platform_request + bangxephang + sync chain 90.
       final sync = DataSyncService(_session, ref.read(messageDispatcherProvider));
+
       if (pending != null) {
         PostLoginService.run(
           _session,
@@ -2576,15 +3195,18 @@ class AuthController extends Notifier<AuthenticationState>
       } else {
         sync.start();
       }
+
       sync.done.then((_) {
+        _logger.info('Data sync chain completed, transitioning to authenticated state');
         state = _machine.loginSucceeded(session);
         _ping = PingHeartbeat(_session)..start();
       }).catchError((Object e) {
-        state = _machine.connectionLost('Dong bo du lieu that bai: $e');
+        _logger.severe('Data sync failed: $e');
+        state = _machine.connectionLost('Đồng bộ dữ liệu thất bại: $e');
       });
     } catch (e, stack) {
       _logger.severe('loadInfoAll parse failed', e, stack);
-      state = _machine.connectionLost('Phan hoi dang nhap khong hop le');
+      state = _machine.connectionLost('Phản hồi đăng nhập không hợp lệ');
     }
   }
 
@@ -2751,13 +3373,10 @@ import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/core/network/transport/tcp_session.dart';
 
 /// Port doan cu MessageHandler case 3 (onLoginSuccess) — chay NGAY sau khi
-/// nhan cmd 3 loadInfoAll thanh cong:
-///   1. luu caroun/caropass (RMS UTF-8) — tich "nho dang nhap"
-///   2. gui platform_request (cmd 114) — thong tin thiet bi
-///   3. gui bangxephang (-14) — bang xep hang
-///   4. bat dau DataSyncService (sendMapData chain)
-/// Note: MessageHandler goc con set CCanvas.loginScr timePing o day.
+/// nhan cmd 3 loadInfoAll thanh cong.
 abstract final class PostLoginService {
+  static const String kDefaultAgent = '';
+
   static Future<void> run(
     TcpSession session,
     DataSyncService sync, {
@@ -2773,20 +3392,27 @@ abstract final class PostLoginService {
       await LegacyRms.clear('caropass');
     }
 
-    // GameService.platform_request() — cmd 114, ghi 3 UTF
-    final p = Message(114);
-    p.writer().writeUTF(''); // agent/device info (ban goc de trong nhieu noi)
+    // GameService.platform_request() — cmd 114, ghi 3 UTF.
+    // Port parity: server checks agent for custom client behavior.
+    final p = Message(Commands.platformRequest);
+    p.writer().writeUTF(kDefaultAgent);
     p.writer().writeUTF('');
     p.writer().writeUTF('');
     await session.sendMessage(p);
 
-    // GameService.bangxephang((byte)-1, -1) — cmd -14: type + page
+    // getString() — cmd 115
+    final s = Message(Commands.getString);
+    s.writer().writeUTF('abc'); // Default handshake string
+    await session.sendMessage(s);
+
+    // GameService.bangxephang((byte)-1, -1) — cmd -14: type + page.
     final b = Message(Commands.topInfo);
     b.writer().writeByte(-1);
     b.writer().writeByte(-1);
     await session.sendMessage(b);
 
-    await sync.start(); // sendMapData chain
+    // Mandatory data sync chain start
+    await sync.start();
   }
 
   /// Doc lai tai khoan da nho (LoginScr.init prefill).
@@ -2832,28 +3458,46 @@ class GameServerEntry {
 abstract final class ServerListStore {
   /// GameMidlet.linkGetHost (TerrainMidlet dung gmb.teamobi.com).
   static const linkGetHost = 'https://sv.pro.vn/server.txt';
+  static const kLegacyServerName = 'Mặt Trời';
+  static const kLegacyServerIp = '27.0.12.164';
+  static const kLegacyServerPort = 19149;
 
   static Future<List<GameServerEntry>> load() async {
     final cached = await LegacyRms.load('ipArmy2');
     if (cached != null && cached.isNotEmpty) {
-      final list = _decode(cached);
-      if (list.isNotEmpty) return list;
+      try {
+        final list = _decode(cached);
+        if (list.isNotEmpty) return list;
+      } catch (e) {
+        // Silently fail and fallback to network
+      }
     }
     return updateFromNetwork();
   }
 
   static Future<List<GameServerEntry>> updateFromNetwork() async {
-    final res = await http.get(Uri.parse(linkGetHost));
-    final text = utf8.decode(res.bodyBytes);
-    final list = <GameServerEntry>[];
-    for (final raw in text.split(',')) {
-      final parts = raw.trim().split(':');
-      if (parts.length >= 3) {
-        list.add(GameServerEntry(parts[0], parts[1], int.parse(parts[2].trim())));
+    try {
+      final res = await http.get(Uri.parse(linkGetHost)).timeout(const Duration(seconds: 10));
+      final text = utf8.decode(res.bodyBytes);
+      final list = <GameServerEntry>[];
+      for (final raw in text.split(',')) {
+        final parts = raw.trim().split(':');
+        if (parts.length >= 3) {
+          list.add(GameServerEntry(parts[0], parts[1], int.parse(parts[2].trim())));
+        }
       }
+
+      // Port parity: add legacy server if list is short or based on version
+      if (!list.any((s) => s.ip == kLegacyServerIp)) {
+        list.add(GameServerEntry(kLegacyServerName, kLegacyServerIp, kLegacyServerPort));
+      }
+
+      await save(list);
+      return list;
+    } catch (e) {
+      // Return hardcoded localhost if network fails and no cache
+      return [GameServerEntry('Localhost', '127.0.0.1', 1919)];
     }
-    await save(list);
-    return list;
   }
 
   static Future<void> save(List<GameServerEntry> servers) async {
@@ -2870,10 +3514,19 @@ abstract final class ServerListStore {
 
   static List<GameServerEntry> _decode(Uint8List data) {
     var pos = 0;
-    int u8() => data[pos++];
-    int u16() { final v = (data[pos] << 8) | data[pos + 1]; pos += 2; return v; }
+    int u8() {
+      if (pos >= data.length) throw RangeError('LOBBY_RMS_EOF');
+      return data[pos++];
+    }
+    int u16() {
+      if (pos + 1 >= data.length) throw RangeError('LOBBY_RMS_EOF');
+      final v = (data[pos] << 8) | data[pos + 1];
+      pos += 2;
+      return v;
+    }
     String utf() {
       final len = u16();
+      if (pos + len > data.length) throw RangeError('LOBBY_RMS_EOF');
       final s = utf8.decode(data.sublist(pos, pos + len));
       pos += len;
       return s;
@@ -2881,7 +3534,10 @@ abstract final class ServerListStore {
     final n = u8();
     final list = <GameServerEntry>[];
     for (var i = 0; i < n; i++) {
-      list.add(GameServerEntry(utf(), utf(), u16()));
+      final name = utf();
+      final ip = utf();
+      final port = u16();
+      list.add(GameServerEntry(name, ip, port));
     }
     return list;
   }
@@ -2897,6 +3553,7 @@ abstract final class ServerListStore {
 
 ### `D:\personal\army/lib\features\authentication\data\session_packet_mapper.dart`
 ```dart
+import 'package:logging/logging.dart';
 import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/features/authentication/domain/user_session.dart';
 
@@ -2906,6 +3563,8 @@ import 'package:mobiarmy_flutter/features/authentication/domain/user_session.dar
 /// loadInfoAll (cmd 3), log (cmd 45), idNotColision (cmd 92).
 class SessionPacketMapper {
   const SessionPacketMapper();
+
+  static final _logger = Logger('SessionPacketMapper');
 
   static const int glassCount = 10; // glass table ids 0..9
   static const int equipSlotCount = 5; // gun, hat, armor, glasses, wing
@@ -2956,12 +3615,16 @@ class SessionPacketMapper {
       );
     }
 
-    // Trailing UTFs "a", "b", "c" — consume if present, but do not fail the
-    // parse if a future server version appends more fields.
+    // Trailing UTFs "a", "b", "c"
+    if (r.available > 0) r.readUTF();
+    if (r.available > 0) r.readUTF();
+    if (r.available > 0) r.readUTF();
+
+    // STRICT PROTOCOL PARITY: ensure all bytes consumed.
     if (r.available > 0) {
-      r.readUTF();
-      if (r.available > 0) r.readUTF();
-      if (r.available > 0) r.readUTF();
+      _logger.warning('loadInfoAll: ${r.available} bytes remaining unread. Possible protocol extension.');
+      // Consume remaining bytes to prevent dispatcher corruption.
+      r.readBytes(r.available);
     }
 
     return UserSession(
@@ -3139,6 +3802,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
 import 'package:mobiarmy_flutter/features/authentication/domain/account_credentials.dart';
 import 'package:mobiarmy_flutter/features/authentication/domain/authentication_state.dart';
+import 'package:mobiarmy_flutter/shared/widgets/bitmap_text.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_button.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_panel.dart';
+import 'package:mobiarmy_flutter/shared/widgets/menu_background.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -3147,14 +3815,21 @@ class LoginScreen extends ConsumerStatefulWidget {
   ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends ConsumerState<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> with SingleTickerProviderStateMixin {
   final _username = TextEditingController();
   final _password = TextEditingController();
   bool _remember = true;
+  bool _showIntro = true;
+  late final AnimationController _introController;
 
   @override
   void initState() {
     super.initState();
+    _introController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..forward().then((_) => setState(() => _showIntro = false));
+
     Future<void>.microtask(() async {
       final saved = await ref
           .read(authControllerProvider.notifier)
@@ -3171,14 +3846,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   void dispose() {
     _username.dispose();
     _password.dispose();
+    _introController.dispose();
     super.dispose();
   }
 
   Future<void> _login() async {
     FocusScope.of(context).unfocus();
-    await ref
-        .read(authControllerProvider.notifier)
-        .login(
+    await ref.read(authControllerProvider.notifier).login(
           AccountCredentials(
             username: _username.text.trim(),
             password: _password.text,
@@ -3190,90 +3864,169 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final auth = ref.watch(authControllerProvider);
-    final canLogin =
-        auth.status == AuthStatus.connected && _username.text.isNotEmpty;
+    final isBusy = auth.status == AuthStatus.authenticating;
 
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 420),
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text('Dang nhap',
-                      style: Theme.of(context).textTheme.headlineMedium),
-                  const SizedBox(height: 4),
-                  Text(
-                    'Server: ${auth.server?.endpoint ?? '-'} · client ${AccountCredentials.kClientVersion}',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  const SizedBox(height: 16),
-                  TextField(
-                    controller: _username,
-                    decoration: const InputDecoration(labelText: 'Tai khoan'),
-                    textInputAction: TextInputAction.next,
-                    onChanged: (_) => setState(() {}),
-                  ),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: _password,
-                    obscureText: true,
-                    decoration: const InputDecoration(labelText: 'Mat khau'),
-                    textInputAction: TextInputAction.done,
-                    onSubmitted: (_) => canLogin ? _login() : null,
-                  ),
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: _remember,
-                        onChanged: (v) => setState(() => _remember = v ?? true),
-                      ),
-                      const Text('Nho tai khoan'),
-                    ],
-                  ),
-                  if (auth.status == AuthStatus.failed &&
-                      auth.message != null) ...[
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.red.withValues(alpha: 0.15),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.redAccent),
-                      ),
-                      child: Text(auth.message!,
-                          style: const TextStyle(color: Colors.redAccent)),
+      body: GameViewport(
+        child: Stack(
+          children: [
+            const MenuBackground(),
+
+            if (_showIntro)
+              _buildIntro()
+            else
+              _buildLoginForm(auth, isBusy),
+
+            // Soft Keys (Bottom Bar)
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 40,
+                color: const Color(0xFFC5D6EE),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    LegacyButton(
+                      label: 'Menu',
+                      onPressed: () => ref.read(authControllerProvider.notifier).disconnect(),
                     ),
-                    const SizedBox(height: 8),
+                    if (isBusy)
+                      const SizedBox(
+                        width: 15,
+                        height: 15,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    else
+                      LegacyButton(
+                        label: 'Đăng nhập',
+                        onPressed: _login,
+                      ),
                   ],
-                  FilledButton(
-                    onPressed: canLogin ? _login : null,
-                    child: auth.status == AuthStatus.authenticating
-                        ? const SizedBox(
-                            width: 18,
-                            height: 18,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        : const Text('Dang nhap'),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildIntro() {
+    return AnimatedBuilder(
+      animation: _introController,
+      builder: (context, child) {
+        return Center(
+          child: Opacity(
+            opacity: 1.0 - _introController.value,
+            child: const BitmapText('Mobi Army 2', scale: 2.0),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildLoginForm(AuthenticationState auth, bool isBusy) {
+    return Center(
+      child: SingleChildScrollView(
+        child: LegacyPanel(
+          width: 250,
+          height: 180,
+          title: 'Đăng nhập',
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _LegacyTextField(
+                controller: _username,
+                label: 'Tài khoản:',
+                enabled: !isBusy,
+              ),
+              const SizedBox(height: 10),
+              _LegacyTextField(
+                controller: _password,
+                label: 'Mật khẩu:',
+                obscureText: true,
+                enabled: !isBusy,
+              ),
+              const SizedBox(height: 10),
+              GestureDetector(
+                onTap: () => setState(() => _remember = !_remember),
+                child: Row(
+                  children: [
+                    Icon(
+                      _remember ? Icons.check_box : Icons.check_box_outline_blank,
+                      size: 16,
+                      color: Colors.black,
+                    ),
+                    const SizedBox(width: 4),
+                    const BitmapText('Nhớ tài khoản', scale: 0.8, colorIndex: 2),
+                  ],
+                ),
+              ),
+              if (auth.status == AuthStatus.failed)
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: BitmapText(
+                    auth.message ?? 'Lỗi đăng nhập',
+                    colorIndex: 8, // RED
+                    scale: 0.7,
                   ),
-                  const SizedBox(height: 8),
-                  TextButton(
-                    onPressed: auth.isBusy
-                        ? null
-                        : () => ref
-                              .read(authControllerProvider.notifier)
-                              .disconnect(),
-                    child: const Text('Quay lai chon server'),
-                  ),
-                ],
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _LegacyTextField extends StatelessWidget {
+  const _LegacyTextField({
+    required this.controller,
+    required this.label,
+    this.obscureText = false,
+    this.enabled = true,
+  });
+
+  final TextEditingController controller;
+  final String label;
+  final bool obscureText;
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 80,
+          child: BitmapText(label, scale: 0.8, colorIndex: 2),
+        ),
+        Expanded(
+          child: Container(
+            height: 25,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: const Color(0xFF303030)),
+            ),
+            child: TextField(
+              controller: controller,
+              obscureText: obscureText,
+              enabled: enabled,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 12,
+                fontFamily: 'monospace',
+              ),
+              decoration: const InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 12),
               ),
             ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
@@ -3285,99 +4038,139 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobiarmy_flutter/app/router/app_route.dart';
+import 'package:mobiarmy_flutter/core/assets/bmfont.dart';
 import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
 import 'package:mobiarmy_flutter/features/authentication/data/server_catalog.dart';
-import 'package:mobiarmy_flutter/features/authentication/domain/authentication_state.dart';
+import 'package:mobiarmy_flutter/shared/widgets/bitmap_text.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_button.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_panel.dart';
 
-class ServerSelectionScreen extends ConsumerWidget {
+class ServerSelectionScreen extends ConsumerStatefulWidget {
   const ServerSelectionScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ServerSelectionScreen> createState() => _ServerSelectionScreenState();
+}
+
+class _ServerSelectionScreenState extends ConsumerState<ServerSelectionScreen> {
+  int _selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
     final auth = ref.watch(authControllerProvider);
 
-    // Router redirect pushes us to /login automatically once connected.
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                'Chọn server',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Máy ảo Android dùng 10.0.2.2 · thiết bị thật dùng IP LAN của máy chạy server',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: ListView(
-                  children: [
-                    for (final server in ServerCatalog.servers)
-                      Card(
-                        child: ListTile(
-                          leading: const Icon(Icons.dns),
-                          title: Text(server.name),
-                          subtitle: Text(server.endpoint),
-                          trailing: FilledButton(
-                            onPressed: auth.isBusy
-                                ? null
-                                : () => ref
-                                      .read(authControllerProvider.notifier)
-                                      .connect(server),
-                            child: const Text('Kết nối'),
-                          ),
+      backgroundColor: const Color(0xFF77D3FF),
+      body: GameViewport(
+        child: Stack(
+          children: [
+            Center(
+              child: LegacyPanel(
+                width: 300,
+                height: 200,
+                title: 'Chọn máy chủ',
+                child: ListView.builder(
+                  padding: EdgeInsets.zero,
+                  itemCount: ServerCatalog.servers.length,
+                  itemBuilder: (context, index) {
+                    final server = ServerCatalog.servers[index];
+                    final isSelected = _selectedIndex == index;
+
+                    return GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () => setState(() => _selectedIndex = index),
+                      child: Container(
+                        height: 25,
+                        margin: const EdgeInsets.symmetric(vertical: 2),
+                        color: isSelected ? const Color(0xFFFFA509) : Colors.transparent,
+                        alignment: Alignment.center,
+                        child: BitmapText(
+                          server.name,
+                          colorIndex: isSelected ? 2 : -1, // Black if selected
+                          anchor: GraphicsAnchor.hCenter | GraphicsAnchor.top,
                         ),
                       ),
+                    );
+                  },
+                ),
+              ),
+            ),
+
+            // Bottom Bar
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 40,
+                color: const Color(0xFFC5D6EE),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    LegacyButton(
+                      label: 'Cập nhật',
+                      onPressed: () {},
+                    ),
+                    LegacyButton(
+                      label: 'Offline',
+                      onPressed: () => context.push(AppRoute.offlineSetup.path),
+                    ),
+                    LegacyButton(
+                      label: 'Chọn',
+                      onPressed: () {
+                        final server = ServerCatalog.servers[_selectedIndex];
+                        ref.read(authControllerProvider.notifier).connect(server);
+                      },
+                    ),
+                    LegacyButton(
+                      label: 'Thoát',
+                      onPressed: () {},
+                    ),
                   ],
                 ),
               ),
-              if (auth.isBusy)
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 18,
-                        height: 18,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      ),
-                      SizedBox(width: 12),
-                      Text('Đang kết nối / handshake…'),
-                    ],
-                  ),
-                ),
-              if (auth.status == AuthStatus.failed && auth.message != null)
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.red.withValues(alpha: 0.15),
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.redAccent),
-                  ),
-                  child: Text(
-                    auth.message!,
-                    style: const TextStyle(color: Colors.redAccent),
-                  ),
-                ),
-              const SizedBox(height: 8),
-              OutlinedButton.icon(
-                icon: const Icon(Icons.sports_esports),
-                label: const Text('Chơi offline (sandbox)'),
-                onPressed: () => context.go(AppRoute.gameplaySandbox.path),
+            ),
+
+            if (auth.isBusy)
+              const Center(
+                child: CircularProgressIndicator(color: Colors.white),
               ),
-            ],
-          ),
+          ],
         ),
       ),
     );
   }
 }
+```
+
+### `D:\personal\army/lib\features\gameplay\application\chat_controller.dart`
+```dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+class ChatMessage {
+  ChatMessage({required this.sender, required this.text});
+  final String sender;
+  final String text;
+  final DateTime timestamp = DateTime.now();
+}
+
+class ChatController extends Notifier<List<ChatMessage>> {
+  @override
+  List<ChatMessage> build() => [];
+
+  void addMessage(String sender, String text) {
+    state = [...state, ChatMessage(sender: sender, text: text)];
+    if (state.length > 50) {
+      state = state.sublist(state.length - 50);
+    }
+  }
+
+  void clear() => state = [];
+}
+
+final chatControllerProvider = NotifierProvider<ChatController, List<ChatMessage>>(ChatController.new);
 ```
 
 ### `D:\personal\army/lib\features\gameplay\application\chat_service.dart`
@@ -3426,102 +4219,34 @@ final chatServiceProvider =
     NotifierProvider<ChatService, List<ChatMessage>>(ChatService.new);
 ```
 
-### `D:\personal\army/lib\features\gameplay\application\game_controls.dart`
-```dart
-import 'package:mobiarmy_flutter/core/network/command/commands.dart';
-import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
-import 'package:mobiarmy_flutter/core/network/transport/tcp_session.dart';
-
-/// Port cac lenh gameplay client -> server (GameService):
-///   waitForFire cmd 22, move cmd 21, useItem cmd 26, skipTurn cmd 49,
-///   chat cmd 9, getMaterialIcon cmd 126.
-class GameControls {
-  GameControls(this._session);
-  final TcpSession _session;
-
-  /// GameService.waitForFIRE(type, x, y, angle, force, force_2, numShoot).
-  /// x/y = VI TRI SUNG, force 1..30, angle SHORT (co the am, vd King Kong 30).
-  Future<void> shoot({
-    required int type, required int gunX, required int gunY,
-    required int angle, required int force, int force2 = 0, int numShoot = 1,
-    bool isDoubleBull = false,
-  }) async {
-    final m = Message(Commands.shoot);
-    m.writer().writeByte(type);
-    m.writer().writeShort(gunX);
-    m.writer().writeShort(gunY);
-    m.writer().writeShort(angle);
-    m.writer().writeByte(force);
-    if (isDoubleBull) m.writer().writeByte(force2);
-    m.writer().writeByte(numShoot);
-    await _session.sendMessage(m);
-  }
-
-  /// GameService.move(x, y) — cmd 21.
-  Future<void> move(int x, int y) async {
-    final m = Message(Commands.move);
-    m.writer().writeShort(x);
-    m.writer().writeShort(y);
-    await _session.sendMessage(m);
-  }
-
-  /// GameService.useItem(item) — cmd 26.
-  Future<void> useItem(int itemId) async {
-    final m = Message(Commands.useItem);
-    m.writer().writeByte(itemId);
-    await _session.sendMessage(m);
-  }
-
-  /// GameService.skipTurn() — cmd 49.
-  Future<void> skipTurn() => _session.sendMessage(Message(Commands.skipTurn));
-
-  /// Chat cmd 9 — TODO verify: ban goc dung GameService.chat(String) viet UTF.
-  Future<void> chat(String text) async {
-    final m = Message(Commands.chat);
-    m.writer().writeUTF(text);
-    await _session.sendMessage(m);
-  }
-
-  /// GameService.getMaterialIcon — cmd 126: xin anh tile/material tu server.
-  Future<void> requestMaterialIcon(int action, int id, [int index = 0]) async {
-    final m = Message(126);
-    m.writer().writeByte(action);
-    m.writer().writeByte(id);
-    if (action == 3 || action == 4) m.writer().writeByte(index);
-    await _session.sendMessage(m);
-  }
-}
-```
-
 ### `D:\personal\army/lib\features\gameplay\application\game_session_bootstrap.dart`
 ```dart
 import 'package:mobiarmy_flutter/core/network/data_cache_parsers.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/game_start_handler.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/match_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/destructible_terrain.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/map_binary_parser.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/terrain_component.dart';
 
-/// Noi GameSessionStart (cmd 20) -> GameMapDefinition + terrain thuc.
+/// Noi MatchState (from startGame cmd 20) -> GameMapDefinition + terrain thuc.
 /// Map lay tu valuesdata2 da sync (DataCache.mapFiles), parse bang
 /// MapBinaryParser — khong can JSON nua.
 class OnlineGameSetup {
   OnlineGameSetup({
-    required this.session, required this.map,
-    required this.terrain, required this.spawnPoints,
+    required this.match, required this.map,
+    required this.terrain,
   });
-  final GameSessionStart session;
+  final MatchState match;
   final GameMapDefinition map;
   final DestructibleTerrain terrain;
-  final List<SpawnPoint> spawnPoints;
 }
 
 abstract final class GameSessionBootstrap {
-  static OnlineGameSetup? build(GameSessionStart session) {
-    if (session.mapId < 0 || session.mapId >= DataCache.mapFiles.length) {
+  static OnlineGameSetup? build(MatchState match) {
+    if (match.mapId < 0 || match.mapId >= DataCache.mapFiles.length) {
       return null;
     }
-    final entry = DataCache.mapFiles[session.mapId];
+    final entry = DataCache.mapFiles[match.mapId];
     final bin = MapBinaryParser.parse(entry.data);
 
     // Brick rects tu nhi phan. tileSize approximation 20px —
@@ -3535,14 +4260,12 @@ abstract final class GameSessionBootstrap {
     ];
 
     final spawnPoints = <SpawnPoint>[];
-    for (var i = 0; i < session.playerX.length; i++) {
-      if (session.playerX[i] != -1) {
-        spawnPoints.add(SpawnPoint(x: session.playerX[i], y: session.playerY[i]));
-      }
+    for (final p in match.players.values) {
+      spawnPoints.add(SpawnPoint(x: p.x, y: p.y));
     }
 
     final map = GameMapDefinition(
-      id: session.mapId,
+      id: match.mapId,
       width: bin.width,
       height: bin.height,
       layers: [MapLayerDefinition(id: 'terrain', bricks: bricks)],
@@ -3558,491 +4281,326 @@ abstract final class GameSessionBootstrap {
 
     final terrain = TerrainMaskBuilder.build(map, tileSize: 20);
     return OnlineGameSetup(
-      session: session, map: map, terrain: terrain, spawnPoints: spawnPoints,
+      match: match, map: map, terrain: terrain,
     );
   }
 }
 ```
 
-### `D:\personal\army/lib\features\gameplay\application\game_start_handler.dart`
+### `D:\personal\army/lib\features\gameplay\application\gameplay_controller.dart`
 ```dart
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:mobiarmy_flutter/core/network/command/commands.dart';
+import 'package:mobiarmy_flutter/core/network/dispatcher/message_dispatcher.dart';
 import 'package:mobiarmy_flutter/core/network/network_provider.dart';
 import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
+import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
+import 'package:mobiarmy_flutter/features/gameplay/application/chat_controller.dart';
+import 'package:mobiarmy_flutter/features/gameplay/data/gameplay_packet_mapper.dart';
+import 'package:mobiarmy_flutter/features/gameplay/data/gameplay_repository.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/match_state.dart';
+import 'package:mobiarmy_flutter/features/room/application/room_controller.dart';
 
-/// Port MessageHandler case 20 (startGame):
-///   trainingMode=false: mapID(byte), time(byte), team(unsignedShort),
-///   playerLent(=8, hoac byte neu currLevel==7),
-///   lap: playerX[i](short) != -1 -> playerY[i](short), maxHP[i](short)
-/// -> GameScr.initGame(mapID, time, playerX, playerY, maxHP, team)
-class GameSessionStart {
-  GameSessionStart({
-    required this.mapId, required this.time, required this.team,
-    required this.playerX, required this.playerY, required this.maxHp,
-  });
-  final int mapId, time, team;
-  final List<int> playerX, playerY, maxHp;
-}
+class GameplayController extends Notifier<MatchState?> {
+  final _logger = Logger('GameplayController');
 
-class GameStartNotifier extends Notifier<GameSessionStart?> {
-  final _logger = Logger('GameStart');
+  late GameplayRepository _repository;
+  late GameplayPacketMapper _mapper;
+  Timer? _turnTimer;
 
   @override
-  GameSessionStart? build() {
-    final d = ref.watch(messageDispatcherProvider);
-    d.register(Commands.startGame, _onStart);
-    d.register(Commands.setWind, _onWind);
-    d.register(Commands.setTurn, _onTurn);
+  MatchState? build() {
+    _mapper = const GameplayPacketMapper();
+    _repository = GameplayRepository(ref.watch(tcpSessionProvider));
+
+    final dispatcher = ref.watch(messageDispatcherProvider);
+    _registerHandlers(dispatcher);
+
+    ref.onDispose(() {
+      _unregisterHandlers(dispatcher);
+      _turnTimer?.cancel();
+    });
+
     return null;
   }
 
-  void _onStart(Message msg) {
-    final r = msg.reader();
-    // trainingMode = false trong luong online thong thuong
-    final mapId = r.readByte();
-    final time = r.readByte();
-    final team = r.readUnsignedShort();
-    final playerLent = 8; // TODO: PrepareScr.currLevel == 7 thi doc byte
-    final playerX = <int>[], playerY = <int>[], maxHp = <int>[];
-    for (var i = 0; i < playerLent; i++) {
-      final x = r.readShort();
-      playerX.add(x);
-      if (x != -1) {
-        playerY.add(r.readShort());
-        maxHp.add(r.readShort());
-      } else {
-        playerY.add(-1);
-        maxHp.add(0);
-      }
+  void _registerHandlers(MessageDispatcher dispatcher) {
+    dispatcher
+      ..register(Commands.startGame, _onStartGame)
+      ..register(Commands.setTurn, _onNextTurn)
+      ..register(Commands.setWind, _onWind)
+      ..register(Commands.move, _onMoveSync)
+      ..register(Commands.setXy, _onUpdateXy)
+      ..register(Commands.shoot, _onShootSync)
+      ..register(Commands.shootResult, _onShootResult)
+      ..register(Commands.chat, _onChat)
+      ..register(Commands.skipTurn, _onSkipTurn)
+      ..register(Commands.useItem, _onUseItem)
+      ..register(Commands.getBoss, _onBossSpawn)
+      ..register(Commands.bonusMoney, _onBonusMoney)
+      ..register(Commands.leaveRoomWait, _onPlayerLeave)
+      ..register(Commands.finishMatch, _onFinishMatch);
+  }
+
+  void _unregisterHandlers(MessageDispatcher dispatcher) {
+    dispatcher
+      ..unregister(Commands.startGame, _onStartGame)
+      ..unregister(Commands.setTurn, _onNextTurn)
+      ..unregister(Commands.setWind, _onWind)
+      ..unregister(Commands.move, _onMoveSync)
+      ..unregister(Commands.setXy, _onUpdateXy)
+      ..unregister(Commands.shoot, _onShootSync)
+      ..unregister(Commands.shootResult, _onShootResult)
+      ..unregister(Commands.chat, _onChat)
+      ..unregister(Commands.skipTurn, _onSkipTurn)
+      ..unregister(Commands.useItem, _onUseItem)
+      ..unregister(Commands.leaveRoomWait, _onPlayerLeave)
+      ..unregister(Commands.finishMatch, _onFinishMatch);
+  }
+
+  // ---------------------------------------------------------------- commands
+
+  Future<void> move(int type, int x, int y) async {
+    // Local update first? No, server authoritative.
+    await _repository.sendMove(type, x, y);
+  }
+
+  Future<void> shoot(int angle, int force, int force2, int nShot) async {
+    await _repository.sendShoot(angle, force, force2, nShot);
+  }
+
+  Future<void> useItem(int itemId) async {
+    await _repository.sendUseItem(itemId);
+  }
+
+  Future<void> leaveMatch() async {
+    await _repository.sendLeave();
+    _turnTimer?.cancel();
+    state = null;
+  }
+
+  // --------------------------------------------------------------- packets
+
+  void _onStartGame(Message message) {
+    final roomState = ref.read(roomControllerProvider);
+    if (roomState == null) return;
+
+    try {
+      state = _mapper.decodeStartGame(message, roomState.players);
+      _logger.info('Match started on map ${state?.mapId}');
+    } catch (e, stack) {
+      _logger.severe('startGame parse failed', e, stack);
     }
-    state = GameSessionStart(
-      mapId: mapId, time: time, team: team,
-      playerX: playerX, playerY: playerY, maxHp: maxHp,
-    );
-    // TODO: dieu huong sang GameplayPage + khoi tao ArmyGame tu GameSessionStart
-    // (map tu DataCache.mapFiles[mapId], spawn theo playerX/playerY).
   }
 
-  void _onWind(Message msg) {
-    final r = msg.reader();
-    final windX = r.readShort();
-    final windY = r.readShort();
-    _logger.info('Wind: ($windX, $windY)');
-    // TODO: GameScr.windx = windX — cap nhat HUD gio + physics luc ban.
-  }
-
-  void _onTurn(Message msg) {
-    final whoNext = msg.reader().readByte();
-    _logger.info('Next turn: $whoNext');
-    // TODO: cap nhat luot ban tren HUD.
-  }
-}
-
-final gameStartProvider =
-    NotifierProvider<GameStartNotifier, GameSessionStart?>(GameStartNotifier.new);
-```
-
-### `D:\personal\army/lib\features\gameplay\application\gameplay_handler.dart`
-```dart
-import 'package:logging/logging.dart';
-import 'package:mobiarmy_flutter/core/network/command/commands.dart';
-import 'package:mobiarmy_flutter/core/network/dispatcher/message_dispatcher.dart';
-import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
-
-import '../game/army_game.dart';
-import '../game/projectile/projectile_trajectory.dart';
-
-class GameplayHandler {
-  GameplayHandler(this._dispatcher);
-  final MessageDispatcher _dispatcher;
-  final _logger = Logger('GameplayHandler');
-
-  ArmyGame? _game;
-
-  void attachGame(ArmyGame game) {
-    _game = game;
-  }
-
-  void detachGame() {
-    _game = null;
-  }
-
-  void init() {
-    _dispatcher.register(Commands.shoot, _handleShoot);
-    _dispatcher.register(Commands.move, _handleMove);
-    _dispatcher.register(Commands.setTurn, _handleSetTurn);
-  }
-
-  void _handleSetTurn(Message message) {
-    final reader = message.reader();
-    final nextPlayer = reader.readByte();
-    _logger.info('Next turn: player $nextPlayer');
-    // TODO: Update HUD and active player marker
-  }
-
-  void _handleShoot(Message message) {
-    final reader = message.reader();
-    final typeShoot = reader.readByte();
-    reader.readByte();
-    final playerIndex = reader.readByte();
-    final bulletId = reader.readByte();
-    reader.readShort();
-    reader.readShort();
-    reader.readShort();
-
-    // ... handle special bullets ...
-
-    reader.readByte();
-    final numBullets = reader.readByte();
-
-    final allTrajectories = <ProjectileTrajectory>[];
-
-    for (int i = 0; i < numBullets; i++) {
-      final numFrames = reader.readShort();
-      final frames = <TrajectoryFrame>[];
-
-      int lastX = 0;
-      int lastY = 0;
-
-      for (int j = 0; j < numFrames; j++) {
-        if (j == 0 || typeShoot == 1) {
-          lastX = reader.readShort();
-          lastY = reader.readShort();
-        } else {
-          lastX += reader.readByte();
-          lastY += reader.readByte();
-        }
-        frames.add(TrajectoryFrame(x: lastX, y: lastY));
-      }
-      allTrajectories.add(
-        ProjectileTrajectory(bulletId: bulletId, frames: frames),
+  void _onNextTurn(Message message) {
+    if (state == null) return;
+    try {
+      final (playerId, time) = _mapper.decodeNextTurn(message);
+      state = state!.copyWith(
+        currentTurnPlayerId: playerId,
+        turnTimeSeconds: time,
       );
-    }
 
-    _logger.info(
-      'Received shoot message for player $playerIndex, $numBullets bullets',
-    );
-
-    for (final trajectory in allTrajectories) {
-      _game?.spawnProjectile(trajectory);
+      _turnTimer?.cancel();
+      _turnTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (state == null || state!.turnTimeSeconds <= 0) {
+          timer.cancel();
+          return;
+        }
+        state = state!.copyWith(turnTimeSeconds: state!.turnTimeSeconds - 1);
+      });
+    } catch (e) {
+      _logger.warning('nextTurn parse failed: $e');
     }
   }
 
-  void _handleMove(Message message) {
-    final reader = message.reader();
-    final whoMove = reader.readByte();
-    final x = reader.readShort();
-    final y = reader.readShort();
-    _logger.info('Player $whoMove moved to ($x, $y)');
+  void _onWind(Message message) {
+    if (state == null) return;
+    try {
+      final (wx, wy) = _mapper.decodeWind(message);
+      state = state!.copyWith(windX: wx, windY: wy);
+      ref.read(chatControllerProvider.notifier).addMessage(
+            'System',
+            'Wind changed to $wx',
+          );
+    } catch (e) {
+      _logger.warning('setWind parse failed: $e');
+    }
+  }
 
-    _game?.players[whoMove]?.moveTo(x.toDouble(), y.toDouble());
+  void _onMoveSync(Message message) {
+    if (state == null) return;
+    try {
+      final (playerId, type, x, y) = _mapper.decodeMove(message);
+      final player = state!.players[playerId];
+      if (player == null) return;
+
+      final players = Map<int, MatchPlayer>.from(state!.players);
+      players[playerId] = player.copyWith(x: x, y: y);
+      state = state!.copyWith(players: players);
+
+      // Notify Flame Engine via side effect or stream if needed
+      _logger.fine('Player $playerId moved to $x, $y');
+    } catch (e) {
+      _logger.warning('moveSync parse failed: $e');
+    }
+  }
+
+  void _onUpdateXy(Message message) {
+    if (state == null) return;
+    try {
+      final (playerId, x, y) = _mapper.decodeUpdateXy(message);
+      final player = state!.players[playerId];
+      if (player == null) return;
+
+      final players = Map<int, MatchPlayer>.from(state!.players);
+      players[playerId] = player.copyWith(x: x, y: y);
+      state = state!.copyWith(players: players);
+    } catch (e) {
+      _logger.warning('updateXy parse failed: $e');
+    }
+  }
+
+  void _onShootSync(Message message) {
+    if (state == null) return;
+    try {
+      final shootData = _mapper.decodeShoot(message);
+      state = state!.copyWith(lastShoot: shootData);
+    } catch (e, stack) {
+      _logger.severe('shootSync parse failed', e, stack);
+    }
+  }
+
+  void _onShootResult(Message message) {
+    if (state == null) return;
+    try {
+      final hits = _mapper.decodeShootResult(message);
+      final players = Map<int, MatchPlayer>.from(state!.players);
+      for (final hit in hits) {
+        final p = players[hit.playerId];
+        if (p != null) {
+          players[hit.playerId] = p.copyWith(
+            hp: hit.newHp,
+            isDead: hit.isDead,
+          );
+        }
+      }
+      state = state!.copyWith(players: players);
+    } catch (e) {
+      _logger.warning('shootResult parse failed: $e');
+    }
+  }
+
+  void _onChat(Message message) {
+    try {
+      final r = message.reader();
+      final playerId = r.readInt();
+      final text = r.readUTF();
+      final sender = state?.players[playerId]?.base.name ?? 'System';
+      ref.read(chatControllerProvider.notifier).addMessage(sender, text);
+    } catch (_) {}
+  }
+
+  void _onSkipTurn(Message message) {
+    try {
+      final playerId = _mapper.decodeSkipTurn(message);
+      _logger.info('Player $playerId skipped their turn');
+    } catch (_) {}
+  }
+
+  void _onUseItem(Message message) {
+    try {
+      final (playerId, itemId) = _mapper.decodeUseItem(message);
+      _logger.info('Player $playerId used item $itemId');
+    } catch (e) {
+      _logger.warning('useItem parse failed: $e');
+    }
+  }
+
+  void _onBossSpawn(Message message) {
+    if (state == null) return;
+    try {
+      final newPlayers = _mapper.decodeAddPlayers(message);
+      final players = Map<int, MatchPlayer>.from(state!.players);
+      for (final p in newPlayers) {
+        players[p.base.id] = p;
+        _logger.info('Boss spawned: ${p.base.name} at ${p.x}, ${p.y}');
+      }
+      state = state!.copyWith(players: players);
+    } catch (e) {
+      _logger.warning('bossSpawn parse failed: $e');
+    }
+  }
+
+  void _onBonusMoney(Message message) {
+    try {
+      final (money, reason) = _mapper.decodeBonusMoney(message);
+      ref.read(chatControllerProvider.notifier).addMessage(
+            'System',
+            'Nhận $money xu: $reason',
+          );
+    } catch (e) {
+      _logger.warning('bonusMoney parse failed: $e');
+    }
+  }
+
+  void _onPlayerLeave(Message message) {
+    if (state == null) return;
+    try {
+      final playerId = _mapper.decodeLeave(message);
+      final players = Map<int, MatchPlayer>.from(state!.players);
+      players.remove(playerId);
+      state = state!.copyWith(players: players);
+      _logger.info('Player $playerId left the match');
+    } catch (e) {
+      _logger.warning('playerLeave parse failed: $e');
+    }
+  }
+
+  void _onFinishMatch(Message message) {
+    if (state == null) return;
+    try {
+      final result = _mapper.decodeFinishMatch(message);
+      state = state!.copyWith(
+        isMatchEnded: true,
+        matchResult: result,
+      );
+      _logger.info('Match finished');
+    } catch (e) {
+      _logger.warning('finishMatch parse failed: $e');
+    }
+  }
+
+  Future<void> skipTurn() async {
+    await _repository.sendSkipTurn();
+  }
+
+  bool get isMyTurn {
+    final myId = ref.read(authControllerProvider).session?.id;
+    return state?.currentTurnPlayerId == myId;
   }
 }
+
+final gameplayControllerProvider =
+    NotifierProvider<GameplayController, MatchState?>(GameplayController.new);
 ```
 
 ### `D:\personal\army/lib\features\gameplay\application\gameplay_provider.dart`
 ```dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobiarmy_flutter/core/network/network_provider.dart';
-import 'gameplay_handler.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/match_state.dart';
+import 'gameplay_controller.dart';
 
-final gameplayHandlerProvider = Provider<GameplayHandler>((ref) {
-  final dispatcher = ref.watch(messageDispatcherProvider);
-  final handler = GameplayHandler(dispatcher);
-  handler.init();
-  return handler;
-});
-```
+export 'gameplay_handler.dart';
 
-### `D:\personal\army/lib\features\gameplay\application\lobby_service.dart`
-```dart
-import 'dart:async';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logging/logging.dart';
-import 'package:mobiarmy_flutter/core/network/command/commands.dart';
-import 'package:mobiarmy_flutter/core/network/network_provider.dart';
-import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
-import 'package:mobiarmy_flutter/core/network/transport/tcp_session.dart';
-import 'package:mobiarmy_flutter/features/gameplay/domain/room_list_models.dart';
-
-/// Port RoomListScr flow:
-///   gui cmd 7 (GameService.requestBoardList(byte id)) -> server tra cmd -28
-///   parse RoomInfoEntry -> hien thi lobby.
-class LobbyService extends Notifier<List<RoomInfoEntry>> {
-  final _logger = Logger('LobbyService');
-  late final TcpSession _session;
-
-  @override
-  List<RoomInfoEntry> build() {
-    _session = ref.watch(tcpSessionProvider);
-    ref.watch(messageDispatcherProvider).register(Commands.roomWaitList, _onRoomList);
-    return const [];
-  }
-
-  /// GameService.requestBoardList(byte id) — cmd 7.
-  Future<void> requestRoomList() {
-    final m = Message(Commands.roomWaitList);
-    m.writer().writeByte(0);
-    return _session.sendMessage(m);
-  }
-
-  void _onRoomList(Message msg) {
-    try {
-      state = RoomListParser.parse(msg);
-    } catch (e, st) {
-      _logger.severe('Room list parse failed', e, st);
-    }
-  }
-
-  /// GameService.joinBoard(roomID, boardID, pass) — cmd 8.
-  Future<void> joinRoom(int roomId, int boardId, [String pass = '']) {
-    final m = Message(Commands.joinRoomWait);
-    m.writer().writeByte(roomId);
-    m.writer().writeByte(boardId);
-    m.writer().writeUTF(pass);
-    return _session.sendMessage(m);
-  }
-}
-
-final lobbyServiceProvider =
-    NotifierProvider<LobbyService, List<RoomInfoEntry>>(LobbyService.new);
-```
-
-### `D:\personal\army/lib\features\gameplay\application\online_game_service.dart`
-```dart
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logging/logging.dart';
-import 'package:mobiarmy_flutter/core/network/command/commands.dart';
-import 'package:mobiarmy_flutter/core/network/network_provider.dart';
-import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
-import 'package:mobiarmy_flutter/core/network/transport/tcp_session.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/game_controls.dart';
-
-/// Trang thai HUD game online: gio (cmd 25), luot (cmd 24), vi tri
-/// cap nhat (cmd 53 setXY).
-class OnlineGameState {
-  const OnlineGameState({
-    this.windX = 0, this.windY = 0,
-    this.currentPlayer = -1, this.myIndex = -1,
-  });
-  final int windX, windY, currentPlayer, myIndex;
-  bool get isMyTurn => myIndex != -1 && currentPlayer == myIndex;
-
-  OnlineGameState copyWith({
-    int? windX, int? windY, int? currentPlayer, int? myIndex,
-  }) => OnlineGameState(
-    windX: windX ?? this.windX, windY: windY ?? this.windY,
-    currentPlayer: currentPlayer ?? this.currentPlayer,
-    myIndex: myIndex ?? this.myIndex,
-  );
-}
-
-class OnlineGameService extends Notifier<OnlineGameState> {
-  final _logger = Logger('OnlineGameService');
-  late final TcpSession _session;
-  late final GameControls _controls;
-
-  @override
-  OnlineGameState build() {
-    _session = ref.watch(tcpSessionProvider);
-    _controls = GameControls(_session);
-    final d = ref.watch(messageDispatcherProvider);
-    d.register(Commands.setWind, _onWind);
-    d.register(Commands.setTurn, _onTurn);
-    d.register(Commands.setXy, _onSetXy);
-    return const OnlineGameState();
-  }
-
-  void _onWind(Message msg) {
-    final r = msg.reader();
-    state = state.copyWith(windX: r.readShort(), windY: r.readShort());
-  }
-
-  void _onTurn(Message msg) {
-    state = state.copyWith(currentPlayer: msg.reader().readByte());
-  }
-
-  /// cmd 53 setXY: cap nhat vi tri nguoi choi (who, x, y).
-  void _onSetXy(Message msg) {
-    final r = msg.reader();
-    final who = r.readByte();
-    final x = r.readShort();
-    final y = r.readShort();
-    _logger.fine('setXY $who -> ($x,$y)');
-    // TODO: game.players[who].moveTo(x, y)
-  }
-
-  // ------------------------------------------------- controls (GUI cmd)
-
-  Future<void> shoot({
-    required int type, required int gunX, required int gunY,
-    required int angle, required int force,
-  }) => _controls.shoot(
-    type: type, gunX: gunX, gunY: gunY,
-    angle: angle, force: force.clamp(1, 30),
-  );
-
-  Future<void> move(int x, int y) => _controls.move(x, y);
-  Future<void> useItem(int itemId) => _controls.useItem(itemId);
-  Future<void> skipTurn() => _controls.skipTurn();
-}
-
-final onlineGameServiceProvider =
-    NotifierProvider<OnlineGameService, OnlineGameState>(OnlineGameService.new);
-```
-
-### `D:\personal\army/lib\features\gameplay\application\room_service.dart`
-```dart
-import 'dart:async';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logging/logging.dart';
-import 'package:mobiarmy_flutter/core/network/command/commands.dart';
-import 'package:mobiarmy_flutter/core/network/network_provider.dart';
-import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
-import 'package:mobiarmy_flutter/core/network/transport/tcp_session.dart';
-
-/// Port MessageHandler case 8 (joinBoard) + case 12 (nguoi choi moi vao):
-///   cmd 8: ownerID(int), money(int), map(byte), gameMODE(byte),
-///          lap den het: IDDB(int) != -1 -> clanID(short), name(UTF),
-///          xu(int), level2(uByte), gun(byte), 5 x short equipID, isReady(bool)
-class RoomPlayer {
-  RoomPlayer({
-    required this.idDb, required this.clanId, required this.name,
-    required this.xu, required this.level2, required this.gun,
-    required this.equipIds, required this.isReady,
-  });
-  int idDb, xu, gun;
-  int clanId, level2;
-  String name;
-  List<int> equipIds;
-  bool isReady;
-}
-
-class RoomWaitState {
-  const RoomWaitState({
-    this.ownerId = -1, this.money = 0, this.mapId = 0, this.gameMode = 0,
-    this.players = const [], this.joined = false,
-  });
-  final int ownerId, money, mapId, gameMode;
-  final List<RoomPlayer> players;
-  final bool joined;
-
-  RoomWaitState copyWith({
-    int? ownerId, int? money, int? mapId, int? gameMode,
-    List<RoomPlayer>? players, bool? joined,
-  }) => RoomWaitState(
-    ownerId: ownerId ?? this.ownerId, money: money ?? this.money,
-    mapId: mapId ?? this.mapId, gameMode: gameMode ?? this.gameMode,
-    players: players ?? this.players, joined: joined ?? this.joined,
-  );
-}
-
-class RoomService extends Notifier<RoomWaitState> {
-  final _logger = Logger('RoomService');
-  late final TcpSession _session;
-
-  @override
-  RoomWaitState build() {
-    _session = ref.watch(tcpSessionProvider);
-    final d = ref.watch(messageDispatcherProvider);
-    d.register(Commands.joinRoomWait, _onJoinBoard);
-    d.register(12, _onPlayerJoin);        // nguoi choi moi vao phong cho
-    d.register(Commands.changeTeam, _onChangeTeam);
-    d.register(Commands.selectMap, _onMapChanged);
-    return const RoomWaitState();
-  }
-
-  /// cmd 8 — joinBoard response (day du danh sach).
-  void _onJoinBoard(Message msg) {
-    final r = msg.reader();
-    final ownerId = r.readInt();
-    final money = r.readInt();
-    final mapId = r.readByte();
-    final gameMode = r.readByte();
-    final players = <RoomPlayer>[];
-    while (r.available > 0) {
-      final idDb = r.readInt();
-      if (idDb == -1) continue;
-      players.add(RoomPlayer(
-        idDb: idDb,
-        clanId: r.readShort(),
-        name: r.readUTF(),
-        xu: r.readInt(),
-        level2: r.readUnsignedByte(),
-        gun: r.readByte(),
-        equipIds: [for (var i = 0; i < 5; i++) r.readShort()],
-        isReady: r.readBoolean(),
-      ));
-    }
-    // Chu phong luon ready
-    for (final p in players) {
-      if (p.idDb == ownerId) p.isReady = true;
-    }
-    state = state.copyWith(
-      ownerId: ownerId, money: money, mapId: mapId,
-      gameMode: gameMode, players: players, joined: true,
-    );
-  }
-
-  /// cmd 12 — nguoi choi moi join luc dang cho.
-  void _onPlayerJoin(Message msg) {
-    final r = msg.reader();
-    r.readByte(); // seat
-    final idDb = r.readInt();
-    final clanId = r.readShort();
-    final name = r.readUTF();
-    final level2 = r.readUnsignedByte();
-    r.readByte(); // gun (phần con lai cua PlayerInfo gui sau — bo qua phien ban toi thieu)
-    final players = [...state.players];
-    if (!players.any((p) => p.idDb == idDb)) {
-      players.add(RoomPlayer(
-        idDb: idDb, clanId: clanId, name: name, xu: 0,
-        level2: level2, gun: 0, equipIds: const [0, 0, 0, 0, 0],
-        isReady: false,
-      ));
-      state = state.copyWith(players: players);
-    }
-  }
-
-  void _onChangeTeam(Message msg) {
-    final r = msg.reader();
-    final userId = r.readInt();
-    r.readByte(); // position — cap nhat lai seat khi co model seat
-    _logger.info('Change team: $userId');
-  }
-
-  void _onMapChanged(Message msg) {
-    final mId = msg.reader().readByte();
-    state = state.copyWith(mapId: mId);
-  }
-
-  // -------------------------------------------------------- outgoing (GameService)
-
-  /// ready(boolean) — cmd 16.
-  Future<void> setReady(bool isReady) {
-    final m = Message(16);
-    m.writer().writeBoolean(isReady);
-    return _session.sendMessage(m);
-  }
-
-  /// selectMap(byte) — cmd 70 "ChangeMap" (yeu cau doi map).
-  Future<void> requestChangeMap(int mapId) {
-    final m = Message(70);
-    m.writer().writeByte(mapId);
-    return _session.sendMessage(m);
-  }
-
-  /// startGame() — cmd 20 (chi chu phong).
-  Future<void> startGame() => _session.sendMessage(Message(20));
-
-  /// leaveRoomWait() — cmd 15.
-  Future<void> leaveRoom() => _session.sendMessage(Message(Commands.leaveRoomWait));
-}
-
-final roomServiceProvider =
-    NotifierProvider<RoomService, RoomWaitState>(RoomService.new);
+final gameplayControllerProvider =
+    NotifierProvider<GameplayController, MatchState?>(
+  GameplayController.new,
+);
 ```
 
 ### `D:\personal\army/lib\features\gameplay\data\character\equipment_manifest_parser.dart`
@@ -4096,6 +4654,294 @@ class EquipmentManifestParser {
 }
 ```
 
+### `D:\personal\army/lib\features\gameplay\data\gameplay_packet_mapper.dart`
+```dart
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/match_state.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/projectile/projectile_trajectory.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_player.dart';
+
+class GameplayPacketMapper {
+  const GameplayPacketMapper();
+
+  /// cmd 20 `startGame`
+  MatchState decodeStartGame(Message message, Map<int, RoomPlayer> roomPlayers) {
+    final r = message.reader();
+    final mapId = r.readByte();
+    final playerSize = r.readByte();
+
+    final players = <int, MatchPlayer>{};
+    for (int i = 0; i < playerSize; i++) {
+      final id = r.readInt();
+      final x = r.readShort();
+      final y = r.readShort();
+
+      final base = roomPlayers[id];
+      if (base != null) {
+        players[id] = MatchPlayer(base: base, x: x, y: y);
+      }
+    }
+    if (r.available > 0) r.readByte();
+
+    return MatchState(mapId: mapId, players: players, status: MatchLoopStatus.loadingMap);
+  }
+
+  /// cmd 24 `setTurn`
+  (int, int) decodeNextTurn(Message message) {
+    final r = message.reader();
+    return (r.readInt(), r.readShort());
+  }
+
+  /// cmd 25 `setWind`
+  (int, int) decodeWind(Message message) {
+    final r = message.reader();
+    final windX = r.readShort();
+    final windY = r.available >= 2 ? r.readShort() : 0;
+    return (windX, windY);
+  }
+
+  /// cmd 21 `move` sync
+  (int, int, int, int) decodeMove(Message message) {
+    final r = message.reader();
+    return (r.readInt(), r.readByte(), r.readShort(), r.readShort());
+  }
+
+  /// cmd 53 `updateXy`
+  (int, int, int) decodeUpdateXy(Message message) {
+    final r = message.reader();
+    return (r.readInt(), r.readShort(), r.readShort());
+  }
+
+  /// cmd 22 `shoot`
+  ShootData decodeShoot(Message message) {
+    final r = message.reader();
+    final typeShoot = r.readByte();
+    final isPow = r.readByte() == 1;
+    final playerId = r.readInt();
+    final bulletId = r.readByte();
+    final gunX = r.readShort();
+    final gunY = r.readShort();
+    final angle = r.readShort();
+    final nShot = r.readByte();
+    final numBullets = r.readByte();
+
+    final allTrajectories = <ProjectileTrajectory>[];
+    for (int i = 0; i < numBullets; i++) {
+      final numFrames = r.readShort();
+      final frames = <TrajectoryFrame>[];
+      int lastX = 0;
+      int lastY = 0;
+      for (int j = 0; j < numFrames; j++) {
+        if (j == 0 || typeShoot == 1) {
+          lastX = r.readShort();
+          lastY = r.readShort();
+        } else {
+          lastX += r.readByte();
+          lastY += r.readByte();
+        }
+        frames.add(TrajectoryFrame(x: lastX, y: lastY));
+      }
+      allTrajectories.add(
+        ProjectileTrajectory(bulletId: bulletId, frames: frames),
+      );
+    }
+
+    return ShootData(
+      playerId: playerId,
+      isPow: isPow,
+      bulletId: bulletId,
+      gunX: gunX,
+      gunY: gunY,
+      angle: angle,
+      nShot: nShot,
+      trajectories: allTrajectories,
+    );
+  }
+
+  /// cmd 23 `shootResult`
+  List<HitResult> decodeShootResult(Message message) {
+    final r = message.reader();
+    final numHits = r.readByte();
+    final results = <HitResult>[];
+    for (int i = 0; i < numHits; i++) {
+      results.add(HitResult(
+        playerId: r.readInt(),
+        damage: r.readInt(),
+        newHp: r.readInt(),
+        isDead: r.readBoolean(),
+      ));
+    }
+    return results;
+  }
+
+  /// cmd 49 `skipTurn`
+  int decodeSkipTurn(Message message) {
+    return message.reader().readInt();
+  }
+
+  /// cmd 15 `leaveRoomWait` / `leaveMatch`
+  int decodeLeave(Message message) {
+    return message.reader().readInt();
+  }
+
+  /// cmd 26 `useItem`
+  (int, int) decodeUseItem(Message message) {
+    final r = message.reader();
+    return (r.readInt(), r.readByte());
+  }
+
+  /// cmd 89 `addPlayer` (Boss spawn)
+  List<MatchPlayer> decodeAddPlayers(Message message) {
+    final r = message.reader();
+    final size = r.readByte();
+    final results = <MatchPlayer>[];
+    for (int i = 0; i < size; i++) {
+      final id = r.readInt();
+      final name = r.readUTF();
+      final hpMax = r.readInt();
+      final glassId = r.readByte();
+      final x = r.readShort();
+      final y = r.readShort();
+
+      results.add(MatchPlayer(
+        base: RoomPlayer(
+          id: id,
+          name: name,
+          level: 0,
+          clan: 0,
+          glassId: glassId,
+          equips: [],
+          isBoss: true,
+        ),
+        x: x,
+        y: y,
+        hp: hpMax,
+        maxHp: hpMax,
+      ));
+    }
+    return results;
+  }
+
+  /// cmd 52 `bonusMoney`
+  (int, String) decodeBonusMoney(Message message) {
+    final r = message.reader();
+    return (r.readInt(), r.readUTF());
+  }
+
+  /// cmd 100 `finishMatch`
+  MatchResult decodeFinishMatch(Message message) {
+    final r = message.reader();
+    final numPlayers = r.readByte();
+    final results = <PlayerMatchResult>[];
+    for (int i = 0; i < numPlayers; i++) {
+      results.add(PlayerMatchResult(
+        playerId: r.readInt(),
+        exp: r.readInt(),
+        xu: r.readInt(),
+        luong: r.readInt(),
+      ));
+    }
+    return MatchResult(playerResults: results);
+  }
+}
+
+class ShootData {
+  const ShootData({
+    required this.playerId,
+    required this.isPow,
+    required this.bulletId,
+    required this.gunX,
+    required this.gunY,
+    required this.angle,
+    required this.nShot,
+    required this.trajectories,
+  });
+
+  final int playerId;
+  final bool isPow;
+  final int bulletId;
+  final int gunX;
+  final int gunY;
+  final int angle;
+  final int nShot;
+  final List<ProjectileTrajectory> trajectories;
+}
+
+class MatchResult {
+  const MatchResult({required this.playerResults});
+  final List<PlayerMatchResult> playerResults;
+}
+
+class PlayerMatchResult {
+  const PlayerMatchResult({
+    required this.playerId,
+    required this.exp,
+    required this.xu,
+    required this.luong,
+  });
+  final int playerId;
+  final int exp;
+  final int xu;
+  final int luong;
+}
+
+class HitResult {
+  const HitResult({
+    required this.playerId,
+    required this.damage,
+    required this.newHp,
+    required this.isDead,
+  });
+  final int playerId;
+  final int damage;
+  final int newHp;
+  final bool isDead;
+}
+```
+
+### `D:\personal\army/lib\features\gameplay\data\gameplay_repository.dart`
+```dart
+import 'package:mobiarmy_flutter/core/network/command/commands.dart';
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
+import 'package:mobiarmy_flutter/core/network/transport/tcp_session.dart';
+
+class GameplayRepository {
+  GameplayRepository(this._session);
+  final TcpSession _session;
+
+  Future<void> sendMove(int type, int x, int y) async {
+    final message = Message(Commands.move);
+    message.writer().writeByte(type);
+    message.writer().writeShort(x);
+    message.writer().writeShort(y);
+    await _session.sendMessage(message);
+  }
+
+  Future<void> sendShoot(int angle, int force, int force2, int nShot) async {
+    final message = Message(Commands.shoot);
+    message.writer().writeShort(angle);
+    message.writer().writeByte(force);
+    message.writer().writeByte(force2);
+    message.writer().writeByte(nShot);
+    await _session.sendMessage(message);
+  }
+
+  Future<void> sendSkipTurn() async {
+    await _session.sendMessage(Message(Commands.skipTurn));
+  }
+
+  Future<void> sendUseItem(int itemId) async {
+    final message = Message(Commands.useItem);
+    message.writer().writeByte(itemId);
+    await _session.sendMessage(message);
+  }
+
+  Future<void> sendLeave() async {
+    await _session.sendMessage(Message(Commands.leaveRoomWait));
+  }
+}
+```
+
 ### `D:\personal\army/lib\features\gameplay\domain\camera\camera_mode.dart`
 ```dart
 enum CameraMode { playerFollow, bulletFollow, freePan, focusTarget }
@@ -4111,21 +4957,67 @@ class CharacterAnimationState {
     this.frame = 0,
     this.elapsed = 0,
     this.facing = CharacterFacing.right,
+    this.hp = 1000,
+    this.maxHp = 1000,
+    this.angle = 0,
+    this.force = 0,
+    this.isAngry = false,
+    this.isFrozen = false,
+    this.isPoisoned = false,
+    this.isSmoked = false,
+    this.isWebbed = false,
+    this.isTimeBomb = false,
+    this.isInvisible = false,
   });
+
   final CharacterAnimationKind kind;
   final int frame;
   final double elapsed;
   final CharacterFacing facing;
+  final int hp;
+  final int maxHp;
+  final int angle;
+  final int force;
+  final bool isAngry;
+  final bool isFrozen;
+  final bool isPoisoned;
+  final bool isSmoked;
+  final bool isWebbed;
+  final bool isTimeBomb;
+  final bool isInvisible;
+
   CharacterAnimationState copyWith({
     CharacterAnimationKind? kind,
     int? frame,
     double? elapsed,
     CharacterFacing? facing,
+    int? hp,
+    int? maxHp,
+    int? angle,
+    int? force,
+    bool? isAngry,
+    bool? isFrozen,
+    bool? isPoisoned,
+    bool? isSmoked,
+    bool? isWebbed,
+    bool? isTimeBomb,
+    bool? isInvisible,
   }) => CharacterAnimationState(
     kind: kind ?? this.kind,
     frame: frame ?? this.frame,
     elapsed: elapsed ?? this.elapsed,
     facing: facing ?? this.facing,
+    hp: hp ?? this.hp,
+    maxHp: maxHp ?? this.maxHp,
+    angle: angle ?? this.angle,
+    force: force ?? this.force,
+    isAngry: isAngry ?? this.isAngry,
+    isFrozen: isFrozen ?? this.isFrozen,
+    isPoisoned: isPoisoned ?? this.isPoisoned,
+    isSmoked: isSmoked ?? this.isSmoked,
+    isWebbed: isWebbed ?? this.isWebbed,
+    isTimeBomb: isTimeBomb ?? this.isTimeBomb,
+    isInvisible: isInvisible ?? this.isInvisible,
   );
 }
 ```
@@ -4216,11 +5108,150 @@ class EquipmentDefinition {
 }
 ```
 
+### `D:\personal\army/lib\features\gameplay\domain\match_state.dart`
+```dart
+import 'package:mobiarmy_flutter/features/gameplay/data/gameplay_packet_mapper.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_player.dart';
+
+enum MatchLoopStatus {
+  preparing,
+  loadingMap,
+  spawning,
+  turnStart,
+  playerInput,
+  firing,
+  projectilePlayback,
+  resolvingImpact,
+  turnEnd,
+  nextTurn,
+  matchEnd,
+}
+
+/// Runtime data for an active match with strict FSM tracking.
+class MatchState {
+  const MatchState({
+    required this.mapId,
+    required this.players,
+    this.status = MatchLoopStatus.preparing,
+    this.currentTurnPlayerId,
+    this.turnTimeSeconds = 0,
+    this.windX = 0,
+    this.windY = 0,
+    this.isMatchEnded = false,
+    this.matchResult,
+    this.lastShoot,
+  });
+
+  final int mapId;
+  final Map<int, MatchPlayer> players;
+  final MatchLoopStatus status;
+  final int? currentTurnPlayerId;
+  final int turnTimeSeconds;
+  final int windX;
+  final int windY;
+  final bool isMatchEnded;
+  final MatchResult? matchResult;
+  final ShootData? lastShoot;
+
+  MatchState copyWith({
+    MatchLoopStatus? status,
+    int? currentTurnPlayerId,
+    int? turnTimeSeconds,
+    int? windX,
+    int? windY,
+    Map<int, MatchPlayer>? players,
+    bool? isMatchEnded,
+    MatchResult? matchResult,
+    ShootData? lastShoot,
+  }) {
+    return MatchState(
+      mapId: mapId,
+      players: players ?? this.players,
+      status: status ?? this.status,
+      currentTurnPlayerId: currentTurnPlayerId ?? this.currentTurnPlayerId,
+      turnTimeSeconds: turnTimeSeconds ?? this.turnTimeSeconds,
+      windX: windX ?? this.windX,
+      windY: windY ?? this.windY,
+      isMatchEnded: isMatchEnded ?? this.isMatchEnded,
+      matchResult: matchResult ?? this.matchResult,
+      lastShoot: lastShoot ?? this.lastShoot,
+    );
+  }
+}
+
+/// Runtime extension of RoomPlayer during gameplay.
+class MatchPlayer {
+  const MatchPlayer({
+    required this.base,
+    required this.x,
+    required this.y,
+    this.hp = 1000,
+    this.maxHp = 1000,
+    this.stamina = 100.0,
+    this.isDead = false,
+    this.state = 0,
+  });
+
+  final RoomPlayer base;
+  final int x;
+  final int y;
+  final int hp;
+  final int maxHp;
+  final double stamina;
+  final bool isDead;
+  final int state;
+
+  MatchPlayer copyWith({
+    int? x,
+    int? y,
+    int? hp,
+    double? stamina,
+    bool? isDead,
+    int? state,
+  }) {
+    return MatchPlayer(
+      base: base,
+      x: x ?? this.x,
+      y: y ?? this.y,
+      hp: hp ?? this.hp,
+      stamina: stamina ?? this.stamina,
+      isDead: isDead ?? this.isDead,
+      state: state ?? this.state,
+    );
+  }
+}
+```
+
+### `D:\personal\army/lib\features\gameplay\domain\player\movement_intent.dart`
+```dart
+enum MovementDirection { none, left, right }
+
+class MovementIntent {
+  const MovementIntent({
+    this.direction = MovementDirection.none,
+    this.jump = false,
+  });
+
+  final MovementDirection direction;
+  final bool jump;
+
+  static const none = MovementIntent();
+}
+```
+
 ### `D:\personal\army/lib\features\gameplay\domain\player\player_movement_state.dart`
 ```dart
 import 'package:flame/extensions.dart';
 
-enum PlayerMovementKind { idle, walking, falling, dead }
+enum PlayerMovementKind {
+  idle,
+  walking,
+  falling,
+  hurt,
+  dead,
+  frozen,
+  teleport,
+}
 
 class PlayerMovementState {
   PlayerMovementState({
@@ -4228,24 +5259,32 @@ class PlayerMovementState {
     Vector2? velocity,
     this.isOnGround = false,
     this.stamina = 100.0,
+    this.friction = 0.1,
+    this.slopeAngle = 0.0,
   }) : velocity = velocity ?? Vector2.zero();
 
   final PlayerMovementKind kind;
   final Vector2 velocity;
   final bool isOnGround;
   final double stamina;
+  final double friction;
+  final double slopeAngle;
 
   PlayerMovementState copyWith({
     PlayerMovementKind? kind,
     Vector2? velocity,
     bool? isOnGround,
     double? stamina,
+    double? friction,
+    double? slopeAngle,
   }) {
     return PlayerMovementState(
       kind: kind ?? this.kind,
       velocity: velocity ?? this.velocity,
       isOnGround: isOnGround ?? this.isOnGround,
       stamina: stamina ?? this.stamina,
+      friction: friction ?? this.friction,
+      slopeAngle: slopeAngle ?? this.slopeAngle,
     );
   }
 }
@@ -4253,8 +5292,8 @@ class PlayerMovementState {
 
 ### `D:\personal\army/lib\features\gameplay\domain\room_list_models.dart`
 ```dart
-import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/core/network/data_cache_parsers.dart';
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 
 /// Port MessageHandler case -28 (roomWaitList):
 ///   raction (byte), roi lap: id(byte) != -1 -> boardID, mapID, cur/max, money(int)
@@ -4303,27 +5342,36 @@ abstract final class RoomListParser {
 ### `D:\personal\army/lib\features\gameplay\game\army_game.dart`
 ```dart
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:mobiarmy_flutter/core/audio/audio_service.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/match_state.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/effects/explosion_component.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/input/gameplay_input_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/background_component.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/destructible_terrain.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/map/map_json_loader.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/terrain_component.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/player/boss_character.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/player/online_character.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/projectile/projectile_component.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/projectile/projectile_trajectory.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/projectile/trajectory_simulator.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/sandbox/sandbox_scenario.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/systems/camera_system.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/systems/combat_system.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/systems/player_collision_system.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/systems/player_movement_system.dart';
 
-class ArmyGame extends FlameGame {
-  ArmyGame({this.scenario, this.onLoaded});
+class ArmyGame extends FlameGame with DragCallbacks, HasKeyboardHandlerComponents, ScrollDetector {
+  ArmyGame({this.scenario, this.onLoaded, this.audio});
 
   final SandboxScenario? scenario;
   final VoidCallback? onLoaded;
+  final AudioService? audio;
 
   late final GameplayInputController inputController;
   late final World gameWorld;
@@ -4332,16 +5380,126 @@ class ArmyGame extends FlameGame {
   DestructibleTerrain? terrain;
   GameMapDefinition? map;
   final Map<int, GamePlayer> players = {};
+  int? activePlayerId;
+  int windX = 0;
+  int windY = 0;
   TerrainComponent? _terrainComponent;
 
+  Future<void> setupMatch(MatchState matchState) async {
+    // 1. Clear existing
+    gameWorld.removeAll(gameWorld.children);
+    players.clear();
+
+    // 2. Load Map (Placeholder until Phase 3 complete)
+    // For now, we reuse the Sandbox maps logic
+    map = scenario?.map ??
+        MapJsonLoader.parse(
+          SandboxMaps.cayCauBang,
+          mapId: matchState.mapId,
+          backgroundId: 7,
+        );
+    terrain = TerrainMaskBuilder.build(map!, tileSize: SandboxMaps.tileSize);
+
+    await gameWorld.add(
+      BackgroundComponent(
+        environment: map!.environment,
+        mapSize: Vector2(map!.width.toDouble(), map!.height.toDouble()),
+      ),
+    );
+
+    final terrainComponent = TerrainComponent(terrain: terrain!);
+    _terrainComponent = terrainComponent;
+    await gameWorld.add(terrainComponent);
+
+    // 3. Spawn Players
+    for (final entry in matchState.players.entries) {
+      final id = entry.key;
+      final p = entry.value;
+
+      GamePlayer character;
+      if (p.base.isBoss) {
+        character = BossCharacter(
+          bossType: BossType.fromGunType(p.base.glassId),
+          id: id,
+          name: p.base.name,
+          maxHp: p.maxHp,
+        )..hp = p.hp;
+      } else {
+        character = OnlineCharacter(
+          glassId: p.base.glassId,
+          equipIds: p.base.equips,
+          name: p.base.name,
+          maxHp: p.maxHp,
+        );
+        await (character as OnlineCharacter).load();
+        character.hp = p.hp;
+      }
+
+      character.moveTo(p.x.toDouble(), p.y.toDouble());
+      await gameWorld.add(character);
+      players[id] = character;
+    }
+
+    windX = matchState.windX;
+    windY = matchState.windY;
+    activePlayerId = matchState.currentTurnPlayerId;
+  }
+
+  Future<void> syncPlayers(Map<int, MatchPlayer> matchPlayers) async {
+    // Add new players or bosses
+    for (final entry in matchPlayers.entries) {
+      final id = entry.key;
+      final p = entry.value;
+
+      if (!players.containsKey(id)) {
+        GamePlayer character;
+        if (p.base.isBoss) {
+          character = BossCharacter(
+            bossType: BossType.fromGunType(p.base.glassId),
+            id: id,
+            name: p.base.name,
+            maxHp: p.maxHp,
+          )..hp = p.hp;
+        } else {
+          character = OnlineCharacter(
+            glassId: p.base.glassId,
+            equipIds: p.base.equips,
+            name: p.base.name,
+            maxHp: p.maxHp,
+          );
+          await (character as OnlineCharacter).load();
+          character.hp = p.hp;
+        }
+        character.moveTo(p.x.toDouble(), p.y.toDouble());
+        await gameWorld.add(character);
+        players[id] = character;
+      } else {
+        // Sync stats for existing
+        final character = players[id]!;
+        character.hp = p.hp;
+        if (character is BossCharacter) {
+          character.state = p.state;
+        }
+      }
+    }
+
+    // Remove players who left
+    final idsToRemove = players.keys.where((id) => !matchPlayers.containsKey(id)).toList();
+    for (final id in idsToRemove) {
+      final c = players.remove(id);
+      if (c != null) gameWorld.remove(c);
+    }
+  }
+
   @override
-  Color backgroundColor() => const Color(0xFF0F172A);
+  Color backgroundColor() => const Color(0xFF87CEEB); // Sky blue background color
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
 
     gameWorld = World();
+    world = gameWorld; // Gán world để camera nhìn thấy
     await add(gameWorld);
 
     inputController = GameplayInputController();
@@ -4349,10 +5507,12 @@ class ArmyGame extends FlameGame {
 
     await add(PlayerMovementSystem());
     await add(PlayerCollisionSystem());
+    await add(CombatSystem());
     cameraSystem = CameraSystem();
     await add(cameraSystem);
 
     camera.viewfinder.anchor = Anchor.center;
+    camera.viewfinder.zoom = 2.0; // Zoom in to see characters clearly as in original game
 
     final scenario = this.scenario;
     if (scenario != null) {
@@ -4375,6 +5535,7 @@ class ArmyGame extends FlameGame {
         await gameWorld.add(character);
         players[i] = character;
       }
+      activePlayerId = 0; // Đặt nhân vật đầu tiên làm người chơi hiện tại để Camera follow
     }
 
     onLoaded?.call();
@@ -4385,6 +5546,7 @@ class ArmyGame extends FlameGame {
     gameWorld.add(
       ProjectileComponent(trajectory: trajectory, onImpact: _onBulletImpact),
     );
+    audio?.playSfx('shoot');
   }
 
   /// Offline shot: legacy force range is 1..30 (charge bar), angle comes from
@@ -4415,9 +5577,31 @@ class ArmyGame extends FlameGame {
     }
   }
 
-  void _onBulletImpact(int x, int y) {
-    _terrainComponent?.makeHole(x, y, 18);
+  void _onBulletImpact(int x, int y, int radius) {
+    _terrainComponent?.makeHole(x, y, radius);
+    gameWorld.add(ExplosionComponent(
+      position: Vector2(x.toDouble(), y.toDouble()),
+      radius: radius.toDouble(),
+    ));
     cameraSystem.shake(intensity: 3, duration: 0.25);
+    audio?.playSfx('explosion');
+  }
+
+  @override
+  void onDragUpdate(DragUpdateEvent event) {
+    super.onDragUpdate(event);
+    cameraSystem.pan(event.localDelta);
+  }
+
+  @override
+  void onScroll(PointerScrollInfo info) {
+    super.onScroll(info);
+    final scrollDelta = info.scrollDelta.global.y;
+    if (scrollDelta != 0) {
+      final zoomDelta = -scrollDelta / 500;
+      final newZoom = (camera.viewfinder.zoom + zoomDelta).clamp(0.5, 4.0);
+      camera.viewfinder.zoom = newZoom;
+    }
   }
 
   void pauseSafely() {
@@ -4432,11 +5616,60 @@ class ArmyGame extends FlameGame {
 }
 ```
 
+### `D:\personal\army/lib\features\gameplay\game\effects\damage_text_component.dart`
+```dart
+import 'package:flame/components.dart';
+import 'package:flutter/material.dart';
+
+class DamageTextComponent extends PositionComponent {
+  DamageTextComponent({
+    required Vector2 position,
+    required this.damage,
+  }) : super(position: position, priority: 50);
+
+  final int damage;
+  double _elapsed = 0;
+  static const double duration = 1.0;
+  static const double upwardSpeed = 40.0;
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    _elapsed += dt;
+    position.y -= upwardSpeed * dt;
+    if (_elapsed >= duration) {
+      removeFromParent();
+    }
+  }
+
+  @override
+  void render(Canvas canvas) {
+    final opacity = (1.0 - _elapsed / duration).clamp(0.0, 1.0);
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: '-$damage',
+        style: TextStyle(
+          color: Colors.red.withValues(alpha: opacity),
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          shadows: const [Shadow(blurRadius: 2, color: Colors.black)],
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout();
+    textPainter.paint(canvas, Offset(-textPainter.width / 2, -textPainter.height / 2));
+  }
+}
+```
+
 ### `D:\personal\army/lib\features\gameplay\game\effects\effects.dart`
 ```dart
 import 'dart:ui' as ui;
 import 'package:flame/components.dart';
+import 'package:mobiarmy_flutter/core/assets/bmfont.dart';
 import 'package:mobiarmy_flutter/core/assets/game_asset_loader.dart';
+import 'package:mobiarmy_flutter/core/assets/graphics_utility.dart';
 
 /// Port effect/Explosion.java + Smoke.java — frame size lay DUNG tu source:
 ///   explode ex3.png 59x64 x6f | teleport 32x32 x5f | waterBum 32x48 x5f
@@ -4498,12 +5731,100 @@ class ExplosionEffect extends Component {
     if (!_loaded || img == null) return;
     final sx = (curFrame * frameW) % img!.width;
     final sy = (curFrame * frameW ~/ img!.width) * frameH;
-    canvas.drawImageRect(
+
+    // Original anchor: HCENTER | VCENTER with -12 vertical offset
+    GraphicsUtility.drawRegion(
+      canvas,
       img!,
-      ui.Rect.fromLTWH(sx.toDouble(), sy.toDouble(), frameW.toDouble(), frameH.toDouble()),
-      ui.Rect.fromLTWH(x - frameW / 2, y - frameH / 2 - 12, frameW.toDouble(), frameH.toDouble()),
-      ui.Paint(),
+      sx.toDouble(),
+      sy.toDouble(),
+      frameW.toDouble(),
+      frameH.toDouble(),
+      GraphicsUtility.transNone,
+      x,
+      y - 12,
+      GraphicsAnchor.hCenter | GraphicsAnchor.vCenter,
     );
+  }
+}
+```
+
+### `D:\personal\army/lib\features\gameplay\game\effects\explosion_component.dart`
+```dart
+import 'package:flame/components.dart';
+import 'package:flutter/material.dart';
+
+class ExplosionComponent extends PositionComponent with HasGameRef {
+  ExplosionComponent({
+    required Vector2 position,
+    required this.radius,
+  }) : super(position: position, anchor: Anchor.center, priority: 30);
+
+  final double radius;
+  double _elapsed = 0;
+  static const double duration = 0.4;
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    _elapsed += dt;
+    if (_elapsed >= duration) {
+      removeFromParent();
+    }
+  }
+
+  @override
+  void render(Canvas canvas) {
+    final progress = _elapsed / duration;
+    final currentRadius = radius * (0.5 + 0.5 * progress);
+    final opacity = (1.0 - progress).clamp(0.0, 1.0);
+
+    final paint = Paint()
+      ..color = Colors.orange.withValues(alpha: opacity)
+      ..style = PaintingStyle.fill;
+
+    canvas.drawCircle(Offset.zero, currentRadius, paint);
+
+    final corePaint = Paint()
+      ..color = Colors.yellow.withValues(alpha: opacity)
+      ..style = PaintingStyle.fill;
+
+    canvas.drawCircle(Offset.zero, currentRadius * 0.6, corePaint);
+  }
+}
+```
+
+### `D:\personal\army/lib\features\gameplay\game\effects\smoke_particle.dart`
+```dart
+import 'package:flame/components.dart';
+import 'package:flutter/material.dart';
+
+class SmokeParticle extends PositionComponent {
+  SmokeParticle({
+    required Vector2 position,
+    this.lifespan = 0.5,
+  }) : super(position: position, size: Vector2.all(4), anchor: Anchor.center, priority: 15);
+
+  final double lifespan;
+  double _elapsed = 0;
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    _elapsed += dt;
+    if (_elapsed >= lifespan) {
+      removeFromParent();
+    }
+  }
+
+  @override
+  void render(Canvas canvas) {
+    final progress = _elapsed / lifespan;
+    final opacity = (0.6 * (1.0 - progress)).clamp(0.0, 1.0);
+    final size = 4.0 * (1.0 + progress);
+
+    final paint = Paint()..color = Colors.white.withValues(alpha: opacity);
+    canvas.drawCircle(Offset.zero, size / 2, paint);
   }
 }
 ```
@@ -4512,15 +5833,40 @@ class ExplosionEffect extends Component {
 ```dart
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 
 import 'gameplay_input_state.dart';
 
-class GameplayInputController extends Component with ChangeNotifier {
+class GameplayInputController extends Component with ChangeNotifier, KeyboardHandler {
   GameplayInputState _state = const GameplayInputState();
   GameplayInputState get state => _state;
 
   /// Speed of charging, 100 units in 2 seconds
   static const double chargeSpeed = 50.0;
+  static const double angleChangeSpeed = 40.0; // degrees per second
+
+  int _angleDelta = 0;
+
+  @override
+  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    if (event is KeyDownEvent) {
+      if (event.logicalKey == LogicalKeyboardKey.arrowLeft) setMovingLeft(true);
+      if (event.logicalKey == LogicalKeyboardKey.arrowRight) setMovingRight(true);
+      if (event.logicalKey == LogicalKeyboardKey.arrowUp) setAngleDelta(1);
+      if (event.logicalKey == LogicalKeyboardKey.arrowDown) setAngleDelta(-1);
+      if (event.logicalKey == LogicalKeyboardKey.space) startCharging();
+    } else if (event is KeyUpEvent) {
+      if (event.logicalKey == LogicalKeyboardKey.arrowLeft) setMovingLeft(false);
+      if (event.logicalKey == LogicalKeyboardKey.arrowRight) setMovingRight(false);
+      if (event.logicalKey == LogicalKeyboardKey.arrowUp || event.logicalKey == LogicalKeyboardKey.arrowDown) setAngleDelta(0);
+      if (event.logicalKey == LogicalKeyboardKey.space) stopCharging();
+    }
+    return true;
+  }
+
+  void setAngleDelta(int delta) {
+    _angleDelta = delta;
+  }
 
   void updateAngle(int delta) {
     // Legacy MobiArmy2 angle often cycles or clamps.
@@ -4556,11 +5902,40 @@ class GameplayInputController extends Component with ChangeNotifier {
     notifyListeners();
   }
 
+  void reset() {
+    _state = const GameplayInputState();
+    _angleDelta = 0;
+    notifyListeners();
+  }
+
   @override
   void update(double dt) {
+    bool changed = false;
     if (_state.isCharging) {
       final newForce = (_state.force + dt * chargeSpeed).clamp(0.0, 100.0);
-      _state = _state.copyWith(force: newForce);
+      if (newForce != _state.force) {
+        _state = _state.copyWith(force: newForce);
+        changed = true;
+      }
+    }
+
+    if (_angleDelta != 0) {
+      final double delta = _angleDelta * angleChangeSpeed * dt;
+      var newAngle = _state.angle + delta.round();
+      while (newAngle < 0) {
+        newAngle += 360;
+      }
+      while (newAngle >= 360) {
+        newAngle -= 360;
+      }
+
+      if (newAngle != _state.angle) {
+        _state = _state.copyWith(angle: newAngle);
+        changed = true;
+      }
+    }
+
+    if (changed) {
       notifyListeners();
     }
   }
@@ -4604,29 +5979,55 @@ class GameplayInputState {
 
 ### `D:\personal\army/lib\features\gameplay\game\map\background_component.dart`
 ```dart
-import 'dart:ui';
+import 'dart:ui' as ui;
+
 import 'package:flame/components.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 
-class BackgroundComponent extends PositionComponent {
+class BackgroundComponent extends PositionComponent with HasGameReference<ArmyGame> {
   BackgroundComponent({required this.environment, required Vector2 mapSize})
     : super(size: mapSize, priority: -100);
+
   final MapEnvironmentDefinition environment;
+  ui.Image? _bgImage;
+
   @override
-  void render(Canvas canvas) {
+  Future<void> onLoad() async {
+    await super.onLoad();
+    try {
+      // Dùng bigImage0.png thường là hình bầu trời/mây trong Mobi Army 2
+      _bgImage = await game.images.load('BigImage/bigImage0.png');
+    } catch (_) {
+      // Nếu không có bigImage0, thử bigImage7 hoặc bỏ qua
+    }
+  }
+
+  @override
+  void render(ui.Canvas canvas) {
+    // Vẽ màu nền xanh trời mặc định của Army 2
     canvas.drawRect(
-      Rect.fromLTWH(0, 0, size.x, size.y),
-      Paint()..color = const Color(0xff0f2742),
+      ui.Rect.fromLTWH(0, 0, size.x, size.y),
+      ui.Paint()..color = const ui.Color(0xFF87CEEB),
     );
+
+    if (_bgImage != null) {
+      // Vẽ lặp lại hình nền (Tiled) thay vì kéo giãn toàn bộ
+      final paint = ui.Paint()..filterQuality = ui.FilterQuality.none;
+      for (double x = 0; x < size.x; x += _bgImage!.width) {
+        canvas.drawImage(_bgImage!, ui.Offset(x, 0), paint);
+      }
+    }
+
     if (environment.hasWaterOrGlass) {
       canvas.drawRect(
-        Rect.fromLTWH(
+        ui.Rect.fromLTWH(
           0,
           environment.waterY.toDouble(),
           size.x,
           (size.y - environment.waterY).clamp(0.0, size.y).toDouble(),
         ),
-        Paint()..color = const Color(0x6638bdf8),
+        ui.Paint()..color = const ui.Color(0x8838bdf8),
       );
     }
   }
@@ -4653,16 +6054,29 @@ class DestructibleTerrain {
     return _mask[y * width + x] != 0;
   }
 
+  double? findGroundBelow(double startX, double startY, {double maxDistance = 500}) {
+    final ix = startX.toInt();
+    final iyStart = startY.toInt();
+    for (int dy = 0; dy < maxDistance; dy++) {
+      final y = iyStart + dy;
+      if (isSolid(ix, y)) {
+        return y.toDouble();
+      }
+    }
+    return null;
+  }
+
   void makeHole(int centerX, int centerY, int radius) {
     final r2 = radius * radius;
     for (int y = centerY - radius; y <= centerY + radius; y++) {
       if (y < 0 || y >= height) continue;
+      final rowOffset = y * width;
       for (int x = centerX - radius; x <= centerX + radius; x++) {
         if (x < 0 || x >= width) continue;
         final dx = x - centerX;
         final dy = y - centerY;
         if (dx * dx + dy * dy <= r2) {
-          _mask[y * width + x] = 0;
+          _mask[rowOffset + x] = 0;
         }
       }
     }
@@ -5148,11 +6562,7 @@ import 'package:flame/components.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/destructible_terrain.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 
-/// Builds a pixel collision mask from brick rectangles.
-///
-/// NOTE(phase-4): real tile widths vary per tile id (see ManagerTile in the
-/// Java client); uniform [tileSize] is an approximation good enough for the
-/// offline vertical slice.
+/// Builds a pixel collision mask from brick metadata matching alpha bounds.
 abstract final class TerrainMaskBuilder {
   static DestructibleTerrain build(GameMapDefinition map, {int tileSize = 20}) {
     final mask = Uint8List(map.width * map.height);
@@ -5178,15 +6588,12 @@ abstract final class TerrainMaskBuilder {
   }
 }
 
-/// Renders the destructible terrain from the collision mask.
-///
-/// The rendered picture is cached and only rebuilt after a [makeHole] mutation,
-/// so render() never iterates the full mask per frame.
+/// Renders the destructible terrain from the collision mask using Nearest-Neighbor filtering.
 class TerrainComponent extends PositionComponent {
   TerrainComponent({
     required DestructibleTerrain terrain,
     this.cellSize = 2,
-    this.groundColor = const ui.Color(0xFF8B6F47),
+    this.groundColor = const ui.Color(0xFFB0E2FF),
   }) : _terrain = terrain,
        super(
          size: Vector2(terrain.width.toDouble(), terrain.height.toDouble()),
@@ -5201,13 +6608,20 @@ class TerrainComponent extends PositionComponent {
 
   void makeHole(int centerX, int centerY, int radius) {
     _terrain.makeHole(centerX, centerY, radius);
-    _cache = null; // lazy rebuild on next render
+    _cache = null;
   }
 
   ui.Picture _buildCache() {
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);
-    final paint = ui.Paint()..color = groundColor;
+    final paint = ui.Paint()
+      ..color = groundColor
+      ..filterQuality = ui.FilterQuality.none;
+    final linePaint = ui.Paint()
+      ..color = ui.Color(0xFF000000).withValues(alpha: 0.1)
+      ..strokeWidth = 1
+      ..filterQuality = ui.FilterQuality.none;
+
     final w = _terrain.width, h = _terrain.height;
     for (var cy = 0; cy < h; cy += cellSize) {
       for (var cx = 0; cx < w; cx += cellSize) {
@@ -5221,6 +6635,19 @@ class TerrainComponent extends PositionComponent {
             ),
             paint,
           );
+
+          if (cx % 16 == 0 && cy % 8 == 0) {
+             canvas.drawLine(
+               ui.Offset(cx.toDouble(), cy.toDouble()),
+               ui.Offset(cx.toDouble() + 16, cy.toDouble()),
+               linePaint,
+             );
+             canvas.drawLine(
+               ui.Offset(cx.toDouble(), cy.toDouble()),
+               ui.Offset(cx.toDouble(), cy.toDouble() + 8),
+               linePaint,
+             );
+          }
         }
       }
     }
@@ -5269,33 +6696,59 @@ class CharacterAnimationController {
 
 ### `D:\personal\army/lib\features\gameplay\game\player\character_component.dart`
 ```dart
-import 'package:flame/components.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/character/character_animation_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/character/character_appearance.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/character/character_definition.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/character/equipment_definition.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/player/movement_intent.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/player/character_animation_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/character_sprite_resolver.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/equipment_layer_component.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart';
 
-class CharacterComponent extends PositionComponent {
+final class CharacterComponent extends GamePlayer {
   CharacterComponent({
+    required this.name,
     required this.appearance,
     required this.glassId,
     required this.resolver,
+    required this.animationController,
     CharacterAnimationState animation = const CharacterAnimationState(),
     PlayerMovementState? movement,
   }) : _animation = animation,
        _movement = movement ?? PlayerMovementState();
 
+  @override
+  final String name;
   CharacterAppearance appearance;
   final int glassId;
   final CharacterSpriteResolver resolver;
+  final CharacterAnimationController animationController;
   CharacterAnimationState _animation;
   PlayerMovementState _movement;
   final Map<EquipmentSlot, EquipmentLayerComponent> _layers = {};
 
+  @override
+  int get hp => _animation.hp;
+  @override
+  set hp(int value) {
+    _animation = _animation.copyWith(hp: value);
+  }
+
+  @override
+  int get maxHp => _animation.maxHp;
+  @override
+  set maxHp(int value) {
+    _animation = _animation.copyWith(maxHp: value);
+  }
+
+  @override
+  MovementIntent intent = MovementIntent.none;
+
+  @override
   PlayerMovementState get movement => _movement;
+  @override
   set movement(PlayerMovementState value) {
     _movement = value;
   }
@@ -5319,6 +6772,49 @@ class CharacterComponent extends PositionComponent {
     _synchronizeLayers();
   }
 
+  @override
+  void update(double dt) {
+    super.update(dt);
+
+    // 1. Sync Animation Kind with Movement State
+    CharacterAnimationKind nextKind = _animation.kind;
+    switch (_movement.kind) {
+      case PlayerMovementKind.idle:
+        nextKind = CharacterAnimationKind.idle;
+      case PlayerMovementKind.walking:
+        nextKind = CharacterAnimationKind.walk;
+      case PlayerMovementKind.falling:
+        nextKind = CharacterAnimationKind.idle;
+      case PlayerMovementKind.hurt:
+        nextKind = CharacterAnimationKind.hurt;
+      case PlayerMovementKind.dead:
+        nextKind = CharacterAnimationKind.death;
+      case PlayerMovementKind.frozen:
+        nextKind = CharacterAnimationKind.idle;
+      case PlayerMovementKind.teleport:
+        nextKind = CharacterAnimationKind.idle;
+    }
+
+    // 2. Sync Facing with Movement Intent/Velocity
+    CharacterFacing nextFacing = _animation.facing;
+    if (_movement.velocity.x > 0.1) {
+      nextFacing = CharacterFacing.right;
+    } else if (_movement.velocity.x < -0.1) {
+      nextFacing = CharacterFacing.left;
+    }
+
+    if (nextKind != _animation.kind || nextFacing != _animation.facing) {
+       _animation = _animation.copyWith(kind: nextKind, facing: nextFacing, frame: 0, elapsed: 0);
+    }
+
+    // 3. Update Animation Frame
+    final nextState = animationController.update(_animation, dt);
+    if (nextState.frame != _animation.frame || nextState.kind != _animation.kind) {
+      _animation = nextState;
+      _synchronizeLayers();
+    }
+  }
+
   void setAnimation(CharacterAnimationState value) {
     _animation = value;
     _synchronizeLayers();
@@ -5329,8 +6825,8 @@ class CharacterComponent extends PositionComponent {
     _synchronizeLayers();
   }
 
+  @override
   void moveTo(double x, double y) {
-    // Simple teleport for now, can add lerp later
     position.setValues(x, y);
   }
 
@@ -5354,6 +6850,8 @@ class CharacterComponent extends PositionComponent {
       );
     }
   }
+
+  CharacterAnimationState get animationState => _animation;
 }
 ```
 
@@ -5472,10 +6970,15 @@ abstract final class BodyStrip {
 
 ### `D:\personal\army/lib\features\gameplay\game\player\equipment_layer_component.dart`
 ```dart
+import 'dart:ui';
+
 import 'package:flame/components.dart';
 
 class EquipmentLayerComponent extends SpriteComponent {
-  EquipmentLayerComponent({required super.priority});
+  EquipmentLayerComponent({required super.priority}) {
+    paint.filterQuality = FilterQuality.none;
+  }
+
   void applyFrame({
     required Sprite? nextSprite,
     required double offsetX,
@@ -5492,15 +6995,25 @@ class EquipmentLayerComponent extends SpriteComponent {
 ### `D:\personal\army/lib\features\gameplay\game\player\game_player.dart`
 ```dart
 import 'package:flame/components.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/player/movement_intent.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
 
 /// Common contract for anything controllable in the sandbox, so that both the
 /// placeholder sandbox character and the real [CharacterComponent] can be
 /// driven by PlayerMovementSystem / PlayerCollisionSystem.
 abstract base class GamePlayer extends PositionComponent {
+  GamePlayer({super.priority});
+
+  String get name;
   PlayerMovementState get movement;
   set movement(PlayerMovementState value);
   void moveTo(double x, double y);
+  MovementIntent get intent;
+  set intent(MovementIntent value);
+  int get hp;
+  set hp(int value);
+  int get maxHp;
+  set maxHp(int value);
 }
 ```
 
@@ -5509,7 +7022,10 @@ abstract base class GamePlayer extends PositionComponent {
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:mobiarmy_flutter/core/assets/bmfont.dart';
+import 'package:mobiarmy_flutter/core/assets/graphics_utility.dart';
 import 'package:mobiarmy_flutter/core/network/data_cache_parsers.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/player/movement_intent.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/equip_anchor.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart';
@@ -5518,14 +7034,10 @@ import 'package:mobiarmy_flutter/features/gameplay/game/player/player_sprites.da
 /// Nhan vat online THAT: body strip tu PlayerSprites (playerdata2 FilePack)
 /// + trang bi ve dung cong thuc EquipAnchor (+18/+40, W/H theo glass,
 /// mirror khi quay trai, thu tu: SUNG->CANH->FACE->NON->GIAP->KINH).
-///
-/// Atlas trang bi (PlayerEquip.imgData[glass]) nap qua getMaterialIcon
-/// cmd 126 — truyen vao [equipAtlas] neu da co; chua co thi ve placeholder
-/// rect dung anchor that de kiem chung vi tri.
 final class OnlineCharacter extends GamePlayer {
   OnlineCharacter({
     required this.glassId,
-    required this.equipIds,       // 5 slot: gun, hat, armor, glasses, wing
+    required this.equipIds, // 5 slot: gun, hat, armor, glasses, wing
     required this.name,
     this.maxHp = 1000,
     this.equipAtlas,
@@ -5533,18 +7045,24 @@ final class OnlineCharacter extends GamePlayer {
 
   final int glassId;
   final List<int> equipIds;
+  @override
   final String name;
-  final int maxHp;
-  ui.Image? equipAtlas;           // imgData[glass] — TODO nap tu cmd 126
+  @override
+  int maxHp;
+  ui.Image? equipAtlas; // imgData[glass] — nap tu cmd 126
   ui.Image? _body;
 
+  @override
   int hp = 1000;
-  int look = 0;                   // 0 = phai, 2 = trai
-  int frame = 0;                  // 0..5 animation frame
+  int look = 0; // 0 = phai, 2 = trai
+  int frame = 0; // 0..5 animation frame
   bool isReady = false;
 
   @override
   PlayerMovementState movement = PlayerMovementState(isOnGround: true);
+
+  @override
+  MovementIntent intent = MovementIntent.none;
 
   @override
   void moveTo(double x, double y) => position.setValues(x, y);
@@ -5572,45 +7090,75 @@ final class OnlineCharacter extends GamePlayer {
   @override
   void render(Canvas canvas) {
     final f = frame.clamp(0, 5);
+    final isMirror = look == 2;
+    final transform =
+        isMirror ? GraphicsUtility.transMirror : GraphicsUtility.transNone;
 
-    // 1. SUNG (slot 0) — ve TRUOC body
-    _drawSlot(canvas, _slots[0], f);
-    // 2. CANH (slot 4)
-    _drawSlot(canvas, _slots[4], f);
-    // 3. FACE — body strip, anchor BOTTOM|HCENTER, H = height/10
+    // Drawing order: SUNG (0) -> CANH (4) -> FACE -> NON (1) -> GIAP (2) -> KINH (3)
+    _drawSlot(canvas, _slots[0], f, transform);
+    _drawSlot(canvas, _slots[4], f, transform);
+
     if (_body != null) {
       final src = BodyStrip.srcRegion(_body!, f);
-      final dst = Rect.fromLTWH(-_body!.width / 2, -_body!.height / 10,
-          _body!.width.toDouble(), _body!.height / 10);
-      _drawMirrored(canvas, _body!, src, dst);
+      // Body anchor is BOTTOM | HCENTER
+      GraphicsUtility.drawRegion(
+        canvas,
+        _body!,
+        src.left,
+        src.top,
+        src.width,
+        src.height,
+        transform,
+        0,
+        0,
+        GraphicsAnchor.bottom | GraphicsAnchor.hCenter,
+      );
     } else {
-      canvas.drawRect(const Rect.fromLTWH(-8, -26, 16, 26),
-          Paint()..color = const Color(0xFF94A3B8));
+      canvas.drawRect(
+        const Rect.fromLTWH(-8, -26, 16, 26),
+        Paint()..color = const Color(0xFF94A3B8),
+      );
     }
-    // 4. NON (1) -> 5. GIAP (2) -> 6. KINH (3)
-    _drawSlot(canvas, _slots[1], f);
-    _drawSlot(canvas, _slots[2], f);
-    _drawSlot(canvas, _slots[3], f);
 
-    // Thanh HP + ten
+    _drawSlot(canvas, _slots[1], f, transform);
+    _drawSlot(canvas, _slots[2], f, transform);
+    _drawSlot(canvas, _slots[3], f, transform);
+
     _drawHpBar(canvas);
   }
 
-  void _drawSlot(Canvas canvas, EquipEntry? e, int f) {
+  void _drawSlot(Canvas canvas, EquipEntry? e, int f, int transform) {
     if (e == null) return;
     final g = e.frames[f.clamp(0, e.frames.length - 1)];
     final d = EquipAnchor.dest(
-      glassId, f, look, 0, 0, g.x, g.y, g.w, g.h, g.dx, g.dy,
+      glassId,
+      f,
+      look,
+      0,
+      0,
+      g.x,
+      g.y,
+      g.w,
+      g.h,
+      g.dx,
+      g.dy,
     );
+
     if (equipAtlas != null) {
-      final src = Rect.fromLTWH(
-          g.x.toDouble(), g.y.toDouble(), g.w.toDouble(), g.h.toDouble());
-      final dst = Rect.fromLTWH(
-          d.dx - (look == 2 ? g.w.toDouble() : 0), d.dy,
-          g.w.toDouble(), g.h.toDouble());
-      _drawMirrored(canvas, equipAtlas!, src, dst);
+      // EquipAnchor.dest provides top-left for the target, so we use TOP | LEFT anchor.
+      GraphicsUtility.drawRegion(
+        canvas,
+        equipAtlas!,
+        g.x.toDouble(),
+        g.y.toDouble(),
+        g.w.toDouble(),
+        g.h.toDouble(),
+        transform,
+        d.dx,
+        d.dy,
+        GraphicsAnchor.top | GraphicsAnchor.left,
+      );
     } else {
-      // Placeholder dung anchor that (kiem chung vi tri truoc khi co atlas)
       canvas.drawRect(
         Rect.fromLTWH(d.dx, d.dy, g.w.toDouble(), g.h.toDouble()),
         Paint()..color = const Color(0x66F59E0B),
@@ -5618,25 +7166,12 @@ final class OnlineCharacter extends GamePlayer {
     }
   }
 
-  void _drawMirrored(Canvas canvas, ui.Image img, Rect src, Rect dst) {
-    if (look == 2) {
-      canvas.save();
-      canvas.translate(dst.left + dst.width, 0);
-      canvas.scale(-1, 1);
-      canvas.drawImageRect(img, src,
-          Rect.fromLTWH(0, dst.top, dst.width, dst.height), Paint());
-      canvas.restore();
-    } else {
-      canvas.drawImageRect(img, src, dst, Paint());
-    }
-  }
-
   void _drawHpBar(Canvas canvas) {
     final pct = (hp / maxHp).clamp(0.0, 1.0);
-    canvas.drawRect(Rect.fromLTWH(-20, -38, 40, 5),
-        Paint()..color = Colors.black54);
-    canvas.drawRect(Rect.fromLTWH(-20, -38, 40 * pct, 5),
-        Paint()..color = pct > 0.3 ? Colors.green : Colors.red);
+    final paint = Paint()..color = Colors.black54;
+    canvas.drawRect(const Rect.fromLTWH(-20, -38, 40, 5), paint);
+    paint.color = pct > 0.3 ? Colors.green : Colors.red;
+    canvas.drawRect(Rect.fromLTWH(-20, -38, 40 * pct, 5), paint);
   }
 }
 ```
@@ -5696,29 +7231,47 @@ class PlayerSprites {
 ### `D:\personal\army/lib\features\gameplay\game\player\sandbox_character_component.dart`
 ```dart
 import 'dart:math' as math;
-import 'dart:ui';
+import 'dart:ui' as ui;
 
+import 'package:flame/components.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/character/equipment_definition.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/player/movement_intent.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart';
 
 /// Placeholder character for the offline vertical slice.
 ///
-/// Renders a body box plus one rect per equipment slot using the REAL frame
-/// geometry (dx/dy/w/h) from the server `equip` table, so layer offsets and
-/// anchor conventions are exercised before real sprites land (Phase 3/5).
-final class SandboxCharacterComponent extends GamePlayer {
+/// Renders real sprite sheets from Teamobi `assets/equip/` using real frame
+/// geometry so layer offsets and anchor conventions are exercised.
+final class SandboxCharacterComponent extends GamePlayer with HasGameReference<ArmyGame> {
   SandboxCharacterComponent({
     required this.slotEquipment,
     required this.bodyColor,
+    this.name = 'Bot',
     this.aimAngle = 45,
-  });
+    this.classId = 1,
+  }) : super(priority: 50);
 
   final Map<EquipmentSlot, EquipmentDefinition> slotEquipment;
-  final Color bodyColor;
+  final ui.Color bodyColor;
+  final int classId;
   int aimAngle;
+  @override
+  final String name;
 
   PlayerMovementState _movement = PlayerMovementState(isOnGround: true);
+  ui.Image? _characterImage;
+  bool _isLookingLeft = false;
+
+  @override
+  int hp = 1000;
+
+  @override
+  int maxHp = 1000;
+
+  @override
+  MovementIntent intent = MovementIntent.none;
 
   @override
   PlayerMovementState get movement => _movement;
@@ -5729,48 +7282,82 @@ final class SandboxCharacterComponent extends GamePlayer {
   @override
   void moveTo(double x, double y) => position.setValues(x, y);
 
-  static const Map<EquipmentSlot, Color> _slotColors = {
-    EquipmentSlot.gun: Color(0xFF475569),
-    EquipmentSlot.hat: Color(0xFFDC2626),
-    EquipmentSlot.armor: Color(0xFF2563EB),
-    EquipmentSlot.glasses: Color(0xFFF59E0B),
-    EquipmentSlot.wing: Color(0xFF10B981),
-  };
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
+    try {
+      final paddedId = classId.toString().padLeft(2, '0');
+      // Load image using Flame's standard cache
+      _characterImage = await game.images.load('equip/$paddedId.png');
+    } catch (e) {
+      // Fallback handled in render
+    }
+  }
 
   @override
-  void render(Canvas canvas) {
-    // Body: feet at (0,0), head up.
-    canvas.drawRect(
-      const Rect.fromLTWH(-8, -26, 16, 26),
-      Paint()..color = bodyColor,
-    );
+  void update(double dt) {
+    super.update(dt);
+    if (_movement.velocity.x < -0.1) {
+      _isLookingLeft = true;
+    } else if (_movement.velocity.x > 0.1) {
+      _isLookingLeft = false;
+    }
+  }
 
-    // Aim indicator using the legacy angle convention (0 = right, 90 = up).
-    final radians = aimAngle * math.pi / 180.0;
-    final aimPaint = Paint()
-      ..color = const Color(0xFFFFEB3B)
-      ..strokeWidth = 2;
-    canvas.drawLine(
-      const Offset(0, -12),
-      Offset(math.cos(radians) * 36, -12 - math.sin(radians) * 36),
-      aimPaint,
-    );
+  @override
+  void render(ui.Canvas canvas) {
+    canvas.save();
 
-    // Equipment placeholders with real dx/dy/w/h offsets.
-    for (final slot in EquipmentSlot.values) {
-      final definition = slotEquipment[slot];
-      if (definition == null) continue;
-      final g = definition.frame(0);
+    if (_isLookingLeft) {
+      canvas.scale(-1, 1);
+    }
+
+    if (_characterImage != null) {
+      // Standard Mobi Army 2 character frame is 24x24
+      canvas.drawImageRect(
+        _characterImage!,
+        const ui.Rect.fromLTWH(0, 0, 24, 24),
+        const ui.Rect.fromLTWH(-12, -24, 24, 24),
+        ui.Paint(),
+      );
+    } else {
+      // Fallback body: feet at (0,0), head up.
       canvas.drawRect(
-        Rect.fromLTWH(
-          g.offsetX.toDouble(),
-          g.offsetY.toDouble(),
-          g.width.toDouble(),
-          g.height.toDouble(),
-        ),
-        Paint()..color = _slotColors[slot] ?? const Color(0xFF9CA3AF),
+        const ui.Rect.fromLTWH(-8, -26, 16, 26),
+        ui.Paint()..color = bodyColor,
       );
     }
+
+    canvas.restore();
+
+    // Aim indicator
+    final angleInRadians = (_isLookingLeft ? (180 - aimAngle) : aimAngle) * math.pi / 180.0;
+    canvas.drawLine(
+      const ui.Offset(0, -12),
+      ui.Offset(math.cos(angleInRadians) * 30, -12 - math.sin(angleInRadians) * 30),
+      ui.Paint()..color = const ui.Color(0xFFFFEB3B)..strokeWidth = 2,
+    );
+
+    _renderHUD(canvas);
+  }
+
+  void _renderHUD(ui.Canvas canvas) {
+    // HP Bar background
+    final barWidth = 30.0;
+    final barHeight = 3.0;
+    final topOffset = -35.0;
+
+    canvas.drawRect(
+      ui.Rect.fromLTWH(-barWidth / 2, topOffset, barWidth, barHeight),
+      ui.Paint()..color = const ui.Color(0xFF000000),
+    );
+
+    // HP Bar foreground
+    final hpPercent = (hp / maxHp).clamp(0.0, 1.0);
+    canvas.drawRect(
+      ui.Rect.fromLTWH(-barWidth / 2, topOffset, barWidth * hpPercent, barHeight),
+      ui.Paint()..color = const ui.Color(0xFF00FF00),
+    );
   }
 }
 ```
@@ -5922,6 +7509,7 @@ class BulletSimulator {
 import 'dart:ui';
 
 import 'package:flame/components.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/effects/smoke_particle.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/projectile/projectile_trajectory.dart';
 
 /// Plays back a server-computed (or offline-simulated) trajectory frame list.
@@ -5933,7 +7521,7 @@ class ProjectileComponent extends PositionComponent {
   }) : super(anchor: Anchor.center, priority: 20);
 
   final ProjectileTrajectory trajectory;
-  final void Function(int x, int y)? onImpact;
+  final void Function(int x, int y, int radius)? onImpact;
   final double stepsPerSecond;
 
   int _frame = 0;
@@ -5958,13 +7546,20 @@ class ProjectileComponent extends PositionComponent {
       if (_frame >= trajectory.frames.length) {
         final frames = trajectory.frames;
         if (frames.isNotEmpty) {
-          onImpact?.call(frames.last.x, frames.last.y);
+          onImpact?.call(
+            frames.last.x,
+            frames.last.y,
+            trajectory.explosionRadius,
+          );
         }
         removeFromParent();
         return;
       }
       final frame = trajectory.frames[_frame];
       position.setValues(frame.x.toDouble(), frame.y.toDouble());
+
+      // Spawn smoke trail
+      parent?.add(SmokeParticle(position: position.clone()));
     }
   }
 
@@ -5986,10 +7581,15 @@ class TrajectoryFrame {
 }
 
 class ProjectileTrajectory {
-  const ProjectileTrajectory({required this.bulletId, required this.frames});
+  const ProjectileTrajectory({
+    required this.bulletId,
+    required this.frames,
+    this.explosionRadius = 18,
+  });
 
   final int bulletId;
   final List<TrajectoryFrame> frames;
+  final int explosionRadius;
 }
 ```
 
@@ -6026,32 +7626,107 @@ class TrajectorySimulator {
     int vx = force * LegacyTrigonometry.cos(ang) >> 10;
     int vy = -(force * LegacyTrigonometry.sin(ang) >> 10);
 
-    // Simplified simulation based on Gun.java for Gunner (bulletId 0)
-    // In a full implementation, this switch would cover all bullet types
-    final ax100 = (windX * 80) ~/ 100;
-    final ay100 = (windY * 80) ~/ 100;
-    const g100 = 100;
+    // MobiArmy2 Gun constants (approximate for Phase 17 parity)
+    int ax100 = 0;
+    int ay100 = 0;
+    int g100 = 100;
 
-    final bullet = BulletSimulator(
-      bulletId: bulletId,
-      x: bx,
-      y: by,
-      vx: vx,
-      vy: vy,
-      ax100: ax100,
-      ay100: ay100,
-      g100: g100,
-    );
-
-    while (!bullet.collect && bullet.frame < 1000) {
-      bullet.nextXY(mapWidth, mapHeight, isCollision);
+    switch (bulletId) {
+      case 0: // Gunner
+        ax100 = (windX * 80) ~/ 100;
+        ay100 = (windY * 80) ~/ 100;
+        g100 = 100;
+        break;
+      case 1: // Miss 6
+        ax100 = (windX * 90) ~/ 100;
+        ay100 = (windY * 90) ~/ 100;
+        g100 = 80;
+        break;
+      case 2: // Apache
+        ax100 = (windX * 40) ~/ 100;
+        ay100 = (windY * 40) ~/ 100;
+        g100 = 120;
+        break;
+      case 5: // Tazan (Boomerang effect simulated by high wind sensitivity)
+        ax100 = (windX * 250) ~/ 100;
+        ay100 = (windY * 150) ~/ 100;
+        g100 = 90;
+        break;
+      case 7: // Chicky (Egg)
+        ax100 = (windX * 60) ~/ 100;
+        ay100 = (windY * 60) ~/ 100;
+        g100 = 70;
+        break;
+      default:
+        ax100 = (windX * 80) ~/ 100;
+        ay100 = (windY * 80) ~/ 100;
+        g100 = 100;
     }
 
-    trajectories.add(
-      ProjectileTrajectory(bulletId: bulletId, frames: bullet.frames),
-    );
+    if (bulletId == 1) { // Miss 6 example
+      for (int i = -1; i <= 1; i++) {
+        final spreadAng = ang + i * 5;
+        final spreadVx = force * LegacyTrigonometry.cos(spreadAng) >> 10;
+        final spreadVy = -(force * LegacyTrigonometry.sin(spreadAng) >> 10);
+
+        final bullet = BulletSimulator(
+          bulletId: bulletId,
+          x: bx,
+          y: by,
+          vx: spreadVx,
+          vy: spreadVy,
+          ax100: ax100,
+          ay100: ay100,
+          g100: g100,
+        );
+        while (!bullet.collect && bullet.frame < 1000) {
+          bullet.nextXY(mapWidth, mapHeight, isCollision);
+        }
+        trajectories.add(
+          ProjectileTrajectory(
+            bulletId: bulletId,
+            frames: bullet.frames,
+            explosionRadius: _getExplosionRadius(bulletId),
+          ),
+        );
+      }
+    } else {
+      final bullet = BulletSimulator(
+        bulletId: bulletId,
+        x: bx,
+        y: by,
+        vx: vx,
+        vy: vy,
+        ax100: ax100,
+        ay100: ay100,
+        g100: g100,
+      );
+
+      while (!bullet.collect && bullet.frame < 1000) {
+        bullet.nextXY(mapWidth, mapHeight, isCollision);
+      }
+
+      trajectories.add(
+        ProjectileTrajectory(
+          bulletId: bulletId,
+          frames: bullet.frames,
+          explosionRadius: _getExplosionRadius(bulletId),
+        ),
+      );
+    }
 
     return trajectories;
+  }
+
+  static int _getExplosionRadius(int bulletId) {
+    switch (bulletId) {
+      case 0: return 18; // Gunner
+      case 1: return 15; // Miss 6 (smaller)
+      case 2: return 22; // Apache (larger)
+      case 5: return 20; // Tazan
+      case 7: return 16; // Chicky
+      default: return 18;
+    }
   }
 }
 ```
@@ -6216,7 +7891,7 @@ class SandboxScenario {
   final DestructibleTerrain terrain;
   final List<SandboxCharacterComponent> characters;
 
-  static SandboxScenario buildDefault() {
+  static SandboxScenario build({required int heroIndex}) {
     final map = MapJsonLoader.parse(
       SandboxMaps.cayCauBang,
       mapId: 0,
@@ -6232,6 +7907,7 @@ class SandboxScenario {
       int spawnIndex,
       List<dynamic> equipment,
       Color bodyColor,
+      int classId,
     ) {
       final point = map.spawnPoints[spawnIndex % map.spawnPoints.length];
       final groundY =
@@ -6240,15 +7916,21 @@ class SandboxScenario {
       final character = SandboxCharacterComponent(
         slotEquipment: {for (final e in equipment) e.slot as dynamic: e},
         bodyColor: bodyColor,
+        classId: classId,
       );
       character.moveTo(point.x.toDouble(), groundY);
       return character;
     }
 
+    final heroes = [
+      {'color': const Color(0xFFF97316), 'equips': SandboxEquipmentData.gunnerSet(), 'classId': 1},
+      {'color': const Color(0xFF22D3EE), 'equips': SandboxEquipmentData.miss6Set(), 'classId': 2},
+    ];
+
+    final hero = heroes[heroIndex % heroes.length];
+
     final characters = [
-      // Spawn points 4/5 land on the two side platforms (y=404 row).
-      spawn(4, SandboxEquipmentData.gunnerSet(), const Color(0xFFF97316)),
-      spawn(5, SandboxEquipmentData.miss6Set(), const Color(0xFF22D3EE)),
+      spawn(4, hero['equips'] as List<dynamic>, hero['color'] as Color, hero['classId'] as int),
     ];
 
     return SandboxScenario._(
@@ -6256,6 +7938,10 @@ class SandboxScenario {
       terrain: terrain,
       characters: characters,
     );
+  }
+
+  static SandboxScenario buildDefault() {
+    return build(heroIndex: 0);
   }
 }
 
@@ -6283,16 +7969,37 @@ import 'package:mobiarmy_flutter/features/gameplay/game/systems/screen_shake_eff
 class CameraSystem extends Component with HasGameReference<ArmyGame> {
   CameraMode mode = CameraMode.playerFollow;
   Component? _followApplied;
+  double _freePanTimeout = 0;
+  final Vector2 _anchorCorrection = Vector2.zero();
 
   void shake({double intensity = 5.0, double duration = 0.5}) {
     add(ScreenShakeEffect(intensity: intensity, duration: duration));
   }
 
+  void pan(Vector2 delta) {
+    mode = CameraMode.freePan;
+    _freePanTimeout = 3.0; // Return to player after 3s of inactivity
+    game.camera.viewfinder.position -= delta;
+    _followApplied = null;
+    game.camera.stop();
+  }
+
   @override
   void update(double dt) {
     super.update(dt);
+
+    if (mode == CameraMode.freePan) {
+      _freePanTimeout -= dt;
+      if (_freePanTimeout <= 0) {
+        mode = CameraMode.playerFollow;
+      }
+    }
+
     _updateTarget();
     _applyClamping();
+
+    // Hard-stabilize camera coordinates immediately after any update loop to eradicate drift completely
+    _anchorCorrection.setFrom(game.camera.viewfinder.position);
   }
 
   void _applyFollow(PositionComponent target, double maxSpeed) {
@@ -6302,6 +8009,8 @@ class CameraSystem extends Component with HasGameReference<ArmyGame> {
   }
 
   void _updateTarget() {
+    if (mode == CameraMode.freePan) return;
+
     final projectiles = game.gameWorld.children.query<ProjectileComponent>();
     final PositionComponent? target;
     final double maxSpeed;
@@ -6311,7 +8020,7 @@ class CameraSystem extends Component with HasGameReference<ArmyGame> {
       maxSpeed = 1000;
     } else {
       mode = CameraMode.playerFollow;
-      target = game.players[0];
+      target = game.players[game.activePlayerId ?? 0];
       maxSpeed = 400;
     }
     if (target != null) _applyFollow(target, maxSpeed);
@@ -6346,20 +8055,34 @@ class CameraSystem extends Component with HasGameReference<ArmyGame> {
 
     game.camera.viewfinder.position = pos;
   }
+
+  Vector2 get anchorCorrection => _anchorCorrection;
 }
 ```
 
 ### `D:\personal\army/lib\features\gameplay\game\systems\combat_system.dart`
 ```dart
 import 'package:flame/components.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/effects/damage_text_component.dart';
 
-import '../projectile/projectile_component.dart';
+class CombatSystem extends Component with HasGameReference<ArmyGame> {
+  void applyDamage(int playerId, int damage, int newHp, bool isDead) {
+    final player = game.players[playerId];
+    if (player == null) return;
 
-class CombatSystem extends Component with HasGameReference {
-  // Logic for managing turns, shooting, and damage
+    game.gameWorld.add(DamageTextComponent(
+      position: player.position - Vector2(0, 30),
+      damage: damage,
+    ));
 
-  void onShoot(ProjectileComponent projectile) {
-    game.add(projectile);
+    player.hp = newHp;
+    if (isDead) {
+      player.movement = player.movement.copyWith(kind: PlayerMovementKind.dead);
+    } else {
+      player.movement = player.movement.copyWith(kind: PlayerMovementKind.hurt);
+    }
   }
 }
 ```
@@ -6557,6 +8280,7 @@ import 'package:mobiarmy_flutter/features/gameplay/game/systems/ground_probe.dar
 class PlayerCollisionSystem extends Component with HasGameReference<ArmyGame> {
   static const double gravity = 400.0;
   static const double terminalVelocity = 600.0;
+  static const int groundSnapDistance = 5;
 
   @override
   void update(double dt) {
@@ -6568,8 +8292,12 @@ class PlayerCollisionSystem extends Component with HasGameReference<ArmyGame> {
 
     for (final player in game.players.values) {
       var movement = player.movement;
-      if (movement.kind == PlayerMovementKind.dead) continue;
+      if (movement.kind == PlayerMovementKind.dead ||
+          movement.kind == PlayerMovementKind.teleport) {
+        continue;
+      }
 
+      // 1. Apply Gravity if not on ground
       if (!movement.isOnGround) {
         final velocity = movement.velocity;
         velocity.y += gravity * dt;
@@ -6578,36 +8306,71 @@ class PlayerCollisionSystem extends Component with HasGameReference<ArmyGame> {
         }
         player.movement = movement.copyWith(velocity: velocity);
         movement = player.movement;
-      }
 
-      final nextY = player.y + movement.velocity.y * dt;
+        final nextY = player.y + movement.velocity.y * dt;
 
-      if (probe.isSolid(player.x, nextY)) {
-        final groundY = probe.findGroundBelow(player.x, player.y);
-        if (groundY != null) {
-          player.y = groundY;
-          player.movement = movement.copyWith(
-            velocity: Vector2(movement.velocity.x, 0),
-            isOnGround: true,
-            kind: movement.velocity.x != 0
-                ? PlayerMovementKind.walking
-                : PlayerMovementKind.idle,
-          );
+        // Check for landing
+        if (probe.isSolid(player.x, nextY)) {
+          final groundY = probe.findGroundBelow(player.x, player.y);
+          if (groundY != null) {
+            player.y = groundY;
+            player.movement = movement.copyWith(
+              velocity: Vector2(movement.velocity.x, 0),
+              isOnGround: true,
+              kind: movement.velocity.x.abs() > 0.1
+                  ? PlayerMovementKind.walking
+                  : PlayerMovementKind.idle,
+            );
+          }
+        } else {
+          player.y = nextY;
         }
       } else {
-        player.y = nextY;
-        if (movement.isOnGround || movement.velocity.y > 0) {
+        // 2. On ground: snap to ground (handle stepping down slopes)
+        final groundY = probe.findGroundBelow(player.x, player.y - 2, maxDistance: groundSnapDistance.toDouble() + 2);
+
+        if (groundY != null) {
+          player.y = groundY;
+          // Ensure state is correct
+          if (movement.kind == PlayerMovementKind.falling) {
+             player.movement = movement.copyWith(
+               isOnGround: true,
+               kind: PlayerMovementKind.idle,
+               velocity: Vector2(movement.velocity.x, 0),
+             );
+          }
+        } else {
+          // No ground found nearby, start falling
           player.movement = movement.copyWith(
             isOnGround: false,
             kind: PlayerMovementKind.falling,
+            velocity: Vector2(movement.velocity.x, 0),
           );
         }
       }
 
+      // 3. Map Boundaries & Death zones
       if (player.x < 0) player.x = 0;
       if (player.x > terrain.width) player.x = terrain.width.toDouble();
-      if (player.y > terrain.height + 100) {
-        player.movement = movement.copyWith(kind: PlayerMovementKind.dead);
+
+      final waterY = game.map?.environment.waterY;
+      if (waterY != null && waterY > 0 && player.y > waterY) {
+        if (movement.kind != PlayerMovementKind.dead) {
+          player.movement = movement.copyWith(
+            kind: PlayerMovementKind.dead,
+            velocity: Vector2.zero(),
+          );
+        }
+      }
+
+      // Fall out of map (death)
+      if (player.y > terrain.height + 64) {
+        if (movement.kind != PlayerMovementKind.dead) {
+          player.movement = movement.copyWith(
+            kind: PlayerMovementKind.dead,
+            velocity: Vector2.zero(),
+          );
+        }
       }
     }
   }
@@ -6617,49 +8380,105 @@ class PlayerCollisionSystem extends Component with HasGameReference<ArmyGame> {
 ### `D:\personal\army/lib\features\gameplay\game\systems\player_movement_system.dart`
 ```dart
 import 'package:flame/components.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/player/movement_intent.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/player/sandbox_character_component.dart';
 
 class PlayerMovementSystem extends Component with HasGameReference<ArmyGame> {
   static const double walkSpeed = 60.0;
-  static const double staminaConsumption = 20.0; // per second
+  static const double staminaConsumption = 25.0; // matches legacy feel
+  static const int maxSlopeClimb = 4;
 
   @override
   void update(double dt) {
     super.update(dt);
+    final terrain = game.terrain;
+    if (terrain == null) return;
+
     final input = game.inputController.state;
 
-    // Sandbox: local player controls player 0. Online mode replaces this
-    // with MovementIntent driven by command 21 packets.
-    final myPlayer = game.players[0];
-    if (myPlayer == null) return;
+    // 1. Bridge Input to Intent (for local sandbox or active turn player)
+    final localPlayer = game.players[0] ?? game.players[game.activePlayerId];
+    if (localPlayer != null) {
+      MovementDirection dir = MovementDirection.none;
+      if (input.movingLeft) {
+        dir = MovementDirection.left;
+      } else if (input.movingRight) dir = MovementDirection.right;
 
-    var movement = myPlayer.movement;
-    if (movement.kind == PlayerMovementKind.dead) return;
+      localPlayer.intent = MovementIntent(direction: dir);
+    }
 
+    final activePlayer = game.players[game.activePlayerId ?? 0];
+    if (activePlayer is SandboxCharacterComponent) {
+      activePlayer.aimAngle = input.angle;
+    }
+
+    // 2. Process Movement based on Intents
+    for (final player in game.players.values) {
+      _processPlayerMovement(player, dt);
+    }
+  }
+
+  void _processPlayerMovement(GamePlayer player, double dt) {
+    final terrain = game.terrain;
+    if (terrain == null) return;
+
+    var movement = player.movement;
+    if (movement.kind == PlayerMovementKind.dead ||
+        movement.kind == PlayerMovementKind.frozen) {
+      return;
+    }
+
+    final intent = player.intent;
     double dx = 0;
-    if (input.movingLeft) dx -= 1;
-    if (input.movingRight) dx += 1;
+    if (intent.direction == MovementDirection.left) dx = -1;
+    if (intent.direction == MovementDirection.right) dx = 1;
 
     if (dx != 0 && movement.isOnGround && movement.stamina > 0) {
-      final velocity = movement.velocity;
-      velocity.x = dx * walkSpeed;
+      final deltaX = dx * walkSpeed * dt;
+      final nextX = player.x + deltaX;
 
-      final newStamina = (movement.stamina - staminaConsumption * dt).clamp(
-        0.0,
-        100.0,
-      );
+      // Slope climbing: check if we need to step up
+      double nextY = player.y;
+      bool blocked = false;
 
-      myPlayer.x += velocity.x * dt;
-      myPlayer.movement = movement.copyWith(
-        velocity: velocity,
-        stamina: newStamina,
-        kind: PlayerMovementKind.walking,
-      );
+      if (terrain.isSolid(nextX.toInt(), nextY.toInt())) {
+        blocked = true;
+        // Try to climb up
+        for (int i = 1; i <= maxSlopeClimb; i++) {
+          if (!terrain.isSolid(nextX.toInt(), (nextY - i).toInt())) {
+            nextY -= i;
+            blocked = false;
+            break;
+          }
+        }
+      }
+
+      if (!blocked) {
+        final newStamina = (movement.stamina - staminaConsumption * dt).clamp(0.0, 100.0);
+
+        player.x = nextX;
+        player.y = nextY;
+
+        player.movement = movement.copyWith(
+          velocity: Vector2(deltaX / dt, 0),
+          stamina: newStamina,
+          kind: PlayerMovementKind.walking,
+        );
+      } else {
+        // Blocked by wall
+        player.movement = movement.copyWith(
+          velocity: Vector2.zero(),
+          kind: PlayerMovementKind.idle,
+        );
+      }
     } else {
+      // No horizontal intent or no stamina
       final velocity = movement.velocity;
       velocity.x = 0;
-      myPlayer.movement = movement.copyWith(
+      player.movement = movement.copyWith(
         velocity: velocity,
         kind: movement.isOnGround
             ? PlayerMovementKind.idle
@@ -6708,6 +8527,9 @@ class ScreenShakeEffect extends Component with HasGameReference<ArmyGame> {
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobiarmy_flutter/core/audio/audio_provider.dart';
+import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_provider.dart';
+import 'package:mobiarmy_flutter/shared/overlays/gameplay_hud.dart';
 import '../game/army_game.dart';
 
 class GameplayPage extends ConsumerStatefulWidget {
@@ -6723,7 +8545,18 @@ class _GameplayPageState extends ConsumerState<GameplayPage> {
   @override
   void initState() {
     super.initState();
-    _game = ArmyGame();
+    final audio = ref.read(audioServiceProvider);
+    _game = ArmyGame(audio: audio);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(gameplayHandlerProvider).attachGame(_game);
+    });
+  }
+
+  @override
+  void dispose() {
+    ref.read(gameplayHandlerProvider).detachGame();
+    super.dispose();
   }
 
   @override
@@ -6731,33 +8564,15 @@ class _GameplayPageState extends ConsumerState<GameplayPage> {
     return Scaffold(
       body: Stack(
         children: [
-          GameWidget(game: _game),
-          // HUD Overlay
-          Positioned(bottom: 20, left: 20, child: _buildControls()),
+          GameWidget<ArmyGame>(
+            game: _game,
+            overlayBuilderMap: {
+              'HUD': (context, game) => GameplayHud(game: game),
+            },
+            initialActiveOverlays: const ['HUD'],
+          ),
         ],
       ),
-    );
-  }
-
-  Widget _buildControls() {
-    return Row(
-      children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: const Icon(Icons.arrow_forward, color: Colors.white),
-          onPressed: () {},
-        ),
-        const SizedBox(width: 20),
-        ElevatedButton(
-          onPressed: () {
-            // Test shooting
-          },
-          child: const Text('SHOOT'),
-        ),
-      ],
     );
   }
 }
@@ -6769,14 +8584,17 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobiarmy_flutter/app/lifecycle/app_lifecycle_coordinator.dart';
+import 'package:mobiarmy_flutter/core/audio/audio_provider.dart';
 import 'package:mobiarmy_flutter/core/network/connection_lifecycle.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_provider.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/sandbox/sandbox_scenario.dart';
 import 'package:mobiarmy_flutter/shared/overlays/gameplay_hud.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
 
 class GameplaySandboxScreen extends ConsumerStatefulWidget {
-  const GameplaySandboxScreen({super.key});
+  const GameplaySandboxScreen({super.key, this.heroIndex = 0});
+
+  final int heroIndex;
 
   @override
   ConsumerState<GameplaySandboxScreen> createState() =>
@@ -6790,137 +8608,61 @@ class _GameplaySandboxScreenState extends ConsumerState<GameplaySandboxScreen> {
   @override
   void initState() {
     super.initState();
-    final scenario = SandboxScenario.buildDefault();
-    _game = ArmyGame(scenario: scenario);
+    // Sandbox uses internal audio but no network connection lifecycle
+    final audio = ref.read(audioServiceProvider);
+
+    final scenario = SandboxScenario.build(heroIndex: widget.heroIndex);
+    _game = ArmyGame(scenario: scenario, audio: audio);
+    _game.activePlayerId = 0; // Local user player ID
+
     _lifecycle = AppLifecycleCoordinator(
       game: _game,
-      connection: NoopConnectionLifecycle(),
+      connection: const NoopConnectionLifecycle(),
+      audio: audio,
     )..start();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(gameplayHandlerProvider).attachGame(_game);
-    });
   }
 
   @override
   void dispose() {
-    ref.read(gameplayHandlerProvider).detachGame();
     _lifecycle.dispose();
     _game.pauseSafely();
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    body: SafeArea(
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: GameWidget<ArmyGame>(
-              game: _game,
-              overlayBuilderMap: {
-                'HUD': (context, game) => GameplayHud(game: game),
-              },
-              initialActiveOverlays: const ['HUD'],
-            ),
-          ),
-          const Positioned(
-            top: 12,
-            left: 12,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: Color(0xAA000000),
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Text('Gameplay sandbox — offline vertical slice'),
-              ),
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
-}
-```
-
-### `D:\personal\army/lib\features\gameplay\presentation\lobby_screen.dart`
-```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/lobby_service.dart';
-
-/// Lobby: danh sach phong tu cmd -28. Thay PlaceholderScreen o route /lobby.
-class LobbyScreen extends ConsumerStatefulWidget {
-  const LobbyScreen({super.key});
-
-  @override
-  ConsumerState<LobbyScreen> createState() => _LobbyScreenState();
-}
-
-class _LobbyScreenState extends ConsumerState<LobbyScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(
-      () => ref.read(lobbyServiceProvider.notifier).requestRoomList(),
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final rooms = ref.watch(lobbyServiceProvider);
-    final auth = ref.watch(authControllerProvider);
-    final session = auth.session;
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text('MobiArmy — ${auth.server?.name ?? ''}'),
-        actions: [
-          if (session != null)
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(right: 12),
-                child: Text('xu ${session.xu} · luong ${session.luong}'),
+      body: GameViewport(
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: GameWidget<ArmyGame>(
+                game: _game,
+                overlayBuilderMap: {
+                  'HUD': (context, game) => GameplayHud(game: game),
+                },
+                initialActiveOverlays: const ['HUD'],
               ),
             ),
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () => ref.read(authControllerProvider.notifier).disconnect(),
-          ),
-        ],
-      ),
-      body: RefreshIndicator(
-        onRefresh: () => ref.read(lobbyServiceProvider.notifier).requestRoomList(),
-        child: rooms.isEmpty
-            ? const Center(child: Text('Khong co phong nao — keo de tai lai'))
-            : ListView.builder(
-                itemCount: rooms.length,
-                itemBuilder: (context, i) {
-                  final r = rooms[i];
-                  if (r.name != null) {
-                    return Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-                      child: Text(r.name!,
-                          style: const TextStyle(fontWeight: FontWeight.bold)),
-                    );
-                  }
-                  return Card(
-                    margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
-                    child: ListTile(
-                      dense: true,
-                      title: Text(r.displayName),
-                      subtitle: Text('Nguoi choi: ${r.playerMax}'),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () => ref
-                          .read(lobbyServiceProvider.notifier)
-                          .joinRoom(r.id, r.boardId),
-                    ),
-                  );
-                },
+            const Positioned(
+              top: 50,
+              left: 12,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Color(0xAA000000),
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    'Gameplay sandbox — offline vertical slice',
+                    style: TextStyle(color: Colors.white, fontSize: 10),
+                  ),
+                ),
               ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -6931,18 +8673,18 @@ class _LobbyScreenState extends ConsumerState<LobbyScreen> {
 ```dart
 import 'dart:typed_data';
 
-import 'package:flame/components.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:mobiarmy_flutter/core/network/data_cache_parsers.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/map_binary_parser.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/terrain_component.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/online_character.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/player_sprites.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/systems/ground_probe.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
 
 /// MAN DEMO OFFLINE = dung asset THAT, khong can server, chay duoc tren web.
 ///
@@ -6968,7 +8710,7 @@ class _OfflineDemoScreenState extends State<OfflineDemoScreen> {
 
   Future<Uint8List?> _seed(String name) async {
     try {
-      final bd = await rootBundle.load('assets/rms/' + name);
+      final bd = await rootBundle.load('assets/rms/$name');
       return bd.buffer.asUint8List();
     } catch (_) {
       return null;
@@ -7039,10 +8781,7 @@ class _OfflineDemoScreenState extends State<OfflineDemoScreen> {
 
     setState(() {
       _game = game;
-      _status = 'OK — map ' +
-          bin.width.toString() + 'x' + bin.height.toString() +
-          ', ' + bricks.length.toString() + ' bricks, ' +
-          DataCache.equips.length.toString() + ' equips';
+      _status = 'OK — map ${bin.width}x${bin.height}, ${bricks.length} bricks, ${DataCache.equips.length} equips';
     });
   }
 
@@ -7050,20 +8789,26 @@ class _OfflineDemoScreenState extends State<OfflineDemoScreen> {
   Widget build(BuildContext context) {
     final game = _game;
     return Scaffold(
-      body: Stack(children: [
-        if (game != null)
-          Positioned.fill(child: GameWidget(game: game))
-        else
-          Center(child: Text(_status)),
-        Positioned(
-          top: 12, left: 12,
-          child: Container(
-            color: Colors.black54,
-            padding: const EdgeInsets.all(8),
-            child: Text(_status, style: const TextStyle(color: Colors.white)),
-          ),
+      body: GameViewport(
+        child: PopScope(
+          canPop: true,
+          child: Stack(children: [
+            if (game != null)
+              Positioned.fill(child: GameWidget(game: game))
+            else
+              Center(child: Text(_status)),
+            Positioned(
+              top: 12,
+              left: 12,
+              child: Container(
+                color: Colors.black54,
+                padding: const EdgeInsets.all(8),
+                child: Text(_status, style: const TextStyle(color: Colors.white)),
+              ),
+            ),
+          ]),
         ),
-      ]),
+      ),
     );
   }
 }
@@ -7074,18 +8819,14 @@ class _OfflineDemoScreenState extends State<OfflineDemoScreen> {
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/game_start_handler.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/game_session_bootstrap.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/online_game_service.dart';
+import 'package:mobiarmy_flutter/app/lifecycle/app_lifecycle_coordinator.dart';
+import 'package:mobiarmy_flutter/core/audio/audio_provider.dart';
+import 'package:mobiarmy_flutter/core/network/connection_lifecycle.dart';
+import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/map/background_component.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/map/terrain_component.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/systems/ground_probe.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/player/sandbox_character_component.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
+import 'package:mobiarmy_flutter/shared/overlays/gameplay_hud.dart';
 
-/// Man choi online: khoi tao ArmyGame tu GameSessionStart (cmd 20).
-/// Sprite nhan vat that se thay SandboxCharacterComponent o pack sau —
-/// hien tai dung placeholder + map/terrain THAT.
 class OnlineGameScreen extends ConsumerStatefulWidget {
   const OnlineGameScreen({super.key});
   @override
@@ -7094,6 +8835,7 @@ class OnlineGameScreen extends ConsumerStatefulWidget {
 
 class _OnlineGameScreenState extends ConsumerState<OnlineGameScreen> {
   ArmyGame? _game;
+  AppLifecycleCoordinator? _lifecycle;
   String? _error;
 
   @override
@@ -7103,237 +8845,144 @@ class _OnlineGameScreenState extends ConsumerState<OnlineGameScreen> {
   }
 
   Future<void> _start() async {
-    final session = ref.read(gameStartProvider);
-    final setup = session == null ? null : GameSessionBootstrap.build(session);
-    if (setup == null) {
-      setState(() => _error = 'Khong khoi tao duoc map (chua sync valuesdata2?)');
+    final match = ref.read(gameplayControllerProvider);
+    final audio = ref.read(audioServiceProvider);
+
+    if (match == null) {
+      setState(() => _error = 'Không thể khởi tạo trận đấu (thiếu dữ liệu MatchState)');
       return;
     }
-    final game = ArmyGame();
+
+    final game = ArmyGame(audio: audio);
     await game.onLoad();
-    game.map = setup.map;
-    game.terrain = setup.terrain;
-    await game.gameWorld.add(BackgroundComponent(
-      environment: setup.map.environment,
-      mapSize: Vector2(setup.map.width.toDouble(), setup.map.height.toDouble()),
-    ));
-    final terrainComponent = TerrainComponent(terrain: setup.terrain);
-    await game.gameWorld.add(terrainComponent);
-    game.players.clear();
-    final probe = GroundProbe(setup.terrain);
-    for (var i = 0; i < setup.spawnPoints.length; i++) {
-      final sp = setup.spawnPoints[i];
-      final gy = probe.findGroundBelow(sp.x.toDouble(), sp.y.toDouble()) ?? sp.y.toDouble();
-      // TODO(pack sau): CharacterComponent that voi PlayerSprites + EquipAnchor
-      final c = SandboxCharacterComponent(
-        slotEquipment: const {},
-        bodyColor: Colors.primaries[i % Colors.primaries.length],
-      );
-      c.moveTo(sp.x.toDouble(), gy);
-      await game.gameWorld.add(c);
-      game.players[i] = c;
-    }
-    // myIndex = vi tri cua minh trong playerX khac -1
-    final myIdx = session?.playerX != null ? session!.playerX.indexWhere((x) => x != -1) : -1;
-    await ref
-      .read(onlineGameServiceProvider.notifier)
-      .move(setup.spawnPoints[myIdx].x, setup.spawnPoints[myIdx].y);
+    await game.setupMatch(match);
+
+    _lifecycle = AppLifecycleCoordinator(
+      game: game,
+      connection: const NoopConnectionLifecycle(),
+      audio: audio,
+    )..start();
+
     setState(() => _game = game);
   }
 
   @override
+  void dispose() {
+    _lifecycle?.dispose();
+    _game?.pauseSafely();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final hud = ref.watch(onlineGameServiceProvider);
+    final match = ref.watch(gameplayControllerProvider);
     final game = _game;
-    if (_error != null) {
-      return Scaffold(body: Center(child: Text(_error!)));
+
+    if (match == null) {
+      return const Scaffold(body: Center(child: Text('Đang thoát trận...')));
     }
-    if (game == null) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
-    }
+
+    // Handle one-off events from MatchState
+    ref.listen(gameplayControllerProvider.select((s) => s?.lastShoot), (prev, next) {
+      if (next != null && game != null) {
+        for (final trajectory in next.trajectories) {
+          game.spawnProjectile(trajectory);
+        }
+      }
+    });
+
+    ref.listen(gameplayControllerProvider.select((s) => s?.players), (prev, next) {
+      if (next != null && game != null) {
+        game.syncPlayers(next);
+      }
+    });
+
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(child: GameWidget(game: game)),
-          _buildHud(hud),
-        ],
+      body: GameViewport(
+        child: PopScope(
+          canPop: false,
+          onPopInvokedWithResult: (didPop, result) async {
+            if (didPop) return;
+            final shouldExit = await showDialog<bool>(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: const Text('Thoát trận?'),
+                content: const Text('Bạn có chắc muốn rời khỏi trận đấu đang diễn ra?'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: const Text('Ở lại'),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(true),
+                    child: const Text('Thoát', style: TextStyle(color: Colors.red)),
+                  ),
+                ],
+              ),
+            );
+
+            if (shouldExit == true && mounted) {
+              // ignore: use_build_context_synchronously
+              Navigator.of(context).pop();
+            }
+          },
+          child: Stack(
+            children: [
+              if (game != null)
+                Positioned.fill(
+                  child: GameWidget<ArmyGame>(
+                    game: game,
+                    overlayBuilderMap: {
+                      'HUD': (context, g) => GameplayHud(game: g),
+                    },
+                    initialActiveOverlays: const ['HUD'],
+                  ),
+                )
+              else if (_error != null)
+                Center(child: Text(_error!))
+              else
+                const Center(child: CircularProgressIndicator()),
+              if (game != null) _buildStatusHeader(match),
+            ],
+          ),
+        ),
       ),
     );
   }
 
-  Widget _buildHud(OnlineGameState hud) {
+  Widget _buildStatusHeader(dynamic match) {
+    final isMyTurn = ref.watch(gameplayControllerProvider.notifier).isMyTurn;
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(12),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Gio: ${hud.windX}',
-                    style: const TextStyle(color: Colors.white, fontSize: 18)),
-                const SizedBox(width: 16),
-                Text(
-                  hud.isMyTurn ? 'LUOT CUA BAN' : 'Doi thu...',
-                  style: TextStyle(
-                    color: hud.isMyTurn ? Colors.greenAccent : Colors.white70,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            const Spacer(),
-            if (hud.isMyTurn && _game != null)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  // TODO(pack sau): MovementControls + FireButton noi
-                  // GameControls.shoot(type, gunX, gunY, angle, force 1..30)
-                  FilledButton(
-                    onPressed: () {
-                      final me = _game!.players[0];
-                      if (me != null) {
-                        ref.read(onlineGameServiceProvider.notifier).shoot(
-                          type: 0, gunX: me.x.round(), gunY: (me.y - 20).round(),
-                          angle: 45, force: 15,
-                        );
-                      }
-                    },
-                    child: const Text('FIRE (test)'),
+                  Text('Gió: ${match.windX}',
+                      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                  const SizedBox(width: 16),
+                  Text(
+                    isMyTurn ? 'LƯỢT CỦA BẠN' : 'Đang chờ...',
+                    style: TextStyle(
+                      color: isMyTurn ? Colors.greenAccent : Colors.white70,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
+            ),
           ],
         ),
-      ),
-    );
-  }
-}
-```
-
-### `D:\personal\army/lib\features\gameplay\presentation\room_screen.dart`
-```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:mobiarmy_flutter/core/network/data_cache_parsers.dart';
-import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/room_service.dart';
-
-/// Port PrepareScr (phase to thieu): danh sach nguoi choi, ready, doi map,
-/// nut Start (chu phong). Thay PlaceholderScreen o route /room.
-class RoomScreen extends ConsumerWidget {
-  const RoomScreen({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final room = ref.watch(roomServiceProvider);
-    final auth = ref.watch(authControllerProvider);
-    final myId = auth.session?.id ?? -1;
-    final isOwner = room.ownerId == myId && myId != -1;
-    final mapName = room.mapId == 100
-        ? 'Ngau nhien'
-        : (room.mapId < DataCache.mapNames.length
-            ? DataCache.mapNames[room.mapId]
-            : 'Map ${room.mapId}');
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Phong cho — $mapName'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () async {
-            await ref.read(roomServiceProvider.notifier).leaveRoom();
-            if (context.mounted) context.go('/lobby');
-          },
-        ),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text('Tien cuoc: ${room.money}'),
-                if (isOwner)
-                  OutlinedButton.icon(
-                    icon: const Icon(Icons.map),
-                    label: const Text('Doi map'),
-                    onPressed: () => _pickMap(context, ref),
-                  ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: room.players.length,
-              itemBuilder: (context, i) {
-                final p = room.players[i];
-                final owner = p.idDb == room.ownerId;
-                return ListTile(
-                  leading: Icon(
-                    p.isReady ? Icons.check_circle : Icons.radio_button_unchecked,
-                    color: p.isReady ? Colors.green : Colors.grey,
-                  ),
-                  title: Text(p.name + (owner ? '  (Chu phong)' : '')),
-                  subtitle: Text('Level ${p.level2}'),
-                );
-              },
-            ),
-          ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: FilledButton.tonal(
-                      onPressed: () {
-                        final me = room.players.where((p) => p.idDb == myId);
-                        final ready = me.isEmpty ? true : !me.first.isReady;
-                        ref.read(roomServiceProvider.notifier).setReady(ready);
-                      },
-                      child: Text(
-                        (room.players.any((p) => p.idDb == myId && p.isReady))
-                            ? 'Huy ready'
-                            : 'Ready',
-                      ),
-                    ),
-                  ),
-                  if (isOwner) ...[
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: FilledButton(
-                        onPressed: () =>
-                            ref.read(roomServiceProvider.notifier).startGame(),
-                        child: const Text('BAT DAU'),
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _pickMap(BuildContext context, WidgetRef ref) {
-    showModalBottomSheet(
-      context: context,
-      builder: (ctx) => ListView(
-        children: [
-          for (var i = 0; i < DataCache.mapNames.length; i++)
-            ListTile(
-              title: Text(DataCache.mapNames[i]),
-              onTap: () {
-                ref.read(roomServiceProvider.notifier).requestChangeMap(i);
-                Navigator.pop(ctx);
-              },
-            ),
-        ],
       ),
     );
   }
@@ -7355,39 +9004,79 @@ class AimControls extends StatelessWidget {
     return Column(
       children: [
         _AimButton(
-          icon: Icons.keyboard_arrow_up,
-          onPressed: () => game.inputController.updateAngle(1),
+          normalAsset: 'assets/gui/nut_up.png',
+          pressedAsset: 'assets/gui/nut_up_.png',
+          fallbackIcon: Icons.keyboard_arrow_up,
+          onPressedStart: () => game.inputController.setAngleDelta(1),
+          onPressedEnd: () => game.inputController.setAngleDelta(0),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 12),
         _AimButton(
-          icon: Icons.keyboard_arrow_down,
-          onPressed: () => game.inputController.updateAngle(-1),
+          normalAsset: 'assets/gui/nut_down.png',
+          pressedAsset: 'assets/gui/nut_down_.png',
+          fallbackIcon: Icons.keyboard_arrow_down,
+          onPressedStart: () => game.inputController.setAngleDelta(-1),
+          onPressedEnd: () => game.inputController.setAngleDelta(0),
         ),
       ],
     );
   }
 }
 
-class _AimButton extends StatelessWidget {
-  const _AimButton({required this.icon, required this.onPressed});
+class _AimButton extends StatefulWidget {
+  const _AimButton({
+    required this.normalAsset,
+    required this.pressedAsset,
+    required this.fallbackIcon,
+    required this.onPressedStart,
+    required this.onPressedEnd,
+  });
 
-  final IconData icon;
-  final VoidCallback onPressed;
+  final String normalAsset;
+  final String pressedAsset;
+  final IconData fallbackIcon;
+  final VoidCallback onPressedStart;
+  final VoidCallback onPressedEnd;
+
+  @override
+  State<_AimButton> createState() => _AimButtonState();
+}
+
+class _AimButtonState extends State<_AimButton> {
+  bool _isPressed = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed,
-      // For continuous update, we might want GestureDetector longPress or a custom timer,
-      // but let's keep it simple for skeleton.
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Colors.black45,
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.white24),
-        ),
-        child: Icon(icon, color: Colors.white, size: 24),
+      onTapDown: (_) {
+        setState(() => _isPressed = true);
+        widget.onPressedStart();
+      },
+      onTapUp: (_) {
+        setState(() => _isPressed = false);
+        widget.onPressedEnd();
+      },
+      onTapCancel: () {
+        setState(() => _isPressed = false);
+        widget.onPressedEnd();
+      },
+      child: Image.asset(
+        _isPressed ? widget.pressedAsset : widget.normalAsset,
+        width: 40,
+        height: 40,
+        fit: BoxFit.contain,
+        errorBuilder: (context, error, stackTrace) {
+          return Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: _isPressed ? Colors.white24 : Colors.black45,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: Colors.white24),
+            ),
+            child: Icon(widget.fallbackIcon, color: Colors.white),
+          );
+        },
       ),
     );
   }
@@ -7409,13 +9098,15 @@ class MovementControls extends StatelessWidget {
     return Row(
       children: [
         _MoveButton(
-          icon: Icons.arrow_back,
+          normalAsset: 'assets/gui/nut1.png',
+          pressedAsset: 'assets/gui/nut1_.png',
           onPressedStart: () => game.inputController.setMovingLeft(true),
           onPressedEnd: () => game.inputController.setMovingLeft(false),
         ),
-        const SizedBox(width: 8),
+        const SizedBox(width: 16),
         _MoveButton(
-          icon: Icons.arrow_forward,
+          normalAsset: 'assets/gui/nut2.png',
+          pressedAsset: 'assets/gui/nut2_.png',
           onPressedStart: () => game.inputController.setMovingRight(true),
           onPressedEnd: () => game.inputController.setMovingRight(false),
         ),
@@ -7424,31 +9115,62 @@ class MovementControls extends StatelessWidget {
   }
 }
 
-class _MoveButton extends StatelessWidget {
+class _MoveButton extends StatefulWidget {
   const _MoveButton({
-    required this.icon,
+    required this.normalAsset,
+    required this.pressedAsset,
     required this.onPressedStart,
     required this.onPressedEnd,
   });
 
-  final IconData icon;
+  final String normalAsset;
+  final String pressedAsset;
   final VoidCallback onPressedStart;
   final VoidCallback onPressedEnd;
 
   @override
+  State<_MoveButton> createState() => _MoveButtonState();
+}
+
+class _MoveButtonState extends State<_MoveButton> {
+  bool _isPressed = false;
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (_) => onPressedStart(),
-      onTapUp: (_) => onPressedEnd(),
-      onTapCancel: () => onPressedEnd(),
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: Colors.black45,
-          shape: BoxShape.circle,
-          border: Border.all(color: Colors.white24),
-        ),
-        child: Icon(icon, color: Colors.white, size: 32),
+      onTapDown: (_) {
+        setState(() => _isPressed = true);
+        widget.onPressedStart();
+      },
+      onTapUp: (_) {
+        setState(() => _isPressed = false);
+        widget.onPressedEnd();
+      },
+      onTapCancel: () {
+        setState(() => _isPressed = false);
+        widget.onPressedEnd();
+      },
+      child: Image.asset(
+        _isPressed ? widget.pressedAsset : widget.normalAsset,
+        width: 46,
+        height: 46,
+        fit: BoxFit.contain,
+        errorBuilder: (context, error, stackTrace) {
+          // Fallback to generic shape if asset fails
+          return Container(
+            width: 46,
+            height: 46,
+            decoration: BoxDecoration(
+              color: _isPressed ? Colors.white24 : Colors.black45,
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.white24),
+            ),
+            child: Icon(
+              widget.normalAsset.contains('nut1') ? Icons.arrow_back : Icons.arrow_forward,
+              color: Colors.white,
+            ),
+          );
+        },
       ),
     );
   }
@@ -7489,6 +9211,2353 @@ class PowerBar extends StatelessWidget {
 }
 ```
 
+### `D:\personal\army/lib\features\gameplay\presentation\widgets\wind_indicator.dart`
+```dart
+import 'package:flutter/material.dart';
+
+class WindIndicator extends StatelessWidget {
+  const WindIndicator({
+    super.key,
+    required this.windX,
+    required this.windY,
+  });
+
+  final int windX;
+  final int windY;
+
+  @override
+  Widget build(BuildContext context) {
+    final isLeft = windX < 0;
+    final absWind = windX.abs();
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.black87,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.orange.withValues(alpha: 0.5), width: 1.5),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (windX != 0)
+            Transform.flip(
+              flipX: !isLeft, // wind.png usually points left or right, adjust based on convention
+              child: Image.asset(
+                'assets/wind.png',
+                width: 22,
+                height: 14,
+                fit: BoxFit.contain,
+                errorBuilder: (_, _, _) => Icon(
+                  isLeft ? Icons.arrow_back : Icons.arrow_forward,
+                  color: Colors.lightBlueAccent,
+                  size: 16,
+                ),
+              ),
+            ),
+          const SizedBox(width: 8),
+          Text(
+            'WIND: $absWind',
+            style: const TextStyle(
+              color: Colors.yellow,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'monospace',
+              fontSize: 16,
+              shadows: [
+                Shadow(blurRadius: 2, color: Colors.black, offset: Offset(1, 1))
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+
+### `D:\personal\army/lib\features\inventory\application\inventory_controller.dart`
+```dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logging/logging.dart';
+import 'package:mobiarmy_flutter/core/network/command/commands.dart';
+import 'package:mobiarmy_flutter/core/network/dispatcher/message_dispatcher.dart';
+import 'package:mobiarmy_flutter/core/network/network_provider.dart';
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
+import 'package:mobiarmy_flutter/features/inventory/data/inventory_packet_mapper.dart';
+import 'package:mobiarmy_flutter/features/inventory/data/inventory_repository.dart';
+import 'package:mobiarmy_flutter/features/inventory/domain/equipment_stats.dart';
+import 'package:mobiarmy_flutter/features/inventory/domain/inventory_item.dart';
+
+class InventoryState {
+  const InventoryState({
+    this.items = const [],
+    this.materials = const [],
+    this.characterStats = CharacterStats.defaultStats,
+    this.isLoading = false,
+    this.error,
+  });
+
+  final List<InventoryItem> items;
+  final List<InventoryItem> materials;
+  final CharacterStats characterStats;
+  final bool isLoading;
+  final String? error;
+
+  InventoryState copyWith({
+    List<InventoryItem>? items,
+    List<InventoryItem>? materials,
+    CharacterStats? characterStats,
+    bool? isLoading,
+    String? error,
+  }) {
+    return InventoryState(
+      items: items ?? this.items,
+      materials: materials ?? this.materials,
+      characterStats: characterStats ?? this.characterStats,
+      isLoading: isLoading ?? this.isLoading,
+      error: error ?? this.error,
+    );
+  }
+}
+
+class InventoryController extends Notifier<InventoryState> {
+  final _logger = Logger('InventoryController');
+  late final InventoryRepository _repository;
+  late final InventoryPacketMapper _mapper;
+
+  @override
+  InventoryState build() {
+    _repository = InventoryRepository(ref.watch(tcpSessionProvider));
+    _mapper = const InventoryPacketMapper();
+
+    final dispatcher = ref.watch(messageDispatcherProvider);
+    _registerHandlers(dispatcher);
+
+    ref.onDispose(() {
+      _unregisterHandlers(dispatcher);
+    });
+
+    return const InventoryState();
+  }
+
+  void _registerHandlers(MessageDispatcher dispatcher) {
+    dispatcher
+      ..register(Commands.inventory, _onInventory)
+      ..register(Commands.materialUpdate, _onMaterials)
+      ..register(99, _onCharacterInfo)
+      ..register(Commands.inventoryUpdate, _onInventoryUpdate)
+      ..register(Commands.log, _onLog);
+  }
+
+  void _unregisterHandlers(MessageDispatcher dispatcher) {
+    dispatcher
+      ..unregister(Commands.inventory, _onInventory)
+      ..unregister(Commands.materialUpdate, _onMaterials)
+      ..unregister(99, _onCharacterInfo)
+      ..unregister(Commands.inventoryUpdate, _onInventoryUpdate)
+      ..unregister(Commands.log, _onLog);
+  }
+
+  Future<void> loadInventory() async {
+    state = state.copyWith(isLoading: true, error: null);
+    try {
+      await _repository.requestInventory();
+      await _repository.requestCharacterStats();
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: e.toString());
+    }
+  }
+
+  Future<void> changeEquip(List<int> dbKeys) async {
+    state = state.copyWith(isLoading: true);
+    try {
+      await _repository.changeEquip(dbKeys);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: e.toString());
+    }
+  }
+
+  // --------------------------------------------------------------- handlers
+
+  void _onInventory(Message message) {
+    try {
+      final items = _mapper.decodeInventory(message);
+      state = state.copyWith(items: items, isLoading: false);
+    } catch (e, stack) {
+      _logger.severe('Failed to decode inventory', e, stack);
+    }
+  }
+
+  void _onMaterials(Message message) {
+    try {
+      final materials = _mapper.decodeMaterials(message);
+      state = state.copyWith(materials: materials, isLoading: false);
+    } catch (e, stack) {
+      _logger.severe('Failed to decode materials', e, stack);
+    }
+  }
+
+  void _onCharacterInfo(Message message) {
+    try {
+      final r = message.reader();
+      r.readUnsignedByte(); // level2
+      r.readByte(); // level2Percen
+      r.readShort(); // point
+      final abilities = [for (var i = 0; i < 5; i++) r.readShort()];
+      state = state.copyWith(
+        characterStats: CharacterStats(ability: abilities),
+        isLoading: false,
+      );
+    } catch (e, stack) {
+      _logger.severe('Failed to decode character stats', e, stack);
+    }
+  }
+
+  void _onInventoryUpdate(Message message) {
+    // Refresh inventory on update
+    loadInventory();
+  }
+
+  void _onLog(Message message) {
+    // Only capture error if we are expecting a result (e.g. after a request)
+    if (state.isLoading) {
+      final text = message.reader().readUTF();
+      state = state.copyWith(error: text, isLoading: false);
+    }
+  }
+}
+
+final inventoryControllerProvider = NotifierProvider<InventoryController, InventoryState>(InventoryController.new);
+```
+
+### `D:\personal\army/lib\features\inventory\domain\inventory_item.dart`
+```dart
+import 'equipment_stats.dart';
+
+class InventoryItem {
+  final int dbKey;
+  final int id;
+  final int icon;
+  final int type;
+  final int glass;
+  final String name;
+  final int date;
+  final int slot;
+  final int vip;
+  final int level;
+  final int level2;
+  final bool isMaterial;
+  final String strDetail;
+  final int quantity;
+  final int bullet;
+  final EquipmentStats stats;
+
+  const InventoryItem({
+    required this.dbKey,
+    required this.id,
+    required this.icon,
+    required this.type,
+    required this.glass,
+    required this.name,
+    required this.date,
+    required this.slot,
+    required this.vip,
+    required this.level,
+    required this.level2,
+    required this.isMaterial,
+    required this.strDetail,
+    required this.quantity,
+    required this.bullet,
+    required this.stats,
+  });
+
+  static const empty = InventoryItem(
+    dbKey: -1,
+    id: -1,
+    icon: -1,
+    type: -1,
+    glass: -1,
+    name: '',
+    date: 0,
+    slot: 0,
+    vip: 0,
+    level: 0,
+    level2: 0,
+    isMaterial: false,
+    strDetail: '',
+    quantity: 0,
+    bullet: -1,
+    stats: EquipmentStats.empty,
+  );
+
+  /// Compatibility factory for consumable items.
+  factory InventoryItem.consumable({
+    required int id,
+    required String name,
+    int quantity = 0,
+  }) {
+    return InventoryItem(
+      dbKey: -1,
+      id: id,
+      icon: -1,
+      type: 0,
+      glass: 0,
+      name: name,
+      date: 0,
+      slot: 0,
+      vip: 0,
+      level: 0,
+      level2: 0,
+      isMaterial: false,
+      strDetail: '',
+      quantity: quantity,
+      bullet: -1,
+      stats: EquipmentStats.empty,
+    );
+  }
+}
+```
+
+### `D:\personal\army/lib\features\inventory\presentation\inventory_screen.dart`
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobiarmy_flutter/features/inventory/application/inventory_controller.dart';
+import 'package:mobiarmy_flutter/features/inventory/domain/inventory_item.dart';
+
+class InventoryScreen extends ConsumerStatefulWidget {
+  const InventoryScreen({super.key});
+
+  @override
+  ConsumerState<InventoryScreen> createState() => _InventoryScreenState();
+}
+
+class _InventoryScreenState extends ConsumerState<InventoryScreen> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+    Future.microtask(() => ref.read(inventoryControllerProvider.notifier).loadInventory());
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final inventory = ref.watch(inventoryControllerProvider);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Hành trang'),
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: const [
+            Tab(text: 'Trang bị'),
+            Tab(text: 'Nguyên liệu'),
+          ],
+        ),
+      ),
+      body: inventory.isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : Column(
+              children: [
+                _PlayerAttributesBar(stats: inventory.characterStats),
+                Expanded(
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: [
+                      _InventoryGrid(items: inventory.items),
+                      _InventoryGrid(items: inventory.materials),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+    );
+  }
+}
+
+class _PlayerAttributesBar extends StatelessWidget {
+  const _PlayerAttributesBar({required this.stats});
+  final dynamic stats;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      color: Colors.black12,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _AttributeItem(label: 'HP', value: stats.ability[0]),
+          _AttributeItem(label: 'ATK', value: stats.ability[1]),
+          _AttributeItem(label: 'DEF', value: stats.ability[2]),
+          _AttributeItem(label: 'LUK', value: stats.ability[3]),
+          _AttributeItem(label: 'TEAM', value: stats.ability[4]),
+        ],
+      ),
+    );
+  }
+}
+
+class _AttributeItem extends StatelessWidget {
+  const _AttributeItem({required this.label, required this.value});
+  final String label;
+  final int value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(label, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 10)),
+        Text('$value', style: const TextStyle(fontSize: 12)),
+      ],
+    );
+  }
+}
+
+class _InventoryGrid extends StatelessWidget {
+  const _InventoryGrid({required this.items});
+  final List<InventoryItem> items;
+
+  @override
+  Widget build(BuildContext context) {
+    if (items.isEmpty) {
+      return const Center(child: Text('Trống'));
+    }
+    return GridView.builder(
+      padding: const EdgeInsets.all(16),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 5,
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 8,
+      ),
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        final item = items[index];
+        return _InventoryItemTile(item: item);
+      },
+    );
+  }
+}
+
+class _InventoryItemTile extends StatelessWidget {
+  const _InventoryItemTile({required this.item});
+  final InventoryItem item;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: item.dbKey != -1 ? Colors.blue.shade50 : null,
+      child: InkWell(
+        onTap: () {
+          // TODO: show item detail
+        },
+        child: Stack(
+          children: [
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(item.isMaterial ? Icons.category : Icons.shield, size: 24),
+                  const SizedBox(height: 2),
+                  Text(
+                    item.name,
+                    style: const TextStyle(fontSize: 8),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+            if (item.quantity > 1)
+              Positioned(
+                right: 2,
+                bottom: 2,
+                child: Text(
+                  'x${item.quantity}',
+                  style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+### `D:\personal\army/lib\features\lobby\application\lobby_controller.dart`
+```dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logging/logging.dart';
+import 'package:mobiarmy_flutter/core/network/command/commands.dart';
+import 'package:mobiarmy_flutter/core/network/dispatcher/message_dispatcher.dart';
+import 'package:mobiarmy_flutter/core/network/network_provider.dart';
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
+import 'package:mobiarmy_flutter/features/lobby/application/lobby_state_machine.dart';
+import 'package:mobiarmy_flutter/features/lobby/data/lobby_packet_mapper.dart';
+import 'package:mobiarmy_flutter/features/lobby/data/lobby_repository.dart';
+import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
+import 'package:mobiarmy_flutter/features/room/data/room_packet_mapper.dart';
+
+class LobbyController extends Notifier<LobbyState> {
+  final _logger = Logger('LobbyController');
+
+  late final LobbyStateMachine _machine;
+  late final LobbyRepository _repository;
+  late final LobbyPacketMapper _mapper;
+  late final RoomPacketMapper _roomMapper;
+
+  @override
+  LobbyState build() {
+    _machine = LobbyStateMachine();
+    _mapper = const LobbyPacketMapper();
+    _roomMapper = const RoomPacketMapper();
+    _repository = LobbyRepository(ref.watch(tcpSessionProvider));
+
+    final dispatcher = ref.watch(messageDispatcherProvider);
+    _registerHandlers(dispatcher);
+
+    ref.onDispose(() {
+      _unregisterHandlers(dispatcher);
+    });
+
+    // Initial load
+    Future.microtask(() => loadAreas());
+
+    return _machine.state;
+  }
+
+  void _registerHandlers(MessageDispatcher dispatcher) {
+    dispatcher
+      ..register(Commands.roomList, _onRoomList)
+      ..register(Commands.roomWaitList, _onRoomWaitList)
+      ..register(Commands.joinRoomWait, _onLoadRoomWait) // cmd 8
+      ..register(Commands.log, _onLog);
+  }
+
+  void _unregisterHandlers(MessageDispatcher dispatcher) {
+    dispatcher
+      ..unregister(Commands.roomList, _onRoomList)
+      ..unregister(Commands.roomWaitList, _onRoomWaitList)
+      ..unregister(Commands.joinRoomWait, _onLoadRoomWait)
+      ..unregister(Commands.log, _onLog);
+  }
+
+  // ---------------------------------------------------------------- commands
+
+  Future<void> loadAreas() async {
+    state = _machine.areasRequested();
+    try {
+      await _repository.requestAreas();
+    } catch (e) {
+      state = _machine.joinFailed('Không thể tải danh sách khu vực: $e');
+    }
+  }
+
+  Future<void> loadBoards(int areaId) async {
+    state = _machine.boardsRequested(areaId);
+    try {
+      await _repository.requestBoards(areaId);
+    } catch (e) {
+      state = _machine.joinFailed('Không thể tải danh sách bàn: $e');
+    }
+  }
+
+  Future<void> joinBoard(int areaId, int boardId, [String password = '']) async {
+    state = _machine.joinRequested();
+    try {
+      await _repository.joinBoard(areaId, boardId, password);
+    } catch (e) {
+      state = _machine.joinFailed('Không thể gửi yêu cầu vào bàn: $e');
+    }
+  }
+
+  Future<void> quickJoin(int mode) async {
+    state = _machine.joinRequested();
+    try {
+      await _repository.quickJoin(mode);
+    } catch (e) {
+      state = _machine.joinFailed('Không thể gửi yêu cầu chơi ngay: $e');
+    }
+  }
+
+  // --------------------------------------------------------------- packets
+
+  void _onRoomList(Message message) {
+    try {
+      final areas = _mapper.decodeAreas(message);
+      state = _machine.areasLoaded(areas);
+    } catch (e, stack) {
+      _logger.severe('roomList parse failed', e, stack);
+    }
+  }
+
+  void _onRoomWaitList(Message message) {
+    try {
+      final (areaId, boards) = _mapper.decodeBoards(message);
+      state = _machine.boardsLoaded(areaId, boards);
+    } catch (e, stack) {
+      _logger.severe('roomWaitList parse failed', e, stack);
+    }
+  }
+
+  void _onLoadRoomWait(Message message) {
+    try {
+      _logger.info('Received loadRoomWait (cmd 8) - success joining room');
+      final roomState = _roomMapper.decodeLoadRoomWait(message);
+      state = _machine.joinSucceeded(roomState);
+    } catch (e, stack) {
+      _logger.severe('loadRoomWait parse failed in LobbyController', e, stack);
+    }
+  }
+
+  void _onLog(Message message) {
+    // If we are joining, a log message usually means failure.
+    if (state.status == LobbyStatus.joining) {
+      final text = message.reader().readUTF();
+      state = _machine.joinFailed(text);
+    }
+  }
+}
+
+final lobbyControllerProvider =
+    NotifierProvider<LobbyController, LobbyState>(LobbyController.new);
+```
+
+### `D:\personal\army/lib\features\lobby\application\lobby_state_machine.dart`
+```dart
+import 'package:mobiarmy_flutter/features/lobby/domain/area_summary.dart';
+import 'package:mobiarmy_flutter/features/lobby/domain/board_summary.dart';
+import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
+
+/// Pure state machine for the lobby flow.
+class LobbyStateMachine {
+  LobbyState _state = const LobbyState.initial();
+
+  LobbyState get state => _state;
+
+  LobbyState areasRequested() {
+    return _set(const LobbyState.loadingAreas());
+  }
+
+  LobbyState areasLoaded(List<AreaSummary> areas) {
+    if (_state.status != LobbyStatus.loadingAreas) return _state;
+    return _set(LobbyState.areasLoaded(areas));
+  }
+
+  LobbyState boardsRequested(int areaId) {
+    if (_state.status != LobbyStatus.areasLoaded &&
+        _state.status != LobbyStatus.boardsLoaded) {
+      return _state;
+    }
+    return _set(LobbyState.loadingBoards(_state.areas, areaId));
+  }
+
+  LobbyState boardsLoaded(int areaId, List<BoardSummary> boards) {
+    if (_state.status != LobbyStatus.loadingBoards ||
+        _state.selectedAreaId != areaId) {
+      return _state;
+    }
+    return _set(LobbyState.boardsLoaded(_state.areas, areaId, boards));
+  }
+
+  LobbyState joinRequested() {
+    if (_state.status != LobbyStatus.boardsLoaded &&
+        _state.status != LobbyStatus.areasLoaded) {
+      return _state;
+    }
+    return _set(const LobbyState.joining());
+  }
+
+  LobbyState joinSucceeded(RoomSessionState initialRoomState) {
+    if (_state.status != LobbyStatus.joining) return _state;
+    return _set(LobbyState.joined(initialRoomState));
+  }
+
+  LobbyState joinFailed(String message) {
+    if (_state.status != LobbyStatus.joining) return _state;
+    // Revert to boardsLoaded if we were there, else areasLoaded
+    if (_state.selectedAreaId != null) {
+      return _set(LobbyState.failed(message));
+    }
+    return _set(LobbyState.failed(message));
+  }
+
+  LobbyState reset() {
+    return _set(const LobbyState.initial());
+  }
+
+  LobbyState _set(LobbyState next) {
+    _state = next;
+    return next;
+  }
+}
+```
+
+### `D:\personal\army/lib\features\lobby\data\lobby_packet_mapper.dart`
+```dart
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
+import 'package:mobiarmy_flutter/features/lobby/domain/area_summary.dart';
+import 'package:mobiarmy_flutter/features/lobby/domain/board_summary.dart';
+
+/// Decoders for lobby server packets.
+/// Parity with SessionHandler.java.
+class LobbyPacketMapper {
+  const LobbyPacketMapper();
+
+  /// cmd 6 `roomList`
+  List<AreaSummary> decodeAreas(Message message) {
+    final r = message.reader();
+    final areas = <AreaSummary>[];
+    while (r.available >= 4) {
+      final id = r.readByte();
+      final status = r.readByte();
+      r.readByte(); // padding 0
+      final type = r.readByte();
+      areas.add(
+        AreaSummary(id: id, status: status, type: type),
+      );
+    }
+    return areas;
+  }
+
+  /// cmd 7 `roomWaitList`
+  (int, List<BoardSummary>) decodeBoards(Message message) {
+    final r = message.reader();
+    final areaId = r.readByte();
+    final boards = <BoardSummary>[];
+
+    // Each board record is at least:
+    // 1 (id) + 1 (num) + 1 (limit) + 1 (pass) + 4 (money) + 1 (started) + 2 (utf len) + 1 (mode) = 12 bytes
+    while (r.available >= 12) {
+      boards.add(
+        BoardSummary(
+          id: r.readByte(),
+          numPlayers: r.readByte(),
+          maxPlayers: r.readByte(),
+          hasPassword: r.readBoolean(),
+          bet: r.readInt(),
+          isStarted: r.readBoolean(),
+          name: r.readUTF(),
+          mode: r.readByte(),
+        ),
+      );
+    }
+    return (areaId, boards);
+  }
+}
+```
+
+### `D:\personal\army/lib\features\lobby\data\lobby_repository.dart`
+```dart
+import 'package:mobiarmy_flutter/core/network/command/commands.dart';
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
+import 'package:mobiarmy_flutter/core/network/transport/tcp_session.dart';
+
+class LobbyRepository {
+  LobbyRepository(this._session);
+  final TcpSession _session;
+
+  Future<void> requestAreas() async {
+    await _session.sendMessage(Message(Commands.roomList));
+  }
+
+  Future<void> requestBoards(int areaId) async {
+    final message = Message(Commands.roomWaitList);
+    message.writer().writeByte(areaId);
+    await _session.sendMessage(message);
+  }
+
+  Future<void> joinBoard(int areaId, int boardId, [String password = '']) async {
+    final message = Message(Commands.joinRoomWait);
+    message.writer().writeByte(areaId);
+    message.writer().writeByte(boardId);
+    message.writer().writeUTF(password);
+    await _session.sendMessage(message);
+  }
+
+  Future<void> quickJoin(int mode) async {
+    final message = Message(Commands.quickPlay);
+    message.writer().writeByte(mode);
+    await _session.sendMessage(message);
+  }
+}
+```
+
+### `D:\personal\army/lib\features\lobby\domain\area_summary.dart`
+```dart
+/// Summary of a server area (Khu vực).
+/// Parity with SessionHandler.java: loadRoomInfo (cmd 6).
+class AreaSummary {
+  const AreaSummary({
+    required this.id,
+    required this.status,
+    required this.type,
+  });
+
+  final int id;
+  final int status;
+  final int type;
+
+  @override
+  String toString() => 'AreaSummary(id: $id, status: $status, type: $type)';
+}
+```
+
+### `D:\personal\army/lib\features\lobby\domain\board_summary.dart`
+```dart
+/// Summary of a game board (Bàn) within an area.
+/// Parity with SessionHandler.java: loadRoomWaits (cmd 7).
+class BoardSummary {
+  const BoardSummary({
+    required this.id,
+    required this.numPlayers,
+    required this.maxPlayers,
+    required this.hasPassword,
+    required this.bet,
+    required this.isStarted,
+    required this.name,
+    required this.mode,
+  });
+
+  final int id;
+  final int numPlayers;
+  final int maxPlayers;
+  final bool hasPassword;
+  final int bet;
+  final bool isStarted;
+  final String name;
+  final int mode;
+
+  @override
+  String toString() => 'BoardSummary(id: $id, name: $name, players: $numPlayers/$maxPlayers)';
+}
+```
+
+### `D:\personal\army/lib\features\lobby\domain\lobby_state.dart`
+```dart
+import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
+import 'area_summary.dart';
+import 'board_summary.dart';
+
+enum LobbyStatus {
+  initial,
+  loadingAreas,
+  areasLoaded,
+  loadingBoards,
+  boardsLoaded,
+  joining,
+  joined, // Room UI will take over
+  failed,
+}
+
+class LobbyState {
+  const LobbyState._({
+    required this.status,
+    this.areas = const [],
+    this.selectedAreaId,
+    this.boards = const [],
+    this.message,
+    this.initialRoomState,
+  });
+
+  const LobbyState.initial() : this._(status: LobbyStatus.initial);
+
+  const LobbyState.loadingAreas() : this._(status: LobbyStatus.loadingAreas);
+
+  const LobbyState.areasLoaded(List<AreaSummary> areas)
+    : this._(status: LobbyStatus.areasLoaded, areas: areas);
+
+  const LobbyState.loadingBoards(List<AreaSummary> areas, int areaId)
+    : this._(
+        status: LobbyStatus.loadingBoards,
+        areas: areas,
+        selectedAreaId: areaId,
+      );
+
+  const LobbyState.boardsLoaded(
+    List<AreaSummary> areas,
+    int areaId,
+    List<BoardSummary> boards,
+  ) : this._(
+        status: LobbyStatus.boardsLoaded,
+        areas: areas,
+        selectedAreaId: areaId,
+        boards: boards,
+      );
+
+  const LobbyState.joining() : this._(status: LobbyStatus.joining);
+
+  const LobbyState.joined(RoomSessionState initialRoomState)
+    : this._(status: LobbyStatus.joined, initialRoomState: initialRoomState);
+
+  const LobbyState.failed(String message)
+    : this._(status: LobbyStatus.failed, message: message);
+
+  final LobbyStatus status;
+  final List<AreaSummary> areas;
+  final int? selectedAreaId;
+  final List<BoardSummary> boards;
+  final String? message;
+  final RoomSessionState? initialRoomState;
+
+  bool get isBusy => {
+    LobbyStatus.loadingAreas,
+    LobbyStatus.loadingBoards,
+    LobbyStatus.joining,
+  }.contains(status);
+}
+```
+
+### `D:\personal\army/lib\features\lobby\presentation\lobby_screen.dart`
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mobiarmy_flutter/app/router/app_route.dart';
+import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
+import 'package:mobiarmy_flutter/features/lobby/application/lobby_controller.dart';
+import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
+import 'package:mobiarmy_flutter/shared/widgets/bitmap_text.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_button.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_dialog.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_panel.dart';
+
+class LobbyScreen extends ConsumerWidget {
+  const LobbyScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final lobby = ref.watch(lobbyControllerProvider);
+    final notifier = ref.read(lobbyControllerProvider.notifier);
+
+    ref.listen(lobbyControllerProvider, (previous, next) {
+      if (next.status == LobbyStatus.joined) {
+        context.go(AppRoute.room.path);
+      }
+    });
+
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) async {
+        if (didPop) return;
+        final exit = await LegacyDialog.showExitDialog(context);
+        if (exit == true) {
+          await ref.read(authControllerProvider.notifier).disconnect();
+        }
+      },
+      child: Scaffold(
+        body: GameViewport(
+          child: Stack(
+            children: [
+            // Background
+            Container(color: const Color(0xFF77D3FF)),
+
+            Center(
+              child: LegacyPanel(
+                width: 400,
+                height: 250,
+                title: lobby.status == LobbyStatus.boardsLoaded
+                    ? 'Khu vực ${lobby.selectedAreaId}'
+                    : 'Chọn khu vực',
+                child: lobby.isBusy
+                    ? const Center(child: CircularProgressIndicator())
+                    : lobby.status == LobbyStatus.boardsLoaded
+                        ? _BoardList(
+                            areaId: lobby.selectedAreaId!,
+                            boards: lobby.boards,
+                          )
+                        : _AreaList(areas: lobby.areas),
+              ),
+            ),
+
+            // Soft Keys
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 35,
+                color: Colors.black54,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    LegacyButton(
+                      label: lobby.status == LobbyStatus.boardsLoaded ? 'Quay lại' : 'Thoát',
+                      width: 80,
+                      height: 25,
+                      onPressed: () {
+                        if (lobby.status == LobbyStatus.boardsLoaded) {
+                          notifier.loadAreas();
+                        } else {
+                          context.go('/');
+                        }
+                      },
+                    ),
+                    Row(
+                      children: [
+                        LegacyButton(
+                          label: 'Thêm',
+                          width: 80,
+                          height: 25,
+                          onPressed: () => _showMoreMenu(context),
+                        ),
+                        const SizedBox(width: 5),
+                        LegacyButton(
+                          label: 'Chơi ngay',
+                          width: 80,
+                          height: 25,
+                          onPressed: () => notifier.quickJoin(0), // Mode 0 = default quick play
+                        ),
+                        const SizedBox(width: 5),
+                        LegacyButton(
+                          label: 'Cập nhật',
+                          width: 80,
+                          height: 25,
+                          onPressed: () {
+                            if (lobby.status == LobbyStatus.boardsLoaded && lobby.selectedAreaId != null) {
+                              notifier.loadBoards(lobby.selectedAreaId!);
+                            } else {
+                              notifier.loadAreas();
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      ),
+    );
+  }
+
+  void _showMoreMenu(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => Container(
+        padding: const EdgeInsets.all(16),
+        child: Wrap(
+          spacing: 16,
+          runSpacing: 16,
+          children: [
+            _MenuIcon(icon: Icons.inventory, label: 'Hành trang', route: AppRoute.inventory),
+            _MenuIcon(icon: Icons.shopping_cart, label: 'Cửa hàng', route: AppRoute.shop),
+            _MenuIcon(icon: Icons.people, label: 'Bạn bè', route: AppRoute.friends),
+            _MenuIcon(icon: Icons.shield, label: 'Biệt đội', route: AppRoute.clan),
+            _MenuIcon(icon: Icons.assignment, label: 'Nhiệm vụ', route: AppRoute.missions),
+            _MenuIcon(icon: Icons.casino, label: 'Quay số', route: AppRoute.luckyGame),
+            _MenuIcon(icon: Icons.leaderboard, label: 'Hạng', route: AppRoute.ranking),
+            _MenuIcon(icon: Icons.build, label: 'Chế tạo', route: AppRoute.formulas),
+            _MenuIcon(icon: Icons.account_circle, label: 'Cá nhân', route: AppRoute.profile),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _MenuIcon extends StatelessWidget {
+  const _MenuIcon({required this.icon, required this.label, required this.route});
+  final IconData icon;
+  final String label;
+  final AppRoute route;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.pop(context);
+        context.push(route.path);
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 40),
+          const SizedBox(height: 4),
+          Text(label, style: const TextStyle(fontSize: 12)),
+        ],
+      ),
+    );
+  }
+}
+
+class _AreaList extends ConsumerWidget {
+  const _AreaList({required this.areas});
+  final List<dynamic> areas;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (areas.isEmpty) {
+      return const Center(child: BitmapText('Không có khu vực nào', scale: 0.8));
+    }
+    return ListView.builder(
+      itemCount: areas.length,
+      itemBuilder: (context, index) {
+        final area = areas[index];
+        return ListTile(
+          dense: true,
+          title: BitmapText('Khu vực ${area.id}', scale: 0.9),
+          subtitle: BitmapText('Trạng thái: ${area.status} - Loại: ${area.type}', scale: 0.7),
+          trailing: const Icon(Icons.chevron_right, color: Colors.black54),
+          onTap: () => ref.read(lobbyControllerProvider.notifier).loadBoards(area.id),
+        );
+      },
+    );
+  }
+}
+
+class _BoardList extends ConsumerWidget {
+  const _BoardList({required this.areaId, required this.boards});
+  final int areaId;
+  final List<dynamic> boards;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (boards.isEmpty) {
+      return const Center(child: BitmapText('Không có bàn nào trống', scale: 0.8));
+    }
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 4,
+        childAspectRatio: 1.4,
+        crossAxisSpacing: 5,
+        mainAxisSpacing: 5,
+      ),
+      itemCount: boards.length,
+      itemBuilder: (context, index) {
+        final board = boards[index];
+        final isFull = board.numPlayers >= board.maxPlayers;
+
+        return GestureDetector(
+          onTap: board.isStarted || isFull
+              ? null
+              : () {
+                  if (board.hasPassword) {
+                    _promptPassword(context, ref, board.id);
+                  } else {
+                    ref.read(lobbyControllerProvider.notifier).joinBoard(areaId, board.id);
+                  }
+                },
+          child: Container(
+            decoration: BoxDecoration(
+              color: board.isStarted
+                  ? Colors.grey
+                  : isFull
+                      ? Colors.redAccent.withValues(alpha: 0.2)
+                      : const Color(0xFF3379FF).withValues(alpha: 0.3),
+              border: Border.all(color: const Color(0xFF303030)),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                BitmapText('Bàn ${board.id}', scale: 0.8),
+                BitmapText('${board.numPlayers}/${board.maxPlayers}', scale: 0.6),
+                if (board.hasPassword)
+                  const Icon(Icons.lock, size: 12, color: Colors.amber),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void _promptPassword(BuildContext context, WidgetRef ref, int boardId) {
+    final textController = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text('Mật khẩu bàn $boardId'),
+        content: TextField(
+          controller: textController,
+          autofocus: true,
+          decoration: const InputDecoration(hintText: 'Nhập mật khẩu'),
+          obscureText: true,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Hủy'),
+          ),
+          TextButton(
+            onPressed: () {
+              ref.read(lobbyControllerProvider.notifier).joinBoard(areaId, boardId, textController.text);
+              Navigator.of(ctx).pop();
+            },
+            child: const Text('Vào phòng'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+
+### `D:\personal\army/lib\features\room\application\room_controller.dart`
+```dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logging/logging.dart';
+import 'package:mobiarmy_flutter/core/network/command/commands.dart';
+import 'package:mobiarmy_flutter/core/network/dispatcher/message_dispatcher.dart';
+import 'package:mobiarmy_flutter/core/network/network_provider.dart';
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
+import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
+import 'package:mobiarmy_flutter/features/gameplay/application/chat_controller.dart';
+import 'package:mobiarmy_flutter/features/lobby/application/lobby_controller.dart';
+import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
+
+import 'package:mobiarmy_flutter/features/room/application/room_state_machine.dart';
+import 'package:mobiarmy_flutter/features/room/data/room_packet_mapper.dart';
+import 'package:mobiarmy_flutter/features/room/data/room_repository.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
+
+class RoomController extends Notifier<RoomSessionState?> {
+  final _logger = Logger('RoomController');
+
+  late RoomStateMachine _machine;
+  late RoomRepository _repository;
+  late RoomPacketMapper _mapper;
+
+  @override
+  RoomSessionState? build() {
+    _machine = RoomStateMachine();
+    _mapper = const RoomPacketMapper();
+    _repository = RoomRepository(ref.watch(tcpSessionProvider));
+
+    final dispatcher = ref.watch(messageDispatcherProvider);
+    _registerHandlers(dispatcher);
+
+    ref.onDispose(() {
+      _unregisterHandlers(dispatcher);
+    });
+
+    // Check for initial state from Lobby transition
+    final lobby = ref.read(lobbyControllerProvider);
+    if (lobby.status == LobbyStatus.joined && lobby.initialRoomState != null) {
+      _machine.initialized(lobby.initialRoomState!);
+    }
+
+    return _machine.state;
+  }
+
+  void _registerHandlers(MessageDispatcher dispatcher) {
+    dispatcher
+      ..register(Commands.joinRoomWait, _onLoadRoomWait)
+      ..register(Commands.ready, _onReadySync)
+      ..register(Commands.changeTeam, _onTeamSync)
+      ..register(Commands.selectMap, _onMapSync)
+      ..register(Commands.chat, _onChat)
+      ..register(Commands.startGame, _onGameStart)
+      ..register(Commands.bet, _onBetSync)
+      ..register(Commands.kick, _onKickSync)
+      ..register(Commands.leaveRoomWait, _onLeaveSync)
+      ..register(Commands.buyGlass, _onGlassSync);
+  }
+
+  void _unregisterHandlers(MessageDispatcher dispatcher) {
+    dispatcher
+      ..unregister(Commands.joinRoomWait, _onLoadRoomWait)
+      ..unregister(Commands.ready, _onReadySync)
+      ..unregister(Commands.changeTeam, _onTeamSync)
+      ..unregister(Commands.selectMap, _onMapSync)
+      ..unregister(Commands.chat, _onChat)
+      ..unregister(Commands.startGame, _onGameStart)
+      ..unregister(Commands.bet, _onBetSync)
+      ..unregister(Commands.kick, _onKickSync)
+      ..unregister(Commands.leaveRoomWait, _onLeaveSync)
+      ..unregister(Commands.buyGlass, _onGlassSync);
+  }
+
+  // ---------------------------------------------------------------- commands
+
+  Future<void> toggleReady() => _repository.sendReady();
+  Future<void> changeTeam() => _repository.sendChangeTeam();
+  Future<void> sendChat(String text) => _repository.sendChat(text);
+  Future<void> selectMap(int mapId) => _repository.sendSelectMap(mapId);
+  Future<void> startGame() => _repository.sendStartGame();
+  Future<void> changeBet(int amount) => _repository.sendBet(amount);
+  Future<void> kickPlayer(int playerId) => _repository.sendKick(playerId);
+  Future<void> selectGlass(int glassId) => _repository.sendSelectGlass(glassId);
+
+  Future<void> leaveRoom() async {
+    await _repository.sendLeave();
+    _machine.reset();
+    state = null;
+  }
+
+  // --------------------------------------------------------------- packets
+
+  void _onLoadRoomWait(Message message) {
+    try {
+      final roomState = _mapper.decodeLoadRoomWait(message);
+      _machine.initialized(roomState);
+      state = _machine.state;
+    } catch (e, stack) {
+      _logger.severe('loadRoomWait parse failed', e, stack);
+    }
+  }
+
+  void _onReadySync(Message message) {
+    try {
+      final (playerId, isReady) = _mapper.decodeReady(message);
+      _machine.readySynced(playerId, isReady);
+      state = _machine.state;
+    } catch (e) {
+      _logger.warning('readySync parse failed: $e');
+    }
+  }
+
+  void _onTeamSync(Message message) {
+    try {
+      final (playerId, teamId) = _mapper.decodeTeam(message);
+      _machine.teamSynced(playerId, teamId);
+      state = _machine.state;
+    } catch (e) {
+      _logger.warning('teamSync parse failed: $e');
+    }
+  }
+
+  void _onMapSync(Message message) {
+    try {
+      final mapId = message.reader().readByte();
+      _machine.mapChanged(mapId);
+      state = _machine.state;
+    } catch (e) {
+      _logger.warning('mapSync parse failed: $e');
+    }
+  }
+
+  void _onBetSync(Message message) {
+    try {
+      final bet = _mapper.decodeBet(message);
+      _machine.betChanged(bet);
+      state = _machine.state;
+    } catch (e) {
+      _logger.warning('betSync parse failed: $e');
+    }
+  }
+
+  void _onKickSync(Message message) {
+    try {
+      final playerId = _mapper.decodeKick(message);
+      _machine.playerLeft(playerId);
+      state = _machine.state;
+    } catch (e) {
+      _logger.warning('kickSync parse failed: $e');
+    }
+  }
+
+  void _onLeaveSync(Message message) {
+    try {
+      final playerId = message.reader().readInt();
+      _machine.playerLeft(playerId);
+      state = _machine.state;
+    } catch (e) {
+      _logger.warning('leaveSync parse failed: $e');
+    }
+  }
+
+  void _onGlassSync(Message message) {
+    try {
+      final r = message.reader();
+      final playerId = r.readInt();
+      final glassId = r.readByte();
+      _machine.glassChanged(playerId, glassId);
+      state = _machine.state;
+    } catch (e) {
+      _logger.warning('glassSync parse failed: $e');
+    }
+  }
+
+  void _onChat(Message message) {
+    try {
+      final (playerId, text) = _mapper.decodeChat(message);
+      final sender = state?.players[playerId]?.name ?? 'System';
+      ref.read(chatControllerProvider.notifier).addMessage(sender, text);
+    } catch (_) {}
+  }
+
+  void _onGameStart(Message message) {
+    _logger.info('Game Starting (cmd 20)...');
+    // Phase 16 will handle match start navigation
+  }
+
+  bool get isMaster {
+    final myId = ref.read(authControllerProvider).session?.id;
+    return state?.masterId == myId;
+  }
+}
+
+final roomControllerProvider =
+    NotifierProvider<RoomController, RoomSessionState?>(RoomController.new);
+```
+
+### `D:\personal\army/lib\features\room\application\room_state_machine.dart`
+```dart
+import 'package:mobiarmy_flutter/features/room/domain/room_player.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
+
+class RoomStateMachine {
+  RoomSessionState? _state;
+
+  RoomSessionState? get state => _state;
+
+  void initialized(RoomSessionState state) {
+    _state = state;
+  }
+
+  void playerJoined(int slotIndex, RoomPlayer player) {
+    if (_state == null) return;
+    final players = Map<int, RoomPlayer>.from(_state!.players);
+    players[player.id] = player.copyWith();
+    _state = _state!.copyWith(players: players);
+  }
+
+  void playerLeft(int playerId) {
+    if (_state == null) return;
+    final players = Map<int, RoomPlayer>.from(_state!.players);
+    players.remove(playerId);
+
+    // Automatic master transfer logic if the host left and room is not empty
+    int newMasterId = _state!.masterId;
+    if (playerId == _state!.masterId && players.isNotEmpty) {
+      newMasterId = players.keys.first;
+    }
+
+    _state = _state!.copyWith(players: players, masterId: newMasterId);
+  }
+
+  void readySynced(int playerId, bool isReady) {
+    if (_state == null) return;
+    final player = _state!.players[playerId];
+    if (player == null) return;
+
+    final players = Map<int, RoomPlayer>.from(_state!.players);
+    players[playerId] = player.copyWith(isReady: isReady);
+    _state = _state!.copyWith(players: players);
+  }
+
+  void teamSynced(int playerId, int team) {
+    if (_state == null) return;
+    final player = _state!.players[playerId];
+    if (player == null) return;
+
+    final players = Map<int, RoomPlayer>.from(_state!.players);
+    players[playerId] = player.copyWith(team: team);
+    _state = _state!.copyWith(players: players);
+  }
+
+  void mapChanged(int mapId) {
+    if (_state == null) return;
+    _state = _state!.copyWith(mapId: mapId);
+  }
+
+  void masterChanged(int masterId) {
+    if (_state == null) return;
+    _state = _state!.copyWith(masterId: masterId);
+  }
+
+  void betChanged(int bet) {
+    if (_state == null) return;
+    _state = _state!.copyWith(bet: bet);
+  }
+
+  void glassChanged(int playerId, int glassId) {
+    if (_state == null) return;
+    final player = _state!.players[playerId];
+    if (player == null) return;
+
+    final players = Map<int, RoomPlayer>.from(_state!.players);
+    players[playerId] = player.copyWith(glassId: glassId, gun: glassId);
+    _state = _state!.copyWith(players: players);
+  }
+
+  void reset() {
+    _state = null;
+  }
+}
+```
+
+### `D:\personal\army/lib\features\room\data\room_packet_mapper.dart`
+```dart
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_player.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
+
+class RoomPacketMapper {
+  const RoomPacketMapper();
+
+  /// cmd 8 `loadRoomWait`
+  RoomSessionState decodeLoadRoomWait(Message message) {
+    final r = message.reader();
+    final masterId = r.readInt();
+    final bet = r.readInt();
+    final roomType = r.readByte();
+    final gameMode = r.readByte();
+
+    final players = <int, RoomPlayer>{};
+    // Standard MobiArmy2 room has 8 slots
+    for (int i = 0; i < 8; i++) {
+      final playerId = r.readInt();
+      if (playerId == -1) continue;
+
+      final clan = r.readShort();
+      final name = r.readUTF();
+      r.readInt(); // unknown/unused field
+      final level = r.readByte();
+      final glassId = r.readByte();
+
+      // 5 equip slots (gun, hat, armor, glasses, wing)
+      final equips = [for (var j = 0; j < 5; j++) r.readShort()];
+      final isReady = r.readBoolean();
+
+      players[playerId] = RoomPlayer(
+        id: playerId,
+        name: name,
+        level: level,
+        clan: clan,
+        glassId: glassId,
+        equips: equips,
+        isReady: isReady,
+        slotIndex: i,
+        // Team is usually derived from slot index: even = Blue (0), odd = Red (1)
+        team: i % 2,
+        gun: glassId,
+      );
+    }
+
+    return RoomSessionState(
+      masterId: masterId,
+      bet: bet,
+      roomType: RoomType.fromInt(roomType),
+      gameMode: GameMode.fromInt(gameMode),
+      players: players,
+    );
+  }
+
+  /// cmd 16 `ready` sync (S -> C)
+  (int, bool) decodeReady(Message message) {
+    final r = message.reader();
+    return (r.readInt(), r.readBoolean());
+  }
+
+  /// cmd 71 `changeTeam` sync (S -> C)
+  (int, int) decodeTeam(Message message) {
+    final r = message.reader();
+    return (r.readInt(), r.readByte());
+  }
+
+  /// cmd 9 `chat` (S -> C)
+  (int, String) decodeChat(Message message) {
+    final r = message.reader();
+    return (r.readInt(), r.readUTF());
+  }
+
+  /// cmd 19 `bet` sync (S -> C)
+  int decodeBet(Message message) {
+    return message.reader().readInt();
+  }
+
+  /// cmd 11 `kick` sync (S -> C)
+  int decodeKick(Message message) {
+    return message.reader().readInt();
+  }
+}
+```
+
+### `D:\personal\army/lib\features\room\data\room_repository.dart`
+```dart
+import 'package:mobiarmy_flutter/core/network/command/commands.dart';
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
+import 'package:mobiarmy_flutter/core/network/transport/tcp_session.dart';
+
+class RoomRepository {
+  RoomRepository(this._session);
+  final TcpSession _session;
+
+  Future<void> sendReady() async {
+    await _session.sendMessage(Message(Commands.ready));
+  }
+
+  Future<void> sendChangeTeam() async {
+    await _session.sendMessage(Message(Commands.changeTeam));
+  }
+
+  Future<void> sendChat(String text) async {
+    final message = Message(Commands.chat);
+    message.writer().writeUTF(text);
+    await _session.sendMessage(message);
+  }
+
+  Future<void> sendSelectMap(int mapId) async {
+    final message = Message(Commands.selectMap);
+    message.writer().writeByte(mapId);
+    await _session.sendMessage(message);
+  }
+
+  Future<void> sendStartGame() async {
+    await _session.sendMessage(Message(Commands.startGame));
+  }
+
+  Future<void> sendLeave() async {
+    await _session.sendMessage(Message(Commands.leaveRoomWait));
+  }
+
+  Future<void> sendKick(int playerId) async {
+    final message = Message(Commands.kick);
+    message.writer().writeInt(playerId);
+    await _session.sendMessage(message);
+  }
+
+  Future<void> sendBet(int amount) async {
+    final message = Message(Commands.bet);
+    message.writer().writeInt(amount);
+    await _session.sendMessage(message);
+  }
+
+  Future<void> sendSelectGlass(int glassId) async {
+    final message = Message(Commands.buyGlass);
+    message.writer().writeByte(glassId);
+    await _session.sendMessage(message);
+  }
+}
+```
+
+### `D:\personal\army/lib\features\room\domain\room_player.dart`
+```dart
+/// A player inside a waiting room.
+class RoomPlayer {
+  const RoomPlayer({
+    required this.id,
+    required this.name,
+    required this.level,
+    required this.clan,
+    required this.glassId,
+    required this.equips,
+    this.isReady = false,
+    this.team = 0,
+    this.slotIndex = -1,
+    this.gun = 0,
+    this.isBoss = false,
+    this.connectionState = 'connected',
+  });
+
+  final int id;
+  final String name;
+  final int level;
+  final int clan;
+  final int glassId;
+  final List<int> equips;
+  final bool isReady;
+  final int team;
+  final int slotIndex;
+  final int gun;
+  final bool isBoss;
+  final String connectionState;
+
+  RoomPlayer copyWith({
+    bool? isReady,
+    int? team,
+    List<int>? equips,
+    int? gun,
+    String? connectionState,
+    int? glassId,
+  }) {
+    return RoomPlayer(
+      id: id,
+      name: name,
+      level: level,
+      clan: clan,
+      glassId: glassId ?? this.glassId,
+      equips: equips ?? this.equips,
+      isReady: isReady ?? this.isReady,
+      team: team ?? this.team,
+      slotIndex: slotIndex,
+      gun: gun ?? this.gun,
+      connectionState: connectionState ?? this.connectionState,
+    );
+  }
+
+  @override
+  String toString() => 'RoomPlayer($name, ready: $isReady, team: $team)';
+}
+```
+
+### `D:\personal\army/lib\features\room\domain\room_session_state.dart`
+```dart
+import 'room_player.dart';
+
+enum RoomType {
+  normal(0),
+  boss(5),
+  training(3),
+  vip(4),
+  arena(6);
+
+  const RoomType(this.value);
+  final int value;
+
+  static RoomType fromInt(int value) =>
+      RoomType.values.firstWhere((e) => e.value == value, orElse: () => RoomType.normal);
+}
+
+enum GameMode {
+  normal(0),
+  power(1),
+  pro(2);
+
+  const GameMode(this.value);
+  final int value;
+
+  static GameMode fromInt(int value) =>
+      GameMode.values.firstWhere((e) => e.value == value, orElse: () => GameMode.normal);
+}
+
+class RoomSessionState {
+  const RoomSessionState({
+    required this.masterId,
+    required this.bet,
+    required this.players,
+    this.roomId = 0,
+    this.boardId = 0,
+    this.roomType = RoomType.normal,
+    this.gameMode = GameMode.normal,
+    this.mapId = 0,
+    this.areaId = 0,
+    this.capacity = 8,
+    this.roomName = '',
+    this.connectionState = 'connected',
+  });
+
+  final int masterId;
+  final int bet;
+  final Map<int, RoomPlayer> players; // Key is playerId
+  final int roomId;
+  final int boardId;
+  final RoomType roomType;
+  final GameMode gameMode;
+  final int mapId;
+  final int areaId;
+  final int capacity;
+  final String roomName;
+  final String connectionState;
+
+  List<RoomPlayer> get playerList => players.values.toList();
+
+  bool isMaster(int playerId) => playerId == masterId;
+
+  bool get isBossRoom => roomType == RoomType.boss;
+  bool get isTraining => roomType == RoomType.training;
+  bool get isArena => roomType == RoomType.arena;
+
+  bool canStart(int myId) {
+    if (!isMaster(myId)) return false;
+    if (players.length < 2 && !isArena && !isTraining) return false;
+
+    // Check if everyone is ready
+    final allReady = players.values
+        .where((p) => p.id != masterId)
+        .every((p) => p.isReady);
+    if (!allReady) return false;
+
+    // Team balance check (Team mode is usually even/odd slots)
+    if (roomType == RoomType.normal || roomType == RoomType.vip) {
+      int team0 = players.values.where((p) => p.team == 0).length;
+      int team1 = players.values.where((p) => p.team == 1).length;
+      if (team0 != team1) return false;
+    }
+
+    return true;
+  }
+
+  RoomSessionState copyWith({
+    int? masterId,
+    int? mapId,
+    Map<int, RoomPlayer>? players,
+    int? roomId,
+    int? boardId,
+    RoomType? roomType,
+    GameMode? gameMode,
+    int? areaId,
+    int? capacity,
+    int? bet,
+    String? roomName,
+    String? connectionState,
+  }) {
+    return RoomSessionState(
+      masterId: masterId ?? this.masterId,
+      bet: bet ?? this.bet,
+      players: players ?? this.players,
+      roomId: roomId ?? this.roomId,
+      boardId: boardId ?? this.boardId,
+      roomType: roomType ?? this.roomType,
+      gameMode: gameMode ?? this.gameMode,
+      mapId: mapId ?? this.mapId,
+      areaId: areaId ?? this.areaId,
+      capacity: capacity ?? this.capacity,
+      roomName: roomName ?? this.roomName,
+      connectionState: connectionState ?? this.connectionState,
+    );
+  }
+}
+```
+
+### `D:\personal\army/lib\features\room\presentation\room_screen.dart`
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mobiarmy_flutter/app/router/app_route.dart';
+import 'package:mobiarmy_flutter/core/assets/bmfont.dart';
+import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
+import 'package:mobiarmy_flutter/features/room/application/room_controller.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_player.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
+import 'package:mobiarmy_flutter/shared/widgets/bitmap_text.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_button.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_panel.dart';
+
+class RoomScreen extends ConsumerWidget {
+  const RoomScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final roomState = ref.watch(roomControllerProvider);
+    final controller = ref.read(roomControllerProvider.notifier);
+    final myId = ref.watch(authControllerProvider).session?.id;
+
+    if (roomState == null) {
+      return Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CircularProgressIndicator(),
+              const SizedBox(height: 10),
+              LegacyButton(
+                label: 'Quay lại',
+                width: 100,
+                height: 30,
+                onPressed: () => context.go(AppRoute.lobby.path),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    final isMaster = roomState.masterId == myId;
+
+    return Scaffold(
+      body: GameViewport(
+        child: Stack(
+          children: [
+            // Background
+            Container(color: const Color(0xFF5CB3FF)),
+
+            Center(
+              child: LegacyPanel(
+                width: 460,
+                height: 280,
+                title: 'Bàn: ${roomState.boardId} - Map: ${roomState.mapId} - Cược: ${roomState.bet}',
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: GridView.builder(
+                        padding: const EdgeInsets.all(4),
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 3.8,
+                          crossAxisSpacing: 6,
+                          mainAxisSpacing: 6,
+                        ),
+                        itemCount: 8,
+                        itemBuilder: (context, index) {
+                          final player = roomState.playerList.firstWhere(
+                            (p) => p.slotIndex == index,
+                            orElse: () => const RoomPlayer(
+                              id: -1, name: '', level: 0, clan: 0, glassId: 0, equips: [],
+                            ),
+                          );
+                          return _PlayerSlot(
+                            player: player,
+                            isMaster: roomState.masterId == player.id,
+                            isMe: player.id == myId,
+                            amIMaster: isMaster,
+                            onKick: () => controller.kickPlayer(player.id),
+                          );
+                        },
+                      ),
+                    ),
+                    _buildRoomControls(context, controller, roomState, myId),
+                  ],
+                ),
+              ),
+            ),
+
+            // Soft Keys (Bottom Bar)
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 35,
+                color: const Color(0xD9000000), // black84
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    LegacyButton(
+                      label: 'Thoát',
+                      width: 70,
+                      height: 25,
+                      onPressed: () async {
+                        await controller.leaveRoom();
+                        if (context.mounted) {
+                          context.go(AppRoute.lobby.path);
+                        }
+                      },
+                    ),
+                    BitmapText(
+                      'Chế độ: ${roomState.gameMode == GameMode.normal ? "Đối kháng" : "Đấu đội"}',
+                      anchor: GraphicsAnchor.hCenter | GraphicsAnchor.vCenter,
+                    ),
+                    const SizedBox(width: 70),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRoomControls(
+    BuildContext context,
+    RoomController controller,
+    RoomSessionState roomState,
+    int? myId,
+  ) {
+    final isMaster = roomState.masterId == myId;
+    final me = roomState.players[myId];
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      child: Wrap(
+        spacing: 8,
+        runSpacing: 4,
+        alignment: WrapAlignment.center,
+        children: [
+          LegacyButton(
+            label: 'Đổi đội',
+            width: 75,
+            height: 24,
+            onPressed: controller.changeTeam,
+          ),
+          LegacyButton(
+            label: 'Đổi súng',
+            width: 75,
+            height: 24,
+            onPressed: () => _showGlassSelection(context, controller, me?.glassId ?? 0),
+          ),
+          if (isMaster) ...[
+            LegacyButton(
+              label: 'Đổi Map',
+              width: 75,
+              height: 24,
+              onPressed: () => _showMapSelection(context, controller, roomState.mapId),
+            ),
+            LegacyButton(
+              label: 'Đổi Tiền',
+              width: 75,
+              height: 24,
+              onPressed: () => _showBetSelection(context, controller, roomState.bet),
+            ),
+            LegacyButton(
+              label: 'Bắt đầu',
+              width: 90,
+              height: 24,
+              onPressed: controller.startGame,
+              isSelected: true,
+            ),
+          ] else
+            LegacyButton(
+              label: me?.isReady == true ? 'Sẵn sàng' : 'Chưa SS',
+              width: 90,
+              height: 24,
+              onPressed: controller.toggleReady,
+              isSelected: me?.isReady == true,
+            ),
+        ],
+      ),
+    );
+  }
+
+  void _showGlassSelection(BuildContext context, RoomController controller, int current) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Chọn Nhân Vật / Súng', style: TextStyle(fontSize: 14)),
+        content: Wrap(
+          spacing: 10,
+          children: List.generate(4, (index) {
+            return ChoiceChip(
+              label: Text('Gun $index'),
+              selected: current == index,
+              onSelected: (_) {
+                controller.selectGlass(index);
+                Navigator.of(ctx).pop();
+              },
+            );
+          }),
+        ),
+      ),
+    );
+  }
+
+  void _showMapSelection(BuildContext context, RoomController controller, int current) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Chọn Bản Đồ', style: TextStyle(fontSize: 14)),
+        content: Wrap(
+          spacing: 10,
+          children: List.generate(5, (index) {
+            return ChoiceChip(
+              label: Text('Map $index'),
+              selected: current == index,
+              onSelected: (_) {
+                controller.selectMap(index);
+                Navigator.of(ctx).pop();
+              },
+            );
+          }),
+        ),
+      ),
+    );
+  }
+
+  void _showBetSelection(BuildContext context, RoomController controller, int current) {
+    final bets = [100, 500, 1000, 5000, 10000];
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Chọn Mức Cược', style: TextStyle(fontSize: 14)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: bets.map((b) {
+            return ListTile(
+              title: Text('$b xu'),
+              trailing: current == b ? const Icon(Icons.check, color: Colors.green) : null,
+              onTap: () {
+                controller.changeBet(b);
+                Navigator.of(ctx).pop();
+              },
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
+
+class _PlayerSlot extends StatelessWidget {
+  const _PlayerSlot({
+    required this.player,
+    required this.isMaster,
+    required this.isMe,
+    required this.amIMaster,
+    required this.onKick,
+  });
+
+  final RoomPlayer player;
+  final bool isMaster;
+  final bool isMe;
+  final bool amIMaster;
+  final VoidCallback onKick;
+
+  @override
+  Widget build(BuildContext context) {
+    if (player.id == -1) {
+      return Container(
+        decoration: BoxDecoration(
+          color: Colors.black26,
+          border: Border.all(color: Colors.black38),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: const Center(
+          child: BitmapText('Trống', scale: 0.6),
+        ),
+      );
+    }
+
+    final teamColor = player.team == 0
+        ? const Color(0xFF3379FF).withValues(alpha: 0.25)
+        : const Color(0xFFFF3333).withValues(alpha: 0.25);
+
+    return InkWell(
+      onTap: (amIMaster && !isMe) ? onKick : null,
+      child: Container(
+        decoration: BoxDecoration(
+          color: teamColor,
+          border: Border.all(color: isMe ? Colors.yellow : const Color(0xFF303030), width: isMe ? 1.5 : 1),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+          child: Row(
+            children: [
+              Container(
+                width: 18,
+                height: 18,
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+                child: Center(
+                  child: Text(
+                    player.level.toString(),
+                    style: const TextStyle(fontSize: 9, color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 4),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BitmapText(
+                      player.name,
+                      scale: 0.7,
+                      colorIndex: isMe ? 3 : -1, // YELLOW for me
+                    ),
+                    Row(
+                      children: [
+                        if (isMaster)
+                          const Padding(
+                            padding: EdgeInsets.only(right: 4),
+                            child: BitmapText('H', scale: 0.5, colorIndex: 5),
+                          ),
+                        BitmapText('G:${player.gun}', scale: 0.5, colorIndex: 0),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              if (!isMaster && player.isReady)
+                const Icon(Icons.check_circle, color: Colors.green, size: 14),
+              if (amIMaster && !isMe)
+                const Icon(Icons.gavel, color: Colors.redAccent, size: 12),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+### `D:\personal\army/lib\features\shop\application\shop_controller.dart`
+```dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logging/logging.dart';
+import 'package:mobiarmy_flutter/core/network/command/commands.dart';
+import 'package:mobiarmy_flutter/core/network/dispatcher/message_dispatcher.dart';
+import 'package:mobiarmy_flutter/core/network/network_provider.dart';
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
+import 'package:mobiarmy_flutter/features/shop/data/shop_packet_mapper.dart';
+import 'package:mobiarmy_flutter/features/shop/data/shop_repository.dart';
+import 'package:mobiarmy_flutter/features/shop/domain/shop_models.dart';
+
+class ShopState {
+  const ShopState({
+    this.equipments = const [],
+    this.specialItems = const [],
+    this.clanItems = const [],
+    this.isLoading = false,
+    this.error,
+  });
+
+  final List<ShopEquipment> equipments;
+  final List<ShopSpecialItem> specialItems;
+  final List<ClanShopItem> clanItems;
+  final bool isLoading;
+  final String? error;
+
+  ShopState copyWith({
+    List<ShopEquipment>? equipments,
+    List<ShopSpecialItem>? specialItems,
+    List<ClanShopItem>? clanItems,
+    bool? isLoading,
+    String? error,
+  }) {
+    return ShopState(
+      equipments: equipments ?? this.equipments,
+      specialItems: specialItems ?? this.specialItems,
+      clanItems: clanItems ?? this.clanItems,
+      isLoading: isLoading ?? this.isLoading,
+      error: error ?? this.error,
+    );
+  }
+}
+
+class ShopController extends Notifier<ShopState> {
+  final _logger = Logger('ShopController');
+  late final ShopRepository _repository;
+  late final ShopPacketMapper _mapper;
+
+  @override
+  ShopState build() {
+    _repository = ShopRepository(ref.watch(tcpSessionProvider));
+    _mapper = const ShopPacketMapper();
+
+    final dispatcher = ref.watch(messageDispatcherProvider);
+    _registerHandlers(dispatcher);
+
+    ref.onDispose(() {
+      _unregisterHandlers(dispatcher);
+    });
+
+    return const ShopState();
+  }
+
+  void _registerHandlers(MessageDispatcher dispatcher) {
+    dispatcher
+      ..register(Commands.getShopEquip, _onShopEquipment)
+      ..register(Commands.shopSpecial, _onShopSpecial)
+      ..register(Commands.shopBietDoi, _onShopClan)
+      ..register(Commands.buySellEquip, _onTransactionResult)
+      ..register(Commands.log, _onLog);
+  }
+
+  void _unregisterHandlers(MessageDispatcher dispatcher) {
+    dispatcher
+      ..unregister(Commands.getShopEquip, _onShopEquipment)
+      ..unregister(Commands.shopSpecial, _onShopSpecial)
+      ..unregister(Commands.shopBietDoi, _onShopClan)
+      ..unregister(Commands.buySellEquip, _onTransactionResult)
+      ..unregister(Commands.log, _onLog);
+  }
+
+  Future<void> loadShopEquipment() async {
+    state = state.copyWith(isLoading: true, error: null);
+    try {
+      await _repository.requestShopEquipment();
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: e.toString());
+    }
+  }
+
+  Future<void> loadShopSpecial() async {
+    state = state.copyWith(isLoading: true, error: null);
+    try {
+      await _repository.requestShopSpecial();
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: e.toString());
+    }
+  }
+
+  Future<void> buyEquipment(int shopIndex, int moneyType) async {
+    state = state.copyWith(isLoading: true);
+    try {
+      await _repository.buyEquipment(shopIndex, moneyType);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: e.toString());
+    }
+  }
+
+  // --------------------------------------------------------------- handlers
+
+  void _onShopEquipment(Message message) {
+    try {
+      final items = _mapper.decodeShopEquipment(message);
+      state = state.copyWith(equipments: items, isLoading: false);
+    } catch (e, stack) {
+      _logger.severe('Failed to decode shop equipment', e, stack);
+    }
+  }
+
+  void _onShopSpecial(Message message) {
+    try {
+      final items = _mapper.decodeShopSpecial(message);
+      state = state.copyWith(specialItems: items, isLoading: false);
+    } catch (e, stack) {
+      _logger.severe('Failed to decode shop special', e, stack);
+    }
+  }
+
+  void _onShopClan(Message message) {
+    try {
+      final items = _mapper.decodeShopClan(message);
+      state = state.copyWith(clanItems: items, isLoading: false);
+    } catch (e, stack) {
+      _logger.severe('Failed to decode shop clan', e, stack);
+    }
+  }
+
+  void _onTransactionResult(Message message) {
+    final r = message.reader();
+    final action = r.readByte();
+    if (action == 1) {
+      final info = r.readUTF();
+      state = state.copyWith(error: info, isLoading: false);
+    }
+  }
+
+  void _onLog(Message message) {
+    if (state.isLoading) {
+      final text = message.reader().readUTF();
+      state = state.copyWith(error: text, isLoading: false);
+    }
+  }
+}
+
+final shopControllerProvider = NotifierProvider<ShopController, ShopState>(ShopController.new);
+```
+
+### `D:\personal\army/lib\features\shop\domain\shop_item.dart`
+```dart
+enum ShopItemType { equipment, item }
+
+class ShopItem {
+  const ShopItem({
+    required this.id,
+    required this.name,
+    required this.priceXu,
+    required this.priceLuong,
+    required this.type,
+    this.description = '',
+  });
+
+  final int id;
+  final String name;
+  final int priceXu;
+  final int priceLuong;
+  final ShopItemType type;
+  final String description;
+}
+```
+
 ### `D:\personal\army/lib\main.dart`
 ```dart
 import 'package:mobiarmy_flutter/app/bootstrap.dart';
@@ -7499,57 +11568,136 @@ Future<void> main() async => bootstrap();
 ### `D:\personal\army/lib\shared\overlays\gameplay_hud.dart`
 ```dart
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
+import 'package:mobiarmy_flutter/features/gameplay/application/chat_controller.dart';
+import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/aim_controls.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/movement_controls.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/power_bar.dart';
+import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/wind_indicator.dart';
+import 'package:mobiarmy_flutter/shared/overlays/match_result_overlay.dart';
 
-class GameplayHud extends StatelessWidget {
+class GameplayHud extends ConsumerWidget {
   const GameplayHud({super.key, required this.game});
 
   final ArmyGame game;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final gameplayState = ref.watch(gameplayControllerProvider);
+    final isOffline = gameplayState == null;
+
+    final chatMessages = ref.watch(chatControllerProvider);
+    final myId = ref.watch(authControllerProvider).session?.id;
+
+    final isMyTurn = isOffline || (gameplayState.currentTurnPlayerId != null && gameplayState.currentTurnPlayerId == myId);
+    final windX = gameplayState?.windX ?? 0;
+    final windY = gameplayState?.windY ?? 0;
+    final turnTime = gameplayState?.turnTimeSeconds ?? 0;
+    final matchResult = gameplayState?.matchResult;
+
     return ListenableBuilder(
       listenable: game.inputController,
       builder: (context, _) {
         return Stack(
           children: [
-            Positioned(
-              left: 20,
-              bottom: 20,
-              child: MovementControls(game: game),
-            ),
-            Positioned(
-              right: 20,
-              bottom: 20,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  AimControls(game: game),
-                  const SizedBox(width: 20),
-                  _FireButton(game: game),
-                ],
+            if (isMyTurn && matchResult == null)
+              Positioned(
+                left: 10,
+                bottom: 10,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    MovementControls(game: game),
+                    const SizedBox(height: 4),
+                    _AngleDisplay(game: game),
+                  ],
+                ),
               ),
-            ),
+            if (isMyTurn && matchResult == null)
+              Positioned(
+                right: 10,
+                bottom: 10,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _SkipButton(game: game, isOffline: isOffline),
+                    const SizedBox(height: 8),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        AimControls(game: game),
+                        const SizedBox(width: 8),
+                        _FireButton(game: game, isOffline: isOffline),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             Positioned(
               left: 0,
               right: 0,
-              bottom: 40,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _AngleDisplay(game: game),
-                  const SizedBox(height: 8),
-                  SizedBox(
-                    width: 300,
-                    // Legacy force range is 1..30; PowerBar expects 0..100.
-                    child: PowerBar(
-                      power: game.inputController.state.force * (100 / 30),
-                    ),
+              bottom: 5,
+              child: Center(
+                child: SizedBox(
+                  width: 180,
+                  height: 12,
+                  child: PowerBar(
+                    power: game.inputController.state.force * (100 / 30),
                   ),
-                ],
+                ),
+              ),
+            ),
+            if (matchResult == null)
+              Positioned(
+                top: 10,
+                left: 0,
+                right: 0,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    WindIndicator(windX: windX, windY: windY),
+                    const SizedBox(height: 4),
+                    _TurnTimer(seconds: turnTime),
+                  ],
+                ),
+              ),
+            if (matchResult != null)
+              MatchResultOverlay(
+                game: game,
+                result: matchResult,
+                onClose: () {
+                  // Navigation back to lobby via state change
+                  ref.read(gameplayControllerProvider.notifier).leaveMatch();
+                },
+              ),
+            Positioned(
+              left: 20,
+              top: 60,
+              child: SizedBox(
+                width: 250,
+                height: 150,
+                child: ListView.builder(
+                  itemCount: chatMessages.length,
+                  itemBuilder: (context, index) {
+                    final msg = chatMessages[index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2),
+                      child: Text(
+                        '${msg.sender}: ${msg.text}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          shadows: [Shadow(blurRadius: 2, color: Colors.black)],
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ],
@@ -7559,28 +11707,65 @@ class GameplayHud extends StatelessWidget {
   }
 }
 
-class _FireButton extends StatelessWidget {
-  const _FireButton({required this.game});
-  final ArmyGame game;
+class _TurnTimer extends StatelessWidget {
+  const _TurnTimer({required this.seconds});
+  final int seconds;
 
   @override
   Widget build(BuildContext context) {
+    final color = seconds <= 5 ? Colors.red : Colors.white;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+      decoration: BoxDecoration(
+        color: Colors.black38,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        '$seconds',
+        style: TextStyle(
+          color: color,
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          shadows: const [Shadow(blurRadius: 4, color: Colors.black)],
+        ),
+      ),
+    );
+  }
+}
+
+class _FireButton extends ConsumerWidget {
+  const _FireButton({required this.game, this.isOffline = false});
+  final ArmyGame game;
+  final bool isOffline;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTapDown: (_) => game.inputController.startCharging(),
       onTapUp: (_) {
         final force = game.inputController.stopCharging();
-        game.fire(force);
+        if (isOffline) {
+          game.fire(force);
+        } else {
+          final angle = game.inputController.state.angle;
+          ref.read(gameplayControllerProvider.notifier).shoot(
+                angle,
+                force.round(),
+                0, // force2
+                1, // nShot
+              );
+        }
       },
       onTapCancel: () => game.inputController.stopCharging(),
       child: Container(
-        width: 80,
-        height: 80,
+        width: 60,
+        height: 60,
         decoration: BoxDecoration(
-          color: Colors.red.withOpacity(0.7),
+          color: Colors.red.withValues(alpha: 0.7),
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white, width: 3),
+          border: Border.all(color: Colors.white, width: 2),
           boxShadow: const [
-            BoxShadow(color: Colors.black26, blurRadius: 10, spreadRadius: 2),
+            BoxShadow(color: Colors.black26, blurRadius: 5, spreadRadius: 1),
           ],
         ),
         child: const Center(
@@ -7589,7 +11774,46 @@ class _FireButton extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 18,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SkipButton extends ConsumerWidget {
+  const _SkipButton({required this.game, this.isOffline = false});
+  final ArmyGame game;
+  final bool isOffline;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return GestureDetector(
+      onTap: () {
+        if (!isOffline) {
+          ref.read(gameplayControllerProvider.notifier).skipTurn();
+        }
+      },
+      child: Container(
+        width: 45,
+        height: 45,
+        decoration: BoxDecoration(
+          color: Colors.orange.withValues(alpha: 0.7),
+          shape: BoxShape.circle,
+          border: Border.all(color: Colors.white, width: 1.5),
+          boxShadow: const [
+            BoxShadow(color: Colors.black26, blurRadius: 4, spreadRadius: 1),
+          ],
+        ),
+        child: const Center(
+          child: Text(
+            'SKIP',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 10,
             ),
           ),
         ),
@@ -7605,17 +11829,101 @@ class _AngleDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
         color: Colors.black54,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
-        'Angle: ${game.inputController.state.angle}°',
+        'Góc: ${game.inputController.state.angle}°',
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 18,
+          fontSize: 12,
           fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+}
+```
+
+### `D:\personal\army/lib\shared\overlays\match_result_overlay.dart`
+```dart
+import 'package:flutter/material.dart';
+import 'package:mobiarmy_flutter/features/gameplay/data/gameplay_packet_mapper.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
+
+class MatchResultOverlay extends StatelessWidget {
+  const MatchResultOverlay({
+    super.key,
+    required this.game,
+    required this.result,
+    required this.onClose,
+  });
+
+  final ArmyGame game;
+  final MatchResult result;
+  final VoidCallback onClose;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        width: 400,
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.black87,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: Colors.amber, width: 2),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              'MATCH FINISHED',
+              style: TextStyle(
+                color: Colors.amber,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Flexible(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: result.playerResults.length,
+                itemBuilder: (context, index) {
+                  final pr = result.playerResults[index];
+                  final playerName = game.players[pr.playerId]?.name ?? 'Player ${pr.playerId}';
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          playerName,
+                          style: const TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                        Text(
+                          'Exp: +${pr.exp}  Xu: +${pr.xu}',
+                          style: const TextStyle(color: Colors.greenAccent, fontSize: 14),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: onClose,
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+              child: const Text(
+                'BACK TO LOBBY',
+                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
         ),
       ),
     );
