@@ -1,17 +1,17 @@
 import 'dart:typed_data';
 
-import 'package:flame/components.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:mobiarmy_flutter/core/network/data_cache_parsers.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/map_binary_parser.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/terrain_component.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/online_character.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/player_sprites.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/systems/ground_probe.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
 
 /// MAN DEMO OFFLINE = dung asset THAT, khong can server, chay duoc tren web.
 ///
@@ -37,7 +37,7 @@ class _OfflineDemoScreenState extends State<OfflineDemoScreen> {
 
   Future<Uint8List?> _seed(String name) async {
     try {
-      final bd = await rootBundle.load('assets/rms/' + name);
+      final bd = await rootBundle.load('assets/rms/$name');
       return bd.buffer.asUint8List();
     } catch (_) {
       return null;
@@ -108,10 +108,7 @@ class _OfflineDemoScreenState extends State<OfflineDemoScreen> {
 
     setState(() {
       _game = game;
-      _status = 'OK — map ' +
-          bin.width.toString() + 'x' + bin.height.toString() +
-          ', ' + bricks.length.toString() + ' bricks, ' +
-          DataCache.equips.length.toString() + ' equips';
+      _status = 'OK — map ${bin.width}x${bin.height}, ${bricks.length} bricks, ${DataCache.equips.length} equips';
     });
   }
 
@@ -119,20 +116,26 @@ class _OfflineDemoScreenState extends State<OfflineDemoScreen> {
   Widget build(BuildContext context) {
     final game = _game;
     return Scaffold(
-      body: Stack(children: [
-        if (game != null)
-          Positioned.fill(child: GameWidget(game: game))
-        else
-          Center(child: Text(_status)),
-        Positioned(
-          top: 12, left: 12,
-          child: Container(
-            color: Colors.black54,
-            padding: const EdgeInsets.all(8),
-            child: Text(_status, style: const TextStyle(color: Colors.white)),
-          ),
+      body: GameViewport(
+        child: PopScope(
+          canPop: true,
+          child: Stack(children: [
+            if (game != null)
+              Positioned.fill(child: GameWidget(game: game))
+            else
+              Center(child: Text(_status)),
+            Positioned(
+              top: 12,
+              left: 12,
+              child: Container(
+                color: Colors.black54,
+                padding: const EdgeInsets.all(8),
+                child: Text(_status, style: const TextStyle(color: Colors.white)),
+              ),
+            ),
+          ]),
         ),
-      ]),
+      ),
     );
   }
 }

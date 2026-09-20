@@ -61,7 +61,7 @@ class TerrainComponent extends PositionComponent {
       ..color = groundColor
       ..filterQuality = ui.FilterQuality.none;
     final linePaint = ui.Paint()
-      ..color = ui.Color(0xFF000000).withOpacity(0.1)
+      ..color = ui.Color(0xFF000000).withValues(alpha: 0.1)
       ..strokeWidth = 1
       ..filterQuality = ui.FilterQuality.none;
 

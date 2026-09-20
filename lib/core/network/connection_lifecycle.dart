@@ -5,6 +5,7 @@ abstract interface class ConnectionLifecycle {
 }
 
 class NoopConnectionLifecycle implements ConnectionLifecycle {
+  const NoopConnectionLifecycle();
   @override
   void onBackground() {}
   @override

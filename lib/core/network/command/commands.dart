@@ -25,6 +25,7 @@ abstract final class Commands {
   static const int deleteFriend = 33;
   static const int userInfo = 34;
   static const int findUser = 36;
+  static const int bonusMoney = 52;
   static const int finishMatch = 100;
   static const int ping = 42;
   static const int log =
@@ -36,6 +37,7 @@ abstract final class Commands {
   static const int platformRequest = 114;
   static const int getClanIcon = 115;
   static const int getString = 127;
+  static const int getBoss = 89;
   static const int changeTeam = 71;
   static const int buyItem = 72;
   static const int buyGlass = 74;

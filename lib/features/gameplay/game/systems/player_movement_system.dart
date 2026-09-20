@@ -1,6 +1,6 @@
 import 'package:flame/components.dart';
-import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/player/movement_intent.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/sandbox_character_component.dart';
@@ -22,8 +22,9 @@ class PlayerMovementSystem extends Component with HasGameReference<ArmyGame> {
     final localPlayer = game.players[0] ?? game.players[game.activePlayerId];
     if (localPlayer != null) {
       MovementDirection dir = MovementDirection.none;
-      if (input.movingLeft) dir = MovementDirection.left;
-      else if (input.movingRight) dir = MovementDirection.right;
+      if (input.movingLeft) {
+        dir = MovementDirection.left;
+      } else if (input.movingRight) dir = MovementDirection.right;
 
       localPlayer.intent = MovementIntent(direction: dir);
     }
@@ -45,7 +46,9 @@ class PlayerMovementSystem extends Component with HasGameReference<ArmyGame> {
 
     var movement = player.movement;
     if (movement.kind == PlayerMovementKind.dead ||
-        movement.kind == PlayerMovementKind.frozen) return;
+        movement.kind == PlayerMovementKind.frozen) {
+      return;
+    }
 
     final intent = player.intent;
     double dx = 0;

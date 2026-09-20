@@ -35,7 +35,7 @@ class AudioService {
       await player.stop();
     }
 
-    player.setVolume(_volume);
+    await player.setVolume(_volume);
     await player.play(AssetSource('sound/$name.mp3'));
   }
 
@@ -62,6 +62,19 @@ class AudioService {
       stopBgm();
     }
     LegacyRms.saveRmsInt('vibrate', _muted ? 1 : 0);
+  }
+
+  void pauseAll() {
+    _bgmPlayer.pause();
+    for (final p in _sfxPlayers) {
+      p.pause();
+    }
+  }
+
+  void resumeAll() {
+    if (!_muted && _volume > 0) {
+      _bgmPlayer.resume();
+    }
   }
 
   void dispose() {

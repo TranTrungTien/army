@@ -26,7 +26,7 @@ class DataSyncService {
   Future<void> get done => _completer.future;
 
   void dispose() {
-    _dispatcher.unregister(Commands.dynamicSync);
+    _dispatcher.unregister(Commands.dynamicSync, _onDynamicSync);
   }
 
   Future<void> start() async {

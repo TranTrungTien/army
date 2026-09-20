@@ -1,3 +1,8 @@
-Java RMS Key,Flutter Storage Key,Data Type,Parity Status
-acc_creds,account_credentials,String JSON,IMPLEMENTED_UNVERIFIED
-game_settings,app_config_prefs,String JSON,IMPLEMENTED_UNVERIFIED
+Java RMS Key,Flutter Storage Key,Data Type,Parity Status,Description
+acc_creds,account_credentials,String JSON,IMPLEMENTED_UNVERIFIED,Stores username and password hash credentials for auto-login
+game_settings,app_config_prefs,String JSON,IMPLEMENTED_UNVERIFIED,Stores sound, vibration, and general client user preference selections
+ipArmy2,server_ip_cache,byte[],IMPLEMENTED_UNVERIFIED,Caches updated server list IP addresses and short ports list
+Graphic,graphic_quality_level,int,IMPLEMENTED_UNVERIFIED,Stores the graphic layout rendering level index (e.g. 0 to 3)
+ARMY2,saved_user_id,String,IMPLEMENTED_UNVERIFIED,Stores the last successfully authenticated user identification token string
+AMRY2,saved_user_id_fallback,String,IMPLEMENTED_UNVERIFIED,Fallback storage handle for user id string
+bigImage,big_image_cache,byte[],IMPLEMENTED_UNVERIFIED,Dynamic chunk storage caching custom big screen background images

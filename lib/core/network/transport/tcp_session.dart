@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 
-import '../codec/byte_reader.dart';
 import '../codec/byte_writer.dart';
 import '../command/commands.dart';
 import '../dispatcher/message_dispatcher.dart';
@@ -31,6 +30,9 @@ class TcpSession {
   bool get isConnected => _socket != null;
 
   Future<void> connect(String host, int port) async {
+    if (kIsWeb) {
+      throw UnsupportedError('TCP Sockets are not supported on Web. Use a WebSocket proxy.');
+    }
     _logger.info('Connecting to $host:$port');
     _intentionallyClosed = false;
 
@@ -112,12 +114,10 @@ class TcpSession {
 
   void _processBufferIncremental() {
     while (_rawBuffer.isNotEmpty) {
-      // Create a temporary clone or snapshot of the XOR read position to roll back if incomplete frame
-      final originalReadPos = _getKeyComplete && _codec != null ? _codec!.encryptByte(0) : 0;
       // Wait, we need an exact checkpointing mechanism. Let's make a mini cursor decoder loop.
 
       int bufferIndex = 0;
-      if (_rawBuffer.length < 1) return;
+      if (_rawBuffer.isEmpty) return;
 
       int rawCmd = _rawBuffer[bufferIndex++];
       if (_getKeyComplete && _codec != null) {

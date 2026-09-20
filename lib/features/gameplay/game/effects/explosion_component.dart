@@ -27,13 +27,13 @@ class ExplosionComponent extends PositionComponent with HasGameRef {
     final opacity = (1.0 - progress).clamp(0.0, 1.0);
 
     final paint = Paint()
-      ..color = Colors.orange.withOpacity(opacity)
+      ..color = Colors.orange.withValues(alpha: opacity)
       ..style = PaintingStyle.fill;
 
     canvas.drawCircle(Offset.zero, currentRadius, paint);
 
     final corePaint = Paint()
-      ..color = Colors.yellow.withOpacity(opacity)
+      ..color = Colors.yellow.withValues(alpha: opacity)
       ..style = PaintingStyle.fill;
 
     canvas.drawCircle(Offset.zero, currentRadius * 0.6, corePaint);

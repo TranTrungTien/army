@@ -6,8 +6,8 @@ import 'package:mobiarmy_flutter/core/network/network_provider.dart';
 import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/features/inventory/data/inventory_packet_mapper.dart';
 import 'package:mobiarmy_flutter/features/inventory/data/inventory_repository.dart';
-import 'package:mobiarmy_flutter/features/inventory/domain/inventory_item.dart';
 import 'package:mobiarmy_flutter/features/inventory/domain/equipment_stats.dart';
+import 'package:mobiarmy_flutter/features/inventory/domain/inventory_item.dart';
 
 class InventoryState {
   const InventoryState({

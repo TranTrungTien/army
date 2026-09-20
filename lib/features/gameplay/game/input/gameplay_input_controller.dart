@@ -1,9 +1,10 @@
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 
 import 'gameplay_input_state.dart';
 
-class GameplayInputController extends Component with ChangeNotifier {
+class GameplayInputController extends Component with ChangeNotifier, KeyboardHandler {
   GameplayInputState _state = const GameplayInputState();
   GameplayInputState get state => _state;
 
@@ -12,6 +13,23 @@ class GameplayInputController extends Component with ChangeNotifier {
   static const double angleChangeSpeed = 40.0; // degrees per second
 
   int _angleDelta = 0;
+
+  @override
+  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    if (event is KeyDownEvent) {
+      if (event.logicalKey == LogicalKeyboardKey.arrowLeft) setMovingLeft(true);
+      if (event.logicalKey == LogicalKeyboardKey.arrowRight) setMovingRight(true);
+      if (event.logicalKey == LogicalKeyboardKey.arrowUp) setAngleDelta(1);
+      if (event.logicalKey == LogicalKeyboardKey.arrowDown) setAngleDelta(-1);
+      if (event.logicalKey == LogicalKeyboardKey.space) startCharging();
+    } else if (event is KeyUpEvent) {
+      if (event.logicalKey == LogicalKeyboardKey.arrowLeft) setMovingLeft(false);
+      if (event.logicalKey == LogicalKeyboardKey.arrowRight) setMovingRight(false);
+      if (event.logicalKey == LogicalKeyboardKey.arrowUp || event.logicalKey == LogicalKeyboardKey.arrowDown) setAngleDelta(0);
+      if (event.logicalKey == LogicalKeyboardKey.space) stopCharging();
+    }
+    return true;
+  }
 
   void setAngleDelta(int delta) {
     _angleDelta = delta;
@@ -71,8 +89,12 @@ class GameplayInputController extends Component with ChangeNotifier {
     if (_angleDelta != 0) {
       final double delta = _angleDelta * angleChangeSpeed * dt;
       var newAngle = _state.angle + delta.round();
-      while (newAngle < 0) newAngle += 360;
-      while (newAngle >= 360) newAngle -= 360;
+      while (newAngle < 0) {
+        newAngle += 360;
+      }
+      while (newAngle >= 360) {
+        newAngle -= 360;
+      }
 
       if (newAngle != _state.angle) {
         _state = _state.copyWith(angle: newAngle);

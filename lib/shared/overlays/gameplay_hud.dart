@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/application/chat_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_controller.dart';
-import 'package:mobiarmy_flutter/shared/overlays/match_result_overlay.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/aim_controls.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/movement_controls.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/power_bar.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/widgets/wind_indicator.dart';
+import 'package:mobiarmy_flutter/shared/overlays/match_result_overlay.dart';
 
 class GameplayHud extends ConsumerWidget {
   const GameplayHud({super.key, required this.game});
@@ -17,15 +17,17 @@ class GameplayHud extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final gameplayState = ref.watch(gameplayControllerProvider);
+    final isOffline = gameplayState == null;
+
     final chatMessages = ref.watch(chatControllerProvider);
     final myId = ref.watch(authControllerProvider).session?.id;
-    final isMyTurn = ref.watch(gameplayControllerProvider.select(
-      (s) => s?.currentTurnPlayerId != null && s?.currentTurnPlayerId == myId,
-    ));
-    final windX = ref.watch(gameplayControllerProvider.select((s) => s?.windX ?? 0));
-    final windY = ref.watch(gameplayControllerProvider.select((s) => s?.windY ?? 0));
-    final turnTime = ref.watch(gameplayControllerProvider.select((s) => s?.turnTimeSeconds ?? 0));
-    final matchResult = ref.watch(gameplayControllerProvider.select((s) => s?.matchResult));
+
+    final isMyTurn = isOffline || (gameplayState.currentTurnPlayerId != null && gameplayState.currentTurnPlayerId == myId);
+    final windX = gameplayState?.windX ?? 0;
+    final windY = gameplayState?.windY ?? 0;
+    final turnTime = gameplayState?.turnTimeSeconds ?? 0;
+    final matchResult = gameplayState?.matchResult;
 
     return ListenableBuilder(
       listenable: game.inputController,
@@ -34,46 +36,51 @@ class GameplayHud extends ConsumerWidget {
           children: [
             if (isMyTurn && matchResult == null)
               Positioned(
-                left: 20,
-                bottom: 20,
-                child: MovementControls(game: game),
+                left: 10,
+                bottom: 10,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    MovementControls(game: game),
+                    const SizedBox(height: 4),
+                    _AngleDisplay(game: game),
+                  ],
+                ),
               ),
             if (isMyTurn && matchResult == null)
               Positioned(
-                right: 20,
-                bottom: 20,
-                child: Row(
+                right: 10,
+                bottom: 10,
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    AimControls(game: game),
-                    const SizedBox(width: 20),
-                    _SkipButton(game: game),
-                    const SizedBox(width: 12),
-                    _FireButton(game: game),
+                    _SkipButton(game: game, isOffline: isOffline),
+                    const SizedBox(height: 8),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        AimControls(game: game),
+                        const SizedBox(width: 8),
+                        _FireButton(game: game, isOffline: isOffline),
+                      ],
+                    ),
                   ],
                 ),
               ),
             Positioned(
               left: 0,
               right: 0,
-              bottom: 10,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _AngleDisplay(game: game),
-                      const SizedBox(width: 20),
-                      SizedBox(
-                        width: 240,
-                        child: PowerBar(
-                          power: game.inputController.state.force * (100 / 30),
-                        ),
-                      ),
-                    ],
+              bottom: 5,
+              child: Center(
+                child: SizedBox(
+                  width: 180,
+                  height: 12,
+                  child: PowerBar(
+                    power: game.inputController.state.force * (100 / 30),
                   ),
-                ],
+                ),
               ),
             ),
             if (matchResult == null)
@@ -158,8 +165,9 @@ class _TurnTimer extends StatelessWidget {
 }
 
 class _FireButton extends ConsumerWidget {
-  const _FireButton({required this.game});
+  const _FireButton({required this.game, this.isOffline = false});
   final ArmyGame game;
+  final bool isOffline;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -167,25 +175,28 @@ class _FireButton extends ConsumerWidget {
       onTapDown: (_) => game.inputController.startCharging(),
       onTapUp: (_) {
         final force = game.inputController.stopCharging();
-        // game.fire(force); // This was for offline sandbox
-        final angle = game.inputController.state.angle;
-        ref.read(gameplayControllerProvider.notifier).shoot(
-              angle,
-              force.round(),
-              0, // force2
-              1, // nShot
-            );
+        if (isOffline) {
+          game.fire(force);
+        } else {
+          final angle = game.inputController.state.angle;
+          ref.read(gameplayControllerProvider.notifier).shoot(
+                angle,
+                force.round(),
+                0, // force2
+                1, // nShot
+              );
+        }
       },
       onTapCancel: () => game.inputController.stopCharging(),
       child: Container(
-        width: 80,
-        height: 80,
+        width: 60,
+        height: 60,
         decoration: BoxDecoration(
-          color: Colors.red.withOpacity(0.7),
+          color: Colors.red.withValues(alpha: 0.7),
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white, width: 3),
+          border: Border.all(color: Colors.white, width: 2),
           boxShadow: const [
-            BoxShadow(color: Colors.black26, blurRadius: 10, spreadRadius: 2),
+            BoxShadow(color: Colors.black26, blurRadius: 5, spreadRadius: 1),
           ],
         ),
         child: const Center(
@@ -194,7 +205,7 @@ class _FireButton extends ConsumerWidget {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 18,
+              fontSize: 14,
             ),
           ),
         ),
@@ -204,22 +215,27 @@ class _FireButton extends ConsumerWidget {
 }
 
 class _SkipButton extends ConsumerWidget {
-  const _SkipButton({required this.game});
+  const _SkipButton({required this.game, this.isOffline = false});
   final ArmyGame game;
+  final bool isOffline;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: () => ref.read(gameplayControllerProvider.notifier).skipTurn(),
+      onTap: () {
+        if (!isOffline) {
+          ref.read(gameplayControllerProvider.notifier).skipTurn();
+        }
+      },
       child: Container(
-        width: 60,
-        height: 60,
+        width: 45,
+        height: 45,
         decoration: BoxDecoration(
-          color: Colors.orange.withOpacity(0.7),
+          color: Colors.orange.withValues(alpha: 0.7),
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white, width: 2),
+          border: Border.all(color: Colors.white, width: 1.5),
           boxShadow: const [
-            BoxShadow(color: Colors.black26, blurRadius: 6, spreadRadius: 1),
+            BoxShadow(color: Colors.black26, blurRadius: 4, spreadRadius: 1),
           ],
         ),
         child: const Center(
@@ -228,7 +244,7 @@ class _SkipButton extends ConsumerWidget {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 14,
+              fontSize: 10,
             ),
           ),
         ),
@@ -244,16 +260,16 @@ class _AngleDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
         color: Colors.black54,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
-        'Angle: ${game.inputController.state.angle}°',
+        'Góc: ${game.inputController.state.angle}°',
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 18,
+          fontSize: 12,
           fontWeight: FontWeight.bold,
         ),
       ),

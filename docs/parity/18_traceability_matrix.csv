@@ -1,20 +1,14 @@
-Requirement ID,Java Component,Flutter Component,Test Case ID,Status
-REQ-NET-CORE,Session_ME,lib/core/network/tcp_session.dart,TC-NET-01,VERIFIED
-REQ-MATH-LEGACY,m.a (Math Utility),lib/core/legacy_math/*,TC-MATH-01,VERIFIED
-REQ-ASSET-CORE,FilePack,lib/core/assets/file_pack_decoder.dart,TC-PACK-01,IMPLEMENTED_UNVERIFIED
-REQ-NET-OPCODES,Cmd_Client2Server,lib/core/network/commands.dart,TC-NET-02,IMPLEMENTED_UNVERIFIED
-REQ-MAP-TERRAIN,CMap,lib/features/gameplay/destructible_terrain.dart,TC-MAP-01,IMPLEMENTED_UNVERIFIED
-REQ-BULLET-PHYSICS,Bullet,lib/features/gameplay/bullet_simulator.dart,TC-BULLET-01,IMPLEMENTED_UNVERIFIED
-REQ-RMS-STORAGE,RMS,lib/core/assets/legacy_rms.dart,TC-RMS-01,VERIFIED
-REQ-UI-LOBBY,RoomListScr,lib/features/lobby/lobby_screen.dart,TC-UI-01,IMPLEMENTED_UNVERIFIED
-REQ-UI-GAME,GameScr,lib/features/gameplay/gameplay_page.dart,TC-UI-02,IMPLEMENTED_UNVERIFIED
-REQ-FLOW-LAUNCH,AndroidLauncher,lib/main.dart,TC-FLOW-01,IMPLEMENTED_UNVERIFIED
-REQ-FLOW-HANDSHAKE,Session_ME.run,lib/core/network/tcp_session.dart,TC-FLOW-02,IMPLEMENTED_UNVERIFIED
-REQ-FLOW-SHOOT,GameScr.fire,lib/features/gameplay/game/combat_system.dart,TC-FLOW-03,IMPLEMENTED_UNVERIFIED
-REQ-FLOW-RECONCILE,GameScr.updateXY,lib/features/gameplay/game/player_movement.dart,TC-FLOW-04,IMPLEMENTED_UNVERIFIED
-REQ-PROT-FIRE,GameScr.fire,lib/features/gameplay/data/gameplay_packet_mapper.dart,TC-PROT-01,IMPLEMENTED_UNVERIFIED
-REQ-PROT-SYNC,DataSyncService,lib/core/network/data_sync_service.dart,TC-PROT-02,VERIFIED
-
-
-
+Requirement ID,Feature Description,Java Reference Class,Flutter Target File,Verification Method
+REQ-NET-01,Dynamic Handshake Connection & Key Sync,Session_ME.java / MessageHandler.java,core/network/transport/tcp_session.dart,Automated packet integration tests check connection setup
+REQ-NET-02,XOR Cipher Decoding,Session_ME.java (readKey/writeKey),core/network/security/xor_codec.dart,Unit tests validating sample hex packet payloads
+REQ-PHY-01,Fixed-Point Trigonometric Lookup,Fomula.java,core/legacy_math/legacy_trigonometry.dart,Parity assertion loops verifying matching integer tables
+REQ-PHY-02,Projectile Trajectory Simulation,Bullet.java / PathSimulator.java,features/gameplay/game/projectile/bullet_simulator.dart,Deterministic physics simulation vector tests
+REQ-TER-01,Dynamic Map Carving & Bitmask Holes,CMap.java (makeHole),features/gameplay/game/map/destructible_terrain.dart,Golden image screenshot validation of blasted maps
+REQ-UI-01,Multi-cluster Server Selector Screen,LoginScr.java,features/authentication/presentation/server_selection_screen.dart,Widget testing of selection logic and router transitions
+REQ-UI-02,Turn Transition Countdown Presentation,MainGame.java,features/gameplay/presentation/online_game_screen.dart,Manual UI validation and integration state triggers
+REQ-AUD-01,Audio effect triggers and track mixing,SoundSystem.java,core/audio/audio_service.dart,Mock service audio playback event logging verification
+REQ-ASSET-01,Legacy FilePack Unpacking,FilePack.java,core/assets/file_pack_decoder.dart,Unit tests verifying binary stream extraction matching Java checksums
+REQ-RMS-01,Cache Records Persistence,RMS.java,core/assets/legacy_rms.dart,Unit tests for local SharedPreferences persistence parity
+REQ-INV-01,Inventory Equipment Layers,Inventory.java / Equip.java,features/inventory/presentation/inventory_screen.dart,Widget and state integration tests for gear equipment changes
+REQ-LOBBY-01,Area and Room Selection List Grid,RoomListScr.java,features/lobby/presentation/lobby_screen.dart,Widget testing for grid cells and active rooms snapshot mapping
 

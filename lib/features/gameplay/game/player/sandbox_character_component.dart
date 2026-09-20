@@ -3,10 +3,10 @@ import 'dart:ui' as ui;
 
 import 'package:flame/components.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/character/equipment_definition.dart';
-import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/player/movement_intent.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart';
 
 /// Placeholder character for the offline vertical slice.
 ///
@@ -16,6 +16,7 @@ final class SandboxCharacterComponent extends GamePlayer with HasGameReference<A
   SandboxCharacterComponent({
     required this.slotEquipment,
     required this.bodyColor,
+    this.name = 'Bot',
     this.aimAngle = 45,
     this.classId = 1,
   }) : super(priority: 50);
@@ -24,6 +25,8 @@ final class SandboxCharacterComponent extends GamePlayer with HasGameReference<A
   final ui.Color bodyColor;
   final int classId;
   int aimAngle;
+  @override
+  final String name;
 
   PlayerMovementState _movement = PlayerMovementState(isOnGround: true);
   ui.Image? _characterImage;

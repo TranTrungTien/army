@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobiarmy_flutter/core/assets/file_pack_decoder.dart';
 

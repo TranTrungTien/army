@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobiarmy_flutter/core/network/network_provider.dart';
-import 'gameplay_handler.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/match_state.dart';
+import 'gameplay_controller.dart';
 
-final gameplayHandlerProvider = Provider<GameplayHandler>((ref) {
-  final dispatcher = ref.watch(messageDispatcherProvider);
-  final handler = GameplayHandler(dispatcher, ref);
-  handler.init();
-  return handler;
-});
+export 'gameplay_handler.dart';
+
+final gameplayControllerProvider =
+    NotifierProvider<GameplayController, MatchState?>(
+  GameplayController.new,
+);

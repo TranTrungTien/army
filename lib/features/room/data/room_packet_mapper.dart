@@ -47,8 +47,8 @@ class RoomPacketMapper {
     return RoomSessionState(
       masterId: masterId,
       bet: bet,
-      roomType: roomType,
-      gameMode: gameMode,
+      roomType: RoomType.fromInt(roomType),
+      gameMode: GameMode.fromInt(gameMode),
       players: players,
     );
   }

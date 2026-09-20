@@ -3,6 +3,7 @@ import 'package:mobiarmy_flutter/features/lobby/application/lobby_state_machine.
 import 'package:mobiarmy_flutter/features/lobby/domain/area_summary.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/board_summary.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
 
 void main() {
   group('LobbyStateMachine', () {
@@ -72,7 +73,15 @@ void main() {
       machine.areasRequested();
       machine.areasLoaded([]);
       machine.joinRequested();
-      machine.joinSucceeded();
+      final mockRoom = RoomSessionState(
+        boardId: 1,
+        masterId: 1,
+        players: {},
+        mapId: 1,
+        bet: 100,
+        gameMode: GameMode.normal,
+      );
+      machine.joinSucceeded(mockRoom);
       expect(machine.state.status, LobbyStatus.joined);
     });
 

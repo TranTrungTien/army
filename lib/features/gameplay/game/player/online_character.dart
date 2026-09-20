@@ -24,6 +24,7 @@ final class OnlineCharacter extends GamePlayer {
 
   final int glassId;
   final List<int> equipIds;
+  @override
   final String name;
   @override
   int maxHp;

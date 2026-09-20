@@ -20,7 +20,7 @@ class WindIndicator extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.black87,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.orange.withOpacity(0.5), width: 1.5),
+        border: Border.all(color: Colors.orange.withValues(alpha: 0.5), width: 1.5),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -33,7 +33,7 @@ class WindIndicator extends StatelessWidget {
                 width: 22,
                 height: 14,
                 fit: BoxFit.contain,
-                errorBuilder: (_, __, ___) => Icon(
+                errorBuilder: (_, _, _) => Icon(
                   isLeft ? Icons.arrow_back : Icons.arrow_forward,
                   color: Colors.lightBlueAccent,
                   size: 16,

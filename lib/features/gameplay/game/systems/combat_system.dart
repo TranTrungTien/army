@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/effects/damage_text_component.dart';
-import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
 
 class CombatSystem extends Component with HasGameReference<ArmyGame> {
   void applyDamage(int playerId, int damage, int newHp, bool isDead) {

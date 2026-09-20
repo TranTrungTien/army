@@ -1,28 +1,13 @@
-# Risk Register
+# Risk Register - MobiArmy2 Migration
 
-This artifact details all identified technical risks associated with the codebase migration, protocol compatibility layer, and deterministic physics execution pipelines.
+This document outlines the technical, architectural, and operational risks associated with the migration from the Java J2ME/LibGDX architecture to Flutter/Flame.
 
----
-
-## 1. Active Technical Risks
-
-### RISK-01: Rolling XOR Encryption State De-synchronization
-- **Description:** Java Server implements sequential key rolling on every byte stream transaction (`XorCodec`). In asynchronous Dart flows, if multiple packets write concurrently without synchronization, the encryption keys will become out of sync.
-- **Impact:** **CRITICAL**. Disconnects the player instantly upon turning, moving, or firing.
-- **Mitigation Plan:** Implement a serial task queue or single-lock mutex wrapper within `TcpSession` ensuring that all outbound payloads are encoded sequentially in exact thread-safe FIFO order.
-
-### RISK-02: Fixed-Point Multi-Platform Arithmetic Variance
-- **Description:** Legacy coordinate physics parameters depend on custom 32-bit bit masks and lookup tables. Dart's numbers run natively at 64-bit precision.
-- **Impact:** **HIGH**. Small rounding drifts compound frame-by-frame, causing projectiles to land at different pixel offsets on the client versus the server authority.
-- **Mitigation Plan:** Wrap math parameters explicitly using the strict bit truncation rules specified in `JavaInt32`, and execute the `test/fixtures/legacy_math_golden.json` baseline suite on every commit loop.
-
-### RISK-03: Destroyable Terrain Alpha Mask Stream Boundary Exceptions
-- **Description:** Exploded coordinates change bitmap alphas in `DestructibleTerrain`. Differences in file formats or memory alignment might leak boundary limits.
-- **Impact:** **HIGH**. App crashes or memory out-of-bound errors occur when standard heavy weapons are fired near map edges.
-- **Mitigation Plan:** Add strict min/max boundary constraints matching J2ME width/height checks inside `makeHole` calculations.
-
-### RISK-04: Multi-packet Fragment Streaming Corruptions
-- **Description:** Large server payloads (like map definitions from opcode 90) can be split across network frames.
-- **Impact:** **MEDIUM**. Missing sub-asset buffers break the map loading states.
-- **Mitigation Plan:** Maintain an internal accumulation packet slice buffer that checks the declared frame length headers before invoking the de-serializer layers.
-
+| Risk ID | Risk Description | Category | Impact | Probability | Mitigation Strategy |
+|---------|------------------|----------|--------|-------------|---------------------|
+| **RSK-01** | **Physics Discrepancy (J2ME vs. Dart Double)**<br>The original game uses integer fixed-point math (`Fomula.java`) with sine/cosine lookup tables. Floating-point arithmetic in Dart might introduce minor differences in trajectories, leading to anti-cheat or synchronization failures with the server. | Technical / Physics | Critical | High | Port the custom fixed-point and trigonometric lookup tables directly to Dart (`legacy_trigonometry.dart`, `fixed_point.dart`) instead of using native `double` math functions. |
+| **RSK-02** | **XOR Cipher Desynchronization**<br>The custom shifting XOR cipher in `MessageHandler.java` depends on strict stream alignment. Missing bytes or padding mismatches during message framing will cause the protocol decoder to corrupt completely. | Architectural / Network | High | Medium | Use rigorous automated integration tests matching the precise stream byte sequences of `ByteReader` and `ByteWriter` against expected Java output. |
+| **RSK-03** | **Performance of Destructible Terrain**<br>Carving out holes dynamically in large map bitmasks could result in jank or frames dropped below 60fps on low-end mobile devices under Flame. | Technical / Performance | Medium | Medium | Optimize the bitmask modification using raw Uint8List buffers and perform terrain updates off the main UI thread or via highly optimized localized dirty-rect updates. |
+| **RSK-04** | **Legacy File Format Compatibility**<br>The `.dat` / `.bin` resource files include compressed assets tailored for J2ME structures that might fail or crash during decoding in Dart. | Technical / Assets | Medium | Medium | Implement comprehensive decoder validation tests (`file_pack_decoder.dart`) against the frozen Java reference loader codebase. |
+| **RSK-05** | **State Transition Drift**<br>Turn timers and network latencies could cause the local Flame game client to become desynchronized from the authoritative Java server match state. | Architectural / Sync | High | Medium | Enforce strict server authority. The local game client should act purely as a presentation layer that interpolates state snapshots received via `DataSyncService`. |
+| **RSK-06** | **Asset Resolution Scaling (x1 to x4)**<br>Legacy assets are categorized into x1-x4 folders. If resolution switching isn't handled correctly in Flame, UI elements might appear pixelated or misaligned on high-DPI modern screens. | Technical / Assets | Medium | Low | Implement an adaptive `GameAssetLoader` that selects the highest available resolution and scales dynamically based on `Canvas` density. |
+| **RSK-07** | **Legacy Vietnamese Font Rendering**<br>The J2ME client used custom bitmap fonts for Vietnamese characters. Standard Flutter fonts might not match the original aesthetic or layout spacing. | UX / UI | Low | Medium | Port the `mFont.java` logic to `BmFont.dart` to support legacy `.fnt` or `.png` based glyph rendering for perfect visual parity. |

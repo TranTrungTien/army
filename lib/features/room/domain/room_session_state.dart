@@ -1,5 +1,31 @@
 import 'room_player.dart';
 
+enum RoomType {
+  normal(0),
+  boss(5),
+  training(3),
+  vip(4),
+  arena(6);
+
+  const RoomType(this.value);
+  final int value;
+
+  static RoomType fromInt(int value) =>
+      RoomType.values.firstWhere((e) => e.value == value, orElse: () => RoomType.normal);
+}
+
+enum GameMode {
+  normal(0),
+  power(1),
+  pro(2);
+
+  const GameMode(this.value);
+  final int value;
+
+  static GameMode fromInt(int value) =>
+      GameMode.values.firstWhere((e) => e.value == value, orElse: () => GameMode.normal);
+}
+
 class RoomSessionState {
   const RoomSessionState({
     required this.masterId,
@@ -7,8 +33,8 @@ class RoomSessionState {
     required this.players,
     this.roomId = 0,
     this.boardId = 0,
-    this.roomType = 0,
-    this.gameMode = 0,
+    this.roomType = RoomType.normal,
+    this.gameMode = GameMode.normal,
     this.mapId = 0,
     this.areaId = 0,
     this.capacity = 8,
@@ -21,8 +47,8 @@ class RoomSessionState {
   final Map<int, RoomPlayer> players; // Key is playerId
   final int roomId;
   final int boardId;
-  final int roomType;
-  final int gameMode;
+  final RoomType roomType;
+  final GameMode gameMode;
   final int mapId;
   final int areaId;
   final int capacity;
@@ -33,14 +59,38 @@ class RoomSessionState {
 
   bool isMaster(int playerId) => playerId == masterId;
 
+  bool get isBossRoom => roomType == RoomType.boss;
+  bool get isTraining => roomType == RoomType.training;
+  bool get isArena => roomType == RoomType.arena;
+
+  bool canStart(int myId) {
+    if (!isMaster(myId)) return false;
+    if (players.length < 2 && !isArena && !isTraining) return false;
+
+    // Check if everyone is ready
+    final allReady = players.values
+        .where((p) => p.id != masterId)
+        .every((p) => p.isReady);
+    if (!allReady) return false;
+
+    // Team balance check (Team mode is usually even/odd slots)
+    if (roomType == RoomType.normal || roomType == RoomType.vip) {
+      int team0 = players.values.where((p) => p.team == 0).length;
+      int team1 = players.values.where((p) => p.team == 1).length;
+      if (team0 != team1) return false;
+    }
+
+    return true;
+  }
+
   RoomSessionState copyWith({
     int? masterId,
     int? mapId,
     Map<int, RoomPlayer>? players,
     int? roomId,
     int? boardId,
-    int? roomType,
-    int? gameMode,
+    RoomType? roomType,
+    GameMode? gameMode,
     int? areaId,
     int? capacity,
     int? bet,

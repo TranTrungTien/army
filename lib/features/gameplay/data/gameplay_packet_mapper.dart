@@ -1,7 +1,7 @@
 import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/match_state.dart';
-import 'package:mobiarmy_flutter/features/room/domain/room_player.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/projectile/projectile_trajectory.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_player.dart';
 
 class GameplayPacketMapper {
   const GameplayPacketMapper();
@@ -130,6 +130,44 @@ class GameplayPacketMapper {
   (int, int) decodeUseItem(Message message) {
     final r = message.reader();
     return (r.readInt(), r.readByte());
+  }
+
+  /// cmd 89 `addPlayer` (Boss spawn)
+  List<MatchPlayer> decodeAddPlayers(Message message) {
+    final r = message.reader();
+    final size = r.readByte();
+    final results = <MatchPlayer>[];
+    for (int i = 0; i < size; i++) {
+      final id = r.readInt();
+      final name = r.readUTF();
+      final hpMax = r.readInt();
+      final glassId = r.readByte();
+      final x = r.readShort();
+      final y = r.readShort();
+
+      results.add(MatchPlayer(
+        base: RoomPlayer(
+          id: id,
+          name: name,
+          level: 0,
+          clan: 0,
+          glassId: glassId,
+          equips: [],
+          isBoss: true,
+        ),
+        x: x,
+        y: y,
+        hp: hpMax,
+        maxHp: hpMax,
+      ));
+    }
+    return results;
+  }
+
+  /// cmd 52 `bonusMoney`
+  (int, String) decodeBonusMoney(Message message) {
+    final r = message.reader();
+    return (r.readInt(), r.readUTF());
   }
 
   /// cmd 100 `finishMatch`

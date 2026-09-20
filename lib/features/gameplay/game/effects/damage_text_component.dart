@@ -29,7 +29,7 @@ class DamageTextComponent extends PositionComponent {
       text: TextSpan(
         text: '-$damage',
         style: TextStyle(
-          color: Colors.red.withOpacity(opacity),
+          color: Colors.red.withValues(alpha: opacity),
           fontSize: 16,
           fontWeight: FontWeight.bold,
           shadows: const [Shadow(blurRadius: 2, color: Colors.black)],

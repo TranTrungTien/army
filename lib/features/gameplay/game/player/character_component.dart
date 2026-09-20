@@ -2,15 +2,16 @@ import 'package:mobiarmy_flutter/features/gameplay/domain/character/character_an
 import 'package:mobiarmy_flutter/features/gameplay/domain/character/character_appearance.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/character/character_definition.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/character/equipment_definition.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/player/movement_intent.dart';
 import 'package:mobiarmy_flutter/features/gameplay/domain/player/player_movement_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/character_animation_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/character_sprite_resolver.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/equipment_layer_component.dart';
-import 'package:mobiarmy_flutter/features/gameplay/domain/player/movement_intent.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart';
 
 final class CharacterComponent extends GamePlayer {
   CharacterComponent({
+    required this.name,
     required this.appearance,
     required this.glassId,
     required this.resolver,
@@ -20,6 +21,8 @@ final class CharacterComponent extends GamePlayer {
   }) : _animation = animation,
        _movement = movement ?? PlayerMovementState();
 
+  @override
+  final String name;
   CharacterAppearance appearance;
   final int glassId;
   final CharacterSpriteResolver resolver;

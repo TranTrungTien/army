@@ -5,13 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobiarmy_flutter/app/lifecycle/app_lifecycle_coordinator.dart';
 import 'package:mobiarmy_flutter/core/audio/audio_provider.dart';
 import 'package:mobiarmy_flutter/core/network/connection_lifecycle.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/game_session_bootstrap.dart';
 import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/map/background_component.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/map/terrain_component.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/player/online_character.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/systems/ground_probe.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
 import 'package:mobiarmy_flutter/shared/overlays/gameplay_hud.dart';
 
 class OnlineGameScreen extends ConsumerStatefulWidget {
@@ -33,44 +29,21 @@ class _OnlineGameScreenState extends ConsumerState<OnlineGameScreen> {
 
   Future<void> _start() async {
     final match = ref.read(gameplayControllerProvider);
-    final setup = match == null ? null : GameSessionBootstrap.build(match);
     final audio = ref.read(audioServiceProvider);
 
-    if (setup == null || match == null) {
+    if (match == null) {
       setState(() => _error = 'Không thể khởi tạo trận đấu (thiếu dữ liệu MatchState)');
       return;
     }
 
     final game = ArmyGame(audio: audio);
     await game.onLoad();
-    game.map = setup.map;
-    game.terrain = setup.terrain;
-    await game.gameWorld.add(BackgroundComponent(
-      environment: setup.map.environment,
-      mapSize: Vector2(setup.map.width.toDouble(), setup.map.height.toDouble()),
-    ));
-    await game.gameWorld.add(TerrainComponent(terrain: setup.terrain));
-    game.players.clear();
-
-    final probe = GroundProbe(setup.terrain);
-    for (final mp in match.players.values) {
-      final gy = probe.findGroundBelow(mp.x.toDouble(), mp.y.toDouble()) ?? mp.y.toDouble();
-      final c = OnlineCharacter(
-        glassId: mp.base.gun,
-        equipIds: mp.base.equipIds,
-        name: mp.base.name,
-        maxHp: mp.maxHp,
-      );
-      await c.load();
-      c.hp = mp.hp;
-      c.moveTo(mp.x.toDouble(), gy);
-      await game.gameWorld.add(c);
-      game.players[mp.base.id] = c;
-    }
+    await game.setupMatch(match);
 
     _lifecycle = AppLifecycleCoordinator(
       game: game,
-      connection: const NoopConnectionLifecycle(), // TODO: Real connection lifecycle
+      connection: const NoopConnectionLifecycle(),
+      audio: audio,
     )..start();
 
     setState(() => _game = game);
@@ -101,25 +74,61 @@ class _OnlineGameScreenState extends ConsumerState<OnlineGameScreen> {
       }
     });
 
+    ref.listen(gameplayControllerProvider.select((s) => s?.players), (prev, next) {
+      if (next != null && game != null) {
+        game.syncPlayers(next);
+      }
+    });
+
     return Scaffold(
-      body: Stack(
-        children: [
-          if (game != null)
-            Positioned.fill(
-              child: GameWidget<ArmyGame>(
-                game: game,
-                overlayBuilderMap: {
-                  'HUD': (context, g) => GameplayHud(game: g),
-                },
-                initialActiveOverlays: const ['HUD'],
+      body: GameViewport(
+        child: PopScope(
+          canPop: false,
+          onPopInvokedWithResult: (didPop, result) async {
+            if (didPop) return;
+            final shouldExit = await showDialog<bool>(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: const Text('Thoát trận?'),
+                content: const Text('Bạn có chắc muốn rời khỏi trận đấu đang diễn ra?'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: const Text('Ở lại'),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(true),
+                    child: const Text('Thoát', style: TextStyle(color: Colors.red)),
+                  ),
+                ],
               ),
-            )
-          else if (_error != null)
-            Center(child: Text(_error!))
-          else
-            const Center(child: CircularProgressIndicator()),
-          if (game != null) _buildStatusHeader(match),
-        ],
+            );
+
+            if (shouldExit == true && mounted) {
+              // ignore: use_build_context_synchronously
+              Navigator.of(context).pop();
+            }
+          },
+          child: Stack(
+            children: [
+              if (game != null)
+                Positioned.fill(
+                  child: GameWidget<ArmyGame>(
+                    game: game,
+                    overlayBuilderMap: {
+                      'HUD': (context, g) => GameplayHud(game: g),
+                    },
+                    initialActiveOverlays: const ['HUD'],
+                  ),
+                )
+              else if (_error != null)
+                Center(child: Text(_error!))
+              else
+                const Center(child: CircularProgressIndicator()),
+              if (game != null) _buildStatusHeader(match),
+            ],
+          ),
+        ),
       ),
     );
   }

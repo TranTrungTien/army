@@ -15,6 +15,7 @@ enum AppRoute {
   ranking('/ranking'),
   formulas('/formulas'),
   profile('/profile'),
+  offlineSetup('/offline-setup'),
   gameplaySandbox('/gameplay-sandbox');
 
   const AppRoute(this.path);

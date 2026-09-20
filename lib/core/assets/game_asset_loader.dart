@@ -58,7 +58,7 @@ class GameAssets {
   static Future<BmFont?> _tryFont(String base) async {
     try {
       return await BmFont.load(
-        kPrefix + base + '.fnt',
+        '$kPrefix$base.fnt',
         (path) async {
           final bd = await rootBundle.load(path);
           final codec = await ui.instantiateImageCodec(bd.buffer.asUint8List());

@@ -1,7 +1,7 @@
-import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/area_summary.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/board_summary.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
 
 /// Pure state machine for the lobby flow.
 class LobbyStateMachine {
@@ -20,19 +20,25 @@ class LobbyStateMachine {
 
   LobbyState boardsRequested(int areaId) {
     if (_state.status != LobbyStatus.areasLoaded &&
-        _state.status != LobbyStatus.boardsLoaded) return _state;
+        _state.status != LobbyStatus.boardsLoaded) {
+      return _state;
+    }
     return _set(LobbyState.loadingBoards(_state.areas, areaId));
   }
 
   LobbyState boardsLoaded(int areaId, List<BoardSummary> boards) {
     if (_state.status != LobbyStatus.loadingBoards ||
-        _state.selectedAreaId != areaId) return _state;
+        _state.selectedAreaId != areaId) {
+      return _state;
+    }
     return _set(LobbyState.boardsLoaded(_state.areas, areaId, boards));
   }
 
   LobbyState joinRequested() {
     if (_state.status != LobbyStatus.boardsLoaded &&
-        _state.status != LobbyStatus.areasLoaded) return _state;
+        _state.status != LobbyStatus.areasLoaded) {
+      return _state;
+    }
     return _set(const LobbyState.joining());
   }
 

@@ -1,5 +1,5 @@
-import 'package:mobiarmy_flutter/features/room/domain/room_player.dart';
 import 'package:mobiarmy_flutter/features/gameplay/data/gameplay_packet_mapper.dart';
+import 'package:mobiarmy_flutter/features/room/domain/room_player.dart';
 
 enum MatchLoopStatus {
   preparing,
@@ -77,6 +77,7 @@ class MatchPlayer {
     this.maxHp = 1000,
     this.stamina = 100.0,
     this.isDead = false,
+    this.state = 0,
   });
 
   final RoomPlayer base;
@@ -86,6 +87,7 @@ class MatchPlayer {
   final int maxHp;
   final double stamina;
   final bool isDead;
+  final int state;
 
   MatchPlayer copyWith({
     int? x,
@@ -93,6 +95,7 @@ class MatchPlayer {
     int? hp,
     double? stamina,
     bool? isDead,
+    int? state,
   }) {
     return MatchPlayer(
       base: base,
@@ -101,6 +104,7 @@ class MatchPlayer {
       hp: hp ?? this.hp,
       stamina: stamina ?? this.stamina,
       isDead: isDead ?? this.isDead,
+      state: state ?? this.state,
     );
   }
 }

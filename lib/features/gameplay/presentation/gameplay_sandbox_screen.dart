@@ -4,14 +4,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobiarmy_flutter/app/lifecycle/app_lifecycle_coordinator.dart';
 import 'package:mobiarmy_flutter/core/audio/audio_provider.dart';
 import 'package:mobiarmy_flutter/core/network/connection_lifecycle.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_provider.dart';
-import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/sandbox/sandbox_scenario.dart';
 import 'package:mobiarmy_flutter/shared/overlays/gameplay_hud.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
 
 class GameplaySandboxScreen extends ConsumerStatefulWidget {
-  const GameplaySandboxScreen({super.key});
+  const GameplaySandboxScreen({super.key, this.heroIndex = 0});
+
+  final int heroIndex;
 
   @override
   ConsumerState<GameplaySandboxScreen> createState() =>
@@ -28,12 +29,14 @@ class _GameplaySandboxScreenState extends ConsumerState<GameplaySandboxScreen> {
     // Sandbox uses internal audio but no network connection lifecycle
     final audio = ref.read(audioServiceProvider);
 
-    final scenario = SandboxScenario.buildDefault();
+    final scenario = SandboxScenario.build(heroIndex: widget.heroIndex);
     _game = ArmyGame(scenario: scenario, audio: audio);
+    _game.activePlayerId = 0; // Local user player ID
 
     _lifecycle = AppLifecycleCoordinator(
       game: _game,
-      connection: NoopConnectionLifecycle(),
+      connection: const NoopConnectionLifecycle(),
+      audio: audio,
     )..start();
   }
 
@@ -47,7 +50,7 @@ class _GameplaySandboxScreenState extends ConsumerState<GameplaySandboxScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: GameViewport(
         child: Stack(
           children: [
             Positioned.fill(
@@ -60,7 +63,7 @@ class _GameplaySandboxScreenState extends ConsumerState<GameplaySandboxScreen> {
               ),
             ),
             const Positioned(
-              top: 12,
+              top: 50,
               left: 12,
               child: DecoratedBox(
                 decoration: BoxDecoration(
@@ -71,7 +74,7 @@ class _GameplaySandboxScreenState extends ConsumerState<GameplaySandboxScreen> {
                   padding: EdgeInsets.all(10),
                   child: Text(
                     'Gameplay sandbox — offline vertical slice',
-                    style: TextStyle(color: Colors.white, fontSize: 12),
+                    style: TextStyle(color: Colors.white, fontSize: 10),
                   ),
                 ),
               ),

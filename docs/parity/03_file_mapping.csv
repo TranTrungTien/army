@@ -1,23 +1,33 @@
-Java File,Flutter File,Status,Notes
-CLib/RMS.java,lib/core/assets/legacy_rms.dart,IMPLEMENTED_UNVERIFIED,Emulates J2ME record management system
-CLib/mSocket.java,lib/core/network/tcp_session.dart,IMPLEMENTED_UNVERIFIED,Maps network raw client sockets
-CLib/mGraphics.java,lib/features/gameplay/map_component.dart,FRAMEWORK_REPLACE,Absorbed by Flame Canvas rendering layers
-model/FilePack.java,lib/core/assets/file_pack_decoder.dart,IMPLEMENTED_UNVERIFIED,Parses custom binary asset packs
-network/Message.java,lib/core/network/message.dart,IMPLEMENTED_UNVERIFIED,Matches binary byte-stream payload envelope
-network/Session_ME.java,lib/core/network/tcp_session.dart,IMPLEMENTED_UNVERIFIED,Handles raw TCP streams and XOR encryption key rolling
-network/Cmd_Client2Server.java,lib/core/network/commands.dart,IMPLEMENTED_UNVERIFIED,Contains client opcode indices constants
-network/Cmd_Server2Client.java,lib/core/network/commands.dart,IMPLEMENTED_UNVERIFIED,Contains server opcode broadcast constants
-map/MapFile.java,lib/core/map/legacy_map_parser.dart,IMPLEMENTED_UNVERIFIED,Loads destructible background grids
-map/CMap.java,lib/features/gameplay/destructible_terrain.dart,IMPLEMENTED_UNVERIFIED,Maintains alpha collision mask arrays
-item/Bullet.java,lib/features/gameplay/bullet_simulator.dart,IMPLEMENTED_UNVERIFIED,Simulates gravity and wind trajectories discrete equations
-item/Item.java,lib/features/gameplay/online_game_service.dart,IMPLEMENTED_UNVERIFIED,Handles local storage inventory lookups
-player/CPlayer.java,lib/features/gameplay/character_component.dart,IMPLEMENTED_UNVERIFIED,Coordinates combatant parameters positions
-screen/LoginScr.java,lib/features/auth/login_screen.dart,IMPLEMENTED_UNVERIFIED,Authentication view credentials inputs
-screen/ServerListScreen.java,lib/features/auth/server_selection_screen.dart,IMPLEMENTED_UNVERIFIED,Handles server cluster list mapping navigation
-screen/RoomListScr.java,lib/features/lobby/lobby_screen.dart,IMPLEMENTED_UNVERIFIED,Displays available active room grids
-screen/GameScr.java,lib/features/gameplay/gameplay_page.dart,IMPLEMENTED_UNVERIFIED,Renders primary match viewport engine arena
-Equipment/Equip.java,lib/features/gameplay/equipment_layer_component.dart,IMPLEMENTED_UNVERIFIED,Parses avatar item appearance definitions
-mobiarmy/io/Message.java,lib/core/network/message.dart,SERVER_AUTHORITY,Server-side byte data frame container
-mobiarmy/server/Session.java,lib/core/network/tcp_session.dart,SERVER_AUTHORITY,Tracks active client connection identifiers sockets
-mobiarmy/war/Boss/bullet/Bullet.java,lib/features/gameplay/bullet_simulator.dart,SERVER_AUTHORITY,Server authoritative projectile collision confirmation checking
-
+Java File Path,Flutter File Path,Parity Relationship,Classification
+core/src/CLib/mSocket.java,core/network/transport/tcp_session.dart,Direct Replacement,Wrappers to replace
+core/src/network/Session_ME.java,core/network/transport/tcp_session.dart,Direct Replacement,Wrappers to replace
+src/mobiarmy/server/MessageHandler.java,core/network/security/xor_codec.dart,XOR Encryption Algorithm Parity,Mergeable features
+core/src/CLib/RMS.java,core/assets/legacy_rms.dart,Persistent Cache Abstraction,Wrappers to replace
+core/src/model/Fomula.java,core/legacy_math/legacy_trigonometry.dart,Fixed point trigonometry LUT,Runtime behavior to port
+core/src/map/CMap.java,features/gameplay/game/map/destructible_terrain.dart,Destructible pixel terrain,Runtime behavior to port
+core/src/item/Bullet.java,features/gameplay/game/projectile/projectile_component.dart,Active physics simulator,Runtime behavior to port
+src/mobiarmy/war/PathSimulator.java,features/gameplay/game/projectile/trajectory_simulator.dart,Trajectory projection map guide,Runtime behavior to port
+core/src/network/Cmd_Client2Server.java,core/network/command/commands.dart,Protocol command enumeration,Mergeable features
+core/src/network/Cmd_Server2Client.java,core/network/command/commands.dart,Protocol command enumeration,Mergeable features
+core/src/CLib/mGraphics.java,features/gameplay/game/army_game.dart,Canvas drawing replacement via Flame,Wrappers to replace
+core/src/CLib/SoundSystem.java,core/audio/audio_service.dart,Audio engine replacement via audioplayers,Wrappers to replace
+core/src/com/teamobi/mobiarmy2/GameMidlet.java,app/army_app.dart,Application container launcher,Platform-specific
+core/src/com/teamobi/mobiarmy2/MainActivity.java,app/army_app.dart,Application entry point,Platform-specific
+core/src/effect/Explosion.java,features/gameplay/game/effects/explosion_component.dart,Particle visualization,Client-presentation
+core/src/effect/Smoke.java,features/gameplay/game/effects/smoke_particle.dart,Particle trails,Client-presentation
+core/src/model/PlayerInfo.java,features/authentication/domain/user_session.dart,Session user data representation,Mergeable features
+src/mobiarmy/server/DBManager.java,,Server database gateway,Server-authoritative
+src/mobiarmy/server/SessionManager.java,,Server user tracking,Server-authoritative
+core/src/screen/LoginScr.java,features/authentication/presentation/login_screen.dart,Credential Auth Screen UI,Client-presentation
+core/src/screen/ServerListScreen.java,features/authentication/presentation/server_selection_screen.dart,Server endpoint selection grid,Client-presentation
+core/src/screen/SplashScr.java,features/authentication/presentation/splash_screen.dart,Initial loading animation,Client-presentation
+core/src/screen/RoomListScr.java,features/lobby/presentation/lobby_screen.dart,Area and server room dashboard,Client-presentation
+core/src/screen/PrepareScr.java,features/lobby/presentation/room_waiting_screen.dart,Match staging setup slots,Client-presentation
+core/src/screen/GameScr.java,features/gameplay/presentation/online_game_screen.dart,Active match gameplay HUD overlay,Client-presentation
+core/src/screen/Inventory.java,features/inventory/presentation/inventory_screen.dart,Equipped gear and stock browser,Client-presentation
+core/src/screen/ConfigScr.java,features/config/presentation/config_screen.dart,Game configuration options,Client-presentation
+core/src/player/CPlayer.java,features/gameplay/game/actor/character_component.dart,Player game component actor sprite,Runtime behavior to port
+core/src/model/FilePack.java,core/assets/file_pack_decoder.dart,Asset bundle parser and unpacker,Wrappers to replace
+core/src/network/GameLogicHandler.java,core/network/message_dispatcher.dart,Packet route dispatcher to controllers,Mergeable features
+src/mobiarmy/war/Room.java,,Server lobby management,Server-authoritative
+src/mobiarmy/war/Player.java,,Server state representation,Server-authoritative

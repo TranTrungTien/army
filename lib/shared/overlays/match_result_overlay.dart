@@ -43,14 +43,14 @@ class MatchResultOverlay extends StatelessWidget {
                 itemCount: result.playerResults.length,
                 itemBuilder: (context, index) {
                   final pr = result.playerResults[index];
-                  // Ideally we match playerId with name from room state
+                  final playerName = game.players[pr.playerId]?.name ?? 'Player ${pr.playerId}';
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Player ${pr.playerId}',
+                          playerName,
                           style: const TextStyle(color: Colors.white, fontSize: 16),
                         ),
                         Text(

@@ -1,7 +1,8 @@
 import 'dart:ui' as ui;
+
 import 'package:flame/components.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/army_game.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 
 class BackgroundComponent extends PositionComponent with HasGameReference<ArmyGame> {
   BackgroundComponent({required this.environment, required Vector2 mapSize})

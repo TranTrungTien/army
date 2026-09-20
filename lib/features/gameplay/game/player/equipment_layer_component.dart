@@ -1,5 +1,6 @@
-import 'package:flame/components.dart';
 import 'dart:ui';
+
+import 'package:flame/components.dart';
 
 class EquipmentLayerComponent extends SpriteComponent {
   EquipmentLayerComponent({required super.priority}) {

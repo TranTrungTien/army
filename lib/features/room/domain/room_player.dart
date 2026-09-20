@@ -11,6 +11,7 @@ class RoomPlayer {
     this.team = 0,
     this.slotIndex = -1,
     this.gun = 0,
+    this.isBoss = false,
     this.connectionState = 'connected',
   });
 
@@ -24,6 +25,7 @@ class RoomPlayer {
   final int team;
   final int slotIndex;
   final int gun;
+  final bool isBoss;
   final String connectionState;
 
   RoomPlayer copyWith({

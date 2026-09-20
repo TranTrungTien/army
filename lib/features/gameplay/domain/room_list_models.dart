@@ -1,5 +1,5 @@
-import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/core/network/data_cache_parsers.dart';
+import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 
 /// Port MessageHandler case -28 (roomWaitList):
 ///   raction (byte), roi lap: id(byte) != -1 -> boardID, mapID, cur/max, money(int)

@@ -19,7 +19,9 @@ class PlayerCollisionSystem extends Component with HasGameReference<ArmyGame> {
     for (final player in game.players.values) {
       var movement = player.movement;
       if (movement.kind == PlayerMovementKind.dead ||
-          movement.kind == PlayerMovementKind.teleport) continue;
+          movement.kind == PlayerMovementKind.teleport) {
+        continue;
+      }
 
       // 1. Apply Gravity if not on ground
       if (!movement.isOnGround) {

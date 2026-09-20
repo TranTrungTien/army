@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:mobiarmy_flutter/core/network/command/commands.dart';
@@ -7,10 +8,10 @@ import 'package:mobiarmy_flutter/core/network/network_provider.dart';
 import 'package:mobiarmy_flutter/core/network/protocol/message.dart';
 import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/application/chat_controller.dart';
-import 'package:mobiarmy_flutter/features/room/application/room_controller.dart';
-import 'package:mobiarmy_flutter/features/gameplay/domain/match_state.dart';
 import 'package:mobiarmy_flutter/features/gameplay/data/gameplay_packet_mapper.dart';
 import 'package:mobiarmy_flutter/features/gameplay/data/gameplay_repository.dart';
+import 'package:mobiarmy_flutter/features/gameplay/domain/match_state.dart';
+import 'package:mobiarmy_flutter/features/room/application/room_controller.dart';
 
 class GameplayController extends Notifier<MatchState?> {
   final _logger = Logger('GameplayController');
@@ -47,6 +48,8 @@ class GameplayController extends Notifier<MatchState?> {
       ..register(Commands.chat, _onChat)
       ..register(Commands.skipTurn, _onSkipTurn)
       ..register(Commands.useItem, _onUseItem)
+      ..register(Commands.getBoss, _onBossSpawn)
+      ..register(Commands.bonusMoney, _onBonusMoney)
       ..register(Commands.leaveRoomWait, _onPlayerLeave)
       ..register(Commands.finishMatch, _onFinishMatch);
   }
@@ -222,10 +225,35 @@ class GameplayController extends Notifier<MatchState?> {
     try {
       final (playerId, itemId) = _mapper.decodeUseItem(message);
       _logger.info('Player $playerId used item $itemId');
-      // Update state if item has immediate visual/stat impact
-      // Many items in MobiArmy affect the next shot or current HP
     } catch (e) {
       _logger.warning('useItem parse failed: $e');
+    }
+  }
+
+  void _onBossSpawn(Message message) {
+    if (state == null) return;
+    try {
+      final newPlayers = _mapper.decodeAddPlayers(message);
+      final players = Map<int, MatchPlayer>.from(state!.players);
+      for (final p in newPlayers) {
+        players[p.base.id] = p;
+        _logger.info('Boss spawned: ${p.base.name} at ${p.x}, ${p.y}');
+      }
+      state = state!.copyWith(players: players);
+    } catch (e) {
+      _logger.warning('bossSpawn parse failed: $e');
+    }
+  }
+
+  void _onBonusMoney(Message message) {
+    try {
+      final (money, reason) = _mapper.decodeBonusMoney(message);
+      ref.read(chatControllerProvider.notifier).addMessage(
+            'System',
+            'Nhận $money xu: $reason',
+          );
+    } catch (e) {
+      _logger.warning('bonusMoney parse failed: $e');
     }
   }
 

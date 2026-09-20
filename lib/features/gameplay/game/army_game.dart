@@ -11,8 +11,9 @@ import 'package:mobiarmy_flutter/features/gameplay/game/map/destructible_terrain
 import 'package:mobiarmy_flutter/features/gameplay/game/map/game_map_definition.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/map_json_loader.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/map/terrain_component.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/player/boss_character.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/player/game_player.dart';
-import 'package:mobiarmy_flutter/features/gameplay/game/player/sandbox_character_component.dart';
+import 'package:mobiarmy_flutter/features/gameplay/game/player/online_character.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/projectile/projectile_component.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/projectile/projectile_trajectory.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/projectile/trajectory_simulator.dart';
@@ -22,7 +23,7 @@ import 'package:mobiarmy_flutter/features/gameplay/game/systems/combat_system.da
 import 'package:mobiarmy_flutter/features/gameplay/game/systems/player_collision_system.dart';
 import 'package:mobiarmy_flutter/features/gameplay/game/systems/player_movement_system.dart';
 
-class ArmyGame extends FlameGame with DragCallbacks {
+class ArmyGame extends FlameGame with DragCallbacks, HasKeyboardHandlerComponents, ScrollDetector {
   ArmyGame({this.scenario, this.onLoaded, this.audio});
 
   final SandboxScenario? scenario;
@@ -71,12 +72,26 @@ class ArmyGame extends FlameGame with DragCallbacks {
     for (final entry in matchState.players.entries) {
       final id = entry.key;
       final p = entry.value;
-      final color = p.base.team == 0 ? const Color(0xFF2563EB) : const Color(0xFFDC2626);
-      final character = SandboxCharacterComponent(
-        slotEquipment: const {},
-        bodyColor: color,
-        classId: p.base.team == 0 ? 1 : 2,
-      );
+
+      GamePlayer character;
+      if (p.base.isBoss) {
+        character = BossCharacter(
+          bossType: BossType.fromGunType(p.base.glassId),
+          id: id,
+          name: p.base.name,
+          maxHp: p.maxHp,
+        )..hp = p.hp;
+      } else {
+        character = OnlineCharacter(
+          glassId: p.base.glassId,
+          equipIds: p.base.equips,
+          name: p.base.name,
+          maxHp: p.maxHp,
+        );
+        await (character as OnlineCharacter).load();
+        character.hp = p.hp;
+      }
+
       character.moveTo(p.x.toDouble(), p.y.toDouble());
       await gameWorld.add(character);
       players[id] = character;
@@ -85,6 +100,52 @@ class ArmyGame extends FlameGame with DragCallbacks {
     windX = matchState.windX;
     windY = matchState.windY;
     activePlayerId = matchState.currentTurnPlayerId;
+  }
+
+  Future<void> syncPlayers(Map<int, MatchPlayer> matchPlayers) async {
+    // Add new players or bosses
+    for (final entry in matchPlayers.entries) {
+      final id = entry.key;
+      final p = entry.value;
+
+      if (!players.containsKey(id)) {
+        GamePlayer character;
+        if (p.base.isBoss) {
+          character = BossCharacter(
+            bossType: BossType.fromGunType(p.base.glassId),
+            id: id,
+            name: p.base.name,
+            maxHp: p.maxHp,
+          )..hp = p.hp;
+        } else {
+          character = OnlineCharacter(
+            glassId: p.base.glassId,
+            equipIds: p.base.equips,
+            name: p.base.name,
+            maxHp: p.maxHp,
+          );
+          await (character as OnlineCharacter).load();
+          character.hp = p.hp;
+        }
+        character.moveTo(p.x.toDouble(), p.y.toDouble());
+        await gameWorld.add(character);
+        players[id] = character;
+      } else {
+        // Sync stats for existing
+        final character = players[id]!;
+        character.hp = p.hp;
+        if (character is BossCharacter) {
+          character.state = p.state;
+        }
+      }
+    }
+
+    // Remove players who left
+    final idsToRemove = players.keys.where((id) => !matchPlayers.containsKey(id)).toList();
+    for (final id in idsToRemove) {
+      final c = players.remove(id);
+      if (c != null) gameWorld.remove(c);
+    }
   }
 
   @override
@@ -187,6 +248,17 @@ class ArmyGame extends FlameGame with DragCallbacks {
   void onDragUpdate(DragUpdateEvent event) {
     super.onDragUpdate(event);
     cameraSystem.pan(event.localDelta);
+  }
+
+  @override
+  void onScroll(PointerScrollInfo info) {
+    super.onScroll(info);
+    final scrollDelta = info.scrollDelta.global.y;
+    if (scrollDelta != 0) {
+      final zoomDelta = -scrollDelta / 500;
+      final newZoom = (camera.viewfinder.zoom + zoomDelta).clamp(0.5, 4.0);
+      camera.viewfinder.zoom = newZoom;
+    }
   }
 
   void pauseSafely() {

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobiarmy_flutter/app/router/app_route.dart';
+import 'package:mobiarmy_flutter/core/assets/bmfont.dart';
 import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
 import 'package:mobiarmy_flutter/features/room/application/room_controller.dart';
 import 'package:mobiarmy_flutter/features/room/domain/room_player.dart';
 import 'package:mobiarmy_flutter/features/room/domain/room_session_state.dart';
-import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
-import 'package:mobiarmy_flutter/shared/widgets/legacy_panel.dart';
-import 'package:mobiarmy_flutter/shared/widgets/legacy_button.dart';
 import 'package:mobiarmy_flutter/shared/widgets/bitmap_text.dart';
-import 'package:mobiarmy_flutter/core/assets/bmfont.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_button.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_panel.dart';
 
 class RoomScreen extends ConsumerWidget {
   const RoomScreen({super.key});
@@ -97,7 +97,7 @@ class RoomScreen extends ConsumerWidget {
               right: 0,
               child: Container(
                 height: 35,
-                color: Colors.black84,
+                color: const Color(0xD9000000), // black84
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,7 +114,7 @@ class RoomScreen extends ConsumerWidget {
                       },
                     ),
                     BitmapText(
-                      'Chế độ: ${roomState.gameMode == 0 ? "Đối kháng" : "Đấu đội"}',
+                      'Chế độ: ${roomState.gameMode == GameMode.normal ? "Đối kháng" : "Đấu đội"}',
                       anchor: GraphicsAnchor.hCenter | GraphicsAnchor.vCenter,
                     ),
                     const SizedBox(width: 70),
@@ -288,8 +288,8 @@ class _PlayerSlot extends StatelessWidget {
     }
 
     final teamColor = player.team == 0
-        ? const Color(0xFF3379FF).withOpacity(0.25)
-        : const Color(0xFFFF3333).withOpacity(0.25);
+        ? const Color(0xFF3379FF).withValues(alpha: 0.25)
+        : const Color(0xFFFF3333).withValues(alpha: 0.25);
 
     return InkWell(
       onTap: (amIMaster && !isMe) ? onKick : null,

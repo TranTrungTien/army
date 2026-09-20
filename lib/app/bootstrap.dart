@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'dart:ui';
+import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,11 +15,28 @@ Future<void> bootstrap({bool debug = false}) async {
   await runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
     configureLogging(debug: debug);
-    await SystemChrome.setPreferredOrientations(const [
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
-    ]);
-    await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+    // Platform-specific initialization
+    if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
+      await SystemChrome.setPreferredOrientations(const [
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+      await SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.immersiveSticky,
+        overlays: [],
+      );
+      // Ensure system bars are hidden even after keyboard interaction
+      unawaited(SystemChrome.setSystemUIChangeCallback((systemOverlaysVisible) async {
+        if (systemOverlaysVisible) {
+          await Future<void>.delayed(const Duration(seconds: 2));
+          await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+        }
+      }));
+    } else if (!kIsWeb && (Platform.isWindows || Platform.isMacOS || Platform.isLinux)) {
+      // Desktop specific setup: ensure reasonable minimum size if possible
+      // (Requires window_manager for full control, but we stick to standard here)
+    }
 
     FlutterError.onError = (details) {
       FlutterError.presentError(details);

@@ -1,17 +1,4 @@
-class EquipmentStats {
-  final List<int> ability; // Health, Power, Defense, Luck, Team
-  final List<int> percent;
-
-  const EquipmentStats({
-    required this.ability,
-    required this.percent,
-  });
-
-  static const empty = EquipmentStats(
-    ability: [0, 0, 0, 0, 0],
-    percent: [0, 0, 0, 0, 0],
-  );
-}
+import 'equipment_stats.dart';
 
 class InventoryItem {
   final int dbKey;

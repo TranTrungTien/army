@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobiarmy_flutter/core/legacy_math/fixed_point.dart';
+import 'package:mobiarmy_flutter/core/legacy_math/java_random.dart';
 import 'package:mobiarmy_flutter/core/legacy_math/legacy_angle.dart';
 import 'package:mobiarmy_flutter/core/legacy_math/legacy_collision_math.dart';
 import 'package:mobiarmy_flutter/core/legacy_math/legacy_trigonometry.dart';
-import 'package:mobiarmy_flutter/core/legacy_math/java_random.dart';
 
 void main() {
   final fixture =

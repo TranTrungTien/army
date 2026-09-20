@@ -25,7 +25,7 @@ class SmokeParticle extends PositionComponent {
     final opacity = (0.6 * (1.0 - progress)).clamp(0.0, 1.0);
     final size = 4.0 * (1.0 + progress);
 
-    final paint = Paint()..color = Colors.white.withOpacity(opacity);
+    final paint = Paint()..color = Colors.white.withValues(alpha: opacity);
     canvas.drawCircle(Offset.zero, size / 2, paint);
   }
 }

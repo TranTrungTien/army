@@ -8,24 +8,18 @@ import 'package:mobiarmy_flutter/features/authentication/application/auth_contro
 import 'package:mobiarmy_flutter/features/authentication/domain/authentication_state.dart';
 import 'package:mobiarmy_flutter/features/authentication/presentation/login_screen.dart';
 import 'package:mobiarmy_flutter/features/authentication/presentation/server_selection_screen.dart';
+import 'package:mobiarmy_flutter/features/authentication/presentation/splash_screen.dart';
 import 'package:mobiarmy_flutter/features/gameplay/application/gameplay_controller.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/gameplay_sandbox_screen.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/offline_demo_screen.dart';
+import 'package:mobiarmy_flutter/features/gameplay/presentation/offline_setup_screen.dart';
 import 'package:mobiarmy_flutter/features/gameplay/presentation/online_game_screen.dart';
+import 'package:mobiarmy_flutter/features/inventory/presentation/inventory_screen.dart';
 import 'package:mobiarmy_flutter/features/lobby/application/lobby_controller.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
 import 'package:mobiarmy_flutter/features/lobby/presentation/lobby_screen.dart';
-import 'package:mobiarmy_flutter/features/clan/presentation/clan_hub_screen.dart';
-import 'package:mobiarmy_flutter/features/content/presentation/formula_screen.dart';
-import 'package:mobiarmy_flutter/features/content/presentation/lucky_game_screen.dart';
-import 'package:mobiarmy_flutter/features/content/presentation/mission_screen.dart';
-import 'package:mobiarmy_flutter/features/inventory/presentation/inventory_screen.dart';
-import 'package:mobiarmy_flutter/features/profile/presentation/profile_screen.dart';
-import 'package:mobiarmy_flutter/features/profile/presentation/ranking_screen.dart';
 import 'package:mobiarmy_flutter/features/room/application/room_controller.dart';
 import 'package:mobiarmy_flutter/features/room/presentation/room_screen.dart';
-import 'package:mobiarmy_flutter/features/shop/presentation/shop_screen.dart';
-import 'package:mobiarmy_flutter/features/social/presentation/friend_list_screen.dart';
 import 'package:mobiarmy_flutter/shared/widgets/placeholder_screen.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
@@ -92,7 +86,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
         path: AppRoute.bootstrap.path,
-        builder: (_, _) => const BootstrapScreen(),
+        builder: (_, _) => const SplashScreen(),
       ),
       GoRoute(
         path: AppRoute.serverSelection.path,
@@ -124,39 +118,48 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: AppRoute.shop.path,
-        builder: (_, _) => const ShopScreen(),
+        builder: (_, _) => const PlaceholderScreen(title: 'Shop'),
       ),
       GoRoute(
         path: AppRoute.friends.path,
-        builder: (_, _) => const FriendListScreen(),
+        builder: (_, _) => const PlaceholderScreen(title: 'Friend List'),
       ),
       GoRoute(
         path: AppRoute.clan.path,
-        builder: (_, _) => const ClanHubScreen(),
+        builder: (_, _) => const PlaceholderScreen(title: 'Clan Hub'),
       ),
       GoRoute(
         path: AppRoute.missions.path,
-        builder: (_, _) => const MissionScreen(),
+        builder: (_, _) => const PlaceholderScreen(title: 'Missions'),
       ),
       GoRoute(
         path: AppRoute.luckyGame.path,
-        builder: (_, _) => const LuckyGameScreen(),
+        builder: (_, _) => const PlaceholderScreen(title: 'Lucky Game'),
       ),
       GoRoute(
         path: AppRoute.ranking.path,
-        builder: (_, _) => const RankingScreen(),
+        builder: (_, _) => const PlaceholderScreen(title: 'Ranking'),
       ),
       GoRoute(
         path: AppRoute.formulas.path,
-        builder: (_, _) => const FormulaScreen(),
+        builder: (_, _) => const PlaceholderScreen(title: 'Formulas'),
       ),
       GoRoute(
         path: AppRoute.profile.path,
-        builder: (_, _) => const ProfileScreen(),
+        builder: (_, _) => const PlaceholderScreen(title: 'Profile'),
       ),
       GoRoute(
         path: AppRoute.gameplaySandbox.path,
-        builder: (_, _) => const GameplaySandboxScreen(),
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          return GameplaySandboxScreen(
+            heroIndex: extra?['heroIndex'] ?? 0,
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoute.offlineSetup.path,
+        builder: (_, _) => const OfflineSetupScreen(),
       ),
     ],
   );

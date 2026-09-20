@@ -21,7 +21,7 @@ class SandboxScenario {
   final DestructibleTerrain terrain;
   final List<SandboxCharacterComponent> characters;
 
-  static SandboxScenario buildDefault() {
+  static SandboxScenario build({required int heroIndex}) {
     final map = MapJsonLoader.parse(
       SandboxMaps.cayCauBang,
       mapId: 0,
@@ -52,10 +52,15 @@ class SandboxScenario {
       return character;
     }
 
+    final heroes = [
+      {'color': const Color(0xFFF97316), 'equips': SandboxEquipmentData.gunnerSet(), 'classId': 1},
+      {'color': const Color(0xFF22D3EE), 'equips': SandboxEquipmentData.miss6Set(), 'classId': 2},
+    ];
+
+    final hero = heroes[heroIndex % heroes.length];
+
     final characters = [
-      // Spawn points 4/5 land on the two side platforms (y=404 row).
-      spawn(4, SandboxEquipmentData.gunnerSet(), const Color(0xFFF97316), 1),
-      spawn(5, SandboxEquipmentData.miss6Set(), const Color(0xFF22D3EE), 2),
+      spawn(4, hero['equips'] as List<dynamic>, hero['color'] as Color, hero['classId'] as int),
     ];
 
     return SandboxScenario._(
@@ -63,6 +68,10 @@ class SandboxScenario {
       terrain: terrain,
       characters: characters,
     );
+  }
+
+  static SandboxScenario buildDefault() {
+    return build(heroIndex: 0);
   }
 }
 

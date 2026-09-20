@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobiarmy_flutter/app/router/app_route.dart';
+import 'package:mobiarmy_flutter/features/authentication/application/auth_controller.dart';
 import 'package:mobiarmy_flutter/features/lobby/application/lobby_controller.dart';
 import 'package:mobiarmy_flutter/features/lobby/domain/lobby_state.dart';
-import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
-import 'package:mobiarmy_flutter/shared/widgets/legacy_panel.dart';
-import 'package:mobiarmy_flutter/shared/widgets/legacy_button.dart';
 import 'package:mobiarmy_flutter/shared/widgets/bitmap_text.dart';
-import 'package:mobiarmy_flutter/core/assets/bmfont.dart';
+import 'package:mobiarmy_flutter/shared/widgets/game_viewport.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_button.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_dialog.dart';
+import 'package:mobiarmy_flutter/shared/widgets/legacy_panel.dart';
 
 class LobbyScreen extends ConsumerWidget {
   const LobbyScreen({super.key});
@@ -24,10 +25,19 @@ class LobbyScreen extends ConsumerWidget {
       }
     });
 
-    return Scaffold(
-      body: GameViewport(
-        child: Stack(
-          children: [
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) async {
+        if (didPop) return;
+        final exit = await LegacyDialog.showExitDialog(context);
+        if (exit == true) {
+          await ref.read(authControllerProvider.notifier).disconnect();
+        }
+      },
+      child: Scaffold(
+        body: GameViewport(
+          child: Stack(
+            children: [
             // Background
             Container(color: const Color(0xFF77D3FF)),
 
@@ -110,6 +120,7 @@ class LobbyScreen extends ConsumerWidget {
           ],
         ),
       ),
+      ),
     );
   }
 
@@ -186,55 +197,6 @@ class _AreaList extends ConsumerWidget {
       },
     );
   }
-
-  void _showMoreMenu(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (ctx) => Container(
-        padding: const EdgeInsets.all(16),
-        child: Wrap(
-          spacing: 16,
-          runSpacing: 16,
-          children: [
-            _MenuIcon(icon: Icons.inventory, label: 'Hành trang', route: AppRoute.inventory),
-            _MenuIcon(icon: Icons.shopping_cart, label: 'Cửa hàng', route: AppRoute.shop),
-            _MenuIcon(icon: Icons.people, label: 'Bạn bè', route: AppRoute.friends),
-            _MenuIcon(icon: Icons.shield, label: 'Biệt đội', route: AppRoute.clan),
-            _MenuIcon(icon: Icons.assignment, label: 'Nhiệm vụ', route: AppRoute.missions),
-            _MenuIcon(icon: Icons.casino, label: 'Quay số', route: AppRoute.luckyGame),
-            _MenuIcon(icon: Icons.leaderboard, label: 'Hạng', route: AppRoute.ranking),
-            _MenuIcon(icon: Icons.build, label: 'Chế tạo', route: AppRoute.formulas),
-            _MenuIcon(icon: Icons.account_circle, label: 'Cá nhân', route: AppRoute.profile),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _MenuIcon extends StatelessWidget {
-  const _MenuIcon({required this.icon, required this.label, required this.route});
-  final IconData icon;
-  final String label;
-  final AppRoute route;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.pop(context);
-        context.push(route.path);
-      },
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 40),
-          const SizedBox(height: 4),
-          Text(label, style: const TextStyle(fontSize: 12)),
-        ],
-      ),
-    );
-  }
 }
 
 class _BoardList extends ConsumerWidget {
@@ -274,8 +236,8 @@ class _BoardList extends ConsumerWidget {
               color: board.isStarted
                   ? Colors.grey
                   : isFull
-                      ? Colors.redAccent.withOpacity(0.2)
-                      : const Color(0xFF3379FF).withOpacity(0.3),
+                      ? Colors.redAccent.withValues(alpha: 0.2)
+                      : const Color(0xFF3379FF).withValues(alpha: 0.3),
               border: Border.all(color: const Color(0xFF303030)),
               borderRadius: BorderRadius.circular(4),
             ),

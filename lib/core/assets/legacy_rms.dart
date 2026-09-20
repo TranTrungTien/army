@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 
@@ -18,7 +18,8 @@ import 'package:path_provider/path_provider.dart';
 abstract final class LegacyRms {
   static Directory? _root;
 
-  static Future<Directory> _dir() async {
+  static Future<Directory?> _dir() async {
+    if (kIsWeb) return null;
     if (_root != null) return _root!;
     final docs = await getApplicationDocumentsDirectory();
     final d = Directory('${docs.path}/rms');
@@ -27,7 +28,9 @@ abstract final class LegacyRms {
   }
 
   static Future<void> seedFromBundle(List<String> files) async {
+    if (kIsWeb) return;
     final root = await _dir();
+    if (root == null) return;
     for (final name in files) {
       final target = File('${root.path}/$name');
       if (target.existsSync()) continue;
@@ -39,7 +42,10 @@ abstract final class LegacyRms {
   }
 
   static Future<Uint8List?> load(String filename) async {
-    final f = File('${(await _dir()).path}/$filename');
+    if (kIsWeb) return null;
+    final root = await _dir();
+    if (root == null) return null;
+    final f = File('${root.path}/$filename');
     return f.existsSync() ? f.readAsBytesSync() : null;
   }
 
@@ -50,7 +56,9 @@ abstract final class LegacyRms {
   }
 
   static Future<void> save(String filename, List<int> data) async {
+    if (kIsWeb) return;
     final root = await _dir();
+    if (root == null) return;
     final tempFile = File('${root.path}/$filename.tmp');
     final targetFile = File('${root.path}/$filename');
     tempFile.writeAsBytesSync(data);
@@ -70,7 +78,10 @@ abstract final class LegacyRms {
       save(filename, utf8.encode(s));
 
   static Future<void> clear(String filename) async {
-    final f = File('${(await _dir()).path}/$filename');
+    if (kIsWeb) return;
+    final root = await _dir();
+    if (root == null) return;
+    final f = File('${root.path}/$filename');
     if (f.existsSync()) f.deleteSync();
   }
 }
